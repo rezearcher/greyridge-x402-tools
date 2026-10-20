@@ -1,0 +1,12 @@
+name: reach-probe
+on: workflow_dispatch
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for h in api.greyridgesignals.ai x402-data-api.sigrunner.workers.dev; do
+            echo "== $h"
+            curl -s -i -m 20 -X POST https://$h/mcp -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' -H 'User-Agent: awesome-remote-mcp-servers-ci/1.0' -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"ci","version":"1"}}}' | head -c 700
+            echo; echo "-- chain/gas-price: $(curl -s -o /dev/null -w '%{http_code}' -m 20 https://$h/chain/gas-price)"
+          done
