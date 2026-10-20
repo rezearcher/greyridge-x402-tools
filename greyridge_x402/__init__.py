@@ -48,3 +48,20 @@ def langchain_tools(paid: bool = False):
         return swap_gate(token, paid=paid)
 
     return [base_token_report, base_swap_gate]
+
+
+def crewai_tools(paid: bool = False):
+    """CrewAI tools: pre-trade token safety gate for Base ERC-20s (preview is free, paid=True pays via x402)."""
+    from crewai.tools import tool
+
+    @tool("base_token_report")
+    def base_token_report(token: str) -> str:
+        """SAFE/CAUTION/AVOID report (honeypot sim, proxy, tax, liquidity) for a Base token address."""
+        return str(token_report(token, paid=paid))
+
+    @tool("base_swap_gate")
+    def base_swap_gate(token: str) -> str:
+        """GO/HOLD/BLOCK pre-trade gate for a Base token address; call before executing a swap."""
+        return str(swap_gate(token, paid=paid))
+
+    return [base_token_report, base_swap_gate]
