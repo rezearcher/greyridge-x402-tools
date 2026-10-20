@@ -1,0 +1,16 @@
+name: MCP server tool-poisoning scan
+description: Fail CI if an MCP server's advertised tools contain prompt-injection / tool-poisoning patterns (Grey Ridge, free preview).
+inputs:
+  url:
+    description: Streamable-HTTP MCP endpoint to scan (e.g. https://host/mcp)
+    required: true
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        r=$(curl -sG --max-time 60 "https://x402-data-api.sigrunner.workers.dev/scan/mcp/preview" --data-urlencode "url=${{ inputs.url }}")
+        echo "$r"
+        v=$(echo "$r" | sed -n 's/.*"verdict":"\([a-z]*\)".*/\1/p')
+        echo "verdict=$v  (itemized findings: paid /scan/mcp, \$0.05 x402)"
+        [ "$v" = "block" ] && exit 1 || exit 0
