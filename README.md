@@ -40,3 +40,10 @@ Tools: `base_token_report` (SAFE/CAUTION/AVOID) and `base_swap_gate` (GO/HOLD/BL
 ## Drop-in swap guard (JS)
 
 `swap-gate.mjs` — `gateToken(addr)` calls the free preview (no wallet); pass an x402 `fetchPaid` to use the paid `/gate/swap` ($0.008). `guardedSwap(addr, doSwap)` runs your swap only when the decision is `go`.
+
+## mcpscan — vet an MCP server before your agent trusts it
+
+```
+npx github:rezearcher/greyridge-x402-tools mcpscan https://mcp.deepwiki.com/mcp
+```
+Free preview: tools scanned, issue counts by severity, risk score, verdict (clear/review/block). Exit code 2 on `block`, so it works as a CI gate. Static analysis of advertised tool metadata only; it never calls your tools. Itemized findings with evidence + OWASP mapping: paid `/scan/mcp` ($0.05 USDC, x402 on Base).
