@@ -16,3 +16,5 @@ Free sample (no wallet, no key):
 Paid route is the same depth: GET /chain/token-report?token=0x... at $0.01 USDC via [x402](https://x402.org) on Base. Swap guard /gate/swap returns GO / HOLD / BLOCK at $0.008.
 
 Code: [greyridge-x402-tools](https://github.com/rezearcher/greyridge-x402-tools) (Python, LangChain, CrewAI, npx github:rezearcher/greyridge-x402-tools 0xTOKEN). Contact: contact@greyridgesignals.ai
+
+- [MCP registry remotes census (2026-10-20)](mcp-registry-census-2026-10-20) — 109 readable public MCP servers scanned, 108 clear; method + reproduction
