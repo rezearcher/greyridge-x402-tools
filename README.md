@@ -55,3 +55,5 @@ Free preview: tools scanned, issue counts by severity, risk score, verdict (clea
     url: https://your-mcp-host/mcp
 ```
 Fails the job when the verdict is `block`.
+
+- [MCP registry security census (109 readable remotes, 987 tools)](docs/mcp-registry-census.md)
