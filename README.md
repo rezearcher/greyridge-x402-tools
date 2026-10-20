@@ -48,6 +48,16 @@ npx github:rezearcher/greyridge-x402-tools mcpscan https://mcp.deepwiki.com/mcp
 ```
 Free preview: tools scanned, issue counts by severity, risk score, verdict (clear/review/block). Exit code 2 on `block`, so it works as a CI gate. Static analysis of advertised tool metadata only; it never calls your tools. Itemized findings with evidence + OWASP mapping: paid `/scan/mcp` ($0.05 USDC, x402 on Base).
 
+### Badge for your MCP server's README
+
+Live shields.io badge showing the scan verdict for any public MCP server (free, cached 6h):
+
+```markdown
+![mcp-scan](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.greyridgesignals.ai%2Fscan%2Fmcp%2Fbadge%3Furl%3DYOUR_MCP_URL)
+```
+
+Replace `YOUR_MCP_URL` with your URL-encoded server endpoint (e.g. `https%3A%2F%2Fmcp.deepwiki.com%2Fmcp`).
+
 ### As a GitHub Action
 ```yaml
 - uses: rezearcher/greyridge-x402-tools@v0.1.1
