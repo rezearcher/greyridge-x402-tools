@@ -22,3 +22,15 @@ LangChain / CrewAI: `from greyridge_x402 import langchain_tools; tools = langcha
 
 API discovery: https://x402-data-api.sigrunner.workers.dev/.well-known/x402 · contact@greyridgesignals.ai
 MIT.
+
+
+## CrewAI
+
+```python
+# pip install "git+https://github.com/rezearcher/greyridge-x402-tools"
+from greyridge_x402 import crewai_tools
+tools = crewai_tools()   # free preview; crewai_tools(paid=True) pays via x402 (set a Base USDC key)
+agent = Agent(role="trader", tools=tools, ...)
+```
+
+Tools: `base_token_report` (SAFE/CAUTION/AVOID) and `base_swap_gate` (GO/HOLD/BLOCK). Measured latency: `docs/STATUS.md` in the data-api repo.
