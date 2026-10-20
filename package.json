@@ -1,0 +1,1 @@
+{"name":"greyridge-rugcheck","version":"0.1.0","description":"Base token honeypot/rug check via Grey Ridge x402 API (free preview)","bin":{"rugcheck":"bin/rugcheck.mjs"},"license":"MIT","engines":{"node":">=18"}}
