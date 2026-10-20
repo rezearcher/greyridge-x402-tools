@@ -47,3 +47,11 @@ Tools: `base_token_report` (SAFE/CAUTION/AVOID) and `base_swap_gate` (GO/HOLD/BL
 npx github:rezearcher/greyridge-x402-tools mcpscan https://mcp.deepwiki.com/mcp
 ```
 Free preview: tools scanned, issue counts by severity, risk score, verdict (clear/review/block). Exit code 2 on `block`, so it works as a CI gate. Static analysis of advertised tool metadata only; it never calls your tools. Itemized findings with evidence + OWASP mapping: paid `/scan/mcp` ($0.05 USDC, x402 on Base).
+
+### As a GitHub Action
+```yaml
+- uses: rezearcher/greyridge-x402-tools@main
+  with:
+    url: https://your-mcp-host/mcp
+```
+Fails the job when the verdict is `block`.
