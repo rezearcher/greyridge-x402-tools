@@ -50,7 +50,7 @@ Free preview: tools scanned, issue counts by severity, risk score, verdict (clea
 
 ### As a GitHub Action
 ```yaml
-- uses: rezearcher/greyridge-x402-tools@main
+- uses: rezearcher/greyridge-x402-tools@v0.1.1
   with:
     url: https://your-mcp-host/mcp
 ```
