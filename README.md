@@ -20,6 +20,8 @@ Note: preview path is tested; the paid path uses the x402 Python SDK `x402_reque
 
 LangChain / CrewAI: `from greyridge_x402 import langchain_tools; tools = langchain_tools()`.
 
+Guides (honeypot check, pre-trade gate, x402): https://rezearcher.github.io/greyridge-x402-tools/
+
 API discovery: https://x402-data-api.sigrunner.workers.dev/.well-known/x402 · contact@greyridgesignals.ai
 MIT.
 
