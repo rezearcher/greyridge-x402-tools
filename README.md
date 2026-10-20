@@ -55,3 +55,8 @@ Free preview: tools scanned, issue counts by severity, risk score, verdict (clea
     url: https://your-mcp-host/mcp
 ```
 Fails the job when the verdict is `block`.
+
+## Framework integrations
+- LangChain / CrewAI: `greyridge_x402.langchain_tools()` / `crewai_tools()`
+- ElizaOS: `integrations/elizaos/index.mjs` (action `CHECK_BASE_TOKEN`)
+- Coinbase AgentKit / any x402 wallet: `integrations/agentkit/README.md`
