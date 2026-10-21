@@ -48,6 +48,17 @@ npx github:rezearcher/greyridge-x402-tools mcpscan https://mcp.deepwiki.com/mcp
 ```
 Free preview: tools scanned, issue counts by severity, risk score, verdict (clear/review/block). Exit code 2 on `block`, so it works as a CI gate. Static analysis of advertised tool metadata only; it never calls your tools. Itemized findings with evidence + OWASP mapping: paid `/scan/mcp` ($0.05 USDC, x402 on Base).
 
+### Offline — audit an `mcp-egress` run with no network
+
+If you already record a server with [mcp-egress](https://github.com/basitalisandhu/mcp-egress), score its `egress.json` **fully offline** — nothing leaves the machine:
+
+```bash
+mcp-egress run --calls calls.json --out egress.json -- uvx some-mcp-server
+npx github:rezearcher/greyridge-x402-tools#a1093ca mcpscan --from-egress egress.json   # reads .tools[], exits 2 on block
+```
+
+Reads the recorded `.tools[]` (name/title/description/annotations) and applies the same tool-poisoning rules locally — no second connection to the server, no payment. Exit 0 clear / 1 review / 2 block. The one-liner is pinned to a commit so a CI admission gate gets a fixed artifact.
+
 ### Badge for your MCP server's README
 
 Live shields.io badge showing the scan verdict for any public MCP server (free, cached 6h):
