@@ -18,3 +18,4 @@ Paid route is the same depth: GET /chain/token-report?token=0x... at $0.01 USDC 
 Code: [greyridge-x402-tools](https://github.com/rezearcher/greyridge-x402-tools) (Python, LangChain, CrewAI, npx github:rezearcher/greyridge-x402-tools 0xTOKEN). Contact: contact@greyridgesignals.ai
 
 - [MCP registry remotes census (2026-10-20)](mcp-registry-census-2026-10-20) — 109 readable public MCP servers scanned, 108 clear; method + reproduction
+- [Base token-safety x402 price comparison (2026-10)](base-token-safety-price-comparison.html) — what the per-call safety check costs across providers; measured
