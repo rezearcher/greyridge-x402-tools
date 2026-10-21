@@ -15,3 +15,5 @@ Put one call between "agent decided to buy" and "agent signs the swap":
 The free preview allows 3 real-token checks/day/IP so you can wire it before paying.
 
 [Back](index.html)
+
+- [Base token-safety x402 price comparison](base-token-safety-price-comparison.html) — what the per-call check costs across providers (measured)
