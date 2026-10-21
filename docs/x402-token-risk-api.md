@@ -13,3 +13,5 @@ No signup, no key: the server answers HTTP 402 with the price; an x402 client (x
 Sample: curl "https://x402-data-api.sigrunner.workers.dev/chain/token-report/preview?token=0xYourBaseToken"
 
 [Back](index.html)
+
+- [Base token-safety x402 price comparison](base-token-safety-price-comparison.html) — what the per-call check costs across providers (measured)
