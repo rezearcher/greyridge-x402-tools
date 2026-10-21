@@ -16,3 +16,5 @@ Try any Base token for free:
 Limits, stated plainly: DEX buy/sell tax (buyTaxBps/sellTaxBps) is not measured, only the transfer fee. Base only. Heuristic signal, not financial advice.
 
 [Back](index.html)
+
+- [Base token-safety x402 price comparison](base-token-safety-price-comparison.html) — what the per-call check costs across providers (measured)
