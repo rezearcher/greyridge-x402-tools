@@ -1,5 +1,8 @@
 # The MCP exposure census: ~half of public MCP servers expose their full tool list with no authentication
 
+![Grey Ridge MCP security census: half of public MCP servers expose their full tool list with no credentials — 174 of 364 remotes probed (48%), 1,515 tool definitions statically inspected, 0 confirmed tool-poisoning.](assets/census-mcp-exposure-2026-10.png)
+
+
 **Key finding.** Across two snapshots of the official MCP registry (`registry.modelcontextprotocol.io`), **174 of 364 remote servers probed — 48%, and between 44% and 55% in any single pass — answered a `tools/list` request with no credentials at all**, handing their complete tool surface (every tool name, description and JSON schema) to any anonymous client. That metadata is exactly what an LLM reads before it calls anything, so it is also the prompt-injection / tool-poisoning attack surface — and it is attacker-mutable on every server update.
 
 The second finding is the one most coverage gets wrong: **confirmed tool-poisoning in that readable population is 0% (0 of 174).** The public MCP ecosystem is wide open to inspection but is *not*, today, riddled with overt poisoning. Both facts matter, and they point at the same product.
