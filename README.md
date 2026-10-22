@@ -69,13 +69,25 @@ Live shields.io badge showing the scan verdict for any public MCP server (free, 
 
 Replace `YOUR_MCP_URL` with your URL-encoded server endpoint (e.g. `https%3A%2F%2Fmcp.deepwiki.com%2Fmcp`).
 
-### As a GitHub Action
+### As a GitHub Action — admission gate for MCP servers
+
+Copy this into `.github/workflows/mcp-security-gate.yml` to fail CI whenever a third-party MCP server you depend on starts advertising tool-poisoning / prompt-injection patterns (e.g. a supply-chain rug-pull on an already-trusted server):
+
 ```yaml
-- uses: rezearcher/greyridge-x402-tools@v0.2.1
-  with:
-    url: https://your-mcp-host/mcp
+name: MCP security gate
+on: [push, pull_request]
+jobs:
+  mcp-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rezearcher/greyridge-x402-tools@v0.2.1
+        with:
+          url: https://your-mcp-host/mcp   # the MCP server your agent trusts
 ```
-Exit code mirrors the `mcpscan` CLI: `2` on `block`, `1` on `review`, `0` on `clear`, and `3` if the scan could not run (fails closed, so a broken scan never silently passes an admission gate). Any non-zero exit fails the job.
+
+Exit code mirrors the `mcpscan` CLI: `2` on `block`, `1` on `review`, `0` on `clear`, and `3` if the scan could not run (**fails closed**, so a broken scan never silently passes an admission gate). Any non-zero exit fails the job.
+
+**Free vs paid in CI:** the Action runs the free preview (verdict + severity counts) on every push — $0, no key. When a job fails and you need the *itemized findings with evidence + OWASP LLM01/LLM08 mapping* to fix it, the free preview line points you at the paid `GET /scan/mcp?url=` ($0.05 USDC, x402 on Base) — a zero-egress `POST /scan/mcp` with your `tools` array works too if the server isn't publicly reachable.
 
 ## Framework integrations
 - LangChain / CrewAI: `greyridge_x402.langchain_tools()` / `crewai_tools()`
