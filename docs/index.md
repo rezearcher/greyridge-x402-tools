@@ -14,7 +14,7 @@ Prints tools scanned, severity counts, risk score, and a verdict — `clear` / `
 
 - [Why was my Claude connector rejected?](claude-connector-directory-readiness.html) — check your MCP server against the Claude Connector Directory review criteria before you submit
 - [Scan an MCP server for prompt injection / tool poisoning](scan-mcp-server-prompt-injection.html) — method, CI gate, private/offline scanning
-- [MCP registry remotes census (2026-10-20)](mcp-registry-census-2026-10-20.html) — 109 readable public MCP servers scanned; method + reproduction
+- [The MCP exposure census (2026)](mcp-registry-census-2026-10-20.html) — ~half of public MCP servers in the official registry (174/364) answer `tools/list` with no authentication; confirmed tool-poisoning 0%
 - [MCP server security scorecards](mcp-server-scorecards.html) — independent injection + Claude Directory readiness scans of well-known public MCP servers (DeepWiki, Wolfram, Hugging Face, Cloudflare, Astro, and more)
 
 **Private, local or stdio-only servers** scan with nothing leaving your machine (paste the `tools/list`, or score an `mcp-egress` recording fully offline). Itemized findings with OWASP LLM01/LLM08 mapping: paid `GET /scan/mcp` ($0.05 USDC via [x402](https://x402.org) on Base, no account). Interactive scan: [/scan/mcp-scanner](https://x402-data-api.sigrunner.workers.dev/scan/mcp-scanner).
