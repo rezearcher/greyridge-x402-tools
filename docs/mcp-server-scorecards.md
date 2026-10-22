@@ -18,6 +18,31 @@ Last generated 2026-10-22.
 - [Astro Docs](mcp-astro-docs-mcp-security.html) — `clear` injection verdict, 1 tools, 2 directory blocker(s)
 - [Hive Intelligence](mcp-hive-intelligence-mcp-security.html) — `clear` injection verdict, 8 tools, 8 directory blocker(s)
 - [Find A Domain](mcp-find-a-domain-mcp-security.html) — `clear` injection verdict, 2 tools, 4 directory blocker(s)
+- [tandem.ac](mcp-tandem-ac-mcp-security.html) — `clear` injection verdict, 13 tools, directory-ready
+- [Getlead](mcp-getle-ad-mcp-security.html) — `clear` injection verdict, 35 tools, directory-ready
+- [Inside Ads](mcp-inside-ad-mcp-security.html) — `clear` injection verdict, 3 tools, 6 directory blocker(s)
+- [Brainy Prices — UAE Cost of Living](mcp-prices-brainy-ae-mcp-security.html) — `clear` injection verdict, 26 tools, 26 directory blocker(s)
+- [mcp.datadubai.ae](mcp-datadubai-ae-mcp-security.html) — `clear` injection verdict, 6 tools, directory-ready
+- [EasyVoice text to speech](mcp-easyvoice-ae-mcp-security.html) — `clear` injection verdict, 7 tools, 7 directory blocker(s)
+- [GENOSYS UAE](mcp-genosys-ae-mcp-security.html) — `clear` injection verdict, 11 tools, 11 directory blocker(s)
+- [groTAX by Grovisor](mcp-grovisor-ae-mcp-security.html) — `clear` injection verdict, 8 tools, 8 directory blocker(s)
+- [Plant Guide: Dubai gardening research](mcp-plantguide-ae-mcp-security.html) — `clear` injection verdict, 15 tools, directory-ready
+- [Projectory](mcp-projectory-ae-mcp-security.html) — `clear` injection verdict, 5 tools, 5 directory blocker(s)
+- [Propick Integration MCP](mcp-propick-ae-mcp-security.html) — `clear` injection verdict, 8 tools, 16 directory blocker(s)
+- [Fenlight](mcp-fenlight-waggle-ae-mcp-security.html) — `clear` injection verdict, 8 tools, 8 directory blocker(s)
+- [Vera](mcp-vera-waggle-ae-mcp-security.html) — `clear` injection verdict, 16 tools, directory-ready
+- [Events.Aero](mcp-events-aero-mcp-security.html) — `clear` injection verdict, 5 tools, directory-ready
+- [hood. — .hood name service](mcp-hood-ag-mcp-security.html) — `clear` injection verdict, 5 tools, 10 directory blocker(s)
+- [mcp.goji.agency](mcp-goji-agency-mcp-security.html) — `clear` injection verdict, 9 tools, 16 directory blocker(s)
+- [JustIdea Agency](mcp-justidea-agency-mcp-security.html) — `clear` injection verdict, 8 tools, directory-ready
+- [Business Contact Finder](mcp-business-contact-finder-mcp-ottobot2025-workers-dev-mcp-security.html) — `clear` injection verdict, 1 tools, 2 directory blocker(s)
+- [Contractor Licence Changes](mcp-license-changes-mcp-ottobot2025-workers-dev-mcp-security.html) — `clear` injection verdict, 2 tools, 4 directory blocker(s)
+- [Licensed House Painters](mcp-house-painters-ottobot-agency-mcp-security.html) — `clear` injection verdict, 3 tools, 3 directory blocker(s)
+- [Bureau public reader](mcp-thebureauoflostcontext-agency-mcp-security.html) — `clear` injection verdict, 5 tools, 5 directory blocker(s)
+- [1Court Directory](mcp-state-1court-ai-mcp-security.html) — `clear` injection verdict, 4 tools, directory-ready
+- [Achromat MOM](mcp-mom-achromat-ai-mcp-security.html) — `clear` injection verdict, 1 tools, directory-ready
+- [actwise.ai](mcp-actwise-ai-mcp-security.html) — `clear` injection verdict, 2 tools, 2 directory blocker(s)
+- [mcp.adoraads.ai](mcp-adoraads-ai-mcp-security.html) — `clear` injection verdict, 6 tools, directory-ready
 
 Scan a server not listed here:
 
