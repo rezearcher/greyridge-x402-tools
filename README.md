@@ -1,52 +1,25 @@
 # greyridge-x402-tools
 
-Pre-trade safety gate for Base tokens as agent tools. Backed by a keyless x402 API (USDC per call on Base): honeypot sell-simulation, proxy/tax/liquidity checks → SAFE / CAUTION / AVOID, plus a GO / HOLD / BLOCK swap gate.
+Two safety gates for AI agents, backed by a keyless x402 API (USDC per call on Base, free previews, no account):
 
-```bash
-pip install "git+https://github.com/rezearcher/greyridge-x402-tools"
-```
-
-```python
-from greyridge_x402 import token_report, swap_gate
-print(token_report("aero"))            # free preview, no wallet
-print(swap_gate("0x..."))              # free preview
-
-# paid (x402, $0.01 / $0.008 per call), your own key:
-#   pip install "greyridge-x402-tools[pay] @ git+https://github.com/rezearcher/greyridge-x402-tools"
-token_report("0x...", paid=True)       # reads X402_PRIVATE_KEY
-```
-
-Note: preview path is tested; the paid path uses the x402 Python SDK `x402_requests` client and has not been exercised by us (we do not pay our own API).
-
-LangChain / CrewAI: `from greyridge_x402 import langchain_tools; tools = langchain_tools()`.
-
-Guides (honeypot check, pre-trade gate, x402): https://rezearcher.github.io/greyridge-x402-tools/
-
-API discovery: https://x402-data-api.sigrunner.workers.dev/.well-known/x402 · contact@greyridgesignals.ai
-MIT.
-
-
-## CrewAI
-
-```python
-# pip install "git+https://github.com/rezearcher/greyridge-x402-tools"
-from greyridge_x402 import crewai_tools
-tools = crewai_tools()   # free preview; crewai_tools(paid=True) pays via x402 (set a Base USDC key)
-agent = Agent(role="trader", tools=tools, ...)
-```
-
-Tools: `base_token_report` (SAFE/CAUTION/AVOID) and `base_swap_gate` (GO/HOLD/BLOCK). Measured latency: `docs/STATUS.md` in the data-api repo.
-
-## Drop-in swap guard (JS)
-
-`swap-gate.mjs` — `gateToken(addr)` calls the free preview (no wallet); pass an x402 `fetchPaid` to use the paid `/gate/swap` ($0.008). `guardedSwap(addr, doSwap)` runs your swap only when the decision is `go`.
+1. **mcpscan** — vet an MCP server's advertised tools for prompt-injection / tool-poisoning before your agent trusts it.
+2. **rugcheck / swap-gate** — honeypot and pre-trade safety checks for Base tokens.
 
 ## mcpscan — vet an MCP server before your agent trusts it
+
+Every tool an MCP server advertises runs inside your agent's context — its name, description and JSON schema are read by the model, so a poisoned or injection-laden tool can steer the agent before it ever calls anything. Scan any server in one command, no install, no key:
 
 ```
 npx -y github:rezearcher/greyridge-x402-tools#v0.2.0 mcpscan https://mcp.deepwiki.com/mcp
 ```
-Free preview: tools scanned, issue counts by severity, risk score, verdict (clear/review/block). Exit code 2 on `block`, so it works as a CI gate. Static analysis of advertised tool metadata only; it never calls your tools. Itemized findings with evidence + OWASP mapping: paid `/scan/mcp` ($0.05 USDC, x402 on Base).
+
+Prints tools scanned, issue counts by severity, risk score, and a verdict (`clear` / `review` / `block`). **Exit code 2 on `block`**, so it drops straight into CI as a gate before you wire a new server to an agent. Static analysis of advertised tool metadata only — it never invokes your tools. Checks cover OWASP LLM01/LLM08 patterns: hidden instructions, conceal-from-user directives, data-exfiltration hints, cross-tool shadowing, and invisible-unicode payloads. Itemized findings with evidence and OWASP mapping: paid `/scan/mcp` ($0.05 USDC, x402 on Base).
+
+Scanning a private or local server (nothing leaves your machine except the tool list):
+
+```
+npx github:rezearcher/greyridge-x402-tools mcpscan --from-egress egress.json
+```
 
 ### Offline — audit an `mcp-egress` run with no network
 
@@ -89,7 +62,46 @@ Exit code mirrors the `mcpscan` CLI: `2` on `block`, `1` on `review`, `0` on `cl
 
 **Free vs paid in CI:** the Action runs the free preview (verdict + severity counts) on every push — $0, no key. When a job fails and you need the *itemized findings with evidence + OWASP LLM01/LLM08 mapping* to fix it, the free preview line points you at the paid `GET /scan/mcp?url=` ($0.05 USDC, x402 on Base) — a zero-egress `POST /scan/mcp` with your `tools` array works too if the server isn't publicly reachable.
 
+## rugcheck / swap-gate — pre-trade safety for Base tokens
+
+Honeypot sell-simulation, proxy/tax/liquidity checks → `SAFE` / `CAUTION` / `AVOID`, plus a `GO` / `HOLD` / `BLOCK` swap gate.
+
+```bash
+pip install "git+https://github.com/rezearcher/greyridge-x402-tools"
+```
+
+```python
+from greyridge_x402 import token_report, swap_gate
+print(token_report("aero"))            # free preview, no wallet
+print(swap_gate("0x..."))              # free preview
+
+# paid (x402, $0.01 / $0.008 per call), your own key:
+#   pip install "greyridge-x402-tools[pay] @ git+https://github.com/rezearcher/greyridge-x402-tools"
+token_report("0x...", paid=True)       # reads X402_PRIVATE_KEY
+```
+
+Note: the preview path is tested; the paid path uses the x402 Python SDK `x402_requests` client and has not been exercised by us (we do not pay our own API).
+
+### CrewAI
+
+```python
+from greyridge_x402 import crewai_tools
+tools = crewai_tools()   # free preview; crewai_tools(paid=True) pays via x402 (set a Base USDC key)
+agent = Agent(role="trader", tools=tools, ...)
+```
+
+Tools: `base_token_report` (SAFE/CAUTION/AVOID) and `base_swap_gate` (GO/HOLD/BLOCK). Measured latency: `docs/STATUS.md` in the data-api repo.
+
+### Drop-in swap guard (JS)
+
+`swap-gate.mjs` — `gateToken(addr)` calls the free preview (no wallet); pass an x402 `fetchPaid` to use the paid `/gate/swap` ($0.008). `guardedSwap(addr, doSwap)` runs your swap only when the decision is `go`.
+
 ## Framework integrations
 - LangChain / CrewAI: `greyridge_x402.langchain_tools()` / `crewai_tools()`
 - ElizaOS: `integrations/elizaos/index.mjs` (action `CHECK_BASE_TOKEN`)
 - Coinbase AgentKit / any x402 wallet: `integrations/agentkit/README.md`
+
+Guides (MCP scan, honeypot check, pre-trade gate, x402): https://rezearcher.github.io/greyridge-x402-tools/
+
+API discovery: https://x402-data-api.sigrunner.workers.dev/.well-known/x402 · contact@greyridgesignals.ai
+MIT.
