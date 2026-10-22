@@ -34,4 +34,8 @@ Paid route is the same depth: `GET /chain/token-report?token=0x...` at $0.01 USD
 - [Pay-per-call, no API key: x402 token risk API](x402-token-risk-api.html)
 - [Base token-safety x402 price comparison (2026-10)](base-token-safety-price-comparison.html) — measured per-call cost across providers
 
+### Reselling these verdicts
+
+Shipping a wallet, trading bot, agent or marketplace of your own? Embed the gate and keep the margin: you pay the wholesale call price (`/gate/swap` at $0.008), set whatever retail fits your product, and every referred call is tagged with `?ref=<your-tag>` and reconciled to you on-chain — provable against Base txHashes, no contract or minimum. See the [partner program](https://x402-data-api.sigrunner.workers.dev/partners) and pull your own [live reconcile report](https://x402-data-api.sigrunner.workers.dev/partners/report) any time.
+
 Code: [greyridge-x402-tools](https://github.com/rezearcher/greyridge-x402-tools) (CLI, GitHub Action, LangChain, CrewAI, ElizaOS). API discovery: [/.well-known/x402](https://x402-data-api.sigrunner.workers.dev/.well-known/x402). Contact: contact@greyridgesignals.ai
