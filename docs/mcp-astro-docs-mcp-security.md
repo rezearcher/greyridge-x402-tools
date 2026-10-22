@@ -7,7 +7,9 @@ description: Independent, measured security and Claude Connector Directory readi
 **Server:** `https://mcp.docs.astro.build/mcp`
 **Scanned:** 2026-10-22 · **Tools advertised:** 1 · **Injection verdict:** `clear` · **Directory:** 2 Claude Directory blocker(s)
 
-The Astro project's MCP server exposes documentation-search tools to AI agents. Before an agent — or a user — connects it, every tool definition it advertises is read
+The Astro project's MCP server exposes documentation-search tools to AI agents.
+
+Before an agent — or a user — connects it, every tool definition it advertises is read
 by the model, so a poisoned description or a hidden instruction can steer the agent before any
 tool runs. This scorecard is an independent, static read of that advertised metadata, run against
 the Astro Docs server on the date above.
