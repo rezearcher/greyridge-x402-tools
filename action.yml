@@ -1,16 +1,36 @@
 name: MCP server tool-poisoning scan
-description: Fail CI if an MCP server's advertised tools contain prompt-injection / tool-poisoning patterns (Grey Ridge, free preview).
+description: Fail CI if an MCP server's advertised tools contain prompt-injection / tool-poisoning patterns (Grey Ridge). Exit code mirrors the greyridge mcpscan CLI — 2=block, 1=review, 0=clear, 3=scan error (fail-closed).
+branding:
+  icon: shield
+  color: red
 inputs:
   url:
     description: Streamable-HTTP MCP endpoint to scan (e.g. https://host/mcp)
     required: true
+  endpoint:
+    description: Grey Ridge scan base (override only for self-host/testing)
+    required: false
+    default: https://x402-data-api.sigrunner.workers.dev
 runs:
   using: composite
   steps:
     - shell: bash
       run: |
-        r=$(curl -sG --max-time 60 "https://x402-data-api.sigrunner.workers.dev/scan/mcp/preview" --data-urlencode "url=${{ inputs.url }}")
+        set -uo pipefail
+        r=$(curl -sG --max-time 60 "${{ inputs.endpoint }}/scan/mcp/preview" --data-urlencode "url=${{ inputs.url }}")
         echo "$r"
-        v=$(echo "$r" | sed -n 's/.*"verdict":"\([a-z]*\)".*/\1/p')
-        echo "verdict=$v  (itemized findings: paid /scan/mcp, \$0.05 x402)"
-        [ "$v" = "block" ] && exit 1 || exit 0
+        v=$(printf '%s' "$r" | sed -n 's/.*"verdict":"\([a-z]*\)".*/\1/p')
+        case "$v" in
+          block)
+            echo "::error::MCP scan verdict=block — critical tool-poisoning finding. Itemized findings: paid /scan/mcp (\$0.05 x402)."
+            exit 2 ;;
+          review)
+            echo "::warning::MCP scan verdict=review — suspicious tool-metadata patterns. Itemized findings: paid /scan/mcp (\$0.05 x402)."
+            exit 1 ;;
+          clear)
+            echo "MCP scan verdict=clear — no tool-poisoning patterns detected."
+            exit 0 ;;
+          *)
+            echo "::error::MCP scan returned no verdict (endpoint error or malformed response). Failing closed so a broken scan never silently passes an admission gate."
+            exit 3 ;;
+        esac
