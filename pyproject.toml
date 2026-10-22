@@ -1,6 +1,6 @@
 [project]
 name = "greyridge-x402-tools"
-version = "0.1.0"
+version = "0.2.2"
 description = "Pre-trade safety gate tools (Base token report, swap GO/HOLD/BLOCK) over x402 pay-per-call, for LangChain/CrewAI agents"
 readme = "README.md"
 license = {text = "MIT"}
