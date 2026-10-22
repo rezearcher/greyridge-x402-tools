@@ -7,7 +7,9 @@ description: Independent, measured security and Claude Connector Directory readi
 **Server:** `https://api.findadomain.dev/mcp`
 **Scanned:** 2026-10-22 · **Tools advertised:** 2 · **Injection verdict:** `clear` · **Directory:** 4 Claude Directory blocker(s)
 
-Find A Domain's MCP server exposes domain-availability lookup tools to AI agents. Before an agent — or a user — connects it, every tool definition it advertises is read
+Find A Domain's MCP server exposes domain-availability lookup tools to AI agents.
+
+Before an agent — or a user — connects it, every tool definition it advertises is read
 by the model, so a poisoned description or a hidden instruction can steer the agent before any
 tool runs. This scorecard is an independent, static read of that advertised metadata, run against
 the Find A Domain server on the date above.
