@@ -44,7 +44,7 @@ Tools: `base_token_report` (SAFE/CAUTION/AVOID) and `base_swap_gate` (GO/HOLD/BL
 ## mcpscan — vet an MCP server before your agent trusts it
 
 ```
-npx github:rezearcher/greyridge-x402-tools mcpscan https://mcp.deepwiki.com/mcp
+npx -y github:rezearcher/greyridge-x402-tools#v0.2.0 mcpscan https://mcp.deepwiki.com/mcp
 ```
 Free preview: tools scanned, issue counts by severity, risk score, verdict (clear/review/block). Exit code 2 on `block`, so it works as a CI gate. Static analysis of advertised tool metadata only; it never calls your tools. Itemized findings with evidence + OWASP mapping: paid `/scan/mcp` ($0.05 USDC, x402 on Base).
 
@@ -54,10 +54,10 @@ If you already record a server with [mcp-egress](https://github.com/basitalisand
 
 ```bash
 mcp-egress run --calls calls.json --out egress.json -- uvx some-mcp-server
-npx github:rezearcher/greyridge-x402-tools#a1093ca mcpscan --from-egress egress.json   # reads .tools[], exits 2 on block
+npx -y github:rezearcher/greyridge-x402-tools#v0.2.0 mcpscan --from-egress egress.json   # reads .tools[], exits 2 on block
 ```
 
-Reads the recorded `.tools[]` (name/title/description/annotations) and applies the same tool-poisoning rules locally — no second connection to the server, no payment. Exit 0 clear / 1 review / 2 block. The one-liner is pinned to a commit so a CI admission gate gets a fixed artifact.
+Reads the recorded `.tools[]` (name/title/description/annotations) and applies the same tool-poisoning rules locally — no second connection to the server, no payment. Exit 0 clear / 1 review / 2 block. The one-liner is pinned to the `v0.2.0` release tag so a CI admission gate gets a fixed, reproducible artifact.
 
 ### Badge for your MCP server's README
 
