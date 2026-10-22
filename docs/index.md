@@ -1,21 +1,35 @@
 ---
-title: Base token safety API for AI agents (x402)
+title: Scan an MCP server before your agent trusts it (x402)
+description: Static tool-poisoning / prompt-injection scan for MCP servers (OWASP LLM01/LLM08), usable as a CI gate, plus Base token honeypot/rug checks. Keyless x402 pay-per-call on Base, free previews.
 ---
-# Base token safety API for trading agents
+# Vet an MCP server before your agent trusts it
+
+Every tool an MCP server advertises is read by your model the moment it connects — a poisoned description, a hidden-unicode instruction, or a conceal-from-user directive can steer the agent before a single tool runs. Scan any server for prompt-injection / tool-poisoning patterns in one command — no install, no key:
+
+```bash
+npx -y github:rezearcher/greyridge-x402-tools#v0.2.2 mcpscan https://mcp.deepwiki.com/mcp
+```
+
+Prints tools scanned, severity counts, risk score, and a verdict — `clear` / `review` / `block`. **Exit code 2 on `block`**, so it drops straight into CI as an admission gate. Static analysis of advertised metadata only; it never invokes a tool.
+
+- [Scan an MCP server for prompt injection / tool poisoning](scan-mcp-server-prompt-injection.html) — method, CI gate, private/offline scanning
+- [MCP registry remotes census (2026-10-20)](mcp-registry-census-2026-10-20.html) — 109 readable public MCP servers scanned; method + reproduction
+
+**Private, local or stdio-only servers** scan with nothing leaving your machine (paste the `tools/list`, or score an `mcp-egress` recording fully offline). Itemized findings with OWASP LLM01/LLM08 mapping: paid `GET /scan/mcp` ($0.05 USDC via [x402](https://x402.org) on Base, no account). Interactive scan: [/scan/mcp-scanner](https://x402-data-api.sigrunner.workers.dev/scan/mcp-scanner).
+
+## Base token safety — pre-trade checks for trading agents
 
 Check a Base token **before** your agent buys it: honeypot sell-simulation, proxy/mint/pause/blacklist flags, measured transfer tax, liquidity depth. One HTTP call returns SAFE / CAUTION / AVOID.
+
+```bash
+curl "https://x402-data-api.sigrunner.workers.dev/chain/token-report/preview?token=0xYourBaseToken"
+```
+
+Paid route is the same depth: `GET /chain/token-report?token=0x...` at $0.01 USDC via x402 on Base. Swap guard `/gate/swap` returns GO / HOLD / BLOCK at $0.008.
 
 - [Honeypot check API for Base tokens](honeypot-check-api-base.html)
 - [Pre-trade safety gate for AI trading agents](pre-trade-safety-gate-ai-agents.html)
 - [Pay-per-call, no API key: x402 token risk API](x402-token-risk-api.html)
+- [Base token-safety x402 price comparison (2026-10)](base-token-safety-price-comparison.html) — measured per-call cost across providers
 
-Free sample (no wallet, no key):
-
-    curl "https://x402-data-api.sigrunner.workers.dev/chain/token-report/preview?token=0xYourBaseToken"
-
-Paid route is the same depth: GET /chain/token-report?token=0x... at $0.01 USDC via [x402](https://x402.org) on Base. Swap guard /gate/swap returns GO / HOLD / BLOCK at $0.008.
-
-Code: [greyridge-x402-tools](https://github.com/rezearcher/greyridge-x402-tools) (Python, LangChain, CrewAI, npx github:rezearcher/greyridge-x402-tools 0xTOKEN). Contact: contact@greyridgesignals.ai
-
-- [MCP registry remotes census (2026-10-20)](mcp-registry-census-2026-10-20) — 109 readable public MCP servers scanned, 108 clear; method + reproduction
-- [Base token-safety x402 price comparison (2026-10)](base-token-safety-price-comparison.html) — what the per-call safety check costs across providers; measured
+Code: [greyridge-x402-tools](https://github.com/rezearcher/greyridge-x402-tools) (CLI, GitHub Action, LangChain, CrewAI, ElizaOS). API discovery: [/.well-known/x402](https://x402-data-api.sigrunner.workers.dev/.well-known/x402). Contact: contact@greyridgesignals.ai
