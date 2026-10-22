@@ -45,6 +45,8 @@ This is what sharpens the product. The 81% read-only majority rarely needs more 
 
 ## Check your own MCP server (free, no account)
 
+**[Scan your server in the browser →](https://x402-data-api.sigrunner.workers.dev/scan/mcp-scanner)** — paste a URL, get the verdict, nothing to install. Prefer the command line:
+
 ```bash
 curl -s "https://x402-data-api.sigrunner.workers.dev/scan/mcp/preview?url=https://YOUR-HOST/mcp"
 # behind auth or stdio-only — POST your own tools/list, nothing leaves your machine:
@@ -53,4 +55,6 @@ curl -s -X POST https://x402-data-api.sigrunner.workers.dev/scan/mcp/preview \
 ```
 
 Itemized findings with evidence and OWASP LLM01/LLM08 mapping: paid `/scan/mcp` ($0.05, x402 on Base). Continuous drift monitoring with alert-on-change: $9.99/mo. Contact: contact@greyridgesignals.ai
+
+**[Start continuous monitoring — $9.99/mo →](https://x402-data-api.sigrunner.workers.dev/pricing)** · [Scan one server free](https://x402-data-api.sigrunner.workers.dev/scan/mcp-scanner) · [contact@greyridgesignals.ai](mailto:contact@greyridgesignals.ai)
 
