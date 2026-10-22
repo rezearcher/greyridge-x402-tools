@@ -1,0 +1,17 @@
+{
+    "name": "apify-mcp-server-security-scanner",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Apify Actor: static tool-poisoning / prompt-injection audit of any MCP server, powered by the Grey Ridge scan engine.",
+    "engines": {
+        "node": ">=18"
+    },
+    "dependencies": {
+        "apify": "^3.2.6",
+        "greyridge-x402-tools": "github:rezearcher/greyridge-x402-tools"
+    },
+    "scripts": {
+        "start": "node src/main.js"
+    },
+    "license": "MIT"
+}

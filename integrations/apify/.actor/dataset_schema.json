@@ -1,0 +1,34 @@
+{
+    "actorSpecification": 1,
+    "fields": {},
+    "views": {
+        "report": {
+            "title": "Scan report",
+            "transformation": {
+                "fields": [
+                    "mcpServer",
+                    "verdict",
+                    "riskScore",
+                    "toolsScanned",
+                    "criticalCount",
+                    "highCount",
+                    "riskSummary",
+                    "scannedAt"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "mcpServer": { "label": "MCP server", "format": "text" },
+                    "verdict": { "label": "Verdict", "format": "text" },
+                    "riskScore": { "label": "Risk score", "format": "number" },
+                    "toolsScanned": { "label": "Tools scanned", "format": "number" },
+                    "criticalCount": { "label": "Critical", "format": "number" },
+                    "highCount": { "label": "High", "format": "number" },
+                    "riskSummary": { "label": "Summary", "format": "text" },
+                    "scannedAt": { "label": "Scanned at", "format": "date" }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "title": "MCP Server Security Scanner input",
+    "description": "Point the scanner at a Model Context Protocol server, or paste its tools/list response directly.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "mcpUrl": {
+            "title": "MCP server URL",
+            "type": "string",
+            "description": "The Streamable-HTTP endpoint of the MCP server to audit, e.g. https://example.com/mcp . The scanner performs the standard initialize + tools/list handshake and scores every advertised tool. Leave blank if you are supplying toolsJson instead.",
+            "editor": "textfield",
+            "example": "https://example.com/mcp"
+        },
+        "toolsJson": {
+            "title": "tools/list JSON (optional)",
+            "type": "string",
+            "description": "Optional. Paste a raw MCP tools/list result (an object with a tools[] array, or the bare array) to audit tools you already captured — fully offline, no network call to the target. Takes precedence over mcpUrl.",
+            "editor": "javascript"
+        },
+        "failOn": {
+            "title": "Fail the run on verdict",
+            "type": "string",
+            "description": "Exit with a non-zero status when the worst verdict reaches this level — useful when wiring the Actor into a CI gate. 'never' always exits clean.",
+            "editor": "select",
+            "enum": ["never", "review", "block"],
+            "enumTitles": ["Never fail", "Fail on review or worse", "Fail on block only"],
+            "default": "never"
+        }
+    },
+    "required": []
+}

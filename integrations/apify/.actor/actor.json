@@ -1,0 +1,16 @@
+{
+    "actorSpecification": 1,
+    "name": "mcp-server-security-scanner",
+    "title": "MCP Server Security Scanner",
+    "description": "Static tool-poisoning and prompt-injection audit of any Model Context Protocol server. Fetches the server's advertised tools and scores each one against the Grey Ridge detection engine — never invokes a tool, never leaves the run.",
+    "version": "1.0",
+    "buildTag": "latest",
+    "meta": {
+        "templateId": "mcp-server-security-scanner"
+    },
+    "input": "./input_schema.json",
+    "dockerfile": "../Dockerfile",
+    "storages": {
+        "dataset": "./dataset_schema.json"
+    }
+}
