@@ -12,6 +12,7 @@ npx -y github:rezearcher/greyridge-x402-tools#v0.2.2 mcpscan https://mcp.deepwik
 
 Prints tools scanned, severity counts, risk score, and a verdict — `clear` / `review` / `block`. **Exit code 2 on `block`**, so it drops straight into CI as an admission gate. Static analysis of advertised metadata only; it never invokes a tool.
 
+- [Why was my Claude connector rejected?](claude-connector-directory-readiness.html) — check your MCP server against the Claude Connector Directory review criteria before you submit
 - [Scan an MCP server for prompt injection / tool poisoning](scan-mcp-server-prompt-injection.html) — method, CI gate, private/offline scanning
 - [MCP registry remotes census (2026-10-20)](mcp-registry-census-2026-10-20.html) — 109 readable public MCP servers scanned; method + reproduction
 
