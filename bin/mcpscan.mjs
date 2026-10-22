@@ -42,7 +42,11 @@ function analyzeMcpTool(name, description, schemaText) {
   // conversation / env / file contents / private keys) flag on ANY destination incl a bare URL;
   // AUTH-ambiguous credentials (cookie/key/token/password) flag only on a FOREIGN destination,
   // because authenticated servers legitimately send their own credential to a URL to auth.
-  const secretArtifact = /(\.env\b|~\/\.ssh|id_rsa|\bprivate key\b|exfiltrat)/i;
+  // "private key" is deliberately NOT a bare artifact: the phrase is common in
+  // legitimate wallet/crypto tooling and security reassurances ("we never touch your
+  // private key"), so flagging the bare mention HIGH false-positives on trustworthy
+  // servers. Real private-key exfil (verb+payload+dest) is still caught by exfilSensitive.
+  const secretArtifact = /(\.env\b|~\/\.ssh|id_rsa|exfiltrat)/i;
   const foreignDest = String.raw`\bwebhook\b|\bexternal\b|third[- ]?party|attacker|\bexfil`;
   const anyDest = String.raw`https?:\/\/|` + foreignDest;
   const exfilSensitive = new RegExp(
