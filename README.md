@@ -71,11 +71,11 @@ Replace `YOUR_MCP_URL` with your URL-encoded server endpoint (e.g. `https%3A%2F%
 
 ### As a GitHub Action
 ```yaml
-- uses: rezearcher/greyridge-x402-tools@v0.1.1
+- uses: rezearcher/greyridge-x402-tools@v0.2.1
   with:
     url: https://your-mcp-host/mcp
 ```
-Fails the job when the verdict is `block`.
+Exit code mirrors the `mcpscan` CLI: `2` on `block`, `1` on `review`, `0` on `clear`, and `3` if the scan could not run (fails closed, so a broken scan never silently passes an admission gate). Any non-zero exit fails the job.
 
 ## Framework integrations
 - LangChain / CrewAI: `greyridge_x402.langchain_tools()` / `crewai_tools()`
