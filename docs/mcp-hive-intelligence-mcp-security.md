@@ -7,7 +7,9 @@ description: Independent, measured security and Claude Connector Directory readi
 **Server:** `https://hiveintelligence.xyz/mcp`
 **Scanned:** 2026-10-22 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory blocker(s)
 
-Hive Intelligence's MCP server exposes crypto and market-data tools to AI agents. Before an agent — or a user — connects it, every tool definition it advertises is read
+Hive Intelligence's MCP server exposes crypto and market-data tools to AI agents.
+
+Before an agent — or a user — connects it, every tool definition it advertises is read
 by the model, so a poisoned description or a hidden instruction can steer the agent before any
 tool runs. This scorecard is an independent, static read of that advertised metadata, run against
 the Hive Intelligence server on the date above.
