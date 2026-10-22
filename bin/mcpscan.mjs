@@ -27,27 +27,47 @@ function analyzeMcpTool(name, description, schemaText) {
   const add = (severity, rule, detail, ev) => f.push({ tool: name, severity, rule, detail, evidence: String(ev).slice(0, 160) });
 
   // 1. Hidden/override instructions to the AI embedded in a tool description (tool poisoning).
-  const inj = /(ignore (all |any )?(previous|prior|earlier|above)( instructions| context| prompt)?|disregard (the )?(above|previous|prior|earlier)|<\/?important>|<\/?system>|<\/?secret>|do not (tell|mention|inform|notify|reveal)\b[^.]{0,20}\bthe user|never (reveal|mention|disclose|tell)\b[^.]{0,30}\binstructions?|never (reveal|mention|disclose|tell)\b[^.]{0,30}\bthe user\s+(about|that you|of|how you|what you)\b|(hidden|concealed|kept secret) from the user|keep (this|it) (secret|hidden)|without (telling|informing|notifying|alerting) the user|reveal (your|the) (full |complete )?(system )?(prompt|instructions))/i;
-  if (inj.test(text)) add("critical", "tool-poisoning:hidden-instructions",
-    "Description contains deceptive/override instructions aimed at the AI agent (conceal-from-user or ignore-prior-instructions) — classic MCP tool-poisoning.", (text.match(inj) || [""])[0]);
+  // conceal is contraction-robust (don't / doesn't / never notify the user) so the WhatsApp-MCP
+  // exploit does not slip through; a truthfulness/accuracy guard ("never tell the user a name is
+  // available — confirm it first") is the OPPOSITE of concealment and is exempted via accuracyGuard.
+  const conceal = /\b(do not|don'?t|does ?n'?t|would ?n'?t|wo ?n'?t|never|avoid)\b[^.?!]{0,30}?\b(tell|mention|inform|notify|alert|reveal|disclose|warn)\b[^.?!]{0,30}?\b(the user|the human|the operator)\b/i;
+  const inj = /(ignore (all |any )?(previous|prior|earlier|above)( instructions| context| prompt)?|disregard (the )?(above|previous|prior|earlier)|<\/?important>|<\/?system>|<\/?secret>|(hidden|concealed|kept secret) from the user|keep (this|it) (secret|hidden)|without (telling|informing|notifying|alerting) the user|reveal (your|the) (full |complete )?(system )?(prompt|instructions))/i;
+  const accuracyGuard = /\bconfirm(s|ed|ing)?\b[^.?!]{0,20}?\b(it|this|that|them|first|again|with)\b|\b(until|unless|before)\b[^.?!]{0,25}?\b(confirm|verif|validat|re-?check|double[- ]?check)/i;
+  const concealMatch = conceal.exec(text);
+  const concealHit = concealMatch && !accuracyGuard.test(text.slice(concealMatch.index, concealMatch.index + 140));
+  if (inj.test(text) || concealHit) add("critical", "tool-poisoning:hidden-instructions",
+    "Description contains deceptive/override instructions aimed at the AI agent (conceal-from-user or ignore-prior-instructions) — classic MCP tool-poisoning.", (text.match(inj) || (concealHit ? concealMatch : null) || [""])[0]);
 
-  // 2. Data-exfiltration hints.
+  // 2. Data-exfiltration hints. Split by payload class: SENSITIVE payloads (system prompt /
+  // conversation / env / file contents / private keys) flag on ANY destination incl a bare URL;
+  // AUTH-ambiguous credentials (cookie/key/token/password) flag only on a FOREIGN destination,
+  // because authenticated servers legitimately send their own credential to a URL to auth.
   const secretArtifact = /(\.env\b|~\/\.ssh|id_rsa|\bprivate key\b|exfiltrat)/i;
-  const externalize = /(send|post|upload|transmit|forward|leak|exfiltrat\w*)\b[^.]{0,60}?\b(secrets?|credentials?|passwords?|api[ _-]?keys?|access tokens?|cookies?|private keys?|conversation|chat history|system prompt|environment variables?|contents? of (the |any )?files?)\b[^.]{0,80}?(https?:\/\/|\bwebhook\b|\bexternal\b|third[- ]?party|attacker|\bexfil)|(secrets?|credentials?|passwords?|api[ _-]?keys?|cookies?|private keys?|conversation|chat history|system prompt)\b[^.]{0,60}?\b(to|at|via) (https?:\/\/|an? (external|remote|third[- ]?party)|attacker)/i;
+  const foreignDest = String.raw`\bwebhook\b|\bexternal\b|third[- ]?party|attacker|\bexfil`;
+  const anyDest = String.raw`https?:\/\/|` + foreignDest;
+  const exfilSensitive = new RegExp(
+    String.raw`(send|post|upload|transmit|forward|leak|exfiltrat\w*)\b[^.]{0,60}?\b(system prompt|conversation|chat history|environment variables?|private keys?|contents? of (the |any )?files?)\b[^.]{0,80}?(` + anyDest + `)`, "i");
+  const exfilCredential = new RegExp(
+    String.raw`(send|post|upload|transmit|forward|leak|exfiltrat\w*)\b[^.]{0,60}?\b(secrets?|credentials?|passwords?|api[ _-]?keys?|access tokens?|cookies?)\b[^.]{0,80}?(` + foreignDest + `)`, "i");
   const descLow = String(description).toLowerCase(); // sentence-scoped: never match across the description/schema boundary
-  const exfilHit = low.match(secretArtifact) || descLow.match(externalize);
+  const exfilHit = low.match(secretArtifact) || descLow.match(exfilSensitive) || descLow.match(exfilCredential);
   if (exfilHit) add("high", "exfiltration-hint",
-    "Description instructs sending data to an external destination, or references a secret-file artifact (.env/.ssh/id_rsa).", exfilHit[0]);
+    "Description instructs sending sensitive data (system prompt / conversation / env / file contents / private keys) to a destination, credentials to a foreign destination, or references a secret-file artifact (.env/.ssh/id_rsa).", exfilHit[0]);
 
   // 3. Dangerous capability surface
   const danger = /((?<![\/.\w-])(exec|execs)(?![\/\w-])|\b(exec\(|eval|eval\(|subprocess|shell|sudo|chmod)\b|os\.system|child_process|rm -rf|arbitrary (code|command)|remote code|\bexecute (shell|arbitrary|code|commands?)\b|run (shell|arbitrary) (commands?|code))/i;
   if (danger.test(low)) add("high", "dangerous-capability",
     "Tool exposes code/command execution or destructive filesystem ops.", (low.match(danger) || [""])[0]);
 
-  // 4. Cross-tool shadowing / rug-pull language
-  const shadow = /(\b(other|all|every|any) tools?\b[^.]{0,40}\b(behaviou?r|description|output|call|invoke|instruction)s?\b|\boverride (the )?(\w+ (of )?)?(other|all|every|any|previous) |\bshadow(s|ing)? (the )?(other|all|every)|when (any|another) tool|modify the behaviou?r of)/i;
-  if (shadow.test(low)) add("medium", "cross-tool-shadowing",
-    "Description references other tools' behavior — shadowing / rug-pull risk.", (low.match(shadow) || [""])[0]);
+  // 4. Cross-tool shadowing / rug-pull language. Explicit meta-language about other tools, OR the
+  // Invariant-Labs/WhatsApp shape: a reference to a DIFFERENT tool (namespaced/action-suffixed id)
+  // coupled with a coercive redirect verb (change the recipient / re-route all messages to …).
+  const shadowMeta = /(\b(other|all|every|any) tools?\b[^.]{0,40}\b(behaviou?r|description|output|call|invoke|instruction)s?\b|\boverride (the )?(\w+ (of )?)?(other|all|every|any|previous) |\bshadow(s|ing)? (the )?(other|all|every)|when (any|another) tool|modif(y|ies|ying) (the )?behaviou?r of)/i;
+  const otherToolRef = /(\bmcp_[a-z0-9_]+\b|\b[a-z][a-z0-9]*_(send|email|message|transfer|pay|exec|run|read|write|upload|post)[a-z0-9_]*\b|\bsend_message\b|\bsend_email\b|\b(another|a different|the present|the also[- ]present|the other)\b[^.]{0,25}\btool\b)/i;
+  const redirectVerb = /(must send all|change (the )?(recipient|address|destination|target|to[- ]field)|set (the )?(recipient|destination|address|to[- ]field) to|redirect (all|every|the|outgoing|outbound)|re-?route (all|every|the)|forward (all|every) (emails?|messages?|payments?|transfers?|outgoing)|all (emails?|messages?|payments?|transfers?)\b[^.]{0,25}\b(must|to a|to the proxy|to an? (proxy|different)))/i;
+  if (shadowMeta.test(low) || (otherToolRef.test(low) && redirectVerb.test(low)))
+    add("medium", "cross-tool-shadowing",
+      "Description references another tool's behaviour and a redirect/override — shadowing / rug-pull risk.", (low.match(shadowMeta) || low.match(redirectVerb) || [""])[0]);
 
   // 5. Invisible / non-ASCII payloads (unicode tag chars, zero-width, long base64)
   if (/[​-‍﻿‪-‮⁦-⁩]/.test(text) || /[\u{E0000}-\u{E007F}]/u.test(text))
