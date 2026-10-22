@@ -65,11 +65,18 @@ function scanToolsLocal(tools) {
   for (const t of tools)
     findings.push(...analyzeMcpTool(t.name || "(unnamed)", t.description || "", JSON.stringify(t.inputSchema || t.annotations || {})));
   const risk_score = Math.min(100, findings.reduce((s, x) => s + WEIGHT[x.severity], 0));
+  // A `critical` finding is exclusively tool-poisoning:hidden-instructions — a
+  // high-confidence, admission-disqualifying pattern — so ANY critical forces
+  // `block` (exit 2) regardless of aggregate score. Mirrors the hosted /scan/mcp
+  // engine (mcpScanVerdict) so offline and hosted verdicts match exactly.
   const crit = findings.filter((x) => x.severity === "critical").length;
+  const verdict = crit > 0 ? "block" : verdictFromScore(risk_score);
   const risk_summary = findings.length === 0
     ? `No tool-poisoning/injection patterns detected across ${tools.length} tool(s). Clean on static checks.`
-    : `${findings.length} issue(s) across ${tools.length} tool(s)${crit ? `, ${crit} CRITICAL (tool-poisoning)` : ""}. Risk ${risk_score}/100. Review flagged tools before trusting this server.`;
-  return { tools_scanned: tools.length, findings, risk_score, verdict: verdictFromScore(risk_score), risk_summary };
+    : crit > 0
+      ? `${findings.length} issue(s) across ${tools.length} tool(s), ${crit} CRITICAL (tool-poisoning) — do not admit this server until resolved. Risk ${risk_score}/100.`
+      : `${findings.length} issue(s) across ${tools.length} tool(s). Risk ${risk_score}/100. Review flagged tools before trusting this server.`;
+  return { tools_scanned: tools.length, findings, risk_score, verdict, risk_summary };
 }
 
 if (a[0] === "--from-egress") {
