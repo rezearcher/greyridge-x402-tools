@@ -1,1 +1,43 @@
-{"name":"greyridge-x402-tools","version":"0.2.2","description":"Grey Ridge x402 CLIs: Base token rugcheck + MCP server tool-poisoning scan (free previews)","bin":{"greyridge-x402-tools":"bin/cli.mjs","rugcheck":"bin/rugcheck.mjs","mcpscan":"bin/mcpscan.mjs"},"license":"MIT","engines":{"node":">=18"}}
+{
+  "name": "greyridge-x402-tools",
+  "version": "0.3.0",
+  "description": "Scan an MCP server's advertised tools for prompt-injection / tool-poisoning before your agent trusts it (OWASP LLM01/LLM08). Zero-install CLI + CI gate, no account.",
+  "keywords": [
+    "mcp",
+    "mcp-security",
+    "mcp-scanner",
+    "model-context-protocol",
+    "tool-poisoning",
+    "prompt-injection",
+    "llm-security",
+    "owasp-llm",
+    "ai-security",
+    "agent-security",
+    "security-scanner",
+    "supply-chain-security",
+    "cli"
+  ],
+  "homepage": "https://x402-data-api.sigrunner.workers.dev/pricing",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rezearcher/greyridge-x402-tools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rezearcher/greyridge-x402-tools/issues"
+  },
+  "author": "Grey Ridge Signals (https://x402-data-api.sigrunner.workers.dev)",
+  "bin": {
+    "greyridge-x402-tools": "bin/cli.mjs",
+    "rugcheck": "bin/rugcheck.mjs",
+    "mcpscan": "bin/mcpscan.mjs"
+  },
+  "files": [
+    "bin/",
+    "README.md",
+    "LICENSE"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}

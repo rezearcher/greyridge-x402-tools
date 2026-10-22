@@ -115,7 +115,9 @@ if (a[0] === "--from-egress") {
   const j = scanToolsLocal(tools);
   console.log(JSON.stringify({ source: a[1], offline: true, ...j }, null, 2));
   const v = j.verdict;
-  console.error(`verdict=${v}  (offline static scan — no network I/O)  itemized findings + evidence + remediation (paid, $0.05, x402 or $0.005 MCP tool): ${H}/scan/mcp`);
+  console.error(`verdict=${v}  (offline static scan — no network I/O)`);
+  console.error(`  Keep this server safe as it changes — continuous monitoring + drift alerts, $9.99/mo: ${H}/pricing`);
+  console.error(`  Full itemized findings + evidence + remediation for this scan: ${H}/scan/mcp`);
   process.exit(v === "block" ? 2 : v === "clear" ? 0 : 1);
 }
 
@@ -130,5 +132,7 @@ const j = await r.json().catch(() => ({}));
 console.log(JSON.stringify(j, null, 2));
 if (!r.ok || j.error) { console.error("scan failed: " + (j.error || "HTTP " + r.status)); process.exit(1); }
 const v = String(j.verdict || "").toLowerCase();
-console.error(`verdict=${v}  itemized findings + evidence (paid, $0.05, x402): ${H}/scan/mcp?url=${encodeURIComponent(u)}`);
+console.error(`verdict=${v}`);
+console.error(`  Keep this server safe as it changes — continuous monitoring + drift alerts, $9.99/mo: ${H}/pricing`);
+console.error(`  Full itemized findings + evidence for this scan: ${H}/scan/mcp?url=${encodeURIComponent(u)}`);
 process.exit(v === "block" ? 2 : v === "clear" ? 0 : 1);

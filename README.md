@@ -7,10 +7,16 @@ Two safety gates for AI agents, backed by a keyless x402 API (USDC per call on B
 
 ## mcpscan — vet an MCP server before your agent trusts it
 
-Every tool an MCP server advertises runs inside your agent's context — its name, description and JSON schema are read by the model, so a poisoned or injection-laden tool can steer the agent before it ever calls anything. Scan any server in one command, no install, no key:
+Every tool an MCP server advertises runs inside your agent's context — its name, description and JSON schema are read by the model, so a poisoned or injection-laden tool can steer the agent before it ever calls anything. Scan any server in one command, no key:
 
 ```
-npx -y github:rezearcher/greyridge-x402-tools#v0.2.2 mcpscan https://mcp.deepwiki.com/mcp
+npx mcpscan https://mcp.deepwiki.com/mcp
+```
+
+or pin a reproducible build straight from the release tag, no install:
+
+```
+npx -y github:rezearcher/greyridge-x402-tools#v0.3.0 mcpscan https://mcp.deepwiki.com/mcp
 ```
 
 Prints tools scanned, issue counts by severity, risk score, and a verdict (`clear` / `review` / `block`). **Exit code 2 on `block`**, so it drops straight into CI as a gate before you wire a new server to an agent. Static analysis of advertised tool metadata only — it never invokes your tools. Checks cover OWASP LLM01/LLM08 patterns: hidden instructions, conceal-from-user directives, data-exfiltration hints, cross-tool shadowing, and invisible-unicode payloads. Itemized findings with evidence and OWASP mapping: paid `/scan/mcp` ($0.05 USDC, x402 on Base).
@@ -27,10 +33,18 @@ If you already record a server with [mcp-egress](https://github.com/basitalisand
 
 ```bash
 mcp-egress run --calls calls.json --out egress.json -- uvx some-mcp-server
-npx -y github:rezearcher/greyridge-x402-tools#v0.2.2 mcpscan --from-egress egress.json   # reads .tools[], exits 2 on block
+npx -y github:rezearcher/greyridge-x402-tools#v0.3.0 mcpscan --from-egress egress.json   # reads .tools[], exits 2 on block
 ```
 
-Reads the recorded `.tools[]` (name/title/description/annotations) and applies the same tool-poisoning rules locally — no second connection to the server, no payment. Exit 0 clear / 1 review / 2 block. The one-liner is pinned to the `v0.2.2` release tag so a CI admission gate gets a fixed, reproducible artifact.
+Reads the recorded `.tools[]` (name/title/description/annotations) and applies the same tool-poisoning rules locally — no second connection to the server, no payment. Exit 0 clear / 1 review / 2 block. The one-liner is pinned to the `v0.3.0` release tag so a CI admission gate gets a fixed, reproducible artifact.
+
+### Continuous monitoring — catch a server that turns hostile after you trust it
+
+A one-time scan tells you a server is clean today. The real supply-chain risk is a server you already trust quietly changing its tool definitions later — a rug-pull on an approved dependency. Grey Ridge monitors your servers on a schedule and alerts you when a tool's description, schema or risk verdict changes:
+
+- **$9.99/mo** — continuous monitoring with drift alerts, full itemized findings, and OWASP LLM01/LLM08 mapping for every server you track: **https://x402-data-api.sigrunner.workers.dev/pricing**
+
+The CLI and Action above stay free forever for point-in-time scans.
 
 ### Badge for your MCP server's README
 
@@ -53,7 +67,7 @@ jobs:
   mcp-scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: rezearcher/greyridge-x402-tools@v0.2.2
+      - uses: rezearcher/greyridge-x402-tools@v0.3.0
         with:
           url: https://your-mcp-host/mcp   # the MCP server your agent trusts
 ```
