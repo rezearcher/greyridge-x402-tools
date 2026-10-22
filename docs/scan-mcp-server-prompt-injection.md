@@ -9,7 +9,7 @@ Every tool an MCP server advertises is read by your model the moment the server 
 Scan any server in one command — no install, no account, no key:
 
 ```bash
-npx -y github:rezearcher/greyridge-x402-tools#v0.2.2 mcpscan https://mcp.deepwiki.com/mcp
+npx -y github:rezearcher/greyridge-x402-tools#v0.3.1 mcpscan https://mcp.deepwiki.com/mcp
 ```
 
 It fetches the server's `tools/list`, runs static analysis over the advertised metadata only (**it never invokes a tool**), and prints the tools scanned, issue counts by severity, a risk score, and a verdict: `clear` / `review` / `block`. **Exit code 2 on `block`** (1 on review, 0 on clear, 3 if the scan could not run), so it drops straight into CI.
@@ -35,12 +35,12 @@ jobs:
   mcp-scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: rezearcher/greyridge-x402-tools@v0.2.2
+      - uses: rezearcher/greyridge-x402-tools@v0.3.1
         with:
           url: https://your-mcp-host/mcp   # the MCP server your agent trusts
 ```
 
-The Action **fails closed** — a scan that can't run exits non-zero rather than silently passing the gate. Pinning to the `v0.2.2` release tag gives CI a fixed, reproducible artifact.
+The Action **fails closed** — a scan that can't run exits non-zero rather than silently passing the gate. Pinning to the `v0.3.1` release tag gives CI a fixed, reproducible artifact.
 
 ## Private, local, or stdio-only servers — nothing leaves your machine
 
@@ -52,7 +52,7 @@ curl -s -X POST https://x402-data-api.sigrunner.workers.dev/scan/mcp/preview \
   -H 'content-type: application/json' -d '{"tools":[ ... ]}'
 
 # fully offline — score an mcp-egress recording, no network at all
-npx -y github:rezearcher/greyridge-x402-tools#v0.2.2 mcpscan --from-egress egress.json
+npx -y github:rezearcher/greyridge-x402-tools#v0.3.1 mcpscan --from-egress egress.json
 ```
 
 The `--from-egress` path reads a recording from [mcp-egress](https://github.com/basitalisandhu/mcp-egress) and applies the same rules locally — no second connection to the server, no payment. This is the part a login-and-upload scanner structurally can't do: your tool definitions never leave the machine.

@@ -7,7 +7,7 @@ description: Static tool-poisoning / prompt-injection scan for MCP servers (OWAS
 Every tool an MCP server advertises is read by your model the moment it connects — a poisoned description, a hidden-unicode instruction, or a conceal-from-user directive can steer the agent before a single tool runs. Scan any server for prompt-injection / tool-poisoning patterns in one command — no install, no key:
 
 ```bash
-npx -y github:rezearcher/greyridge-x402-tools#v0.2.2 mcpscan https://mcp.deepwiki.com/mcp
+npx -y github:rezearcher/greyridge-x402-tools#v0.3.1 mcpscan https://mcp.deepwiki.com/mcp
 ```
 
 Prints tools scanned, severity counts, risk score, and a verdict — `clear` / `review` / `block`. **Exit code 2 on `block`**, so it drops straight into CI as an admission gate. Static analysis of advertised metadata only; it never invokes a tool.

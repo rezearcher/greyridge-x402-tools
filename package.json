@@ -1,6 +1,6 @@
 {
   "name": "greyridge-x402-tools",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Scan an MCP server's advertised tools for prompt-injection / tool-poisoning before your agent trusts it (OWASP LLM01/LLM08). Zero-install CLI + CI gate, no account.",
   "keywords": [
     "mcp",

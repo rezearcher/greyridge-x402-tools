@@ -16,7 +16,7 @@ npx mcpscan https://mcp.deepwiki.com/mcp
 or pin a reproducible build straight from the release tag, no install:
 
 ```
-npx -y github:rezearcher/greyridge-x402-tools#v0.3.0 mcpscan https://mcp.deepwiki.com/mcp
+npx -y github:rezearcher/greyridge-x402-tools#v0.3.1 mcpscan https://mcp.deepwiki.com/mcp
 ```
 
 Prints tools scanned, issue counts by severity, risk score, and a verdict (`clear` / `review` / `block`). **Exit code 2 on `block`**, so it drops straight into CI as a gate before you wire a new server to an agent. Static analysis of advertised tool metadata only — it never invokes your tools. Checks cover OWASP LLM01/LLM08 patterns: hidden instructions, conceal-from-user directives, data-exfiltration hints, cross-tool shadowing, and invisible-unicode payloads. Itemized findings with evidence and OWASP mapping: paid `/scan/mcp` ($0.05 USDC, x402 on Base).
@@ -33,10 +33,10 @@ If you already record a server with [mcp-egress](https://github.com/basitalisand
 
 ```bash
 mcp-egress run --calls calls.json --out egress.json -- uvx some-mcp-server
-npx -y github:rezearcher/greyridge-x402-tools#v0.3.0 mcpscan --from-egress egress.json   # reads .tools[], exits 2 on block
+npx -y github:rezearcher/greyridge-x402-tools#v0.3.1 mcpscan --from-egress egress.json   # reads .tools[], exits 2 on block
 ```
 
-Reads the recorded `.tools[]` (name/title/description/annotations) and applies the same tool-poisoning rules locally — no second connection to the server, no payment. Exit 0 clear / 1 review / 2 block. The one-liner is pinned to the `v0.3.0` release tag so a CI admission gate gets a fixed, reproducible artifact.
+Reads the recorded `.tools[]` (name/title/description/annotations) and applies the same tool-poisoning rules locally — no second connection to the server, no payment. Exit 0 clear / 1 review / 2 block. The one-liner is pinned to the `v0.3.1` release tag so a CI admission gate gets a fixed, reproducible artifact.
 
 ### Continuous monitoring — catch a server that turns hostile after you trust it
 
@@ -67,7 +67,7 @@ jobs:
   mcp-scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: rezearcher/greyridge-x402-tools@v0.3.0
+      - uses: rezearcher/greyridge-x402-tools@v0.3.1
         with:
           url: https://your-mcp-host/mcp   # the MCP server your agent trusts
 ```
