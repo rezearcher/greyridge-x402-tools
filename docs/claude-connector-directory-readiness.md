@@ -53,15 +53,26 @@ A clean, minimal `get_weather` tool already returns two blockers — a missing `
 
 ## Get the itemized blockers and how to fix each
 
-The free check tells you *that* you would fail and *how many* criteria. To see **which tools fail, which criterion each one trips, and the exact fix**, request the itemized readiness report:
+The free check tells you *that* you would fail and *how many* criteria. To see **which tools fail, which criterion each one trips, and the exact fix**, get the itemized readiness report.
+
+**Pay by card — no wallet, nothing on-chain.** Subscribe at [grey ridge signals pricing](https://x402-data-api.sigrunner.workers.dev/pricing) for $9.99/month. You get an API key good for 100 scans across every endpoint, so you pull the itemized report now *and* re-check each release before you resubmit. Stripe checkout, cancel anytime:
+
+```bash
+curl -s -X POST https://x402-data-api.sigrunner.workers.dev/scan/mcp \
+  -H 'content-type: application/json' \
+  -H 'X-API-Key: sk_your_key' \
+  -d '{"directory":true,"tools":[ /* your tools/list result */ ]}'
+```
+
+That returns a `blockers` array — one entry per failing tool with the rule, the detail, and the exact fix. One $9.99 month saves a ~20-day round trip, and the same key gates your CI below.
+
+**Building an agent instead?** Pay per call with no account — $0.05 USDC via [x402](https://x402.org) on Base, drop the `X-API-Key` header:
 
 ```bash
 curl -s -X POST https://x402-data-api.sigrunner.workers.dev/scan/mcp \
   -H 'content-type: application/json' \
   -d '{"directory":true,"tools":[ /* your tools/list result */ ]}'
 ```
-
-That returns a `blockers` array — one entry per failing tool with the rule, the detail, and the evidence — for $0.05 USDC via [x402](https://x402.org) on Base, no account. One itemized report costs a fraction of a cent and saves a ~20-day round trip.
 
 ## Keep it compliant on every release — CI gate
 
