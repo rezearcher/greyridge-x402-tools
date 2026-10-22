@@ -7,7 +7,9 @@ description: Independent, measured security and Claude Connector Directory readi
 **Server:** `https://docs.mcp.cloudflare.com/mcp`
 **Scanned:** 2026-10-22 · **Tools advertised:** 2 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
-Cloudflare's documentation MCP server exposes docs-search tools to AI agents. Before an agent — or a user — connects it, every tool definition it advertises is read
+Cloudflare's documentation MCP server exposes docs-search tools to AI agents.
+
+Before an agent — or a user — connects it, every tool definition it advertises is read
 by the model, so a poisoned description or a hidden instruction can steer the agent before any
 tool runs. This scorecard is an independent, static read of that advertised metadata, run against
 the Cloudflare Docs server on the date above.
