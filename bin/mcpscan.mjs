@@ -58,6 +58,35 @@ function analyzeMcpTool(name, description, schemaText) {
   if (exfilHit) add("high", "exfiltration-hint",
     "Description instructs sending sensitive data (system prompt / conversation / env / file contents / private keys) to a destination, credentials to a foreign destination, or references a secret-file artifact (.env/.ssh/id_rsa).", exfilHit[0]);
 
+  // 2b. Schema-injection exfil — payload hidden in a PARAMETER description (inputSchema)
+  // rather than the top-level description. Rule 2 above is description-only (sentence-
+  // scoped), so an attacker who read these open-source rules can move the exfil payload
+  // into a param's schema `description` to dodge it (the documented schema-injection /
+  // parameter-description vector). We pull each prose string out of the parsed schema
+  // and run the SAME matchers against it INDIVIDUALLY — a hit means verb+payload+dest
+  // are all inside one parameter description, never a cross-field concatenation. Only
+  // `description`/`title` prose is scanned, each field standalone, so terse benign
+  // type-hint descriptions stay clean.
+  const schemaProse = [];
+  try {
+    const walk = (node) => {
+      if (Array.isArray(node)) { for (const x of node) walk(x); return; }
+      if (node && typeof node === "object") {
+        for (const [k, v] of Object.entries(node)) {
+          if ((k === "description" || k === "title") && typeof v === "string") schemaProse.push(v);
+          else walk(v);
+        }
+      }
+    };
+    walk(JSON.parse(schemaText));
+  } catch { /* schemaText not JSON — full-text matchers already cover it */ }
+  for (const prose of schemaProse) {
+    const pl = String(prose).toLowerCase();
+    const h = pl.match(exfilSensitive) || pl.match(exfilCredential);
+    if (h) { add("high", "exfiltration-hint",
+      "A tool parameter's schema description instructs sending sensitive data / credentials to a destination — schema-injection exfiltration (payload hidden in inputSchema rather than the top-level description).", h[0]); break; }
+  }
+
   // 3. Dangerous capability surface
   const danger = /((?<![\/.\w-])(exec|execs)(?![\/\w-])|\b(exec\(|eval|eval\(|subprocess|shell|sudo|chmod)\b|os\.system|child_process|rm -rf|arbitrary (code|command)|remote code|\bexecute (shell|arbitrary|code|commands?)\b|run (shell|arbitrary) (commands?|code))/i;
   if (danger.test(low)) add("high", "dangerous-capability",
