@@ -88,7 +88,7 @@ function analyzeMcpTool(name, description, schemaText) {
   }
 
   // 3. Dangerous capability surface
-  const danger = /((?<![\/.\w-])(exec|execs)(?![\/\w-])|\b(exec\(|eval|eval\(|subprocess|shell|sudo|chmod)\b|os\.system|child_process|rm -rf|arbitrary (code|command)|remote code|\bexecute (shell|arbitrary|code|commands?)\b|run (shell|arbitrary) (commands?|code))/i;
+  const danger = /((?<![\/.\w-])(exec|execs)(?![\/\w-])(?!\s+(tools?|access|permission|capabilit|rights?|mode|flag|param)\b)|\b(exec\(|eval|eval\(|subprocess|shell|sudo|chmod)\b|os\.system|child_process|rm -rf|arbitrary (code|command)|remote code|\bexecute (shell|arbitrary|code|commands?)\b|run (shell|arbitrary) (commands?|code))/i;
   if (danger.test(low)) add("high", "dangerous-capability",
     "Tool exposes code/command execution or destructive filesystem ops.", (low.match(danger) || [""])[0]);
 
