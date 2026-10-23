@@ -105,6 +105,50 @@ function analyzeMcpTool(name, description, schemaText) {
   // 5. Invisible / non-ASCII payloads (unicode tag chars, zero-width, long base64)
   if (/[​-‍﻿‪-‮⁦-⁩]/.test(text) || /[\u{E0000}-\u{E007F}]/u.test(text))
     add("high", "invisible-unicode", "Hidden/zero-width or unicode-tag characters in description — covert instruction channel.", "non-printable chars");
+
+  // 5b. ANSI terminal escape / non-whitespace C0 control-char covert channel (Trail of
+  // Bits line-jumping / ANSI; CVE-2026-6494). The ESC byte + CSI/OSC sequences, or other
+  // C0 controls, in a tool name/description can hide text from a human reviewer or inject
+  // into terminal output/logs while the model ingests the real content. Legitimate text
+  // uses only TAB/LF/CR whitespace; any other C0 control (and DEL) is anomalous. Scans
+  // the name too (attacker-controllable, rendered in tool pickers/logs).
+  const controlChan = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/;
+  if (controlChan.test(name) || controlChan.test(text)) {
+    const inName = controlChan.test(name);
+    add("high", "ansi-terminal-escape",
+      "ANSI terminal escape sequence or non-whitespace control character in the tool " +
+      (inName ? "name" : "description") +
+      " — a covert channel that can hide instructions from a human reviewer or inject into terminal output/logs (Trail of Bits line-jumping / ANSI; CVE-2026-6494).",
+      /\u001b/.test(inName ? name : text) ? "ESC (0x1b) escape sequence" : "non-printable control char");
+  }
+
+  // 5c. CSS / passive-resource-fetch exfiltration (2026 @font-face technique). Instead of
+  // prose telling the model to "send X to Y", the attacker embeds a passive resource fetch
+  // — a CSS @font-face/@import or url() pointing at a remote (http/https/protocol-relative)
+  // or data: destination. Many agent UIs render Markdown/HTML in tool text, so the fetch
+  // fires on render and exfiltrates via the request URL, bypassing image-sanitization/CSP
+  // and the prose exfil matcher. The regex requires url( immediately followed by a scheme,
+  // so prose like "the URL (https://…)" with a space does not match.
+  const cssExfil = /(@font-face\b|url\(\s*['"]?\s*(?:https?:|data:|\/\/))/i;
+  const cssExfilHit = text.match(cssExfil) || name.match(cssExfil);
+  if (cssExfilHit) add("high", "css-resource-exfil",
+    "CSS @font-face/@import or url() pointing at a remote/data destination in the tool text — a passive resource-fetch exfiltration channel that fires when the description renders and bypasses image-sanitization/CSP (CSS @font-face exfil, 2026).",
+    cssExfilHit[0].slice(0, 48));
+
+  // 5d. Variation-selector smuggling. Rule 5 covers zero-width/bidi and the TAG block but
+  // NOT variation selectors, which encode arbitrary bytes appended to any visible base char
+  // (Paul Butler emoji-smuggling, weaponised 2025-2026 for prompt-injection concealment).
+  // Flag any Variation Selector Supplement char (U+E0100-U+E01EF, no legitimate use in tool
+  // metadata) and runs of >=2 BMP selectors (U+FE00-U+FE0F); a single VS16/VS15 after an
+  // emoji stays clean. Scans the name too.
+  const varSel = /[\u{E0100}-\u{E01EF}]|[︀-️]{2,}/u;
+  if (varSel.test(text) || varSel.test(name))
+    add("high", "variation-selector-smuggling",
+      "Unicode variation selectors encode a hidden payload in the tool " +
+      (varSel.test(name) && !varSel.test(text) ? "name" : "description") +
+      " — an invisible covert channel (Variation Selector Supplement, or a run of BMP selectors) the model ingests but a human reviewer cannot see.",
+      "variation selectors");
+
   if (/[A-Za-z0-9+/]{120,}={0,2}/.test(text))
     add("medium", "opaque-blob", "Long base64-like blob embedded in tool text — possible hidden payload.", "…base64…");
 
