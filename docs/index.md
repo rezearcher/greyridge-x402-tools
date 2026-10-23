@@ -29,6 +29,7 @@ curl "https://x402-data-api.sigrunner.workers.dev/chain/token-report/preview?tok
 
 Paid route is the same depth: `GET /chain/token-report?token=0x...` at $0.01 USDC via x402 on Base. Swap guard `/gate/swap` returns GO / HOLD / BLOCK at $0.008.
 
+- [Live Base token rug & honeypot checks](token-rug-checks.html) — measured GO / HOLD / BLOCK verdicts for trending Base tokens, re-runnable with no account
 - [Honeypot check API for Base tokens](honeypot-check-api-base.html)
 - [Pre-trade safety gate for AI trading agents](pre-trade-safety-gate-ai-agents.html)
 - [Pay-per-call, no API key: x402 token risk API](x402-token-risk-api.html)
