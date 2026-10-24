@@ -7,7 +7,7 @@ description: "Independent, measured security and Claude Connector Directory read
 **Server:** `https://mcp.adoraads.ai/beauty`
 **Scanned:** 2026-10-24 · **Tools advertised:** 6 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
-AI-native beauty ads, sponsored product discovery, and brand recommendations.
+
 
 When an agent connects mcp.adoraads.ai, the model reads all 6 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
