@@ -1,6 +1,6 @@
 ---
-title: Is the overassessed.agentlookups.ai MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the overassessed.agentlookups.ai MCP server (https://overassessed.agentlookups.ai/mcp), run 2026-10-24: advertises check_assessment; 1 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the overassessed.agentlookups.ai MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the overassessed.agentlookups.ai MCP server (https://overassessed.agentlookups.ai/mcp), run 2026-10-24: advertises check_assessment; 1 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # overassessed.agentlookups.ai MCP server — security & directory-readiness scorecard
 
