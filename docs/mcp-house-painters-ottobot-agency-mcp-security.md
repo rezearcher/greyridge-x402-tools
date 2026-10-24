@@ -1,6 +1,6 @@
 ---
 title: Is the Licensed House Painters MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Licensed House Painters MCP server (https://house-painters.ottobot.agency/mcp), run 2026-10-24: 3 tools scanned, injection verdict 'clear', 3 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Licensed House Painters MCP server (https://house-painters.ottobot.agency/mcp), run 2026-10-24: advertises search_painters, get_painter, request_estimate; 3 tools scanned, injection verdict 'clear', 3 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # Licensed House Painters MCP server — security & directory-readiness scorecard
 
