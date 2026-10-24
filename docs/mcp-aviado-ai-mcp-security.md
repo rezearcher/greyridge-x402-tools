@@ -1,6 +1,6 @@
 ---
-title: Is the Aviado AI MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Aviado AI MCP server (https://aviado.ai/api/mcp), run 2026-10-24: advertises get_supplements_for_biomarker, get_interventions_for_biomarker, get_biomarkers_for_supplement; 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the Aviado AI MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Aviado AI MCP server (https://aviado.ai/api/mcp), run 2026-10-24: advertises get_supplements_for_biomarker, get_interventions_for_biomarker, get_biomarkers_for_supplement; 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Aviado AI MCP server — security & directory-readiness scorecard
 
