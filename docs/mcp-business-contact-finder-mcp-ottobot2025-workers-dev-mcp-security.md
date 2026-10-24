@@ -1,6 +1,6 @@
 ---
-title: Is the Business Contact Finder MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Business Contact Finder MCP server (https://business-contact-finder-mcp.ottobot2025.workers.dev/mcp), run 2026-10-24: advertises check_contact_path; 1 tools scanned, injection verdict 'clear', 2 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the Business Contact Finder MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Business Contact Finder MCP server (https://business-contact-finder-mcp.ottobot2025.workers.dev/mcp), run 2026-10-24: advertises check_contact_path; 1 tools scanned, injection verdict 'clear', 2 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # Business Contact Finder MCP server — security & directory-readiness scorecard
 
