@@ -1,6 +1,6 @@
 ---
 title: Is the GroundTruth - Environmental Records MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the GroundTruth - Environmental Records MCP server (https://env.agentlookups.ai/mcp), run 2026-10-24: 4 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the GroundTruth - Environmental Records MCP server (https://env.agentlookups.ai/mcp), run 2026-10-24: advertises environment_near, drinking_water, location_scores; 4 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
 ---
 # GroundTruth - Environmental Records MCP server — security & directory-readiness scorecard
 
