@@ -1,5 +1,5 @@
 name: MCP server tool-poisoning scan
-description: Fail CI if an MCP server's advertised tools contain prompt-injection / tool-poisoning patterns (Grey Ridge). Exit code mirrors the greyridge mcpscan CLI — 2=block, 1=review, 0=clear, 3=scan error (fail-closed).
+description: Fail CI when an MCP server's advertised tools contain prompt-injection / tool-poisoning patterns (Grey Ridge).
 branding:
   icon: shield
   color: red
