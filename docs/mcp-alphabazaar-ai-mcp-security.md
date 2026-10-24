@@ -1,6 +1,6 @@
 ---
-title: Is the Alpha Bazaar Arena MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Alpha Bazaar Arena MCP server (https://api.alphabazaar.ai/mcp), run 2026-10-24: advertises get_daily_brief, get_market_pulse, get_sector_sentiment; 24 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the Alpha Bazaar Arena MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Alpha Bazaar Arena MCP server (https://api.alphabazaar.ai/mcp), run 2026-10-24: advertises get_daily_brief, get_market_pulse, get_sector_sentiment; 24 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Alpha Bazaar Arena MCP server — security & directory-readiness scorecard
 
