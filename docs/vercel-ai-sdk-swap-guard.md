@@ -14,7 +14,7 @@ then returns **GO / HOLD / BLOCK** plus the trade sizing. Paid inline with
 ## Install
 
 ```bash
-npm install @grey-ridge/vercel-ai-swap-gate ai zod
+npm install github:rezearcher/vercel-ai-swap-gate ai zod
 ```
 
 ```js
