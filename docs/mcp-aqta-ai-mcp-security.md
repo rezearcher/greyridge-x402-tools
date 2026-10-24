@@ -1,6 +1,6 @@
 ---
-title: Is the app.aqta.ai MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the app.aqta.ai MCP server (https://app.aqta.ai/api/mcp), run 2026-10-24: advertises verify_receipt, decode_receipt, get_public_key; 10 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the app.aqta.ai MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the app.aqta.ai MCP server (https://app.aqta.ai/api/mcp), run 2026-10-24: advertises verify_receipt, decode_receipt, get_public_key; 10 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # app.aqta.ai MCP server — security & directory-readiness scorecard
 
