@@ -1,6 +1,6 @@
 ---
 title: Is the Astro Docs MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Astro Docs MCP server (https://mcp.docs.astro.build/mcp), run 2026-10-24: 1 tools scanned, injection verdict 'clear', 2 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Astro Docs MCP server (https://mcp.docs.astro.build/mcp), run 2026-10-24: advertises search_astro_docs; 1 tools scanned, injection verdict 'clear', 2 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # Astro Docs MCP server — security & directory-readiness scorecard
 
