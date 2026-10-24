@@ -1,6 +1,6 @@
 ---
 title: Is the Getlead MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Getlead MCP server (https://mcp.getle.ad/mcp), run 2026-10-24: 35 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Getlead MCP server (https://mcp.getle.ad/mcp), run 2026-10-24: advertises get_account, list_mailboxes, test_mailbox; 35 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
 ---
 # Getlead MCP server — security & directory-readiness scorecard
 
