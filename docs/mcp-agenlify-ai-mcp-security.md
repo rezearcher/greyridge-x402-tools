@@ -7,7 +7,7 @@ description: "Independent, measured security and Claude Connector Directory read
 **Server:** `https://agenlify.ai/mcp`
 **Scanned:** 2026-10-24 · **Tools advertised:** 3 · **Injection verdict:** `clear` · **Directory:** 3 Claude Directory blocker(s)
 
-Find AI tools by task, with pricing context, setup steps, limitations and official sources.
+
 
 When an agent connects Agenlify AI Agent Directory, the model reads all 3 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
