@@ -1,6 +1,6 @@
 ---
 title: Is the AutoPoster AI MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the AutoPoster AI MCP server (https://agent.autoposter.ai/mcp), run 2026-10-24: 14 tools scanned, injection verdict 'clear', 14 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the AutoPoster AI MCP server (https://agent.autoposter.ai/mcp), run 2026-10-24: advertises autoposter_list_accounts, autoposter_get_rules, autoposter_upload_media; 14 tools scanned, injection verdict 'clear', 14 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # AutoPoster AI MCP server — security & directory-readiness scorecard
 
