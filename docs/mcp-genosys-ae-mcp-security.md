@@ -1,6 +1,6 @@
 ---
 title: Is the GENOSYS UAE MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the GENOSYS UAE MCP server (https://genosys.ae/mcp), run 2026-10-24: 11 tools scanned, injection verdict 'clear', 11 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the GENOSYS UAE MCP server (https://genosys.ae/mcp), run 2026-10-24: advertises search_products, get_product, recommend_routine; 11 tools scanned, injection verdict 'clear', 11 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # GENOSYS UAE MCP server — security & directory-readiness scorecard
 
