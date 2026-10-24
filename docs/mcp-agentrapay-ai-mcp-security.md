@@ -1,6 +1,6 @@
 ---
-title: Is the api.agentrapay.ai MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the api.agentrapay.ai MCP server (https://api.agentrapay.ai/mcp), run 2026-10-24: advertises agentra_create_wallet, agentra_verify_identity, agentra_check_reputation; 6 tools scanned, injection verdict 'clear', 6 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the api.agentrapay.ai MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the api.agentrapay.ai MCP server (https://api.agentrapay.ai/mcp), run 2026-10-24: advertises agentra_create_wallet, agentra_verify_identity, agentra_check_reputation; 6 tools scanned, injection verdict 'clear', 6 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # api.agentrapay.ai MCP server — security & directory-readiness scorecard
 
