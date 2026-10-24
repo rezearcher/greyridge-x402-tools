@@ -7,7 +7,7 @@ description: "Independent, measured security and Claude Connector Directory read
 **Server:** `https://advisorsai.ai/store-readiness-mcp`
 **Scanned:** 2026-10-24 · **Tools advertised:** 1 · **Injection verdict:** `clear` · **Directory:** 1 Claude Directory blocker(s)
 
-Ten machine-readable signals on one public page: the top miss if any, and a receipt we re-verify.
+
 
 When an agent connects advisorsai.ai, the model reads all 1 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
