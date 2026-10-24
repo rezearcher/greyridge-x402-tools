@@ -14,7 +14,7 @@ then returns **GO / HOLD / BLOCK** plus the trade sizing. Paid inline with
 ## Install
 
 ```bash
-npm install @grey-ridge/langchain-swap-gate @langchain/core zod
+npm install github:rezearcher/langchain-swap-gate @langchain/core zod
 ```
 
 ```js
