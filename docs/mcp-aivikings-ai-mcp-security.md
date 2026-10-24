@@ -1,6 +1,6 @@
 ---
-title: Is the AiVikings.ai MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the AiVikings.ai MCP server (https://mcp.aivikings.ai/mcp), run 2026-10-24: advertises get_domain_audit_log, get_current_user, check_domain_availability; 34 tools scanned, injection verdict 'clear', 34 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the AiVikings.ai MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AiVikings.ai MCP server (https://mcp.aivikings.ai/mcp), run 2026-10-24: advertises get_domain_audit_log, get_current_user, check_domain_availability; 34 tools scanned, injection verdict 'clear', 34 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # AiVikings.ai MCP server — security & directory-readiness scorecard
 
