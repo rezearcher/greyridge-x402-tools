@@ -9,64 +9,55 @@ description: Independent, measured security and Claude Connector Directory readi
 
 Do business with Aivonic: pricing, products, check availability, book a demo, request a quote.
 
-Before an agent — or a user — connects it, every tool definition it advertises is read
-by the model, so a poisoned description or a hidden instruction can steer the agent before any
-tool runs. This scorecard is an independent, static read of that advertised metadata, run against
-the mcp.aivonic.ai server on the date above.
+When an agent connects mcp.aivonic.ai, the model reads all 5 of its advertised tool definition(s)
+before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
+the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
+`mcp.aivonic.ai`, scanned 2026-10-24; the verdict below is `clear`.
 
-## What the scan found
+## What the scan found on mcp.aivonic.ai
 
 - **No tool-poisoning or prompt-injection patterns** were found across the 5 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: 10 blocker(s).** This server advertises 10 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
+- **All 5 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
 
-The scan is **static analysis of the advertised `tools/list` metadata only** — it never invokes a
-tool and never sends data anywhere. It is a point-in-time read: an MCP server's tool definitions can
-change at any time (that is the "drift" risk this scorecard exists to make visible), so a clean result
-today is not a guarantee for tomorrow.
+Grade `A` — No tool-poisoning/injection patterns detected across 5 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+it never invokes a tool and never sends data anywhere. It is a point-in-time read of the mcp.aivonic.ai server
+on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+makes visible), so a clean result today is not a guarantee for tomorrow.
 
-## Re-run this scan yourself
+## Tools the mcp.aivonic.ai server advertises
 
-No account, no key:
+These are the 5 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+
+- **`get_pricing`** — Get Aivonic's current pricing: the Aivonic Workspace SaaS plans (monthly), and the done-for-you AI Agent, Multi-Agent, and Voice AI packages (one-time setup fee + monthly support)…
+- **`get_products`** — Get Aivonic's company details and its product/service line (AI Agents, Voice AI, AI Automation, AI Consulting, AI Audit, and the Aivonic Workspace SaaS), each with a short descrip…
+- **`check_availability`** — Check real open time slots for a free Aivonic discovery call over the next 'days_ahead' days (1 to 30). Returns available slots as ISO-8601 start times to pass to book_demo. Use t… _(parameters: days_ahead)_
+- **`book_demo`** — Book a free Aivonic discovery call at a specific slot for a real person. 'start_iso' must be an ISO-8601 start time returned by check_availability. Provide the prospect's real nam… _(parameters: name, email, start_iso, notes, timezone_name)_
+- **`request_quote`** — Submit a quote/enquiry to Aivonic on behalf of a real prospect. Include what they want (product, use case, scale) in 'message'. Aivonic's team is emailed and will follow up by ema… _(parameters: name, email, message, company)_
+
+## Scan mcp.aivonic.ai yourself, or claim its badge
+
+Re-run this exact mcp.aivonic.ai check yourself, keyless — the free response carries the verdict and the
+directory-blocker count for `mcp.aivonic.ai`:
 
 ```bash
 curl "https://x402-data-api.sigrunner.workers.dev/scan/mcp/preview?url=https://mcp.aivonic.ai&directory=true"
 ```
 
-That free response gives you the verdict and the directory blocker **count**. For the **itemized
-findings** — which tools, which OWASP LLM01/LLM08 pattern, and for the directory check *which* criteria
-fail and how to fix each — the zero-egress paid report is one call:
-
-```bash
-curl -s -X POST https://x402-data-api.sigrunner.workers.dev/scan/mcp -H 'content-type: application/json' \
-  -d '{"directory":true,"url":"https://mcp.aivonic.ai"}'
-```
-
-`$0.05 USDC` via [x402](https://x402.org) on Base, no account. To keep a server honest as it changes,
-continuous drift monitoring with alerts is `$9.99/mo` — see [pricing](https://x402-data-api.sigrunner.workers.dev/pricing).
-
-## Run mcp.aivonic.ai? Claim its verified badge — free
-
-If this is your server, you can put a measured security badge on your own README. Prove you
-control `mcp.aivonic.ai` once — a single DNS TXT record, checked automatically, no email thread and no
-human review — and the claim is yours:
-
-```bash
-# start the one-time ownership check (DNS TXT, fully automated)
-open https://x402-data-api.sigrunner.workers.dev/scan/verify?domain=mcp.aivonic.ai
-```
-
-Once the domain is verified, you get an embeddable **verified-owner** badge for your README and a
-public report page — both free. The badge renders live from the latest scan, so it stays honest:
+For the itemized findings on mcp.aivonic.ai — which tool, which OWASP LLM01/LLM08 pattern, and which Claude
+Directory criteria fail and how to fix each — the zero-egress paid report is one `$0.05 USDC`
+[x402](https://x402.org) call: `POST https://x402-data-api.sigrunner.workers.dev/scan/mcp` with `{"directory":true,"url":"https://mcp.aivonic.ai"}`. If you
+run `mcp.aivonic.ai`, [claim a measured verified-owner badge for mcp.aivonic.ai free](https://x402-data-api.sigrunner.workers.dev/scan/verify?domain=mcp.aivonic.ai)
+(one automated DNS-TXT check, no human review) and drop it in your README:
 
 ```markdown
 [![MCP security: verified](https://img.shields.io/endpoint?url=https%3A%2F%2Fx402-data-api.sigrunner.workers.dev%2Fscan%2Fverify%2Fbadge%3Fdomain%3Dmcp.aivonic.ai&style=flat-square)](https://x402-data-api.sigrunner.workers.dev/scan/report?url=https://mcp.aivonic.ai)
 ```
 
-Keeping the badge **green as your tools change** — re-scans every six hours, drift alerts the moment
-a tool definition shifts, the dated posture-history timeline, and the full itemized report — is the
-`$9.99/mo` monitoring subscription. The claim and the badge cost nothing; monitoring is what you pay
-for. A green badge means this scan found no injection patterns on the dates shown — it is a measured
-signal, not a warranty of safety.
+Keeping the mcp.aivonic.ai badge green as its tools change — six-hourly re-scans of `mcp.aivonic.ai`, drift alerts, the
+dated posture-history timeline and the full report — is the `$9.99/mo`
+[monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). The claim and the badge are free; a green badge means no
+injection patterns were found on the dates shown — a measured signal, not a warranty of safety.
 
 ## More
 
@@ -74,5 +65,5 @@ signal, not a warranty of safety.
 - [Why was my Claude connector rejected? — directory readiness criteria](claude-connector-directory-readiness.html)
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
-Independent scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+Independent scan of `mcp.aivonic.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
+measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
