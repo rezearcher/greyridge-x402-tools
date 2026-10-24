@@ -14,7 +14,7 @@ then returns **GO / HOLD / BLOCK** plus the trade sizing. Paid inline with
 ## Install
 
 ```bash
-npm install @grey-ridge/elizaos-plugin-swap-gate
+npm install github:rezearcher/plugin-swap-gate
 ```
 
 ```js
