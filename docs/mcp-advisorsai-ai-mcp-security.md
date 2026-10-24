@@ -9,64 +9,53 @@ description: Independent, measured security and Claude Connector Directory readi
 
 Ten machine-readable signals on one public page: the top miss if any, and a receipt we re-verify.
 
-Before an agent — or a user — connects it, every tool definition it advertises is read
-by the model, so a poisoned description or a hidden instruction can steer the agent before any
-tool runs. This scorecard is an independent, static read of that advertised metadata, run against
-the advisorsai.ai server on the date above.
+When an agent connects advisorsai.ai, the model reads all 1 of its advertised tool definition(s)
+before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
+the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
+`advisorsai.ai`, scanned 2026-10-24; the verdict below is `clear`.
 
-## What the scan found
+## What the scan found on advisorsai.ai
 
 - **No tool-poisoning or prompt-injection patterns** were found across the 1 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: 1 blocker(s).** This server advertises 1 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
+- **All 1 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
 
-The scan is **static analysis of the advertised `tools/list` metadata only** — it never invokes a
-tool and never sends data anywhere. It is a point-in-time read: an MCP server's tool definitions can
-change at any time (that is the "drift" risk this scorecard exists to make visible), so a clean result
-today is not a guarantee for tomorrow.
+Grade `A` — No tool-poisoning/injection patterns detected across 1 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+it never invokes a tool and never sends data anywhere. It is a point-in-time read of the advisorsai.ai server
+on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+makes visible), so a clean result today is not a guarantee for tomorrow.
 
-## Re-run this scan yourself
+## Tools the advisorsai.ai server advertises
 
-No account, no key:
+The server describes itself to connecting agents as: *Expose only advisors_store_readiness_check. Call it only when the requester asks to inspect a public HTTP(S) page. Never infer ranking, mentions, buyer intent, sales, or ownership. Return only the bounded measurement and its verification receipts.*
+
+These are the 1 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+
+- **`advisors_store_readiness_check`** — Use only after the requester supplies a public page and asks for a read-only check. Returns at most one measured finding with a server-authenticated source receipt and the fixed a… _(parameters: url, language)_
+
+## Scan advisorsai.ai yourself, or claim its badge
+
+Re-run this exact advisorsai.ai check yourself, keyless — the free response carries the verdict and the
+directory-blocker count for `advisorsai.ai`:
 
 ```bash
 curl "https://x402-data-api.sigrunner.workers.dev/scan/mcp/preview?url=https://advisorsai.ai/store-readiness-mcp&directory=true"
 ```
 
-That free response gives you the verdict and the directory blocker **count**. For the **itemized
-findings** — which tools, which OWASP LLM01/LLM08 pattern, and for the directory check *which* criteria
-fail and how to fix each — the zero-egress paid report is one call:
-
-```bash
-curl -s -X POST https://x402-data-api.sigrunner.workers.dev/scan/mcp -H 'content-type: application/json' \
-  -d '{"directory":true,"url":"https://advisorsai.ai/store-readiness-mcp"}'
-```
-
-`$0.05 USDC` via [x402](https://x402.org) on Base, no account. To keep a server honest as it changes,
-continuous drift monitoring with alerts is `$9.99/mo` — see [pricing](https://x402-data-api.sigrunner.workers.dev/pricing).
-
-## Run advisorsai.ai? Claim its verified badge — free
-
-If this is your server, you can put a measured security badge on your own README. Prove you
-control `advisorsai.ai` once — a single DNS TXT record, checked automatically, no email thread and no
-human review — and the claim is yours:
-
-```bash
-# start the one-time ownership check (DNS TXT, fully automated)
-open https://x402-data-api.sigrunner.workers.dev/scan/verify?domain=advisorsai.ai
-```
-
-Once the domain is verified, you get an embeddable **verified-owner** badge for your README and a
-public report page — both free. The badge renders live from the latest scan, so it stays honest:
+For the itemized findings on advisorsai.ai — which tool, which OWASP LLM01/LLM08 pattern, and which Claude
+Directory criteria fail and how to fix each — the zero-egress paid report is one `$0.05 USDC`
+[x402](https://x402.org) call: `POST https://x402-data-api.sigrunner.workers.dev/scan/mcp` with `{"directory":true,"url":"https://advisorsai.ai/store-readiness-mcp"}`. If you
+run `advisorsai.ai`, [claim a measured verified-owner badge for advisorsai.ai free](https://x402-data-api.sigrunner.workers.dev/scan/verify?domain=advisorsai.ai)
+(one automated DNS-TXT check, no human review) and drop it in your README:
 
 ```markdown
 [![MCP security: verified](https://img.shields.io/endpoint?url=https%3A%2F%2Fx402-data-api.sigrunner.workers.dev%2Fscan%2Fverify%2Fbadge%3Fdomain%3Dadvisorsai.ai&style=flat-square)](https://x402-data-api.sigrunner.workers.dev/scan/report?url=https://advisorsai.ai/store-readiness-mcp)
 ```
 
-Keeping the badge **green as your tools change** — re-scans every six hours, drift alerts the moment
-a tool definition shifts, the dated posture-history timeline, and the full itemized report — is the
-`$9.99/mo` monitoring subscription. The claim and the badge cost nothing; monitoring is what you pay
-for. A green badge means this scan found no injection patterns on the dates shown — it is a measured
-signal, not a warranty of safety.
+Keeping the advisorsai.ai badge green as its tools change — six-hourly re-scans of `advisorsai.ai`, drift alerts, the
+dated posture-history timeline and the full report — is the `$9.99/mo`
+[monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). The claim and the badge are free; a green badge means no
+injection patterns were found on the dates shown — a measured signal, not a warranty of safety.
 
 ## More
 
@@ -74,5 +63,5 @@ signal, not a warranty of safety.
 - [Why was my Claude connector rejected? — directory readiness criteria](claude-connector-directory-readiness.html)
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
-Independent scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+Independent scan of `advisorsai.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
+measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
