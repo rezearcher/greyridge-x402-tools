@@ -1,6 +1,6 @@
 ---
-title: Is the Hugging Face MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Hugging Face MCP server (https://hf.co/mcp), run 2026-10-24: advertises hf_whoami, hub_repo_search, hub_repo_details; 4 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the Hugging Face MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Hugging Face MCP server (https://hf.co/mcp), run 2026-10-24: advertises hf_whoami, hub_repo_search, hub_repo_details; 4 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Hugging Face MCP server — security & directory-readiness scorecard
 
