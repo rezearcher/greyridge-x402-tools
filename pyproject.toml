@@ -1,6 +1,6 @@
 [project]
 name = "greyridge-x402-tools"
-version = "0.2.2"
+version = "0.3.0"
 description = "Pre-trade safety gate tools (Base token report, swap GO/HOLD/BLOCK) over x402 pay-per-call, for LangChain/CrewAI agents"
 readme = "README.md"
 license = {text = "MIT"}
@@ -9,6 +9,13 @@ dependencies = ["requests>=2.28"]
 [project.optional-dependencies]
 pay = ["x402>=0.2", "eth-account"]
 langchain = ["langchain-core"]
+[project.scripts]
+greyridge-gate = "greyridge_x402.cli:gate_main"
+greyridge-report = "greyridge_x402.cli:report_main"
+[project.urls]
+Homepage = "https://github.com/rezearcher/greyridge-x402-tools"
+Documentation = "https://rezearcher.github.io/greyridge-x402-tools/"
+API = "https://x402-data-api.sigrunner.workers.dev/.well-known/x402"
 [build-system]
 requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
