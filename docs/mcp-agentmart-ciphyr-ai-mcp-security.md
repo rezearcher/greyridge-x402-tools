@@ -1,13 +1,13 @@
 ---
 title: "Is the AgentMart MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the AgentMart MCP server (https://agentmart.ciphyr.ai/mcp), run 2026-10-24: advertises create_passport, whoami, invite_agent; 112 tools scanned, injection verdict 'clear', 2 Claude Directory blocker(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AgentMart MCP server (https://agentmart.ciphyr.ai/mcp), run 2026-10-24: advertises create_passport, whoami, invite_agent; 112 tools scanned, injection verdict 'clear', 2 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
 ---
 # AgentMart MCP server — security & directory-readiness scorecard
 
 **Server:** `https://agentmart.ciphyr.ai/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 112 · **Injection verdict:** `clear` · **Directory:** 2 Claude Directory blocker(s)
+**Scanned:** 2026-10-24 · **Tools advertised:** 112 · **Injection verdict:** `clear` · **Directory:** 2 likely Claude Directory reject(s)
 
-Webhook inbox, memory, wake-up calls, uptime watch and code kits for AI agents. Prepaid balance.
+
 
 When an agent connects AgentMart, the model reads all 112 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
@@ -17,7 +17,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 ## What the scan found on AgentMart
 
 - **No tool-poisoning or prompt-injection patterns** were found across the 112 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 2 blocker(s).** This server advertises 2 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
+- **Claude Connector Directory readiness: 2 likely reject(s).** This server advertises 2 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
 - **39 of 112 advertised tool(s) name a state-changing action** (`create_passport`, `remove_passport`, `revoke_passport`, `cancel_job`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
 Grade `A` — No tool-poisoning/injection patterns detected across 112 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
