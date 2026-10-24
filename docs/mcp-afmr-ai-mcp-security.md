@@ -7,7 +7,7 @@ description: "Independent, measured security and Claude Connector Directory read
 **Server:** `https://afmr.ai/mcp`
 **Scanned:** 2026-10-24 · **Tools advertised:** 4 · **Injection verdict:** `clear` · **Directory:** 4 Claude Directory blocker(s)
 
-Read AFMR failure modes and discover scoped attestation and lift-evidence contracts.
+
 
 When an agent connects AFMR Discovery, the model reads all 4 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
