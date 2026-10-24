@@ -1,6 +1,6 @@
 ---
 title: Is the JustIdea Agency MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the JustIdea Agency MCP server (https://justidea.agency/mcp), run 2026-10-24: 8 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the JustIdea Agency MCP server (https://justidea.agency/mcp), run 2026-10-24: advertises list_services, get_page, search_site; 8 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
 ---
 # JustIdea Agency MCP server — security & directory-readiness scorecard
 
