@@ -1,6 +1,6 @@
 ---
 title: Is the AFMR Discovery MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the AFMR Discovery MCP server (https://afmr.ai/mcp), run 2026-10-24: 4 tools scanned, injection verdict 'clear', 4 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the AFMR Discovery MCP server (https://afmr.ai/mcp), run 2026-10-24: advertises discover_afmr, lookup_failure_mode, get_reputation_attestation_contract; 4 tools scanned, injection verdict 'clear', 4 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # AFMR Discovery MCP server — security & directory-readiness scorecard
 
