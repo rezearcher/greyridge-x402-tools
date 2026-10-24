@@ -1,6 +1,6 @@
 ---
-title: Is the GreenLight - Plug-in Solar Law Registry MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the GreenLight - Plug-in Solar Law Registry MCP server (https://solar.agentlookups.ai/mcp), run 2026-10-24: advertises solar_states, solar_law; 2 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the GreenLight - Plug-in Solar Law Registry MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the GreenLight - Plug-in Solar Law Registry MCP server (https://solar.agentlookups.ai/mcp), run 2026-10-24: advertises solar_states, solar_law; 2 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # GreenLight - Plug-in Solar Law Registry MCP server — security & directory-readiness scorecard
 
