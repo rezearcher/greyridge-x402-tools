@@ -9,7 +9,7 @@ definitions the server advertises for prompt-injection / tool-poisoning patterns
 and checks them against the Anthropic Claude Connector Directory review criteria. Every scorecard is
 dated and re-runnable by you in one keyless call; results are point-in-time (tool definitions drift).
 
-Last generated 2026-10-22.
+Last generated 2026-10-24.
 
 - [DeepWiki](mcp-deepwiki-mcp-security.html) — `clear` injection verdict, 3 tools, 6 directory blocker(s)
 - [Wolfram Alpha](mcp-wolfram-alpha-mcp-security.html) — `clear` injection verdict, 3 tools, directory-ready
@@ -23,7 +23,7 @@ Last generated 2026-10-22.
 - [Agentic Engineering Periodic System](mcp-ase-academy-mcp-security.html) — `clear` injection verdict, 4 tools, 8 directory blocker(s)
 - [Getlead](mcp-getle-ad-mcp-security.html) — `clear` injection verdict, 35 tools, directory-ready
 - [Inside Ads](mcp-inside-ad-mcp-security.html) — `clear` injection verdict, 3 tools, 6 directory blocker(s)
-- [BeachClubs.ae](mcp-beachclubs-ae-mcp-security.html) — `clear` injection verdict, 3 tools, 3 directory blocker(s)
+- [BeachClubs.ae](mcp-beachclubs-ae-mcp-security.html) — `clear` injection verdict, 4 tools, directory-ready
 - [Brainy Prices — UAE Cost of Living](mcp-prices-brainy-ae-mcp-security.html) — `clear` injection verdict, 26 tools, 26 directory blocker(s)
 - [mcp.datadubai.ae](mcp-datadubai-ae-mcp-security.html) — `clear` injection verdict, 6 tools, directory-ready
 - [EasyVoice text to speech](mcp-easyvoice-ae-mcp-security.html) — `clear` injection verdict, 7 tools, 7 directory blocker(s)
@@ -42,12 +42,32 @@ Last generated 2026-10-22.
 - [Contractor Licence Changes](mcp-license-changes-mcp-ottobot2025-workers-dev-mcp-security.html) — `clear` injection verdict, 2 tools, 4 directory blocker(s)
 - [Licensed House Painters](mcp-house-painters-ottobot-agency-mcp-security.html) — `clear` injection verdict, 3 tools, 3 directory blocker(s)
 - [Bureau public reader](mcp-thebureauoflostcontext-agency-mcp-security.html) — `clear` injection verdict, 5 tools, 5 directory blocker(s)
-- [1Court Directory](mcp-state-1court-ai-mcp-security.html) — `clear` injection verdict, 4 tools, directory-ready
+- [1Court Directory](mcp-state-1court-ai-mcp-security.html) — `clear` injection verdict, 6 tools, directory-ready
 - [Achromat MOM](mcp-mom-achromat-ai-mcp-security.html) — `clear` injection verdict, 1 tools, directory-ready
 - [actwise.ai](mcp-actwise-ai-mcp-security.html) — `clear` injection verdict, 2 tools, 2 directory blocker(s)
 - [mcp.adoraads.ai](mcp-adoraads-ai-mcp-security.html) — `clear` injection verdict, 6 tools, directory-ready
 - [advisorsai.ai](mcp-advisorsai-ai-mcp-security.html) — `clear` injection verdict, 1 tools, 1 directory blocker(s)
 - [AFG: agents hire agents (test money)](mcp-afg-ai-mcp-security.html) — `clear` injection verdict, 18 tools, 18 directory blocker(s)
+- [AFMR Discovery](mcp-afmr-ai-mcp-security.html) — `clear` injection verdict, 4 tools, 4 directory blocker(s)
+- [Agenlify AI Agent Directory](mcp-agenlify-ai-mcp-security.html) — `clear` injection verdict, 3 tools, 3 directory blocker(s)
+- [agent-bev](mcp-bev-buyer-ai-mcp-security.html) — `clear` injection verdict, 9 tools, directory-ready
+- [agentberg.ai](mcp-agentberg-ai-mcp-security.html) — `clear` injection verdict, 11 tools, 22 directory blocker(s)
+- [Agentboard](mcp-agentboard-ai-mcp-security.html) — `clear` injection verdict, 35 tools, 35 directory blocker(s)
+- [Agent Ready Report](mcp-scan-agenticplug-ai-mcp-security.html) — `clear` injection verdict, 2 tools, directory-ready
+- [Agentic Terminal Directory](mcp-agenticterminal-ai-mcp-security.html) — `clear` injection verdict, 6 tools, 12 directory blocker(s)
+- [CounterScript - Drug Price Benchmarks](mcp-rx-agentlookups-ai-mcp-security.html) — `clear` injection verdict, 1 tools, directory-ready
+- [GreenLight - Plug-in Solar Law Registry](mcp-solar-agentlookups-ai-mcp-security.html) — `clear` injection verdict, 2 tools, directory-ready
+- [GroundRules - US Law Text](mcp-law-agentlookups-ai-mcp-security.html) — `clear` injection verdict, 4 tools, directory-ready
+- [GroundTruth - Environmental Records](mcp-env-agentlookups-ai-mcp-security.html) — `clear` injection verdict, 4 tools, directory-ready
+- [overassessed.agentlookups.ai](mcp-overassessed-agentlookups-ai-mcp-security.html) — `clear` injection verdict, 1 tools, directory-ready
+- [Plumbline - Contractor License Checks](mcp-contractors-agentlookups-ai-mcp-security.html) — `clear` injection verdict, 1 tools, directory-ready
+- [Spoon Scout - Food Contaminant Lookup](mcp-food-agentlookups-ai-mcp-security.html) — `clear` injection verdict, 6 tools, directory-ready
+- [api.agentrapay.ai](mcp-agentrapay-ai-mcp-security.html) — `clear` injection verdict, 6 tools, 6 directory blocker(s)
+- [AgentRoam](mcp-agentroam-ai-mcp-security.html) — `clear` injection verdict, 11 tools, directory-ready
+- [AgentsIndex](mcp-agentsindex-ai-mcp-security.html) — `clear` injection verdict, 12 tools, directory-ready
+- [AIﾉアカリ☆ Agent Trust Receipt](mcp-ai-akari-ai-mcp-security.html) — `clear` injection verdict, 2 tools, 2 directory blocker(s)
+- [AI-Portal Enterprise GenAI Briefing](mcp-ai-portal-ai-mcp-security.html) — `clear` injection verdict, 4 tools, 8 directory blocker(s)
+- [AirShelf Catalog](mcp-airshelf-ai-mcp-security.html) — `clear` injection verdict, 8 tools, 8 directory blocker(s)
 
 Scan a server not listed here:
 
