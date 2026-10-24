@@ -1,6 +1,6 @@
 ---
 title: Is the Events.Aero MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Events.Aero MCP server (https://events.aero/mcp/events), run 2026-10-24: 5 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Events.Aero MCP server (https://events.aero/mcp/events), run 2026-10-24: advertises search-events, get-event, featured-events; 5 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
 ---
 # Events.Aero MCP server — security & directory-readiness scorecard
 
