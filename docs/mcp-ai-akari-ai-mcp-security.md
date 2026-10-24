@@ -1,6 +1,6 @@
 ---
 title: Is the AIﾉアカリ☆ Agent Trust Receipt MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the AIﾉアカリ☆ Agent Trust Receipt MCP server (https://ai-akari.ai/mcp-trust), run 2026-10-24: 2 tools scanned, injection verdict 'clear', 2 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the AIﾉアカリ☆ Agent Trust Receipt MCP server (https://ai-akari.ai/mcp-trust), run 2026-10-24: advertises get_agent_trust_receipt, audit_result_claim_x402; 2 tools scanned, injection verdict 'clear', 2 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # AIﾉアカリ☆ Agent Trust Receipt MCP server — security & directory-readiness scorecard
 
