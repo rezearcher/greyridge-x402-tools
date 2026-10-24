@@ -1,6 +1,6 @@
 ---
-title: Is the Find A Domain MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Find A Domain MCP server (https://api.findadomain.dev/mcp), run 2026-10-24: advertises check_domain, list_tlds; 2 tools scanned, injection verdict 'clear', 4 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the Find A Domain MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Find A Domain MCP server (https://api.findadomain.dev/mcp), run 2026-10-24: advertises check_domain, list_tlds; 2 tools scanned, injection verdict 'clear', 4 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # Find A Domain MCP server — security & directory-readiness scorecard
 
