@@ -1,6 +1,6 @@
 ---
 title: Is the mcp.goji.agency MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the mcp.goji.agency MCP server (https://mcp.goji.agency/mcp), run 2026-10-24: 9 tools scanned, injection verdict 'clear', 16 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the mcp.goji.agency MCP server (https://mcp.goji.agency/mcp), run 2026-10-24: advertises goji_search, goji_explain_term, goji_browse_glossary; 9 tools scanned, injection verdict 'clear', 16 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # mcp.goji.agency MCP server — security & directory-readiness scorecard
 
