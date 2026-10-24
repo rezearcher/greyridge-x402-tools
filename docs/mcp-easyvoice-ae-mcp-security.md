@@ -1,6 +1,6 @@
 ---
-title: Is the EasyVoice text to speech MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the EasyVoice text to speech MCP server (https://easyvoice.ae/api/mcp), run 2026-10-24: advertises text_to_speech, list_voices, get_usage; 7 tools scanned, injection verdict 'clear', 7 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the EasyVoice text to speech MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the EasyVoice text to speech MCP server (https://easyvoice.ae/api/mcp), run 2026-10-24: advertises text_to_speech, list_voices, get_usage; 7 tools scanned, injection verdict 'clear', 7 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # EasyVoice text to speech MCP server — security & directory-readiness scorecard
 
