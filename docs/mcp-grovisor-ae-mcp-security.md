@@ -1,6 +1,6 @@
 ---
-title: Is the groTAX by Grovisor MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the groTAX by Grovisor MCP server (https://mcp.grovisor.ae/), run 2026-10-24: advertises grotax_compute_ct, grotax_health_check, grotax_list_health_questions; 8 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the groTAX by Grovisor MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the groTAX by Grovisor MCP server (https://mcp.grovisor.ae/), run 2026-10-24: advertises grotax_compute_ct, grotax_health_check, grotax_list_health_questions; 8 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # groTAX by Grovisor MCP server — security & directory-readiness scorecard
 
