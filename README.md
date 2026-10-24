@@ -1,5 +1,7 @@
 # greyridge-x402-tools
 
+[![GitHub Marketplace](https://img.shields.io/badge/GitHub_Marketplace-MCP_tool--poisoning_scan-2ea44f?logo=github)](https://github.com/marketplace/actions/mcp-server-tool-poisoning-scan)
+
 Two safety gates for AI agents, backed by a keyless x402 API (USDC per call on Base, free previews, no account):
 
 1. **mcpscan** — vet an MCP server's advertised tools for prompt-injection / tool-poisoning before your agent trusts it.
