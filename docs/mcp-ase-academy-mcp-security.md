@@ -1,6 +1,6 @@
 ---
 title: Is the Agentic Engineering Periodic System MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Agentic Engineering Periodic System MCP server (https://ase.academy/mcp), run 2026-10-24: 4 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Agentic Engineering Periodic System MCP server (https://ase.academy/mcp), run 2026-10-24: advertises overview, find_elements, get_element; 4 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # Agentic Engineering Periodic System MCP server — security & directory-readiness scorecard
 
