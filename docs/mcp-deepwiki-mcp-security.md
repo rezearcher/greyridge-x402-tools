@@ -1,6 +1,6 @@
 ---
 title: Is the DeepWiki MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the DeepWiki MCP server (https://mcp.deepwiki.com/mcp), run 2026-10-24: 3 tools scanned, injection verdict 'clear', 6 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the DeepWiki MCP server (https://mcp.deepwiki.com/mcp), run 2026-10-24: advertises ask_wiki_question, read_wiki_contents, read_wiki_structure; 3 tools scanned, injection verdict 'clear', 6 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # DeepWiki MCP server — security & directory-readiness scorecard
 
