@@ -1,6 +1,6 @@
 ---
 title: Is the Bureau public reader MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Bureau public reader MCP server (https://thebureauoflostcontext.agency/mcp), run 2026-10-24: 5 tools scanned, injection verdict 'clear', 5 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Bureau public reader MCP server (https://thebureauoflostcontext.agency/mcp), run 2026-10-24: advertises bureau_discover, bureau_search_agents, bureau_list_cases; 5 tools scanned, injection verdict 'clear', 5 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # Bureau public reader MCP server — security & directory-readiness scorecard
 
