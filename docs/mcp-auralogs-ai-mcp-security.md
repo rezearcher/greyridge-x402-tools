@@ -1,6 +1,6 @@
 ---
-title: Is the Auralogs MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Auralogs MCP server (https://mcp.auralogs.ai/mcp), run 2026-10-24: advertises list_projects, get_project, list_logs; 7 tools scanned, injection verdict 'clear', 14 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the Auralogs MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Auralogs MCP server (https://mcp.auralogs.ai/mcp), run 2026-10-24: advertises list_projects, get_project, list_logs; 7 tools scanned, injection verdict 'clear', 14 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # Auralogs MCP server — security & directory-readiness scorecard
 
