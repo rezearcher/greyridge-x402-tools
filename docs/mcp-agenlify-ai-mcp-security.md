@@ -1,6 +1,6 @@
 ---
 title: Is the Agenlify AI Agent Directory MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Agenlify AI Agent Directory MCP server (https://agenlify.ai/mcp), run 2026-10-24: 3 tools scanned, injection verdict 'clear', 3 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Agenlify AI Agent Directory MCP server (https://agenlify.ai/mcp), run 2026-10-24: advertises search_agents, get_agent, list_tasks; 3 tools scanned, injection verdict 'clear', 3 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # Agenlify AI Agent Directory MCP server — security & directory-readiness scorecard
 
