@@ -1,6 +1,6 @@
 ---
-title: Is the Plant Guide: Dubai gardening research MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Plant Guide: Dubai gardening research MCP server (https://plantguide.ae/mcp), run 2026-10-24: advertises what_to_plant, search_plants, get_plant; 15 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the Plant Guide: Dubai gardening research MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Plant Guide: Dubai gardening research MCP server (https://plantguide.ae/mcp), run 2026-10-24: advertises what_to_plant, search_plants, get_plant; 15 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Plant Guide: Dubai gardening research MCP server — security & directory-readiness scorecard
 
