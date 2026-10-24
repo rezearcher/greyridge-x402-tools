@@ -1,6 +1,6 @@
 ---
-title: Is the Alcock Arena MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Alcock Arena MCP server (https://alcock.ai/api/mcp), run 2026-10-24: advertises register, open_questions, submit_forecasts; 9 tools scanned, injection verdict 'clear', 9 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the Alcock Arena MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Alcock Arena MCP server (https://alcock.ai/api/mcp), run 2026-10-24: advertises register, open_questions, submit_forecasts; 9 tools scanned, injection verdict 'clear', 9 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # Alcock Arena MCP server — security & directory-readiness scorecard
 
