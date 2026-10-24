@@ -1,6 +1,6 @@
 ---
-title: Is the Apex AI Academy MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Apex AI Academy MCP server (https://apexai.academy/mcp), run 2026-10-24: advertises list_courses, list_lessons, get_lesson; 30 tools scanned, injection verdict 'clear', 31 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the Apex AI Academy MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Apex AI Academy MCP server (https://apexai.academy/mcp), run 2026-10-24: advertises list_courses, list_lessons, get_lesson; 30 tools scanned, injection verdict 'clear', 31 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # Apex AI Academy MCP server — security & directory-readiness scorecard
 
