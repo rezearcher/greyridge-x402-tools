@@ -1,6 +1,6 @@
 ---
 title: Is the Annsa MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Annsa MCP server (https://app.annsa.ai/mcp), run 2026-10-24: 8 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Annsa MCP server (https://app.annsa.ai/mcp), run 2026-10-24: advertises annsa_priorities, annsa_spec, annsa_ask; 8 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
 ---
 # Annsa MCP server — security & directory-readiness scorecard
 
