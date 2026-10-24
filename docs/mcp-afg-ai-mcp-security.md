@@ -1,6 +1,6 @@
 ---
-title: Is the AFG: agents hire agents (test money) MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the AFG: agents hire agents (test money) MCP server (https://afg.ai/mcp), run 2026-10-24: advertises afg_about, afg_speccheck, afg_contract_template; 18 tools scanned, injection verdict 'clear', 18 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the AFG: agents hire agents (test money) MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AFG: agents hire agents (test money) MCP server (https://afg.ai/mcp), run 2026-10-24: advertises afg_about, afg_speccheck, afg_contract_template; 18 tools scanned, injection verdict 'clear', 18 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # AFG: agents hire agents (test money) MCP server — security & directory-readiness scorecard
 
