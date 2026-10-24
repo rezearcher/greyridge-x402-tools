@@ -1,5 +1,5 @@
 name: MCP server tool-poisoning scan
-description: Fail CI when an MCP server's advertised tools contain prompt-injection / tool-poisoning patterns (Grey Ridge).
+description: Fail CI when an MCP server's advertised tools contain prompt-injection / tool-poisoning patterns, and emit a copy-paste README security badge (Grey Ridge).
 branding:
   icon: shield
   color: red
@@ -11,21 +11,130 @@ inputs:
     description: Grey Ridge scan base (override only for self-host/testing)
     required: false
     default: https://x402-data-api.sigrunner.workers.dev
+  fail-on:
+    description: 'Verdict that fails the job: review (default — preserves the original block=exit2 / review=exit1 behaviour byte-for-byte), block (fail only on a critical block verdict), or never.'
+    required: false
+    default: review
+  commit-badge:
+    description: 'When "true", insert/update the injection-security badge between <!-- grsg-badge:start --> and <!-- grsg-badge:end --> in README.md and commit it. Default false (no surprise commits). Degrade-open: a commit failure never fails the build.'
+    required: false
+    default: 'false'
+  readme:
+    description: Path to the README to update when commit-badge=true.
+    required: false
+    default: README.md
+outputs:
+  verdict:
+    description: clear | review | block
+    value: ${{ steps.scan.outputs.verdict }}
+  risk-score:
+    description: 0-100 static risk score
+    value: ${{ steps.scan.outputs.risk }}
+  grade:
+    description: A-F Grey Ridge MCP security grade
+    value: ${{ steps.scan.outputs.grade }}
+  badge-url:
+    description: shields.io badge image URL (injection-security grade | verdict)
+    value: ${{ steps.scan.outputs.badge_url }}
+  badge-markdown:
+    description: Copy-paste Markdown — the badge linked to the server's live security report
+    value: ${{ steps.scan.outputs.badge_md }}
+  scorecard-url:
+    description: Per-server live security report / funnel page (always resolves)
+    value: ${{ steps.scan.outputs.report_url }}
 runs:
   using: composite
   steps:
-    - shell: bash
+    - id: scan
+      shell: bash
+      env:
+        IN_URL: ${{ inputs.url }}
+        EP: ${{ inputs.endpoint }}
+        FAIL_ON: ${{ inputs.fail-on }}
+        COMMIT_BADGE: ${{ inputs.commit-badge }}
+        README_PATH: ${{ inputs.readme }}
       run: |
         set -uo pipefail
-        r=$(curl -sG --max-time 60 "${{ inputs.endpoint }}/scan/mcp/preview" --data-urlencode "url=${{ inputs.url }}")
+        r=$(curl -sG --max-time 60 "$EP/scan/mcp/preview" --data-urlencode "url=$IN_URL")
         echo "$r"
-        v=$(printf '%s' "$r" | sed -n 's/.*"verdict":"\([a-z]*\)".*/\1/p')
-        case "$v" in
+
+        # --- Parse verdict / risk / grade (robust JSON; degrade-open to sed) ---
+        verdict=$(printf '%s' "$r" | python3 -c 'import json,sys;print(json.load(sys.stdin).get("verdict") or "")' 2>/dev/null || true)
+        risk=$(printf '%s' "$r" | python3 -c 'import json,sys;v=json.load(sys.stdin).get("risk_score");print("" if v is None else v)' 2>/dev/null || true)
+        grade=$(printf '%s' "$r" | python3 -c 'import json,sys;print(json.load(sys.stdin).get("grade") or "")' 2>/dev/null || true)
+        [ -n "$verdict" ] || verdict=$(printf '%s' "$r" | sed -n 's/.*"verdict":"\([a-z]*\)".*/\1/p')
+        [ -n "$grade" ] || grade="?"
+        [ -n "$risk" ] || risk="-1"
+
+        # --- Build the injection-security badge (degrade-open: never fail here) ---
+        case "$grade" in
+          A) color=brightgreen;; B) color=green;; C) color=yellow;;
+          D) color=orange;; F) color=red;;
+          *) case "$verdict" in clear) color=brightgreen;; review) color=yellow;; block) color=red;; *) color=lightgrey;; esac;;
+        esac
+        gdisp="$grade"; [ "$gdisp" = "?" ] && gdisp="n%2Fa"
+        msg="${gdisp}%20%7C%20${verdict:-unknown}"
+        badge_url="https://img.shields.io/badge/MCP%20injection--security-${msg}-${color}"
+        enc_url=$(python3 -c 'import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1],safe=""))' "$IN_URL" 2>/dev/null || printf '%s' "$IN_URL")
+        report_url="$EP/scan/mcp-scanner?url=${enc_url}"
+        badge_md="[![MCP injection-security](${badge_url})](${report_url})"
+
+        {
+          echo "verdict=$verdict"
+          echo "risk=$risk"
+          echo "grade=$grade"
+          echo "badge_url=$badge_url"
+          echo "report_url=$report_url"
+          echo "badge_md=$badge_md"
+        } >> "$GITHUB_OUTPUT"
+
+        {
+          echo "### MCP injection-security: grade **${grade}** — \`${verdict:-unknown}\` (risk ${risk}/100)"
+          echo ""
+          echo "Copy this badge into your README (it links to your live security report):"
+          echo ""
+          echo '```markdown'
+          echo "$badge_md"
+          echo '```'
+          echo ""
+          echo "Static OWASP-MCP (LLM01/LLM08) prompt-injection + tool-poisoning scan. \"clear\" is not \"safe\"."
+          echo "Keep it green as your tools change — continuous monitoring + drift alerts \$9.99/mo: $EP/pricing"
+        } >> "$GITHUB_STEP_SUMMARY"
+
+        # --- Optional: commit the badge into README (degrade-open) ---
+        if [ "$COMMIT_BADGE" = "true" ]; then
+          set +e
+          BADGE_MD="$badge_md" README_PATH="$README_PATH" python3 "$GITHUB_ACTION_PATH/badge_insert.py"
+          rc=$?
+          if [ "$rc" = "0" ]; then
+            git config user.name "grsg-badge[bot]"
+            git config user.email "badge@greyridgesignals.ai"
+            git add "$README_PATH"
+            if git commit -m "chore: update MCP injection-security badge [skip ci]"; then
+              git push && echo "::notice::committed updated MCP injection-security badge to $README_PATH" \
+                || echo "::warning::badge committed locally but push failed (protected branch / no write perms) — badge markdown is in the step summary above"
+            else
+              echo "::warning::nothing to commit for the badge"
+            fi
+          elif [ "$rc" = "10" ]; then
+            echo "::notice::README badge already current"
+          else
+            echo "::warning::could not update $README_PATH (rc=$rc) — copy the badge markdown from the step summary above"
+          fi
+          set -e
+        fi
+
+        # --- CI admission gate (behaviour unchanged for the default fail-on=review) ---
+        case "$FAIL_ON" in
+          never) exit 0;;
+        esac
+        case "$verdict" in
           block)
             echo "::error::MCP scan verdict=block — critical tool-poisoning finding. Itemized findings: paid /scan/mcp (\$0.05 x402)."
             exit 2 ;;
           review)
             echo "::warning::MCP scan verdict=review — suspicious tool-metadata patterns. Itemized findings: paid /scan/mcp (\$0.05 x402)."
+            [ "$FAIL_ON" = "block" ] && exit 0
             exit 1 ;;
           clear)
             echo "MCP scan verdict=clear — no tool-poisoning patterns detected."
