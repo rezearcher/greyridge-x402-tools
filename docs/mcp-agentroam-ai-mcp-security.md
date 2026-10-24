@@ -1,6 +1,6 @@
 ---
 title: Is the AgentRoam MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the AgentRoam MCP server (https://agentroam.ai/api/mcp), run 2026-10-24: 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the AgentRoam MCP server (https://agentroam.ai/api/mcp), run 2026-10-24: advertises search_products, get_price, validate_order; 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
 ---
 # AgentRoam MCP server — security & directory-readiness scorecard
 
