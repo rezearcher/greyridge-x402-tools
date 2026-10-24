@@ -27,6 +27,8 @@ makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Events.Aero server advertises
 
+The server describes itself to connecting agents as: *Events.Aero is the global curator of aviation events and tickets: airshows, fly-ins, workshops, club meets and more. This server is public and read-only; it needs no sign-in and shows only events that are live on the website. Typical flow: list-countries and…*
+
 These are the 5 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`search-events`** — Search upcoming public aviation events on Events.Aero (airshows, fly-ins, workshops and more). Filter by free text, event type, country, date range, distance from a point, free en… _(parameters: query, type, country, from, to, latitude)_
