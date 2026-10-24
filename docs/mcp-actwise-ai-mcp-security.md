@@ -7,7 +7,7 @@ description: "Independent, measured security and Claude Connector Directory read
 **Server:** `https://actwise.ai/ideation/mcp/v1`
 **Scanned:** 2026-10-24 · **Tools advertised:** 2 · **Injection verdict:** `clear` · **Directory:** 2 Claude Directory blocker(s)
 
-Actwise Ideation helps founders benchmark startup and product ideas before they build.
+
 
 When an agent connects actwise.ai, the model reads all 2 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
