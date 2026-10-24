@@ -1,6 +1,6 @@
 ---
-title: Is the ASRM (AI Search Rank Monitor) MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the ASRM (AI Search Rank Monitor) MCP server (https://asrm.ai/mcp), run 2026-10-24: advertises check_ai_readiness, get_visibility_scan_link, search_guides; 4 tools scanned, injection verdict 'clear', 4 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the ASRM (AI Search Rank Monitor) MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the ASRM (AI Search Rank Monitor) MCP server (https://asrm.ai/mcp), run 2026-10-24: advertises check_ai_readiness, get_visibility_scan_link, search_guides; 4 tools scanned, injection verdict 'clear', 4 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # ASRM (AI Search Rank Monitor) MCP server — security & directory-readiness scorecard
 
