@@ -1,6 +1,6 @@
 ---
-title: Is the analyticslegends.ai MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the analyticslegends.ai MCP server (https://analyticslegends.ai/mcp), run 2026-10-24: advertises search_firms, count_firms_by, get_firm; 22 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the analyticslegends.ai MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the analyticslegends.ai MCP server (https://analyticslegends.ai/mcp), run 2026-10-24: advertises search_firms, count_firms_by, get_firm; 22 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # analyticslegends.ai MCP server — security & directory-readiness scorecard
 
