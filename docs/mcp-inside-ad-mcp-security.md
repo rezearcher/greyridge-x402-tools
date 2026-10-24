@@ -1,6 +1,6 @@
 ---
 title: Is the Inside Ads MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Inside Ads MCP server (https://app.inside.ad/api/mcp), run 2026-10-24: 3 tools scanned, injection verdict 'clear', 6 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Inside Ads MCP server (https://app.inside.ad/api/mcp), run 2026-10-24: advertises estimate_campaign, create_campaign_draft, get_draft_status; 3 tools scanned, injection verdict 'clear', 6 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # Inside Ads MCP server — security & directory-readiness scorecard
 
