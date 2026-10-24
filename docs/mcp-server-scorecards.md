@@ -73,17 +73,22 @@ Last generated 2026-10-24.
 | [zoll.agency](mcp-zoll-agency-mcp-security.html) | A | `clear` | 7 | ready | 2026-10-24 |
 | [advisorsai.ai](mcp-advisorsai-ai-mcp-security.html) | A | `clear` | 1 | 1 blocker | 2026-10-24 |
 | [actwise.ai](mcp-actwise-ai-mcp-security.html) | A | `clear` | 2 | 2 blockers | 2026-10-24 |
+| [AgentMart](mcp-agentmart-ciphyr-ai-mcp-security.html) | A | `clear` | 112 | 2 blockers | 2026-10-24 |
 | [Astro Docs](mcp-astro-docs-mcp-security.html) | A | `clear` | 1 | 2 blockers | 2026-10-24 |
 | [Agenlify AI Agent Directory](mcp-agenlify-ai-mcp-security.html) | A | `clear` | 3 | 3 blockers | 2026-10-24 |
 | [AFMR Discovery](mcp-afmr-ai-mcp-security.html) | A | `clear` | 4 | 4 blockers | 2026-10-24 |
 | [Find A Domain](mcp-find-a-domain-mcp-security.html) | A | `clear` | 2 | 4 blockers | 2026-10-24 |
+| [api.agentrapay.ai](mcp-agentrapay-ai-mcp-security.html) | A | `clear` | 6 | 6 blockers | 2026-10-24 |
 | [DeepWiki](mcp-deepwiki-mcp-security.html) | A | `clear` | 3 | 6 blockers | 2026-10-24 |
 | [Hive Intelligence](mcp-hive-intelligence-mcp-security.html) | A | `clear` | 8 | 10 blockers | 2026-10-24 |
+| [Agentic Terminal Directory](mcp-agenticterminal-ai-mcp-security.html) | A | `clear` | 6 | 12 blockers | 2026-10-24 |
+| [AutoPoster AI](mcp-agent-autoposter-ai-mcp-security.html) | A | `clear` | 14 | 14 blockers | 2026-10-24 |
 | [AFG: agents hire agents (test money)](mcp-afg-ai-mcp-security.html) | A | `clear` | 18 | 18 blockers | 2026-10-24 |
+| [agentberg.ai](mcp-agentberg-ai-mcp-security.html) | A | `clear` | 11 | 22 blockers | 2026-10-24 |
+| [Agentboard](mcp-agentboard-ai-mcp-security.html) | A | `clear` | 35 | 35 blockers | 2026-10-24 |
 | [app.bitroad.ai](mcp-bitroad-ai-mcp-security.html) | A | `clear` | 65 | 1 blocker | 2026-10-24 |
 | [BUMIT](mcp-bumit-ai-mcp-security.html) | A | `clear` | 1 | 1 blocker | 2026-10-24 |
 | [Citybook](mcp-citybook-ai-mcp-security.html) | A | `clear` | 1 | 1 blocker | 2026-10-24 |
-| [AgentMart](mcp-agentmart-ciphyr-ai-mcp-security.html) | A | `clear` | 112 | 2 blockers | 2026-10-24 |
 | [AIﾉアカリ☆ Agent Trust Receipt](mcp-ai-akari-ai-mcp-security.html) | A | `clear` | 2 | 2 blockers | 2026-10-24 |
 | [Business Contact Finder](mcp-business-contact-finder-mcp-ottobot2025-workers-dev-mcp-security.html) | A | `clear` | 1 | 2 blockers | 2026-10-24 |
 | [Calaf Seed Tools](mcp-calaf-ai-mcp-security.html) | A | `clear` | 2 | 2 blockers | 2026-10-24 |
@@ -100,7 +105,6 @@ Last generated 2026-10-24.
 | [bizmoon.ai](mcp-bizmoon-ai-mcp-security.html) | A | `clear` | 5 | 5 blockers | 2026-10-24 |
 | [Projectory](mcp-projectory-ae-mcp-security.html) | A | `clear` | 5 | 5 blockers | 2026-10-24 |
 | [Bureau public reader](mcp-thebureauoflostcontext-agency-mcp-security.html) | A | `clear` | 5 | 5 blockers | 2026-10-24 |
-| [api.agentrapay.ai](mcp-agentrapay-ai-mcp-security.html) | A | `clear` | 6 | 6 blockers | 2026-10-24 |
 | [APIR Agent Verification](mcp-apir-ai-mcp-security.html) | A | `clear` | 3 | 6 blockers | 2026-10-24 |
 | [Autoblogging.ai](mcp-autoblogging-ai-mcp-security.html) | A | `clear` | 6 | 6 blockers | 2026-10-24 |
 | [mcp.bcited.ai](mcp-bcited-ai-mcp-security.html) | A | `clear` | 6 | 6 blockers | 2026-10-24 |
@@ -131,10 +135,8 @@ Last generated 2026-10-24.
 | [hood. — .hood name service](mcp-hood-ag-mcp-security.html) | A | `clear` | 5 | 10 blockers | 2026-10-24 |
 | [CCAPI](mcp-ccapi-ai-mcp-security.html) | A | `clear` | 11 | 11 blockers | 2026-10-24 |
 | [GENOSYS UAE](mcp-genosys-ae-mcp-security.html) | A | `clear` | 11 | 11 blockers | 2026-10-24 |
-| [Agentic Terminal Directory](mcp-agenticterminal-ai-mcp-security.html) | A | `clear` | 6 | 12 blockers | 2026-10-24 |
 | [auteng.ai](mcp-auteng-ai-mcp-security.html) | A | `clear` | 6 | 12 blockers | 2026-10-24 |
 | [bidclub.ai](mcp-bidclub-ai-mcp-security.html) | A | `clear` | 6 | 12 blockers | 2026-10-24 |
-| [AutoPoster AI](mcp-agent-autoposter-ai-mcp-security.html) | A | `clear` | 14 | 14 blockers | 2026-10-24 |
 | [Auralogs](mcp-auralogs-ai-mcp-security.html) | A | `clear` | 7 | 14 blockers | 2026-10-24 |
 | [Bring Your AI](mcp-bringyour-ai-mcp-security.html) | A | `clear` | 7 | 14 blockers | 2026-10-24 |
 | [AwardCast Federal Contracts](mcp-awardcast-ai-mcp-security.html) | A | `clear` | 8 | 16 blockers | 2026-10-24 |
@@ -145,7 +147,6 @@ Last generated 2026-10-24.
 | [blast-radius.ai](mcp-blast-radius-ai-mcp-security.html) | A | `clear` | 9 | 18 blockers | 2026-10-24 |
 | [www.arcreport.ai](mcp-arcreport-ai-mcp-security.html) | A | `clear` | 16 | 20 blockers | 2026-10-24 |
 | [Circleback](mcp-circleback-ai-mcp-security.html) | A | `clear` | 21 | 21 blockers | 2026-10-24 |
-| [agentberg.ai](mcp-agentberg-ai-mcp-security.html) | A | `clear` | 11 | 22 blockers | 2026-10-24 |
 | [CleanVector](mcp-cleanvector-ai-mcp-security.html) | A | `clear` | 11 | 22 blockers | 2026-10-24 |
 | [BetterPost](mcp-betterpost-ai-mcp-security.html) | A | `clear` | 23 | 23 blockers | 2026-10-24 |
 | [Builders in Fintech](mcp-buildersinfintech-ai-mcp-security.html) | A | `clear` | 23 | 23 blockers | 2026-10-24 |
@@ -154,7 +155,6 @@ Last generated 2026-10-24.
 | [Brainy Prices — UAE Cost of Living](mcp-prices-brainy-ae-mcp-security.html) | A | `clear` | 26 | 26 blockers | 2026-10-24 |
 | [Apex AI Academy](mcp-apexai-academy-mcp-security.html) | A | `clear` | 30 | 31 blockers | 2026-10-24 |
 | [AiVikings.ai](mcp-aivikings-ai-mcp-security.html) | A | `clear` | 34 | 34 blockers | 2026-10-24 |
-| [Agentboard](mcp-agentboard-ai-mcp-security.html) | A | `clear` | 35 | 35 blockers | 2026-10-24 |
 | [Inferventis MCP Server](mcp-mcp-server-295985738387-europe-west1-run-app-mcp-security.html) | A | `clear` | 20 | 40 blockers | 2026-10-24 |
 | [Chronary](mcp-chronary-ai-mcp-security.html) | A | `clear` | 54 | 108 blockers | 2026-10-24 |
 | [Cerebrium Docs](mcp-cerebrium-ai-mcp-security.html) | B | `clear` | 3 | ready | 2026-10-24 |
