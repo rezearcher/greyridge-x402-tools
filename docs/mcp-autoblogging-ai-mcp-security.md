@@ -1,6 +1,6 @@
 ---
 title: Is the Autoblogging.ai MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Autoblogging.ai MCP server (https://autoblogging.ai/mcp), run 2026-10-24: 6 tools scanned, injection verdict 'clear', 6 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Autoblogging.ai MCP server (https://autoblogging.ai/mcp), run 2026-10-24: advertises get_brand_facts, get_pricing, list_features; 6 tools scanned, injection verdict 'clear', 6 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # Autoblogging.ai MCP server — security & directory-readiness scorecard
 
