@@ -1,6 +1,6 @@
 ---
-title: Is the AlphaCreek SEC Filings MCP MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the AlphaCreek SEC Filings MCP MCP server (https://mcp.alphacreek.ai/mcp), run 2026-10-24: advertises get_latest_filing, list_filings, get_filing_toc; 5 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the AlphaCreek SEC Filings MCP MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AlphaCreek SEC Filings MCP MCP server (https://mcp.alphacreek.ai/mcp), run 2026-10-24: advertises get_latest_filing, list_filings, get_filing_toc; 5 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # AlphaCreek SEC Filings MCP MCP server — security & directory-readiness scorecard
 
