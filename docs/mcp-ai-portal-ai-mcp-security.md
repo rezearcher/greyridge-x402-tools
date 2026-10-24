@@ -9,64 +9,56 @@ description: Independent, measured security and Claude Connector Directory readi
 
 Live AI data for agents: model releases, regulations (EU AI Act), GenAI glossary, daily news.
 
-Before an agent — or a user — connects it, every tool definition it advertises is read
-by the model, so a poisoned description or a hidden instruction can steer the agent before any
-tool runs. This scorecard is an independent, static read of that advertised metadata, run against
-the AI-Portal Enterprise GenAI Briefing server on the date above.
+When an agent connects AI-Portal Enterprise GenAI Briefing, the model reads all 4 of its advertised tool definition(s)
+before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
+the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
+`www.ai-portal.ai`, scanned 2026-10-24; the verdict below is `clear`.
 
-## What the scan found
+## What the scan found on AI-Portal Enterprise GenAI Briefing
 
 - **No tool-poisoning or prompt-injection patterns** were found across the 4 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: 8 blocker(s).** This server advertises 8 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
+- **All 4 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
 
-The scan is **static analysis of the advertised `tools/list` metadata only** — it never invokes a
-tool and never sends data anywhere. It is a point-in-time read: an MCP server's tool definitions can
-change at any time (that is the "drift" risk this scorecard exists to make visible), so a clean result
-today is not a guarantee for tomorrow.
+Grade `A` — No tool-poisoning/injection patterns detected across 4 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+it never invokes a tool and never sends data anywhere. It is a point-in-time read of the AI-Portal Enterprise GenAI Briefing server
+on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+makes visible), so a clean result today is not a guarantee for tomorrow.
 
-## Re-run this scan yourself
+## Tools the AI-Portal Enterprise GenAI Briefing server advertises
 
-No account, no key:
+The server describes itself to connecting agents as: *Read-only tools over AI-Portal data (https://www.ai-portal.ai): AI model releases, AI regulations, a GenAI glossary, and daily curated GenAI news. Use list_releases for "when did model X ship / what did provider Y release", list_regulations for AI compliance…*
+
+These are the 4 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+
+- **`list_releases`** — List AI model and product releases tracked by AI-Portal, newest first. Filter by category, provider, year, or landmark releases only. _(parameters: category, provider, year, landmark_only, limit)_
+- **`list_regulations`** — List AI regulations and their compliance status (EU AI Act, ISO 42001, and more), including jurisdiction, effective dates, key requirements, and fines. _(parameters: status, jurisdiction)_
+- **`search_glossary`** — Search AI-Portal's glossary of AI/GenAI terms. Returns term, definition, category, and a usage example. _(parameters: query, category)_
+- **`get_latest_news`** — Latest curated GenAI news items from AI-Portal, refreshed every weekday morning. _(parameters: limit)_
+
+## Scan AI-Portal Enterprise GenAI Briefing yourself, or claim its badge
+
+Re-run this exact AI-Portal Enterprise GenAI Briefing check yourself, keyless — the free response carries the verdict and the
+directory-blocker count for `www.ai-portal.ai`:
 
 ```bash
 curl "https://x402-data-api.sigrunner.workers.dev/scan/mcp/preview?url=https://www.ai-portal.ai/mcp&directory=true"
 ```
 
-That free response gives you the verdict and the directory blocker **count**. For the **itemized
-findings** — which tools, which OWASP LLM01/LLM08 pattern, and for the directory check *which* criteria
-fail and how to fix each — the zero-egress paid report is one call:
-
-```bash
-curl -s -X POST https://x402-data-api.sigrunner.workers.dev/scan/mcp -H 'content-type: application/json' \
-  -d '{"directory":true,"url":"https://www.ai-portal.ai/mcp"}'
-```
-
-`$0.05 USDC` via [x402](https://x402.org) on Base, no account. To keep a server honest as it changes,
-continuous drift monitoring with alerts is `$9.99/mo` — see [pricing](https://x402-data-api.sigrunner.workers.dev/pricing).
-
-## Run AI-Portal Enterprise GenAI Briefing? Claim its verified badge — free
-
-If this is your server, you can put a measured security badge on your own README. Prove you
-control `www.ai-portal.ai` once — a single DNS TXT record, checked automatically, no email thread and no
-human review — and the claim is yours:
-
-```bash
-# start the one-time ownership check (DNS TXT, fully automated)
-open https://x402-data-api.sigrunner.workers.dev/scan/verify?domain=www.ai-portal.ai
-```
-
-Once the domain is verified, you get an embeddable **verified-owner** badge for your README and a
-public report page — both free. The badge renders live from the latest scan, so it stays honest:
+For the itemized findings on AI-Portal Enterprise GenAI Briefing — which tool, which OWASP LLM01/LLM08 pattern, and which Claude
+Directory criteria fail and how to fix each — the zero-egress paid report is one `$0.05 USDC`
+[x402](https://x402.org) call: `POST https://x402-data-api.sigrunner.workers.dev/scan/mcp` with `{"directory":true,"url":"https://www.ai-portal.ai/mcp"}`. If you
+run `www.ai-portal.ai`, [claim a measured verified-owner badge for AI-Portal Enterprise GenAI Briefing free](https://x402-data-api.sigrunner.workers.dev/scan/verify?domain=www.ai-portal.ai)
+(one automated DNS-TXT check, no human review) and drop it in your README:
 
 ```markdown
 [![MCP security: verified](https://img.shields.io/endpoint?url=https%3A%2F%2Fx402-data-api.sigrunner.workers.dev%2Fscan%2Fverify%2Fbadge%3Fdomain%3Dwww.ai-portal.ai&style=flat-square)](https://x402-data-api.sigrunner.workers.dev/scan/report?url=https://www.ai-portal.ai/mcp)
 ```
 
-Keeping the badge **green as your tools change** — re-scans every six hours, drift alerts the moment
-a tool definition shifts, the dated posture-history timeline, and the full itemized report — is the
-`$9.99/mo` monitoring subscription. The claim and the badge cost nothing; monitoring is what you pay
-for. A green badge means this scan found no injection patterns on the dates shown — it is a measured
-signal, not a warranty of safety.
+Keeping the AI-Portal Enterprise GenAI Briefing badge green as its tools change — six-hourly re-scans of `www.ai-portal.ai`, drift alerts, the
+dated posture-history timeline and the full report — is the `$9.99/mo`
+[monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). The claim and the badge are free; a green badge means no
+injection patterns were found on the dates shown — a measured signal, not a warranty of safety.
 
 ## More
 
@@ -74,5 +66,5 @@ signal, not a warranty of safety.
 - [Why was my Claude connector rejected? — directory readiness criteria](claude-connector-directory-readiness.html)
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
-Independent scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+Independent scan of `www.ai-portal.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
+measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
