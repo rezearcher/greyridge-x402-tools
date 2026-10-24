@@ -1,6 +1,6 @@
 ---
-title: Is the BeachClubs.ae MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the BeachClubs.ae MCP server (https://www.beachclubs.ae/mcp), run 2026-10-24: advertises search_beach_clubs, get_beach_club, list_events; 4 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the BeachClubs.ae MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the BeachClubs.ae MCP server (https://www.beachclubs.ae/mcp), run 2026-10-24: advertises search_beach_clubs, get_beach_club, list_events; 4 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # BeachClubs.ae MCP server — security & directory-readiness scorecard
 
