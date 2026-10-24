@@ -1,6 +1,6 @@
 ---
 title: Is the hood. — .hood name service MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the hood. — .hood name service MCP server (https://www.hood.ag/api/mcp), run 2026-10-24: 5 tools scanned, injection verdict 'clear', 10 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the hood. — .hood name service MCP server (https://www.hood.ag/api/mcp), run 2026-10-24: advertises resolve_name, reverse_resolve, resolve_text; 5 tools scanned, injection verdict 'clear', 10 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # hood. — .hood name service MCP server — security & directory-readiness scorecard
 
