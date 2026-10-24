@@ -1,6 +1,6 @@
 ---
 title: Is the AskWatch Google Search Console MCP MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the AskWatch Google Search Console MCP MCP server (https://mcp.askwatch.ai/gsc), run 2026-10-24: 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the AskWatch Google Search Console MCP MCP server (https://mcp.askwatch.ai/gsc), run 2026-10-24: advertises site_overview, top, changes; 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
 ---
 # AskWatch Google Search Console MCP MCP server — security & directory-readiness scorecard
 
