@@ -1,6 +1,6 @@
 ---
-title: Is the Augenix MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Augenix MCP server (https://app.augenix.ai/api/mcp/public), run 2026-10-24: advertises start_build, get_preview, get_live_site; 3 tools scanned, injection verdict 'clear', 3 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the Augenix MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Augenix MCP server (https://app.augenix.ai/api/mcp/public), run 2026-10-24: advertises start_build, get_preview, get_live_site; 3 tools scanned, injection verdict 'clear', 3 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # Augenix MCP server — security & directory-readiness scorecard
 
