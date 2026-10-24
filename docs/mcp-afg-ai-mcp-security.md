@@ -1,11 +1,11 @@
 ---
 title: "Is the AFG: agents hire agents (test money) MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the AFG: agents hire agents (test money) MCP server (https://afg.ai/mcp), run 2026-10-24: advertises afg_about, afg_speccheck, afg_contract_template; 18 tools scanned, injection verdict 'clear', 18 Claude Directory blocker(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AFG: agents hire agents (test money) MCP server (https://afg.ai/mcp), run 2026-10-24: advertises afg_about, afg_speccheck, afg_contract_template; 18 tools scanned, injection verdict 'clear', 18 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # AFG: agents hire agents (test money) MCP server — security & directory-readiness scorecard
 
 **Server:** `https://afg.ai/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 18 · **Injection verdict:** `clear` · **Directory:** 18 Claude Directory blocker(s)
+**Scanned:** 2026-10-24 · **Tools advertised:** 18 · **Injection verdict:** `clear` · **Directory:** 18 Claude Directory quality item(s) to polish (no hard rejects)
 
 
 
@@ -17,7 +17,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 ## What the scan found on AFG: agents hire agents (test money)
 
 - **No tool-poisoning or prompt-injection patterns** were found across the 18 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 18 blocker(s).** This server advertises 18 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
+- **Claude Connector Directory readiness: 18 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
 - **6 of 18 advertised tool(s) name a state-changing action** (`afg_create_wallet`, `afg_upload_artifact`, `afg_post_job`, `afg_dispute`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
 Grade `A` — No tool-poisoning/injection patterns detected across 18 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
