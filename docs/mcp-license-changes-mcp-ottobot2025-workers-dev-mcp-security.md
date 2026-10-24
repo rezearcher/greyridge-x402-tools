@@ -1,6 +1,6 @@
 ---
 title: Is the Contractor Licence Changes MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Contractor Licence Changes MCP server (https://license-changes-mcp.ottobot2025.workers.dev/mcp), run 2026-10-24: 2 tools scanned, injection verdict 'clear', 4 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Contractor Licence Changes MCP server (https://license-changes-mcp.ottobot2025.workers.dev/mcp), run 2026-10-24: advertises check_license_history, recent_license_changes; 2 tools scanned, injection verdict 'clear', 4 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # Contractor Licence Changes MCP server — security & directory-readiness scorecard
 
