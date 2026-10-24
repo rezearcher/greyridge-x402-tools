@@ -1,6 +1,6 @@
 ---
 title: Is the CounterScript - Drug Price Benchmarks MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the CounterScript - Drug Price Benchmarks MCP server (https://rx.agentlookups.ai/mcp), run 2026-10-24: 1 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the CounterScript - Drug Price Benchmarks MCP server (https://rx.agentlookups.ai/mcp), run 2026-10-24: advertises drug_price; 1 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
 ---
 # CounterScript - Drug Price Benchmarks MCP server — security & directory-readiness scorecard
 
