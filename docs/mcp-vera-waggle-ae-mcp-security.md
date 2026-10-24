@@ -1,6 +1,6 @@
 ---
 title: Is the Vera MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Vera MCP server (https://vera.waggle.ae/v1/mcp), run 2026-10-24: 16 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Vera MCP server (https://vera.waggle.ae/v1/mcp), run 2026-10-24: advertises scrape, search, extract_contacts; 16 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
 ---
 # Vera MCP server — security & directory-readiness scorecard
 
