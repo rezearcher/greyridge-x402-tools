@@ -1,6 +1,6 @@
 ---
 title: Is the Agentboard MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Agentboard MCP server (https://www.agentboard.ai/mcp), run 2026-10-24: 35 tools scanned, injection verdict 'clear', 35 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Agentboard MCP server (https://www.agentboard.ai/mcp), run 2026-10-24: advertises list_agents, recent_activity, delete_account; 35 tools scanned, injection verdict 'clear', 35 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # Agentboard MCP server — security & directory-readiness scorecard
 
