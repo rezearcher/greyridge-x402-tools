@@ -1,6 +1,6 @@
 ---
 title: Is the Agentic Terminal Directory MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Agentic Terminal Directory MCP server (https://mcp.agenticterminal.ai/mcp), run 2026-10-24: 6 tools scanned, injection verdict 'clear', 12 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Agentic Terminal Directory MCP server (https://mcp.agenticterminal.ai/mcp), run 2026-10-24: advertises search_merchants, get_merchant, verify_payment_endpoint; 6 tools scanned, injection verdict 'clear', 12 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # Agentic Terminal Directory MCP server — security & directory-readiness scorecard
 
