@@ -1,6 +1,6 @@
 ---
 title: Is the Agent Ready Report MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Agent Ready Report MCP server (https://scan.agenticplug.ai/mcp), run 2026-10-24: 2 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Agent Ready Report MCP server (https://scan.agenticplug.ai/mcp), run 2026-10-24: advertises scan_website, explain_check; 2 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
 ---
 # Agent Ready Report MCP server — security & directory-readiness scorecard
 
