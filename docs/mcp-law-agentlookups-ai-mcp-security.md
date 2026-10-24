@@ -1,6 +1,6 @@
 ---
 title: Is the GroundRules - US Law Text MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the GroundRules - US Law Text MCP server (https://law.agentlookups.ai/mcp), run 2026-10-24: 4 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the GroundRules - US Law Text MCP server (https://law.agentlookups.ai/mcp), run 2026-10-24: advertises law_for_location, law_search, law_get_section; 4 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
 ---
 # GroundRules - US Law Text MCP server — security & directory-readiness scorecard
 
