@@ -1,6 +1,6 @@
 ---
 title: Is the 1Court Directory MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the 1Court Directory MCP server (https://state.1court.ai/api/mcp), run 2026-10-24: 6 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the 1Court Directory MCP server (https://state.1court.ai/api/mcp), run 2026-10-24: advertises list_deadline_rules, calculate_deadline, list_states; 6 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
 ---
 # 1Court Directory MCP server — security & directory-readiness scorecard
 
