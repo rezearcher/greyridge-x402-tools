@@ -1,6 +1,6 @@
 ---
 title: Is the Projectory MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Projectory MCP server (https://mcp.projectory.ae/mcp), run 2026-10-24: 5 tools scanned, injection verdict 'clear', 5 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Projectory MCP server (https://mcp.projectory.ae/mcp), run 2026-10-24: advertises search, search_transactions, fetch; 5 tools scanned, injection verdict 'clear', 5 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # Projectory MCP server — security & directory-readiness scorecard
 
