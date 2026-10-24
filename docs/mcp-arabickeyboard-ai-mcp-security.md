@@ -1,6 +1,6 @@
 ---
-title: Is the Arabic Name Calligraphy MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Arabic Name Calligraphy MCP server (https://arabickeyboard.ai/mcp), run 2026-10-24: advertises write_name_in_arabic; 1 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the Arabic Name Calligraphy MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Arabic Name Calligraphy MCP server (https://arabickeyboard.ai/mcp), run 2026-10-24: advertises write_name_in_arabic; 1 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Arabic Name Calligraphy MCP server — security & directory-readiness scorecard
 
