@@ -1,6 +1,6 @@
 ---
 title: Is the api.askmiles.ai MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the api.askmiles.ai MCP server (https://api.askmiles.ai/mcp), run 2026-10-24: 5 tools scanned, injection verdict 'clear', 10 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the api.askmiles.ai MCP server (https://api.askmiles.ai/mcp), run 2026-10-24: advertises search_card_catalog, get_card_facts, compare_card_facts; 5 tools scanned, injection verdict 'clear', 10 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # api.askmiles.ai MCP server — security & directory-readiness scorecard
 
