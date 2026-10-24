@@ -1,6 +1,6 @@
 ---
-title: Is the www.arcreport.ai MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the www.arcreport.ai MCP server (https://www.arcreport.ai/api/ask), run 2026-10-24: advertises precheck, find_agent_ready_stores, can_agent_checkout; 16 tools scanned, injection verdict 'clear', 20 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the www.arcreport.ai MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the www.arcreport.ai MCP server (https://www.arcreport.ai/api/ask), run 2026-10-24: advertises precheck, find_agent_ready_stores, can_agent_checkout; 16 tools scanned, injection verdict 'clear', 20 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # www.arcreport.ai MCP server — security & directory-readiness scorecard
 
