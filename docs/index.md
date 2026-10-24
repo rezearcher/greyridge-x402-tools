@@ -32,6 +32,16 @@ Paid route is the same depth: `GET /chain/token-report?token=0x...` at $0.01 USD
 - [Live Base token rug & honeypot checks](token-rug-checks.html) — measured GO / HOLD / BLOCK verdicts for trending Base tokens, re-runnable with no account
 - [Honeypot check API for Base tokens](honeypot-check-api-base.html)
 - [Pre-trade safety gate for AI trading agents](pre-trade-safety-gate-ai-agents.html)
+
+<!-- line-a-framework-pages:start -->
+
+**Framework install guides** — drop the gate into your trading agent in one line:
+
+- [ElizaOS pre-trade swap-gate plugin](elizaos-token-safety-plugin.html) — `npm i @grey-ridge/elizaos-plugin-swap-gate`
+- [Vercel AI SDK one-tool swap guard](vercel-ai-sdk-swap-guard.html) — `npm i @grey-ridge/vercel-ai-swap-gate ai zod`
+- [LangChain.js honeypot-check tool](langchain-honeypot-check-tool.html) — `npm i @grey-ridge/langchain-swap-gate @langchain/core zod`
+
+<!-- line-a-framework-pages:end -->
 - [Pay-per-call, no API key: x402 token risk API](x402-token-risk-api.html)
 - [Base token-safety x402 price comparison (2026-10)](base-token-safety-price-comparison.html) — measured per-call cost across providers
 
