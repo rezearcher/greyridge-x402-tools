@@ -14,10 +14,10 @@ Last generated 2026-10-24.
 
 | Server | Grade | Injection | Tools | Claude Directory | Scanned |
 |---|:--:|---|:--:|---|---|
-| [Wolfram Alpha](mcp-wolfram-alpha-mcp-security.html) | A | `clear` | 3 | ready | 2026-10-24 |
-| [Hugging Face](mcp-hugging-face-mcp-security.html) | A | `clear` | 4 | ready | 2026-10-24 |
-| [Cloudflare Docs](mcp-cloudflare-docs-mcp-security.html) | A | `clear` | 2 | ready | 2026-10-24 |
 | [mcp.adoraads.ai](mcp-adoraads-ai-mcp-security.html) | A | `clear` | 6 | ready | 2026-10-24 |
+| [Cloudflare Docs](mcp-cloudflare-docs-mcp-security.html) | A | `clear` | 2 | ready | 2026-10-24 |
+| [Hugging Face](mcp-hugging-face-mcp-security.html) | A | `clear` | 4 | ready | 2026-10-24 |
+| [Wolfram Alpha](mcp-wolfram-alpha-mcp-security.html) | A | `clear` | 3 | ready | 2026-10-24 |
 | [AgentRoam](mcp-agentroam-ai-mcp-security.html) | A | `clear` | 11 | ready | 2026-10-24 |
 | [agents.alphaquantlabs.ai](mcp-agents-alphaquantlabs-ai-mcp-security.html) | A | `clear` | 2 | ready | 2026-10-24 |
 | [AgentsIndex](mcp-agentsindex-ai-mcp-security.html) | A | `clear` | 12 | ready | 2026-10-24 |
@@ -71,24 +71,25 @@ Last generated 2026-10-24.
 | [tandem.ac](mcp-tandem-ac-mcp-security.html) | A | `clear` | 13 | ready | 2026-10-24 |
 | [Vera](mcp-vera-waggle-ae-mcp-security.html) | A | `clear` | 16 | ready | 2026-10-24 |
 | [zoll.agency](mcp-zoll-agency-mcp-security.html) | A | `clear` | 7 | ready | 2026-10-24 |
+| [advisorsai.ai](mcp-advisorsai-ai-mcp-security.html) | A | `clear` | 1 | 1 blocker | 2026-10-24 |
+| [actwise.ai](mcp-actwise-ai-mcp-security.html) | A | `clear` | 2 | 2 blockers | 2026-10-24 |
 | [Astro Docs](mcp-astro-docs-mcp-security.html) | A | `clear` | 1 | 2 blockers | 2026-10-24 |
+| [Agenlify AI Agent Directory](mcp-agenlify-ai-mcp-security.html) | A | `clear` | 3 | 3 blockers | 2026-10-24 |
+| [AFMR Discovery](mcp-afmr-ai-mcp-security.html) | A | `clear` | 4 | 4 blockers | 2026-10-24 |
 | [Find A Domain](mcp-find-a-domain-mcp-security.html) | A | `clear` | 2 | 4 blockers | 2026-10-24 |
 | [DeepWiki](mcp-deepwiki-mcp-security.html) | A | `clear` | 3 | 6 blockers | 2026-10-24 |
-| [Hive Intelligence](mcp-hive-intelligence-mcp-security.html) | A | `clear` | 8 | 8 blockers | 2026-10-24 |
-| [advisorsai.ai](mcp-advisorsai-ai-mcp-security.html) | A | `clear` | 1 | 1 blocker | 2026-10-24 |
+| [Hive Intelligence](mcp-hive-intelligence-mcp-security.html) | A | `clear` | 8 | 10 blockers | 2026-10-24 |
+| [AFG: agents hire agents (test money)](mcp-afg-ai-mcp-security.html) | A | `clear` | 18 | 18 blockers | 2026-10-24 |
 | [app.bitroad.ai](mcp-bitroad-ai-mcp-security.html) | A | `clear` | 65 | 1 blocker | 2026-10-24 |
 | [BUMIT](mcp-bumit-ai-mcp-security.html) | A | `clear` | 1 | 1 blocker | 2026-10-24 |
 | [Citybook](mcp-citybook-ai-mcp-security.html) | A | `clear` | 1 | 1 blocker | 2026-10-24 |
-| [actwise.ai](mcp-actwise-ai-mcp-security.html) | A | `clear` | 2 | 2 blockers | 2026-10-24 |
 | [AgentMart](mcp-agentmart-ciphyr-ai-mcp-security.html) | A | `clear` | 112 | 2 blockers | 2026-10-24 |
 | [AIﾉアカリ☆ Agent Trust Receipt](mcp-ai-akari-ai-mcp-security.html) | A | `clear` | 2 | 2 blockers | 2026-10-24 |
 | [Business Contact Finder](mcp-business-contact-finder-mcp-ottobot2025-workers-dev-mcp-security.html) | A | `clear` | 1 | 2 blockers | 2026-10-24 |
 | [Calaf Seed Tools](mcp-calaf-ai-mcp-security.html) | A | `clear` | 2 | 2 blockers | 2026-10-24 |
-| [Agenlify AI Agent Directory](mcp-agenlify-ai-mcp-security.html) | A | `clear` | 3 | 3 blockers | 2026-10-24 |
 | [ARVX](mcp-arvx-ai-mcp-security.html) | A | `clear` | 3 | 3 blockers | 2026-10-24 |
 | [Augenix](mcp-augenix-ai-mcp-security.html) | A | `clear` | 3 | 3 blockers | 2026-10-24 |
 | [Licensed House Painters](mcp-house-painters-ottobot-agency-mcp-security.html) | A | `clear` | 3 | 3 blockers | 2026-10-24 |
-| [AFMR Discovery](mcp-afmr-ai-mcp-security.html) | A | `clear` | 4 | 4 blockers | 2026-10-24 |
 | [ASRM (AI Search Rank Monitor)](mcp-asrm-ai-mcp-security.html) | A | `clear` | 4 | 4 blockers | 2026-10-24 |
 | [Biel.ai](mcp-biel-ai-mcp-security.html) | A | `clear` | 3 | 4 blockers | 2026-10-24 |
 | [Orbit](mcp-buildwithorbit-ai-mcp-security.html) | A | `clear` | 2 | 4 blockers | 2026-10-24 |
@@ -141,7 +142,6 @@ Last generated 2026-10-24.
 | [Bowmark](mcp-bowmark-ai-mcp-security.html) | A | `clear` | 16 | 16 blockers | 2026-10-24 |
 | [mcp.goji.agency](mcp-goji-agency-mcp-security.html) | A | `clear` | 9 | 16 blockers | 2026-10-24 |
 | [Propick Integration MCP](mcp-propick-ae-mcp-security.html) | A | `clear` | 8 | 16 blockers | 2026-10-24 |
-| [AFG: agents hire agents (test money)](mcp-afg-ai-mcp-security.html) | A | `clear` | 18 | 18 blockers | 2026-10-24 |
 | [blast-radius.ai](mcp-blast-radius-ai-mcp-security.html) | A | `clear` | 9 | 18 blockers | 2026-10-24 |
 | [www.arcreport.ai](mcp-arcreport-ai-mcp-security.html) | A | `clear` | 16 | 20 blockers | 2026-10-24 |
 | [Circleback](mcp-circleback-ai-mcp-security.html) | A | `clear` | 21 | 21 blockers | 2026-10-24 |
