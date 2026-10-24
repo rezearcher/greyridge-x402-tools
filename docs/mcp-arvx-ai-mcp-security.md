@@ -1,6 +1,6 @@
 ---
-title: Is the ARVX MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the ARVX MCP server (https://mcp.arvx.ai/mcp), run 2026-10-24: advertises arvx_get_access, arvx_run_reading, arvx_record_summary; 3 tools scanned, injection verdict 'clear', 3 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the ARVX MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the ARVX MCP server (https://mcp.arvx.ai/mcp), run 2026-10-24: advertises arvx_get_access, arvx_run_reading, arvx_record_summary; 3 tools scanned, injection verdict 'clear', 3 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # ARVX MCP server — security & directory-readiness scorecard
 
