@@ -1,11 +1,11 @@
 ---
 title: "Is the Hive Intelligence MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Hive Intelligence MCP server (https://hiveintelligence.xyz/mcp), run 2026-10-24: advertises get_token_price, check_token_safety, get_wallet_portfolio; 8 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Hive Intelligence MCP server (https://hiveintelligence.xyz/mcp), run 2026-10-24: advertises get_token_price, check_token_safety, get_wallet_portfolio; 8 tools scanned, injection verdict 'clear', 10 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # Hive Intelligence MCP server — security & directory-readiness scorecard
 
 **Server:** `https://hiveintelligence.xyz/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory blocker(s)
+**Scanned:** 2026-10-24 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 10 Claude Directory blocker(s)
 
 Hive Intelligence's MCP server exposes crypto and market-data tools to AI agents.
 
@@ -17,7 +17,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 ## What the scan found on Hive Intelligence
 
 - **No tool-poisoning or prompt-injection patterns** were found across the 8 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 8 blocker(s).** This server advertises 8 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
+- **Claude Connector Directory readiness: 10 blocker(s).** This server advertises 10 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
 - **All 8 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
 
 Grade `A` — No tool-poisoning/injection patterns detected across 8 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
