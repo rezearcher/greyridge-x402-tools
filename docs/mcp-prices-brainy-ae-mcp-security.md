@@ -1,6 +1,6 @@
 ---
 title: Is the Brainy Prices — UAE Cost of Living MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Brainy Prices — UAE Cost of Living MCP server (https://prices.brainy.ae/mcp/v2), run 2026-10-24: 26 tools scanned, injection verdict 'clear', 26 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Brainy Prices — UAE Cost of Living MCP server (https://prices.brainy.ae/mcp/v2), run 2026-10-24: advertises commute_cost, costs_by_area, costs_by_emirate; 26 tools scanned, injection verdict 'clear', 26 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # Brainy Prices — UAE Cost of Living MCP server — security & directory-readiness scorecard
 
