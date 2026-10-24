@@ -37,9 +37,9 @@ Paid route is the same depth: `GET /chain/token-report?token=0x...` at $0.01 USD
 
 **Framework install guides** — drop the gate into your trading agent in one line:
 
-- [ElizaOS pre-trade swap-gate plugin](elizaos-token-safety-plugin.html) — `npm i @grey-ridge/elizaos-plugin-swap-gate`
-- [Vercel AI SDK one-tool swap guard](vercel-ai-sdk-swap-guard.html) — `npm i @grey-ridge/vercel-ai-swap-gate ai zod`
-- [LangChain.js honeypot-check tool](langchain-honeypot-check-tool.html) — `npm i @grey-ridge/langchain-swap-gate @langchain/core zod`
+- [ElizaOS pre-trade swap-gate plugin](elizaos-token-safety-plugin.html) — `npm i github:rezearcher/plugin-swap-gate`
+- [Vercel AI SDK one-tool swap guard](vercel-ai-sdk-swap-guard.html) — `npm i github:rezearcher/vercel-ai-swap-gate ai zod`
+- [LangChain.js honeypot-check tool](langchain-honeypot-check-tool.html) — `npm i github:rezearcher/langchain-swap-gate @langchain/core zod`
 
 <!-- line-a-framework-pages:end -->
 - [Pay-per-call, no API key: x402 token risk API](x402-token-risk-api.html)
