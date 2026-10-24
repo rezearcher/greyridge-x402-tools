@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/</loc><lastmod>2026-10-24</lastmod></url>
-<url><loc>https://rezearcher.github.io/greyridge-x402-tools/scan-mcp-server-prompt-injection.html</loc><lastmod>2026-10-24</lastmod></url>
-<url><loc>https://rezearcher.github.io/greyridge-x402-tools/claude-connector-directory-readiness.html</loc><lastmod>2026-10-24</lastmod></url>
-<url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-registry-census-2026-10-20.html</loc><lastmod>2026-10-24</lastmod></url>
-<url><loc>https://rezearcher.github.io/greyridge-x402-tools/honeypot-check-api-base.html</loc><lastmod>2026-10-24</lastmod></url>
-<url><loc>https://rezearcher.github.io/greyridge-x402-tools/pre-trade-safety-gate-ai-agents.html</loc><lastmod>2026-10-24</lastmod></url>
-<url><loc>https://rezearcher.github.io/greyridge-x402-tools/x402-token-risk-api.html</loc><lastmod>2026-10-24</lastmod></url>
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/base-token-safety-price-comparison.html</loc><lastmod>2026-10-24</lastmod></url>
-<url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-server-scorecards.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/claude-connector-directory-readiness.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/elizaos-token-safety-plugin.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/honeypot-check-api-base.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/langchain-honeypot-check-tool.html</loc><lastmod>2026-10-24</lastmod></url>
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-actwise-ai-mcp-security.html</loc><lastmod>2026-10-24</lastmod></url>
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-adoraads-ai-mcp-security.html</loc><lastmod>2026-10-24</lastmod></url>
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-advisorsai-ai-mcp-security.html</loc><lastmod>2026-10-24</lastmod></url>
@@ -87,8 +84,10 @@
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-prices-brainy-ae-mcp-security.html</loc><lastmod>2026-10-24</lastmod></url>
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-projectory-ae-mcp-security.html</loc><lastmod>2026-10-24</lastmod></url>
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-propick-ae-mcp-security.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-registry-census-2026-10-20.html</loc><lastmod>2026-10-24</lastmod></url>
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-rx-agentlookups-ai-mcp-security.html</loc><lastmod>2026-10-24</lastmod></url>
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-scan-agenticplug-ai-mcp-security.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-server-scorecards.html</loc><lastmod>2026-10-24</lastmod></url>
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-solar-agentlookups-ai-mcp-security.html</loc><lastmod>2026-10-24</lastmod></url>
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-state-1court-ai-mcp-security.html</loc><lastmod>2026-10-24</lastmod></url>
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-supershopping-mcp-atdev-ai-mcp-security.html</loc><lastmod>2026-10-24</lastmod></url>
@@ -96,4 +95,14 @@
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-thebureauoflostcontext-agency-mcp-security.html</loc><lastmod>2026-10-24</lastmod></url>
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-vera-waggle-ae-mcp-security.html</loc><lastmod>2026-10-24</lastmod></url>
 <url><loc>https://rezearcher.github.io/greyridge-x402-tools/mcp-wolfram-alpha-mcp-security.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/pre-trade-safety-gate-ai-agents.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/scan-mcp-server-prompt-injection.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/token-aero-940181-honeypot-check.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/token-cbbtc-cbb7c0-honeypot-check.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/token-degen-4ed4e8-honeypot-check.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/token-rug-checks.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/token-usdc-833589-honeypot-check.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/token-weth-420000-honeypot-check.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/vercel-ai-sdk-swap-guard.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://rezearcher.github.io/greyridge-x402-tools/x402-token-risk-api.html</loc><lastmod>2026-10-24</lastmod></url>
 </urlset>
