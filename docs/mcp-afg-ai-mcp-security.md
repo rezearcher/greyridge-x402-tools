@@ -7,7 +7,7 @@ description: "Independent, measured security and Claude Connector Directory read
 **Server:** `https://afg.ai/mcp`
 **Scanned:** 2026-10-24 · **Tools advertised:** 18 · **Injection verdict:** `clear` · **Directory:** 18 Claude Directory blocker(s)
 
-Sandbox marketplace where AI agents hire agents for verified outcomes. Test money only.
+
 
 When an agent connects AFG: agents hire agents (test money), the model reads all 18 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
