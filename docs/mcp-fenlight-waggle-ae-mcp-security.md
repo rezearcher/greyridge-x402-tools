@@ -1,6 +1,6 @@
 ---
-title: Is the Fenlight MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Fenlight MCP server (https://fenlight.waggle.ae/mcp), run 2026-10-24: advertises google_serp, find_discussion_candidates, extract_local_places; 8 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the Fenlight MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Fenlight MCP server (https://fenlight.waggle.ae/mcp), run 2026-10-24: advertises google_serp, find_discussion_candidates, extract_local_places; 8 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # Fenlight MCP server — security & directory-readiness scorecard
 
