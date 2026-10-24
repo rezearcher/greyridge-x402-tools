@@ -1,6 +1,6 @@
 ---
-title: Is the api.aislabs.ai MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the api.aislabs.ai MCP server (https://api.aislabs.ai/cve/mcp), run 2026-10-24: advertises brief_teaser, top_cves_today, kev_fresh; 4 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the api.aislabs.ai MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the api.aislabs.ai MCP server (https://api.aislabs.ai/cve/mcp), run 2026-10-24: advertises brief_teaser, top_cves_today, kev_fresh; 4 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # api.aislabs.ai MCP server — security & directory-readiness scorecard
 
