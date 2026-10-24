@@ -1,6 +1,6 @@
 ---
 title: Is the Plumbline - Contractor License Checks MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Plumbline - Contractor License Checks MCP server (https://contractors.agentlookups.ai/mcp), run 2026-10-24: 1 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Plumbline - Contractor License Checks MCP server (https://contractors.agentlookups.ai/mcp), run 2026-10-24: advertises check_contractor; 1 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
 ---
 # Plumbline - Contractor License Checks MCP server — security & directory-readiness scorecard
 
