@@ -18,7 +18,7 @@ npx mcpscan https://mcp.deepwiki.com/mcp
 or pin a reproducible build straight from the release tag, no install:
 
 ```
-npx -y github:rezearcher/greyridge-x402-tools#v0.3.3 mcpscan https://mcp.deepwiki.com/mcp
+npx -y github:rezearcher/greyridge-x402-tools#v0.3.1 mcpscan https://mcp.deepwiki.com/mcp
 ```
 
 Prints tools scanned, issue counts by severity, risk score, and a verdict (`clear` / `review` / `block`). **Exit code 2 on `block`**, so it drops straight into CI as a gate before you wire a new server to an agent. Static analysis of advertised tool metadata only — it never invokes your tools. Checks cover OWASP LLM01/LLM08 patterns: hidden instructions, conceal-from-user directives, data-exfiltration hints, cross-tool shadowing, and invisible-unicode payloads. Itemized findings with evidence and OWASP mapping: paid `/scan/mcp` ($0.05 USDC, x402 on Base).
@@ -35,10 +35,10 @@ If you already record a server with [mcp-egress](https://github.com/basitalisand
 
 ```bash
 mcp-egress run --calls calls.json --out egress.json -- uvx some-mcp-server
-npx -y github:rezearcher/greyridge-x402-tools#v0.3.3 mcpscan --from-egress egress.json   # reads .tools[], exits 2 on block
+npx -y github:rezearcher/greyridge-x402-tools#v0.3.1 mcpscan --from-egress egress.json   # reads .tools[], exits 2 on block
 ```
 
-Reads the recorded `.tools[]` (name/title/description/annotations) and applies the same tool-poisoning rules locally — no second connection to the server, no payment. Exit 0 clear / 1 review / 2 block. The one-liner is pinned to the `v0.3.3` release tag so a CI admission gate gets a fixed, reproducible artifact.
+Reads the recorded `.tools[]` (name/title/description/annotations) and applies the same tool-poisoning rules locally — no second connection to the server, no payment. Exit 0 clear / 1 review / 2 block. The one-liner is pinned to the `v0.3.1` release tag so a CI admission gate gets a fixed, reproducible artifact.
 
 ### Continuous monitoring — catch a server that turns hostile after you trust it
 
@@ -69,24 +69,14 @@ jobs:
   mcp-scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: rezearcher/greyridge-x402-tools@v0.3.3
-        id: scan
+      - uses: rezearcher/greyridge-x402-tools@v0.3.1
         with:
           url: https://your-mcp-host/mcp   # the MCP server your agent trusts
-          # fail-on: review   # review (default) | block | never
-          # commit-badge: true   # auto-commit the badge into your README (needs contents: write)
-      - run: echo "${{ steps.scan.outputs.badge-markdown }}"   # copy this into your README
 ```
 
 Exit code mirrors the `mcpscan` CLI: `2` on `block`, `1` on `review`, `0` on `clear`, and `3` if the scan could not run (**fails closed**, so a broken scan never silently passes an admission gate). Any non-zero exit fails the job.
 
 **Free vs paid in CI:** the Action runs the free preview (verdict + severity counts) on every push — $0, no key. When a job fails and you need the *itemized findings with evidence + OWASP LLM01/LLM08 mapping* to fix it, the free preview line points you at the paid `GET /scan/mcp?url=` ($0.05 USDC, x402 on Base) — a zero-egress `POST /scan/mcp` with your `tools` array works too if the server isn't publicly reachable.
-
-**A security badge for your README — emitted by the gate, not hand-built.** Every run outputs `badge-markdown`: a shields.io badge showing your live injection-security grade (`A`–`F`) and verdict, linked to your server's full security report. Paste it into your README from the Action's step summary, or set `commit-badge: true` and the gate inserts/updates it between `<!-- grsg-badge:start -->` markers and commits it for you (degrade-open — a badge-commit failure never fails your build). It reflects the one dimension generic repo-quality badges omit: OWASP-MCP (LLM01/LLM08) prompt-injection / tool-poisoning, re-checked on every CI run.
-
-```markdown
-[![MCP injection-security](https://img.shields.io/badge/MCP%20injection--security-A%20%7C%20clear-brightgreen)](https://x402-data-api.sigrunner.workers.dev/scan/mcp-scanner?url=YOUR_MCP_URL)
-```
 
 ## rugcheck / swap-gate — pre-trade safety for Base tokens
 
@@ -94,6 +84,14 @@ Honeypot sell-simulation, proxy/tax/liquidity checks → `SAFE` / `CAUTION` / `A
 
 ```bash
 pip install "git+https://github.com/rezearcher/greyridge-x402-tools"
+```
+
+Terminal in 10 seconds — the exit code is the gate (`0` GO, `1` HOLD, `2` BLOCK), so it drops straight into a script or CI step:
+
+```bash
+greyridge-gate aero                    # GO    SAFE  risk=15  ...
+greyridge-report 0xabc... --json       # full report as JSON
+greyridge-gate 0xabc... || echo "skip this trade"
 ```
 
 ```python
