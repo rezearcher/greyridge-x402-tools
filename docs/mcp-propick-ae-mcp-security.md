@@ -1,6 +1,6 @@
 ---
-title: Is the Propick Integration MCP MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Propick Integration MCP MCP server (https://propick.ae/mcp), run 2026-10-24: advertises ping, sync_properties, get_run; 8 tools scanned, injection verdict 'clear', 16 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the Propick Integration MCP MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Propick Integration MCP MCP server (https://propick.ae/mcp), run 2026-10-24: advertises ping, sync_properties, get_run; 8 tools scanned, injection verdict 'clear', 16 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # Propick Integration MCP MCP server — security & directory-readiness scorecard
 
