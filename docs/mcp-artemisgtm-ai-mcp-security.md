@@ -1,6 +1,6 @@
 ---
-title: Is the artemisgtm.ai MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the artemisgtm.ai MCP server (https://artemisgtm.ai/mcp), run 2026-10-24: advertises list_agents, recommend_agent, claim_free_agent; 5 tools scanned, injection verdict 'clear', 10 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the artemisgtm.ai MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the artemisgtm.ai MCP server (https://artemisgtm.ai/mcp), run 2026-10-24: advertises list_agents, recommend_agent, claim_free_agent; 5 tools scanned, injection verdict 'clear', 10 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # artemisgtm.ai MCP server — security & directory-readiness scorecard
 
