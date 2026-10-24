@@ -1,6 +1,6 @@
 ---
 title: Is the AirShelf Catalog MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the AirShelf Catalog MCP server (https://mcp.airshelf.ai/mcp), run 2026-10-24: 8 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the AirShelf Catalog MCP server (https://mcp.airshelf.ai/mcp), run 2026-10-24: advertises search_catalog, find_products, research_shopping; 8 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # AirShelf Catalog MCP server — security & directory-readiness scorecard
 
