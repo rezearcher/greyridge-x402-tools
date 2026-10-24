@@ -1,6 +1,6 @@
 ---
-title: Is the Arclan MCP Registry MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Arclan MCP Registry MCP server (https://arclan.ai/mcp), run 2026-10-24: advertises query_registry, get_server, recommend_server; 4 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the Arclan MCP Registry MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Arclan MCP Registry MCP server (https://arclan.ai/mcp), run 2026-10-24: advertises query_registry, get_server, recommend_server; 4 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # Arclan MCP Registry MCP server — security & directory-readiness scorecard
 
