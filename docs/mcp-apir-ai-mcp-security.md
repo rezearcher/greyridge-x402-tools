@@ -1,6 +1,6 @@
 ---
 title: Is the APIR Agent Verification MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the APIR Agent Verification MCP server (https://apir.ai/api/mcp), run 2026-10-24: 3 tools scanned, injection verdict 'clear', 6 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the APIR Agent Verification MCP server (https://apir.ai/api/mcp), run 2026-10-24: advertises verify_agent, check_authority, get_verification_keys; 3 tools scanned, injection verdict 'clear', 6 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # APIR Agent Verification MCP server — security & directory-readiness scorecard
 
