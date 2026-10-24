@@ -1,6 +1,6 @@
 ---
-title: Is the auteng.ai MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the auteng.ai MCP server (https://auteng.ai/mcp/docs), run 2026-10-24: advertises auteng_docs_create, auteng_docs_update, auteng_docs_list; 6 tools scanned, injection verdict 'clear', 12 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the auteng.ai MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the auteng.ai MCP server (https://auteng.ai/mcp/docs), run 2026-10-24: advertises auteng_docs_create, auteng_docs_update, auteng_docs_list; 6 tools scanned, injection verdict 'clear', 12 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # auteng.ai MCP server — security & directory-readiness scorecard
 
