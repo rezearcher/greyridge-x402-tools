@@ -1,6 +1,6 @@
 ---
-title: Is the agent-bev MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the agent-bev MCP server (https://mcp.bev-buyer.ai/mcp), run 2026-10-24: advertises search_drinks, get_record, find_producer; 9 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the agent-bev MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the agent-bev MCP server (https://mcp.bev-buyer.ai/mcp), run 2026-10-24: advertises search_drinks, get_record, find_producer; 9 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # agent-bev MCP server — security & directory-readiness scorecard
 
