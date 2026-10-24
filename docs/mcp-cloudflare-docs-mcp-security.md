@@ -1,6 +1,6 @@
 ---
-title: Is the Cloudflare Docs MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Cloudflare Docs MCP server (https://docs.mcp.cloudflare.com/mcp), run 2026-10-24: advertises search_cloudflare_documentation, migrate_pages_to_workers_guide; 2 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the Cloudflare Docs MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Cloudflare Docs MCP server (https://docs.mcp.cloudflare.com/mcp), run 2026-10-24: advertises search_cloudflare_documentation, migrate_pages_to_workers_guide; 2 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Cloudflare Docs MCP server — security & directory-readiness scorecard
 
