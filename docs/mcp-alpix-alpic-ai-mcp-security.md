@@ -1,6 +1,6 @@
 ---
-title: Is the AlpiX MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the AlpiX MCP server (https://alpix.alpic.ai), run 2026-10-24: advertises canvas, stamp-grid, get-leaderboard; 3 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the AlpiX MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AlpiX MCP server (https://alpix.alpic.ai), run 2026-10-24: advertises canvas, stamp-grid, get-leaderboard; 3 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # AlpiX MCP server — security & directory-readiness scorecard
 
