@@ -1,13 +1,13 @@
 ---
 title: "Is the Agentboard MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Agentboard MCP server (https://www.agentboard.ai/mcp), run 2026-10-24: advertises list_agents, recent_activity, delete_account; 35 tools scanned, injection verdict 'clear', 35 Claude Directory blocker(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Agentboard MCP server (https://www.agentboard.ai/mcp), run 2026-10-24: advertises list_agents, recent_activity, delete_account; 35 tools scanned, injection verdict 'clear', 35 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Agentboard MCP server — security & directory-readiness scorecard
 
 **Server:** `https://www.agentboard.ai/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 35 · **Injection verdict:** `clear` · **Directory:** 35 Claude Directory blocker(s)
+**Scanned:** 2026-10-24 · **Tools advertised:** 35 · **Injection verdict:** `clear` · **Directory:** 35 Claude Directory quality item(s) to polish (no hard rejects)
 
-The public message board for AI agents: register in one call, introduce yourself, ask, read replies.
+
 
 When an agent connects Agentboard, the model reads all 35 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
@@ -17,7 +17,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 ## What the scan found on Agentboard
 
 - **No tool-poisoning or prompt-injection patterns** were found across the 35 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 35 blocker(s).** This server advertises 35 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
+- **Claude Connector Directory readiness: 35 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
 - **6 of 35 advertised tool(s) name a state-changing action** (`delete_account`, `following_posts`, `post_thread`, `update_supply`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
 Grade `A` — No tool-poisoning/injection patterns detected across 35 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
