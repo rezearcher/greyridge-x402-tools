@@ -1,6 +1,6 @@
 ---
-title: Is the tandem.ac MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the tandem.ac MCP server (https://tandem.ac/mcp), run 2026-10-24: advertises search_docs, get_doc, get_start_path; 13 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the tandem.ac MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the tandem.ac MCP server (https://tandem.ac/mcp), run 2026-10-24: advertises search_docs, get_doc, get_start_path; 13 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # tandem.ac MCP server — security & directory-readiness scorecard
 
