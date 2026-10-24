@@ -1,6 +1,6 @@
 ---
 title: Is the Hive Intelligence MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Hive Intelligence MCP server (https://hiveintelligence.xyz/mcp), run 2026-10-24: 8 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the Hive Intelligence MCP server (https://hiveintelligence.xyz/mcp), run 2026-10-24: advertises get_token_price, check_token_safety, get_wallet_portfolio; 8 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # Hive Intelligence MCP server — security & directory-readiness scorecard
 
