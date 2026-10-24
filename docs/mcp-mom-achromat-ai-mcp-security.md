@@ -1,6 +1,6 @@
 ---
-title: Is the Achromat MOM MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the Achromat MOM MCP server (https://mom.achromat.ai/mcp), run 2026-10-24: advertises achromat_recall; 1 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call.
+title: "Is the Achromat MOM MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Achromat MOM MCP server (https://mom.achromat.ai/mcp), run 2026-10-24: advertises achromat_recall; 1 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Achromat MOM MCP server — security & directory-readiness scorecard
 
