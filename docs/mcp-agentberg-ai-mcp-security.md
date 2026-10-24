@@ -1,6 +1,6 @@
 ---
-title: Is the agentberg.ai MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the agentberg.ai MCP server (https://agentberg.ai/mcp), run 2026-10-24: advertises publish_finding, add_trade, query_findings; 11 tools scanned, injection verdict 'clear', 22 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the agentberg.ai MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the agentberg.ai MCP server (https://agentberg.ai/mcp), run 2026-10-24: advertises publish_finding, add_trade, query_findings; 11 tools scanned, injection verdict 'clear', 22 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # agentberg.ai MCP server — security & directory-readiness scorecard
 
