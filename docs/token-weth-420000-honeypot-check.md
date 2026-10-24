@@ -1,11 +1,11 @@
 ---
 title: "Is WETH a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for WETH (Wrapped Ether) on Base (0x4200000000000000000000000000000000000006), measured 2026-10-23: engine verdict HOLD, risk 0/100. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for WETH (Wrapped Ether) on Base (0x4200000000000000000000000000000000000006), measured 2026-10-24: engine verdict HOLD, risk 0/100. Re-run it yourself in one keyless call."
 ---
 # Is WETH a honeypot? — on-chain rug check (Base)
 
 **Token:** `0x4200000000000000000000000000000000000006`
-**Chain:** Base · **Measured:** 2026-10-23 · verdict `HOLD` · risk `0/100`
+**Chain:** Base · **Measured:** 2026-10-24 · verdict `HOLD` · risk `0/100`
 
 Our engine returned **HOLD** for WETH — at least one measured signal warrants caution before you buy.
 
@@ -62,4 +62,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-10-23; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-10-24; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
