@@ -1,6 +1,6 @@
 ---
-title: Is the actwise.ai MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the actwise.ai MCP server (https://actwise.ai/ideation/mcp/v1), run 2026-10-24: advertises read_context_resource, evaluate_idea; 2 tools scanned, injection verdict 'clear', 2 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the actwise.ai MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the actwise.ai MCP server (https://actwise.ai/ideation/mcp/v1), run 2026-10-24: advertises read_context_resource, evaluate_idea; 2 tools scanned, injection verdict 'clear', 2 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # actwise.ai MCP server — security & directory-readiness scorecard
 
