@@ -1,6 +1,6 @@
 ---
-title: Is the AI-Portal Enterprise GenAI Briefing MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the AI-Portal Enterprise GenAI Briefing MCP server (https://www.ai-portal.ai/mcp), run 2026-10-24: advertises list_releases, list_regulations, search_glossary; 4 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the AI-Portal Enterprise GenAI Briefing MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AI-Portal Enterprise GenAI Briefing MCP server (https://www.ai-portal.ai/mcp), run 2026-10-24: advertises list_releases, list_regulations, search_glossary; 4 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # AI-Portal Enterprise GenAI Briefing MCP server — security & directory-readiness scorecard
 
