@@ -1,6 +1,6 @@
 ---
 title: Is the advisorsai.ai MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the advisorsai.ai MCP server (https://advisorsai.ai/store-readiness-mcp), run 2026-10-24: 1 tools scanned, injection verdict 'clear', 1 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+description: Independent, measured security and Claude Connector Directory readiness scan of the advisorsai.ai MCP server (https://advisorsai.ai/store-readiness-mcp), run 2026-10-24: advertises advisors_store_readiness_check; 1 tools scanned, injection verdict 'clear', 1 Claude Directory blocker(s). Re-run it yourself in one keyless call.
 ---
 # advisorsai.ai MCP server — security & directory-readiness scorecard
 
