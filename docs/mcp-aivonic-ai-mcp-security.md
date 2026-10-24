@@ -1,6 +1,6 @@
 ---
-title: Is the mcp.aivonic.ai MCP server safe? Security & Claude Directory readiness scan
-description: Independent, measured security and Claude Connector Directory readiness scan of the mcp.aivonic.ai MCP server (https://mcp.aivonic.ai), run 2026-10-24: advertises get_pricing, get_products, check_availability; 5 tools scanned, injection verdict 'clear', 10 Claude Directory blocker(s). Re-run it yourself in one keyless call.
+title: "Is the mcp.aivonic.ai MCP server safe? Security & Claude Directory readiness scan"
+description: "Independent, measured security and Claude Connector Directory readiness scan of the mcp.aivonic.ai MCP server (https://mcp.aivonic.ai), run 2026-10-24: advertises get_pricing, get_products, check_availability; 5 tools scanned, injection verdict 'clear', 10 Claude Directory blocker(s). Re-run it yourself in one keyless call."
 ---
 # mcp.aivonic.ai MCP server — security & directory-readiness scorecard
 
