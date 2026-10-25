@@ -1,15 +1,15 @@
 ---
 title: "Is WETH a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for WETH (Wrapped Ether) on Base (0x4200000000000000000000000000000000000006), measured 2026-10-24: engine verdict HOLD, risk 0/100. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for WETH (Wrapped Ether) on Base (0x4200000000000000000000000000000000000006), measured 2026-10-25: engine verdict GO, risk 0/100, $74.48M pool liquidity. Re-run it yourself in one keyless call."
 ---
 # Is WETH a honeypot? — on-chain rug check (Base)
 
 **Token:** `0x4200000000000000000000000000000000000006`
-**Chain:** Base · **Measured:** 2026-10-24 · verdict `HOLD` · risk `0/100`
+**Chain:** Base · **Measured:** 2026-10-25 · verdict `GO` · risk `0/100`
 
-Our engine returned **HOLD** for WETH — at least one measured signal warrants caution before you buy.
+On the measured on-chain checks below, **WETH passed** — our engine returned a GO.
 
-no verifiable Uniswap v3 WETH-pool liquidity — cannot confirm the position is exitable or size the trade; not safe to auto-buy.
+token passes safety checks; trade is 0.00% of pool liquidity.
 
 ### Red / caution flags measured
 
@@ -21,9 +21,8 @@ no verifiable Uniswap v3 WETH-pool liquidity — cannot confirm the position is 
 - owner cannot mint new supply
 - transfers cannot be paused
 - no blacklist function found
-- 0% measured transfer fee
 
-WETH-pool liquidity could not be measured for this token.
+Deepest Uniswap v3 WETH pool held about **$74.48M** of liquidity when measured.
 
 ## See the live verdict and size your exit
 
@@ -62,4 +61,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-10-24; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-10-25; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
