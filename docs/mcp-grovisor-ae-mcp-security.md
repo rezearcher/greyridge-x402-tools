@@ -1,28 +1,28 @@
 ---
 title: "Is the groTAX by Grovisor MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the groTAX by Grovisor MCP server (https://mcp.grovisor.ae/), run 2026-10-24: advertises grotax_compute_ct, grotax_health_check, grotax_list_health_questions; 8 tools scanned, injection verdict 'clear', 8 Claude Directory blocker(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the groTAX by Grovisor MCP server (https://mcp.grovisor.ae/), run 2026-10-26: advertises grotax_compute_ct, grotax_health_check, grotax_list_health_questions; 8 tools scanned, injection verdict 'clear', 8 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # groTAX by Grovisor MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.grovisor.ae/`
-**Scanned:** 2026-10-24 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory blocker(s)
+**Scanned:** 2026-10-26 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory quality item(s) to polish (no hard rejects)
 
 UAE Corporate Tax: CT computation, SBR, penalties, free zone test, TP and health-check.
 
 When an agent connects groTAX by Grovisor, the model reads all 8 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.grovisor.ae`, scanned 2026-10-24; the verdict below is `clear`.
+`mcp.grovisor.ae`, scanned 2026-10-26; the verdict below is `clear`.
 
 ## What the scan found on groTAX by Grovisor
 
 - **No tool-poisoning or prompt-injection patterns** were found across the 8 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 8 blocker(s).** This server advertises 8 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
+- **Claude Connector Directory readiness: 8 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
 - **1 of 8 advertised tool(s) name a state-changing action** (`grotax_compute_ct`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
 Grade `A` — No tool-poisoning/injection patterns detected across 8 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the groTAX by Grovisor server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the groTAX by Grovisor server advertises
@@ -69,4 +69,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.grovisor.ae` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
