@@ -1,11 +1,11 @@
 ---
 title: "Is XDP a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for XDP (Doppler) on Base (0x07b3d902783c3c12b077508c3b5c00113d1291d0), measured 2026-10-25: engine verdict GO, risk 20/100, $0 pool liquidity. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for XDP (Doppler) on Base (0x07b3d902783c3c12b077508c3b5c00113d1291d0), measured 2026-10-26: engine verdict GO, risk 20/100, $0 pool liquidity. Re-run it yourself in one keyless call."
 ---
 # Is XDP a honeypot? — on-chain rug check (Base)
 
 **Token:** `0x07b3d902783c3c12b077508c3b5c00113d1291d0`
-**Chain:** Base · **Measured:** 2026-10-25 · verdict `GO` · risk `20/100`
+**Chain:** Base · **Measured:** 2026-10-26 · verdict `GO` · risk `20/100`
 
 On the measured on-chain checks below, **XDP passed** — our engine returned a GO.
 
@@ -50,4 +50,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-10-25; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-10-26; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
