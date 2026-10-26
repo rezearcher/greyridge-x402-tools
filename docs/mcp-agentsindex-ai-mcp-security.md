@@ -1,18 +1,18 @@
 ---
 title: "Is the AgentsIndex MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the AgentsIndex MCP server (https://agentsindex.ai/mcp), run 2026-10-24: advertises search_listings, get_listing, list_categories; 12 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AgentsIndex MCP server (https://agentsindex.ai/mcp), run 2026-10-26: advertises search_listings, get_listing, list_categories; 12 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # AgentsIndex MCP server — security & directory-readiness scorecard
 
 **Server:** `https://agentsindex.ai/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 12 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-10-26 · **Tools advertised:** 12 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 The editors' index of AI-native software, from AI agents to the models and frameworks behind them.
 
 When an agent connects AgentsIndex, the model reads all 12 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`agentsindex.ai`, scanned 2026-10-24; the verdict below is `clear`.
+`agentsindex.ai`, scanned 2026-10-26; the verdict below is `clear`.
 
 ## What the scan found on AgentsIndex
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 12 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the AgentsIndex server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the AgentsIndex server advertises
@@ -38,7 +38,7 @@ These are the 12 tool definition(s) any agent reads before it acts — the exact
 - **`get_best_of`** — The Published tools in one category, in the order its category page prints (ranked by what we can confirm: a public price, an API and docs, independent sources, stated limits), as… _(parameters: category)_
 - **`submit_listing`** — Submit a tool to AgentsIndex: the url alone; we write its name and description from its own pages. Requires an existing signed-in account with verified email; send its session Coo… _(parameters: url)_
 - **`send_lead`** — Send a buyer-intent enquiry (lead) to a tool or a whole category on AgentsIndex. Keyless. Requires consent:true, a real name, a permanent (non-disposable) email, a message of at l… _(parameters: name, email, message, consent, listingSlug, categorySlug)_
-- **`list_offers`** — What a listing owner can buy on AgentsIndex, with prices in US cents (VAT included), each offer's term and what it needs. Keyless. Same answer as GET https://agentsindex.ai/api/ag…
+- **`list_offers`** — What a listing owner can buy on AgentsIndex, with prices in US cents excl. VAT, each offer's term and what it needs. Keyless. Same answer as GET https://agentsindex.ai/api/agent/c…
 - **`get_quote`** — A signed price for one offer (from list_offers) on one listing, valid for a short time, and whether the listing can have it now. Only the account that owns the listing gets one: s… _(parameters: offer, listing)_
 - **`create_order`** — Turns a quote (from get_quote) into an order, payable for 24 hours. Same account as the quote: its session Cookie header, or its agent key as Authorization: Bearer (order scope).… _(parameters: quote_id, idempotency_key)_
 - **`my_listings`** — What the AgentsIndex owner dashboard shows about the listings an account owns: each one's status ('status.kind': review with the expected date, accepted with 'liveOn' and 'paid' (… _(parameters: slug)_
@@ -75,4 +75,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `agentsindex.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
