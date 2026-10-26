@@ -1,18 +1,18 @@
 ---
 title: "Is the Cloudflare Docs MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Cloudflare Docs MCP server (https://docs.mcp.cloudflare.com/mcp), run 2026-10-24: advertises search_cloudflare_documentation, migrate_pages_to_workers_guide; 2 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Cloudflare Docs MCP server (https://docs.mcp.cloudflare.com/mcp), run 2026-10-26: advertises search_cloudflare_documentation, migrate_pages_to_workers_guide; 2 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Cloudflare Docs MCP server — security & directory-readiness scorecard
 
 **Server:** `https://docs.mcp.cloudflare.com/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 2 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-10-26 · **Tools advertised:** 2 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Cloudflare's documentation MCP server exposes docs-search tools to AI agents.
 
 When an agent connects Cloudflare Docs, the model reads all 2 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`docs.mcp.cloudflare.com`, scanned 2026-10-24; the verdict below is `clear`.
+`docs.mcp.cloudflare.com`, scanned 2026-10-26; the verdict below is `clear`.
 
 ## What the scan found on Cloudflare Docs
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 2 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Cloudflare Docs server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Cloudflare Docs server advertises
@@ -63,4 +63,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `docs.mcp.cloudflare.com` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
