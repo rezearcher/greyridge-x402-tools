@@ -1,18 +1,18 @@
 ---
 title: "Is the DeepWiki MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the DeepWiki MCP server (https://mcp.deepwiki.com/mcp), run 2026-10-24: advertises ask_wiki_question, read_wiki_contents, read_wiki_structure; 3 tools scanned, injection verdict 'clear', 6 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the DeepWiki MCP server (https://mcp.deepwiki.com/mcp), run 2026-10-26: advertises ask_wiki_question, read_wiki_contents, read_wiki_structure; 3 tools scanned, injection verdict 'clear', 6 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # DeepWiki MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.deepwiki.com/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 3 · **Injection verdict:** `clear` · **Directory:** 6 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-10-26 · **Tools advertised:** 3 · **Injection verdict:** `clear` · **Directory:** 6 Claude Directory quality item(s) to polish (no hard rejects)
 
 DeepWiki's MCP server exposes repository-documentation lookup tools to AI agents.
 
 When an agent connects DeepWiki, the model reads all 3 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.deepwiki.com`, scanned 2026-10-24; the verdict below is `clear`.
+`mcp.deepwiki.com`, scanned 2026-10-26; the verdict below is `clear`.
 
 ## What the scan found on DeepWiki
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 3 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the DeepWiki server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the DeepWiki server advertises
@@ -66,4 +66,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.deepwiki.com` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
