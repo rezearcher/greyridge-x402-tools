@@ -32,7 +32,7 @@ These are the 2 tool definition(s) any agent reads before it acts — the exact 
 - **`search_cloudflare_documentation`** — Search the Cloudflare documentation. This tool should be used to answer any question about Cloudflare products or features, including: - Workers, Pages, R2, Images, Stream, D1, Du… _(parameters: query)_
 - **`migrate_pages_to_workers_guide`** — ALWAYS read this guide before migrating Pages projects to Workers.
 
-## Scan Cloudflare Docs yourself, or claim its badge
+## Scan Cloudflare Docs yourself, or claim its badge {#claim}
 
 Re-run this exact Cloudflare Docs check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `docs.mcp.cloudflare.com`:
