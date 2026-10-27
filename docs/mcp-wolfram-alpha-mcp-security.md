@@ -33,6 +33,15 @@ These are the 3 tool definition(s) any agent reads before it acts — the exact 
 - **`WolframLanguageEvaluator`** — Evaluates Wolfram Language code for the user in a Wolfram Language kernel. If a formatted result is provided as a markdown link, use that in your response instead of typing out th… _(parameters: code, timeConstraint)_
 - **`WolframAlpha`** — Use natural language queries with Wolfram|Alpha to get up-to-date computational results about entities in chemistry, physics, geography, history, art, astronomy, and more. _(parameters: query)_
 
+## Maintenance & supply-chain — the risk Wolfram Alpha's static scan can't see
+
+A prompt-injection scan reads Wolfram Alpha's advertised tool metadata at one moment. It cannot tell you the project behind `agenttools.wolfram.com` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `agenttools.wolfram.com` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
 ## Scan Wolfram Alpha yourself, or claim its badge {#claim}
 
 Re-run this exact Wolfram Alpha check yourself, keyless — the free response carries the verdict and the
