@@ -35,6 +35,15 @@ These are the 3 tool definition(s) any agent reads before it acts — the exact 
 - **`read_wiki_contents`** — View documentation about a GitHub repository. _(parameters: repoName)_
 - **`read_wiki_structure`** — Get a list of documentation topics for a GitHub repository. _(parameters: repoName)_
 
+## Maintenance & supply-chain — the risk DeepWiki's static scan can't see
+
+A prompt-injection scan reads DeepWiki's advertised tool metadata at one moment. It cannot tell you the project behind `mcp.deepwiki.com` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `mcp.deepwiki.com` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
 ## Scan DeepWiki yourself, or claim its badge {#claim}
 
 Re-run this exact DeepWiki check yourself, keyless — the free response carries the verdict and the
