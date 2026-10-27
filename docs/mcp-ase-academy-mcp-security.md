@@ -1,18 +1,18 @@
 ---
 title: "Is the Agentic Engineering Periodic System MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Agentic Engineering Periodic System MCP server (https://ase.academy/mcp), run 2026-10-26: advertises overview, find_elements, get_element; 4 tools scanned, injection verdict 'clear', 8 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Agentic Engineering Periodic System MCP server (https://ase.academy/mcp), run 2026-10-27: advertises overview, find_elements, get_element; 4 tools scanned, injection verdict 'clear', 8 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Agentic Engineering Periodic System MCP server — security & directory-readiness scorecard
 
 **Server:** `https://ase.academy/mcp`
-**Scanned:** 2026-10-26 · **Tools advertised:** 4 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-10-27 · **Tools advertised:** 4 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory quality item(s) to polish (no hard rejects)
 
 Practices for building software with coding agents, each with a test you check on your repo.
 
 When an agent connects Agentic Engineering Periodic System, the model reads all 4 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`ase.academy`, scanned 2026-10-26; the verdict below is `clear`.
+`ase.academy`, scanned 2026-10-27; the verdict below is `clear`.
 
 ## What the scan found on Agentic Engineering Periodic System
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 4 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Agentic Engineering Periodic System server
-on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-10-27; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Agentic Engineering Periodic System server advertises
@@ -36,7 +36,16 @@ These are the 4 tool definition(s) any agent reads before it acts — the exact 
 - **`get_element`** — One element in full: problem, observable test with its clauses and evidence kinds, when it applies, when it adds work without helping, activities, relations, page link. By ID (ae-… _(parameters: ref)_
 - **`repository_checklist`** — What a repository can show for each test, clause by clause, what it cannot, and the judging rules. Use it to check the current project; read the files yourself. Optional: element… _(parameters: ids, role, group)_
 
-## Scan Agentic Engineering Periodic System yourself, or claim its badge
+## Maintenance & supply-chain — the risk Agentic Engineering Periodic System's static scan can't see
+
+A prompt-injection scan reads Agentic Engineering Periodic System's advertised tool metadata at one moment. It cannot tell you the project behind `ase.academy` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `ase.academy` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan Agentic Engineering Periodic System yourself, or claim its badge {#claim}
 
 Re-run this exact Agentic Engineering Periodic System check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `ase.academy`:
@@ -67,4 +76,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `ase.academy` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-10-27; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
