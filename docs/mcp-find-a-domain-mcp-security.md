@@ -32,7 +32,7 @@ These are the 2 tool definition(s) any agent reads before it acts — the exact 
 - **`check_domain`** — Check domain availability using DNS, then authoritative registry RDAP, then WHOIS as needed. Returns status, source, explanation, and check time. Available means the registry repo… _(parameters: name, tld)_
 - **`list_tlds`** — Get a list of all available top-level domains (TLDs)
 
-## Scan Find A Domain yourself, or claim its badge
+## Scan Find A Domain yourself, or claim its badge {#claim}
 
 Re-run this exact Find A Domain check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `api.findadomain.dev`:
