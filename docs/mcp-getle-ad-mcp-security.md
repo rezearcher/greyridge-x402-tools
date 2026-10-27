@@ -1,18 +1,18 @@
 ---
 title: "Is the Getlead MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Getlead MCP server (https://mcp.getle.ad/mcp), run 2026-10-26: advertises get_account, list_mailboxes, test_mailbox; 35 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Getlead MCP server (https://mcp.getle.ad/mcp), run 2026-10-27: advertises get_account, list_mailboxes, test_mailbox; 35 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Getlead MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.getle.ad/mcp`
-**Scanned:** 2026-10-26 · **Tools advertised:** 35 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-10-27 · **Tools advertised:** 35 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Find B2B leads with verified work emails, find and verify emails, and run cold email outreach.
 
 When an agent connects Getlead, the model reads all 35 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.getle.ad`, scanned 2026-10-26; the verdict below is `clear`.
+`mcp.getle.ad`, scanned 2026-10-27; the verdict below is `clear`.
 
 ## What the scan found on Getlead
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 35 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Getlead server
-on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-10-27; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Getlead server advertises
@@ -67,7 +67,16 @@ These are the 35 tool definition(s) any agent reads before it acts — the exact
 - **`export_list_csv`** — Return list contents as CSV text, at most 1000 rows. Use it to hand the data to the user or another tool; do not use it to page through a large list. _(parameters: list_id, email_status, limit)_
 - **`delete_list`** — Permanently delete a list and every lead in it. Irreversible: ask the user first, then call again with confirm true. _(parameters: list_id, confirm)_
 
-## Scan Getlead yourself, or claim its badge
+## Maintenance & supply-chain — the risk Getlead's static scan can't see
+
+A prompt-injection scan reads Getlead's advertised tool metadata at one moment. It cannot tell you the project behind `mcp.getle.ad` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance grade `B`** — last commit pushed 31 day(s) ago, 2 open issue(s).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `mcp.getle.ad` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan Getlead yourself, or claim its badge {#claim}
 
 Re-run this exact Getlead check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `mcp.getle.ad`:
@@ -98,4 +107,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.getle.ad` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-10-27; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
