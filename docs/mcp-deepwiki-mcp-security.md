@@ -35,7 +35,7 @@ These are the 3 tool definition(s) any agent reads before it acts — the exact 
 - **`read_wiki_contents`** — View documentation about a GitHub repository. _(parameters: repoName)_
 - **`read_wiki_structure`** — Get a list of documentation topics for a GitHub repository. _(parameters: repoName)_
 
-## Scan DeepWiki yourself, or claim its badge
+## Scan DeepWiki yourself, or claim its badge {#claim}
 
 Re-run this exact DeepWiki check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `mcp.deepwiki.com`:
