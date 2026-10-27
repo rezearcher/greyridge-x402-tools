@@ -15,8 +15,12 @@ Last generated 2026-10-27.
 | Server | Grade | Injection | Tools | Claude Directory | Scanned |
 |---|:--:|---|:--:|---|---|
 | [mcp.adoraads.ai](mcp-adoraads-ai-mcp-security.html) | [A](mcp-adoraads-ai-mcp-security.html#claim) | `clear` | 6 | ready | 2026-10-24 |
+| [BeachClubs.ae](mcp-beachclubs-ae-mcp-security.html) | [A](mcp-beachclubs-ae-mcp-security.html#claim) | `clear` | 4 | ready | 2026-10-27 |
 | [Cloudflare Docs](mcp-cloudflare-docs-mcp-security.html) | [A](mcp-cloudflare-docs-mcp-security.html#claim) | `clear` | 2 | ready | 2026-10-27 |
+| [mcp.datadubai.ae](mcp-datadubai-ae-mcp-security.html) | [A](mcp-datadubai-ae-mcp-security.html#claim) | `clear` | 6 | ready | 2026-10-27 |
+| [Getlead](mcp-getle-ad-mcp-security.html) | [A](mcp-getle-ad-mcp-security.html#claim) | `clear` | 35 | ready | 2026-10-27 |
 | [Hugging Face](mcp-hugging-face-mcp-security.html) | [A](mcp-hugging-face-mcp-security.html#claim) | `clear` | 4 | ready | 2026-10-27 |
+| [tandem.ac](mcp-tandem-ac-mcp-security.html) | [A](mcp-tandem-ac-mcp-security.html#claim) | `clear` | 13 | ready | 2026-10-27 |
 | [Wolfram Alpha](mcp-wolfram-alpha-mcp-security.html) | [A](mcp-wolfram-alpha-mcp-security.html#claim) | `clear` | 3 | ready | 2026-10-27 |
 | [AgentRoam](mcp-agentroam-ai-mcp-security.html) | [A](mcp-agentroam-ai-mcp-security.html#claim) | `clear` | 11 | ready | 2026-10-24 |
 | [agents.alphaquantlabs.ai](mcp-agents-alphaquantlabs-ai-mcp-security.html) | [A](mcp-agents-alphaquantlabs-ai-mcp-security.html#claim) | `clear` | 2 | ready | 2026-10-24 |
@@ -33,7 +37,6 @@ Last generated 2026-10-27.
 | [Atmy air quality](mcp-atmy-ai-mcp-security.html) | [A](mcp-atmy-ai-mcp-security.html#claim) | `clear` | 6 | ready | 2026-10-24 |
 | [Aviado AI](mcp-aviado-ai-mcp-security.html) | [A](mcp-aviado-ai-mcp-security.html#claim) | `clear` | 11 | ready | 2026-10-24 |
 | [api.bareun.ai](mcp-bareun-ai-mcp-security.html) | [A](mcp-bareun-ai-mcp-security.html#claim) | `clear` | 6 | ready | 2026-10-24 |
-| [BeachClubs.ae](mcp-beachclubs-ae-mcp-security.html) | [A](mcp-beachclubs-ae-mcp-security.html#claim) | `clear` | 4 | ready | 2026-10-24 |
 | [BenchGecko](mcp-benchgecko-ai-mcp-security.html) | [A](mcp-benchgecko-ai-mcp-security.html#claim) | `clear` | 9 | ready | 2026-10-24 |
 | [BetSlip Doctor](mcp-betslipdoctor-ai-mcp-security.html) | [A](mcp-betslipdoctor-ai-mcp-security.html#claim) | `clear` | 81 | ready | 2026-10-24 |
 | [agent-bev](mcp-bev-buyer-ai-mcp-security.html) | [A](mcp-bev-buyer-ai-mcp-security.html#claim) | `clear` | 9 | ready | 2026-10-24 |
@@ -52,12 +55,10 @@ Last generated 2026-10-27.
 | [Clawfight](mcp-clawfight-ai-mcp-security.html) | [A](mcp-clawfight-ai-mcp-security.html#claim) | `clear` | 23 | ready | 2026-10-24 |
 | [Clear Tape](mcp-cleartape-ai-mcp-security.html) | [A](mcp-cleartape-ai-mcp-security.html#claim) | `clear` | 11 | ready | 2026-10-24 |
 | [Plumbline - Contractor License Checks](mcp-contractors-agentlookups-ai-mcp-security.html) | [A](mcp-contractors-agentlookups-ai-mcp-security.html#claim) | `clear` | 1 | ready | 2026-10-24 |
-| [mcp.datadubai.ae](mcp-datadubai-ae-mcp-security.html) | [A](mcp-datadubai-ae-mcp-security.html#claim) | `clear` | 6 | ready | 2026-10-24 |
 | [bitHuman docs](mcp-docs-bithuman-ai-mcp-security.html) | [A](mcp-docs-bithuman-ai-mcp-security.html#claim) | `clear` | 2 | ready | 2026-10-24 |
 | [GroundTruth - Environmental Records](mcp-env-agentlookups-ai-mcp-security.html) | [A](mcp-env-agentlookups-ai-mcp-security.html#claim) | `clear` | 4 | ready | 2026-10-24 |
 | [Events.Aero](mcp-events-aero-mcp-security.html) | [A](mcp-events-aero-mcp-security.html#claim) | `clear` | 5 | ready | 2026-10-24 |
 | [Spoon Scout - Food Contaminant Lookup](mcp-food-agentlookups-ai-mcp-security.html) | [A](mcp-food-agentlookups-ai-mcp-security.html#claim) | `clear` | 6 | ready | 2026-10-24 |
-| [Getlead](mcp-getle-ad-mcp-security.html) | [A](mcp-getle-ad-mcp-security.html#claim) | `clear` | 35 | ready | 2026-10-24 |
 | [JustIdea Agency](mcp-justidea-agency-mcp-security.html) | [A](mcp-justidea-agency-mcp-security.html#claim) | `clear` | 8 | ready | 2026-10-24 |
 | [GroundRules - US Law Text](mcp-law-agentlookups-ai-mcp-security.html) | [A](mcp-law-agentlookups-ai-mcp-security.html#claim) | `clear` | 4 | ready | 2026-10-24 |
 | [Achromat MOM](mcp-mom-achromat-ai-mcp-security.html) | [A](mcp-mom-achromat-ai-mcp-security.html#claim) | `clear` | 1 | ready | 2026-10-24 |
@@ -68,7 +69,6 @@ Last generated 2026-10-27.
 | [GreenLight - Plug-in Solar Law Registry](mcp-solar-agentlookups-ai-mcp-security.html) | [A](mcp-solar-agentlookups-ai-mcp-security.html#claim) | `clear` | 2 | ready | 2026-10-24 |
 | [1Court Directory](mcp-state-1court-ai-mcp-security.html) | [A](mcp-state-1court-ai-mcp-security.html#claim) | `clear` | 6 | ready | 2026-10-24 |
 | [supershopping-mcp.atdev.ai](mcp-supershopping-mcp-atdev-ai-mcp-security.html) | [A](mcp-supershopping-mcp-atdev-ai-mcp-security.html#claim) | `clear` | 8 | ready | 2026-10-24 |
-| [tandem.ac](mcp-tandem-ac-mcp-security.html) | [A](mcp-tandem-ac-mcp-security.html#claim) | `clear` | 13 | ready | 2026-10-24 |
 | [Vera](mcp-vera-waggle-ae-mcp-security.html) | [A](mcp-vera-waggle-ae-mcp-security.html#claim) | `clear` | 16 | ready | 2026-10-24 |
 | [zoll.agency](mcp-zoll-agency-mcp-security.html) | [A](mcp-zoll-agency-mcp-security.html#claim) | `clear` | 7 | ready | 2026-10-24 |
 | [advisorsai.ai](mcp-advisorsai-ai-mcp-security.html) | [A](mcp-advisorsai-ai-mcp-security.html#claim) | `clear` | 1 | 1 blocker | 2026-10-24 |
@@ -80,11 +80,15 @@ Last generated 2026-10-27.
 | [Find A Domain](mcp-find-a-domain-mcp-security.html) | [A](mcp-find-a-domain-mcp-security.html#claim) | `clear` | 2 | 4 blockers | 2026-10-27 |
 | [api.agentrapay.ai](mcp-agentrapay-ai-mcp-security.html) | [A](mcp-agentrapay-ai-mcp-security.html#claim) | `clear` | 6 | 6 blockers | 2026-10-24 |
 | [DeepWiki](mcp-deepwiki-mcp-security.html) | [A](mcp-deepwiki-mcp-security.html#claim) | `clear` | 3 | 6 blockers | 2026-10-27 |
+| [Inside Ads](mcp-inside-ad-mcp-security.html) | [A](mcp-inside-ad-mcp-security.html#claim) | `clear` | 3 | 6 blockers | 2026-10-27 |
+| [Agentic Engineering Periodic System](mcp-ase-academy-mcp-security.html) | [A](mcp-ase-academy-mcp-security.html#claim) | `clear` | 4 | 8 blockers | 2026-10-27 |
 | [Hive Intelligence](mcp-hive-intelligence-mcp-security.html) | [A](mcp-hive-intelligence-mcp-security.html#claim) | `clear` | 8 | 10 blockers | 2026-10-27 |
 | [Agentic Terminal Directory](mcp-agenticterminal-ai-mcp-security.html) | [A](mcp-agenticterminal-ai-mcp-security.html#claim) | `clear` | 6 | 12 blockers | 2026-10-24 |
 | [AutoPoster AI](mcp-agent-autoposter-ai-mcp-security.html) | [A](mcp-agent-autoposter-ai-mcp-security.html#claim) | `clear` | 14 | 14 blockers | 2026-10-24 |
 | [AFG: agents hire agents (test money)](mcp-afg-ai-mcp-security.html) | [A](mcp-afg-ai-mcp-security.html#claim) | `clear` | 18 | 18 blockers | 2026-10-24 |
 | [agentberg.ai](mcp-agentberg-ai-mcp-security.html) | [A](mcp-agentberg-ai-mcp-security.html#claim) | `clear` | 11 | 22 blockers | 2026-10-24 |
+| [Brainy Prices — UAE Cost of Living](mcp-prices-brainy-ae-mcp-security.html) | [A](mcp-prices-brainy-ae-mcp-security.html#claim) | `clear` | 26 | 26 blockers | 2026-10-27 |
+| [Apex AI Academy](mcp-apexai-academy-mcp-security.html) | [A](mcp-apexai-academy-mcp-security.html#claim) | `clear` | 30 | 31 blockers | 2026-10-27 |
 | [Agentboard](mcp-agentboard-ai-mcp-security.html) | [A](mcp-agentboard-ai-mcp-security.html#claim) | `clear` | 35 | 35 blockers | 2026-10-24 |
 | [app.bitroad.ai](mcp-bitroad-ai-mcp-security.html) | [A](mcp-bitroad-ai-mcp-security.html#claim) | `clear` | 65 | 1 blocker | 2026-10-24 |
 | [BUMIT](mcp-bumit-ai-mcp-security.html) | [A](mcp-bumit-ai-mcp-security.html#claim) | `clear` | 1 | 1 blocker | 2026-10-24 |
@@ -115,7 +119,6 @@ Last generated 2026-10-27.
 | [Psychiatry for Children](mcp-childpsychiatry-ai-mcp-security.html) | [A](mcp-childpsychiatry-ai-mcp-security.html#claim) | `clear` | 6 | 6 blockers | 2026-10-24 |
 | [China Marketing AI Intelligence MCP](mcp-chinamarketing-ai-mcp-security.html) | [A](mcp-chinamarketing-ai-mcp-security.html#claim) | `clear` | 3 | 6 blockers | 2026-10-24 |
 | [citepath](mcp-citepath-ai-mcp-security.html) | [A](mcp-citepath-ai-mcp-security.html#claim) | `clear` | 3 | 6 blockers | 2026-10-24 |
-| [Inside Ads](mcp-inside-ad-mcp-security.html) | [A](mcp-inside-ad-mcp-security.html#claim) | `clear` | 3 | 6 blockers | 2026-10-24 |
 | [Celestio](mcp-celestio-ai-mcp-security.html) | [A](mcp-celestio-ai-mcp-security.html#claim) | `clear` | 7 | 7 blockers | 2026-10-24 |
 | [EasyVoice text to speech](mcp-easyvoice-ae-mcp-security.html) | [A](mcp-easyvoice-ae-mcp-security.html#claim) | `clear` | 7 | 7 blockers | 2026-10-24 |
 | [AI-Portal Enterprise GenAI Briefing](mcp-ai-portal-ai-mcp-security.html) | [A](mcp-ai-portal-ai-mcp-security.html#claim) | `clear` | 4 | 8 blockers | 2026-10-24 |
@@ -123,7 +126,6 @@ Last generated 2026-10-27.
 | [api.aislabs.ai](mcp-aislabs-ai-mcp-security.html) | [A](mcp-aislabs-ai-mcp-security.html#claim) | `clear` | 4 | 8 blockers | 2026-10-24 |
 | [Arclan MCP Registry](mcp-arclan-ai-mcp-security.html) | [A](mcp-arclan-ai-mcp-security.html#claim) | `clear` | 4 | 8 blockers | 2026-10-24 |
 | [artidrop.ai](mcp-artidrop-ai-mcp-security.html) | [A](mcp-artidrop-ai-mcp-security.html#claim) | `clear` | 4 | 8 blockers | 2026-10-24 |
-| [Agentic Engineering Periodic System](mcp-ase-academy-mcp-security.html) | [A](mcp-ase-academy-mcp-security.html#claim) | `clear` | 4 | 8 blockers | 2026-10-24 |
 | [BeevR](mcp-beevr-ai-mcp-security.html) | [A](mcp-beevr-ai-mcp-security.html#claim) | `clear` | 8 | 8 blockers | 2026-10-24 |
 | [Fenlight](mcp-fenlight-waggle-ae-mcp-security.html) | [A](mcp-fenlight-waggle-ae-mcp-security.html#claim) | `clear` | 8 | 8 blockers | 2026-10-24 |
 | [groTAX by Grovisor](mcp-grovisor-ae-mcp-security.html) | [A](mcp-grovisor-ae-mcp-security.html#claim) | `clear` | 8 | 8 blockers | 2026-10-24 |
@@ -152,8 +154,6 @@ Last generated 2026-10-27.
 | [Builders in Fintech](mcp-buildersinfintech-ai-mcp-security.html) | [A](mcp-buildersinfintech-ai-mcp-security.html#claim) | `clear` | 23 | 23 blockers | 2026-10-24 |
 | [app.bezal.ai](mcp-bezal-ai-mcp-security.html) | [A](mcp-bezal-ai-mcp-security.html#claim) | `clear` | 13 | 26 blockers | 2026-10-24 |
 | [bounty.brevium.ai](mcp-bounty-brevium-ai-mcp-security.html) | [A](mcp-bounty-brevium-ai-mcp-security.html#claim) | `clear` | 13 | 26 blockers | 2026-10-24 |
-| [Brainy Prices — UAE Cost of Living](mcp-prices-brainy-ae-mcp-security.html) | [A](mcp-prices-brainy-ae-mcp-security.html#claim) | `clear` | 26 | 26 blockers | 2026-10-24 |
-| [Apex AI Academy](mcp-apexai-academy-mcp-security.html) | [A](mcp-apexai-academy-mcp-security.html#claim) | `clear` | 30 | 31 blockers | 2026-10-24 |
 | [AiVikings.ai](mcp-aivikings-ai-mcp-security.html) | [A](mcp-aivikings-ai-mcp-security.html#claim) | `clear` | 34 | 34 blockers | 2026-10-24 |
 | [Inferventis MCP Server](mcp-mcp-server-295985738387-europe-west1-run-app-mcp-security.html) | [A](mcp-mcp-server-295985738387-europe-west1-run-app-mcp-security.html#claim) | `clear` | 20 | 40 blockers | 2026-10-24 |
 | [Chronary](mcp-chronary-ai-mcp-security.html) | [A](mcp-chronary-ai-mcp-security.html#claim) | `clear` | 54 | 108 blockers | 2026-10-24 |
