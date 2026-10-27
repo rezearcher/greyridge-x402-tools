@@ -32,6 +32,15 @@ These are the 2 tool definition(s) any agent reads before it acts — the exact 
 - **`check_domain`** — Check domain availability using DNS, then authoritative registry RDAP, then WHOIS as needed. Returns status, source, explanation, and check time. Available means the registry repo… _(parameters: name, tld)_
 - **`list_tlds`** — Get a list of all available top-level domains (TLDs)
 
+## Maintenance & supply-chain — the risk Find A Domain's static scan can't see
+
+A prompt-injection scan reads Find A Domain's advertised tool metadata at one moment. It cannot tell you the project behind `api.findadomain.dev` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `api.findadomain.dev` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
 ## Scan Find A Domain yourself, or claim its badge {#claim}
 
 Re-run this exact Find A Domain check yourself, keyless — the free response carries the verdict and the
