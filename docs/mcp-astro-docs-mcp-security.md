@@ -31,6 +31,15 @@ These are the 1 tool definition(s) any agent reads before it acts — the exact 
 
 - **`search_astro_docs`** — Search the official Astro framework docs _(parameters: query)_
 
+## Maintenance & supply-chain — the risk Astro Docs's static scan can't see
+
+A prompt-injection scan reads Astro Docs's advertised tool metadata at one moment. It cannot tell you the project behind `mcp.docs.astro.build` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `mcp.docs.astro.build` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
 ## Scan Astro Docs yourself, or claim its badge {#claim}
 
 Re-run this exact Astro Docs check yourself, keyless — the free response carries the verdict and the
