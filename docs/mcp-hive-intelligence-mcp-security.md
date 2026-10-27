@@ -40,6 +40,15 @@ These are the 8 tool definition(s) any agent reads before it acts — the exact 
 - **`invoke_stateful_endpoint`** — Invokes a Hive-native state-changing endpoint after explicit user approval. This router can create, update, archive, remember, forget, acknowledge, or resolve durable Hive state,… _(parameters: endpoint_name, endpoint, args, response_format)_
 - **`validate_task_result`** — Validates a proposed workflow answer against Hive's typed task-output and evidence-receipt contract before it is shown to the user. It checks the selected route id, ordered route-… _(parameters: task_toolset_id, result, response_format)_
 
+## Maintenance & supply-chain — the risk Hive Intelligence's static scan can't see
+
+A prompt-injection scan reads Hive Intelligence's advertised tool metadata at one moment. It cannot tell you the project behind `hiveintelligence.xyz` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `hiveintelligence.xyz` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
 ## Scan Hive Intelligence yourself, or claim its badge {#claim}
 
 Re-run this exact Hive Intelligence check yourself, keyless — the free response carries the verdict and the
