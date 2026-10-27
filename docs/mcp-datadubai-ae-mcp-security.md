@@ -1,18 +1,18 @@
 ---
 title: "Is the mcp.datadubai.ae MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the mcp.datadubai.ae MCP server (https://mcp.datadubai.ae/mcp), run 2026-10-26: advertises search, get_entity, get_market_summary; 6 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the mcp.datadubai.ae MCP server (https://mcp.datadubai.ae/mcp), run 2026-10-27: advertises search, get_entity, get_market_summary; 6 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # mcp.datadubai.ae MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.datadubai.ae/mcp`
-**Scanned:** 2026-10-26 · **Tools advertised:** 6 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-10-27 · **Tools advertised:** 6 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Dubai property prices, AED/sqft, sales, rents, yields and projects from DLD registered transactions.
 
 When an agent connects mcp.datadubai.ae, the model reads all 6 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.datadubai.ae`, scanned 2026-10-26; the verdict below is `clear`.
+`mcp.datadubai.ae`, scanned 2026-10-27; the verdict below is `clear`.
 
 ## What the scan found on mcp.datadubai.ae
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 6 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the mcp.datadubai.ae server
-on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-10-27; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the mcp.datadubai.ae server advertises
@@ -38,7 +38,16 @@ These are the 6 tool definition(s) any agent reads before it acts — the exact 
 - **`fetch`** — Fetch the full readable record for one project, community, developer or area by its id ("type:slug", e.g. "community:dubai-marina") — the same text as the datadubai.ae page, as Ma… _(parameters: id)_
 - **`list_rankings`** — List top rankings. kind: rents (communities by median annual rent, AED), yields (communities by gross rental yield %), communities (by number of sales in last 12 months, with medi… _(parameters: kind, limit)_
 
-## Scan mcp.datadubai.ae yourself, or claim its badge
+## Maintenance & supply-chain — the risk mcp.datadubai.ae's static scan can't see
+
+A prompt-injection scan reads mcp.datadubai.ae's advertised tool metadata at one moment. It cannot tell you the project behind `mcp.datadubai.ae` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance grade `A`** — last commit pushed 1 day(s) ago, 1 open issue(s).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `mcp.datadubai.ae` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan mcp.datadubai.ae yourself, or claim its badge {#claim}
 
 Re-run this exact mcp.datadubai.ae check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `mcp.datadubai.ae`:
@@ -69,4 +78,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.datadubai.ae` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-10-27; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
