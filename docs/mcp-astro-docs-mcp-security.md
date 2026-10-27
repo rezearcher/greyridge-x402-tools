@@ -31,7 +31,7 @@ These are the 1 tool definition(s) any agent reads before it acts — the exact 
 
 - **`search_astro_docs`** — Search the official Astro framework docs _(parameters: query)_
 
-## Scan Astro Docs yourself, or claim its badge
+## Scan Astro Docs yourself, or claim its badge {#claim}
 
 Re-run this exact Astro Docs check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `mcp.docs.astro.build`:
