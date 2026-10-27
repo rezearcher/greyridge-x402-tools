@@ -32,6 +32,15 @@ These are the 2 tool definition(s) any agent reads before it acts — the exact 
 - **`search_cloudflare_documentation`** — Search the Cloudflare documentation. This tool should be used to answer any question about Cloudflare products or features, including: - Workers, Pages, R2, Images, Stream, D1, Du… _(parameters: query)_
 - **`migrate_pages_to_workers_guide`** — ALWAYS read this guide before migrating Pages projects to Workers.
 
+## Maintenance & supply-chain — the risk Cloudflare Docs's static scan can't see
+
+A prompt-injection scan reads Cloudflare Docs's advertised tool metadata at one moment. It cannot tell you the project behind `docs.mcp.cloudflare.com` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `docs.mcp.cloudflare.com` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
 ## Scan Cloudflare Docs yourself, or claim its badge {#claim}
 
 Re-run this exact Cloudflare Docs check yourself, keyless — the free response carries the verdict and the
