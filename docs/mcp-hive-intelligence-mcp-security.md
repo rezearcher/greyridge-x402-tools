@@ -40,7 +40,7 @@ These are the 8 tool definition(s) any agent reads before it acts — the exact 
 - **`invoke_stateful_endpoint`** — Invokes a Hive-native state-changing endpoint after explicit user approval. This router can create, update, archive, remember, forget, acknowledge, or resolve durable Hive state,… _(parameters: endpoint_name, endpoint, args, response_format)_
 - **`validate_task_result`** — Validates a proposed workflow answer against Hive's typed task-output and evidence-receipt contract before it is shown to the user. It checks the selected route id, ordered route-… _(parameters: task_toolset_id, result, response_format)_
 
-## Scan Hive Intelligence yourself, or claim its badge
+## Scan Hive Intelligence yourself, or claim its badge {#claim}
 
 Re-run this exact Hive Intelligence check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `hiveintelligence.xyz`:
