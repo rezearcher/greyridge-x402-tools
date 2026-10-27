@@ -33,7 +33,7 @@ These are the 3 tool definition(s) any agent reads before it acts — the exact 
 - **`WolframLanguageEvaluator`** — Evaluates Wolfram Language code for the user in a Wolfram Language kernel. If a formatted result is provided as a markdown link, use that in your response instead of typing out th… _(parameters: code, timeConstraint)_
 - **`WolframAlpha`** — Use natural language queries with Wolfram|Alpha to get up-to-date computational results about entities in chemistry, physics, geography, history, art, astronomy, and more. _(parameters: query)_
 
-## Scan Wolfram Alpha yourself, or claim its badge
+## Scan Wolfram Alpha yourself, or claim its badge {#claim}
 
 Re-run this exact Wolfram Alpha check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `agenttools.wolfram.com`:
