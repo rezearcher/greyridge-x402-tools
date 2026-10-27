@@ -1,18 +1,18 @@
 ---
 title: "Is the Hive Intelligence MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Hive Intelligence MCP server (https://hiveintelligence.xyz/mcp), run 2026-10-26: advertises get_token_price, check_token_safety, get_wallet_portfolio; 8 tools scanned, injection verdict 'clear', 10 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Hive Intelligence MCP server (https://hiveintelligence.xyz/mcp), run 2026-10-27: advertises get_token_price, check_token_safety, get_wallet_portfolio; 8 tools scanned, injection verdict 'clear', 10 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Hive Intelligence MCP server — security & directory-readiness scorecard
 
 **Server:** `https://hiveintelligence.xyz/mcp`
-**Scanned:** 2026-10-26 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 10 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-10-27 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 10 Claude Directory quality item(s) to polish (no hard rejects)
 
 Hive Intelligence's MCP server exposes crypto and market-data tools to AI agents.
 
 When an agent connects Hive Intelligence, the model reads all 8 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`hiveintelligence.xyz`, scanned 2026-10-26; the verdict below is `clear`.
+`hiveintelligence.xyz`, scanned 2026-10-27; the verdict below is `clear`.
 
 ## What the scan found on Hive Intelligence
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 8 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Hive Intelligence server
-on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-10-27; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Hive Intelligence server advertises
@@ -71,4 +71,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `hiveintelligence.xyz` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-10-27; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
