@@ -10,14 +10,14 @@ those tools would pass the Anthropic Claude Connector Directory review criteria.
 Every row is measured, dated and re-runnable by you in one keyless call; results are point-in-time
 (tool definitions drift) — each row shows the date it was last scanned.
 
-Last generated 2026-10-24.
+Last generated 2026-10-27.
 
 | Server | Grade | Injection | Tools | Claude Directory | Scanned |
 |---|:--:|---|:--:|---|---|
 | [mcp.adoraads.ai](mcp-adoraads-ai-mcp-security.html) | A | `clear` | 6 | ready | 2026-10-24 |
-| [Cloudflare Docs](mcp-cloudflare-docs-mcp-security.html) | A | `clear` | 2 | ready | 2026-10-24 |
-| [Hugging Face](mcp-hugging-face-mcp-security.html) | A | `clear` | 4 | ready | 2026-10-24 |
-| [Wolfram Alpha](mcp-wolfram-alpha-mcp-security.html) | A | `clear` | 3 | ready | 2026-10-24 |
+| [Cloudflare Docs](mcp-cloudflare-docs-mcp-security.html) | A | `clear` | 2 | ready | 2026-10-27 |
+| [Hugging Face](mcp-hugging-face-mcp-security.html) | A | `clear` | 4 | ready | 2026-10-27 |
+| [Wolfram Alpha](mcp-wolfram-alpha-mcp-security.html) | A | `clear` | 3 | ready | 2026-10-27 |
 | [AgentRoam](mcp-agentroam-ai-mcp-security.html) | A | `clear` | 11 | ready | 2026-10-24 |
 | [agents.alphaquantlabs.ai](mcp-agents-alphaquantlabs-ai-mcp-security.html) | A | `clear` | 2 | ready | 2026-10-24 |
 | [AgentsIndex](mcp-agentsindex-ai-mcp-security.html) | A | `clear` | 12 | ready | 2026-10-24 |
@@ -74,13 +74,13 @@ Last generated 2026-10-24.
 | [advisorsai.ai](mcp-advisorsai-ai-mcp-security.html) | A | `clear` | 1 | 1 blocker | 2026-10-24 |
 | [actwise.ai](mcp-actwise-ai-mcp-security.html) | A | `clear` | 2 | 2 blockers | 2026-10-24 |
 | [AgentMart](mcp-agentmart-ciphyr-ai-mcp-security.html) | A | `clear` | 112 | 2 blockers | 2026-10-24 |
-| [Astro Docs](mcp-astro-docs-mcp-security.html) | A | `clear` | 1 | 2 blockers | 2026-10-24 |
+| [Astro Docs](mcp-astro-docs-mcp-security.html) | A | `clear` | 1 | 2 blockers | 2026-10-27 |
 | [Agenlify AI Agent Directory](mcp-agenlify-ai-mcp-security.html) | A | `clear` | 3 | 3 blockers | 2026-10-24 |
 | [AFMR Discovery](mcp-afmr-ai-mcp-security.html) | A | `clear` | 4 | 4 blockers | 2026-10-24 |
-| [Find A Domain](mcp-find-a-domain-mcp-security.html) | A | `clear` | 2 | 4 blockers | 2026-10-24 |
+| [Find A Domain](mcp-find-a-domain-mcp-security.html) | A | `clear` | 2 | 4 blockers | 2026-10-27 |
 | [api.agentrapay.ai](mcp-agentrapay-ai-mcp-security.html) | A | `clear` | 6 | 6 blockers | 2026-10-24 |
-| [DeepWiki](mcp-deepwiki-mcp-security.html) | A | `clear` | 3 | 6 blockers | 2026-10-24 |
-| [Hive Intelligence](mcp-hive-intelligence-mcp-security.html) | A | `clear` | 8 | 10 blockers | 2026-10-24 |
+| [DeepWiki](mcp-deepwiki-mcp-security.html) | A | `clear` | 3 | 6 blockers | 2026-10-27 |
+| [Hive Intelligence](mcp-hive-intelligence-mcp-security.html) | A | `clear` | 8 | 10 blockers | 2026-10-27 |
 | [Agentic Terminal Directory](mcp-agenticterminal-ai-mcp-security.html) | A | `clear` | 6 | 12 blockers | 2026-10-24 |
 | [AutoPoster AI](mcp-agent-autoposter-ai-mcp-security.html) | A | `clear` | 14 | 14 blockers | 2026-10-24 |
 | [AFG: agents hire agents (test money)](mcp-afg-ai-mcp-security.html) | A | `clear` | 18 | 18 blockers | 2026-10-24 |
@@ -162,11 +162,21 @@ Last generated 2026-10-24.
 *Grey Ridge Signals MCP security grade (A best – F worst), from our risk_score: A 0–9, B 10–29, C 30–49, D 50–69, F 70+ or any critical finding. Our grade, not a third-party certification.* A `clear` injection verdict means no static tool-poisoning pattern was found — it is
 not a guarantee of safety.
 
-Scan a server not listed here:
+## Is your MCP server on this list?
+
+Scan it free and see where it ranks — paste your `tools/list` into the
+[browser scanner](https://x402-data-api.sigrunner.workers.dev/scan/mcp-scanner) (it runs against a zero-egress endpoint, so your server
+stays private), or re-run any row from the terminal, keyless:
 
 ```bash
 curl "https://x402-data-api.sigrunner.workers.dev/scan/mcp/preview?url=https://your-mcp-host/mcp&directory=true"
 ```
+
+If you run the server, [claim a measured verified-owner badge](https://x402-data-api.sigrunner.workers.dev/scan/verify) free — one automated
+DNS-TXT check, no human review — and embed it in your README so your users can see the grade for
+themselves. Keeping that badge green as your tools change — six-hourly re-scans, drift alerts and the
+full OWASP LLM01/LLM08 report — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A green
+badge means no injection patterns were found on the dates shown: a measured signal, not a warranty.
 
 Method and the rest of the catalogue: [vet an MCP server before your agent trusts it](index.html).
 Independent scans by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
