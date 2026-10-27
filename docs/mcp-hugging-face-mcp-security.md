@@ -36,7 +36,7 @@ These are the 4 tool definition(s) any agent reads before it acts — the exact 
 - **`hub_repo_details`** — Get details for one or more Hugging Face repos (model, dataset, or space). Auto-detects type unless specified. For datasets, use operations: overview, dataset_structure, dataset_p… _(parameters: repo_ids, repo_type, operations, config, split, offset)_
 - **`hf_fs`** — When to use: Hugging Face Hub models, datasets, Spaces, collections, papers, daily papers, today's trending models, current paper leaderboard, docs, and repository files. Examples… _(parameters: operations)_
 
-## Scan Hugging Face yourself, or claim its badge
+## Scan Hugging Face yourself, or claim its badge {#claim}
 
 Re-run this exact Hugging Face check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `hf.co`:
