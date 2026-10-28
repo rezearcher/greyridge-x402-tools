@@ -1,0 +1,282 @@
+{
+"updated": "2026-10-27",
+"hub": "mcp-server-scorecards.html",
+"count": 144,
+"leaderboard": [
+{
+"name": "mcp.adoraads.ai",
+"slug": "adoraads-ai",
+"url": "https://mcp.adoraads.ai/beauty",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "BeachClubs.ae",
+"slug": "beachclubs-ae",
+"url": "https://www.beachclubs.ae/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-27"
+},
+{
+"name": "Cloudflare Docs",
+"slug": "cloudflare-docs",
+"url": "https://docs.mcp.cloudflare.com/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-28"
+},
+{
+"name": "mcp.datadubai.ae",
+"slug": "datadubai-ae",
+"url": "https://mcp.datadubai.ae/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-27"
+},
+{
+"name": "Getlead",
+"slug": "getle-ad",
+"url": "https://mcp.getle.ad/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-27"
+},
+{
+"name": "Hugging Face",
+"slug": "hugging-face",
+"url": "https://hf.co/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-28"
+},
+{
+"name": "tandem.ac",
+"slug": "tandem-ac",
+"url": "https://tandem.ac/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-27"
+},
+{
+"name": "Wolfram Alpha",
+"slug": "wolfram-alpha",
+"url": "https://agenttools.wolfram.com/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-28"
+},
+{
+"name": "AgentRoam",
+"slug": "agentroam-ai",
+"url": "https://agentroam.ai/api/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "agents.alphaquantlabs.ai",
+"slug": "agents-alphaquantlabs-ai",
+"url": "https://agents.alphaquantlabs.ai/v1/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "AgentsIndex",
+"slug": "agentsindex-ai",
+"url": "https://agentsindex.ai/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "Alpha Bazaar Arena",
+"slug": "alphabazaar-ai",
+"url": "https://api.alphabazaar.ai/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "AlphaCreek SEC Filings MCP",
+"slug": "alphacreek-ai",
+"url": "https://mcp.alphacreek.ai/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "AlpiX",
+"slug": "alpix-alpic-ai",
+"url": "https://alpix.alpic.ai",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "analyticslegends.ai",
+"slug": "analyticslegends-ai",
+"url": "https://analyticslegends.ai/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "Annsa",
+"slug": "annsa-ai",
+"url": "https://app.annsa.ai/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "AppGoat",
+"slug": "appgoat-ai",
+"url": "https://api.appgoat.ai/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "app.aqta.ai",
+"slug": "aqta-ai",
+"url": "https://app.aqta.ai/api/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "Arabic Name Calligraphy",
+"slug": "arabickeyboard-ai",
+"url": "https://arabickeyboard.ai/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "AskWatch Google Search Console MCP",
+"slug": "askwatch-ai",
+"url": "https://mcp.askwatch.ai/gsc",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "Atmy air quality",
+"slug": "atmy-ai",
+"url": "https://api.atmy.ai/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "Aviado AI",
+"slug": "aviado-ai",
+"url": "https://aviado.ai/api/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "api.bareun.ai",
+"slug": "bareun-ai",
+"url": "https://api.bareun.ai/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "BenchGecko",
+"slug": "benchgecko-ai",
+"url": "https://benchgecko.ai/api/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+},
+{
+"name": "BetSlip Doctor",
+"slug": "betslipdoctor-ai",
+"url": "https://api.betslipdoctor.ai/api/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": null,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-10-24"
+}
+]
+}

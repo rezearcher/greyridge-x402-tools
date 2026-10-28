@@ -32,6 +32,19 @@ Paid route is the same depth: `GET /chain/token-report?token=0x...` at $0.01 USD
 - [Live Base token rug & honeypot checks](token-rug-checks.html) — measured GO / HOLD / BLOCK verdicts for trending Base tokens, re-runnable with no account
 - [Honeypot check API for Base tokens](honeypot-check-api-base.html)
 - [Pre-trade safety gate for AI trading agents](pre-trade-safety-gate-ai-agents.html)
+
+<!-- line-a-framework-pages:start -->
+
+**Framework install guides** — drop the gate into your trading agent in one line:
+
+- [ElizaOS pre-trade swap-gate plugin](elizaos-token-safety-plugin.html) — `npm i github:rezearcher/plugin-swap-gate`
+  - stop a specific failure: [honeypot](elizaos-token-safety-plugin-honeypot.html) · [can't-sell](elizaos-token-safety-plugin-cant-sell-exit-trap.html) · [trade-too-big](elizaos-token-safety-plugin-trade-too-big-price-impact.html) · [rug controls](elizaos-token-safety-plugin-rug-admin-controls.html)
+- [Vercel AI SDK one-tool swap guard](vercel-ai-sdk-swap-guard.html) — `npm i github:rezearcher/vercel-ai-swap-gate ai zod`
+  - stop a specific failure: [honeypot](vercel-ai-sdk-swap-guard-honeypot.html) · [can't-sell](vercel-ai-sdk-swap-guard-cant-sell-exit-trap.html) · [trade-too-big](vercel-ai-sdk-swap-guard-trade-too-big-price-impact.html) · [rug controls](vercel-ai-sdk-swap-guard-rug-admin-controls.html)
+- [LangChain.js honeypot-check tool](langchain-honeypot-check-tool.html) — `npm i github:rezearcher/langchain-swap-gate @langchain/core zod`
+  - stop a specific failure: [honeypot](langchain-honeypot-check-tool-honeypot.html) · [can't-sell](langchain-honeypot-check-tool-cant-sell-exit-trap.html) · [trade-too-big](langchain-honeypot-check-tool-trade-too-big-price-impact.html) · [rug controls](langchain-honeypot-check-tool-rug-admin-controls.html)
+
+<!-- line-a-framework-pages:end -->
 - [Pay-per-call, no API key: x402 token risk API](x402-token-risk-api.html)
 - [Base token-safety x402 price comparison (2026-10)](base-token-safety-price-comparison.html) — measured per-call cost across providers
 
