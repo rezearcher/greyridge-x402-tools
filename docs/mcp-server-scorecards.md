@@ -16,12 +16,12 @@ Last generated 2026-10-27.
 |---|:--:|---|:--:|---|---|
 | [mcp.adoraads.ai](mcp-adoraads-ai-mcp-security.html) | [A](mcp-adoraads-ai-mcp-security.html#claim) | `clear` | 6 | ready | 2026-10-24 |
 | [BeachClubs.ae](mcp-beachclubs-ae-mcp-security.html) | [A](mcp-beachclubs-ae-mcp-security.html#claim) | `clear` | 4 | ready | 2026-10-27 |
-| [Cloudflare Docs](mcp-cloudflare-docs-mcp-security.html) | [A](mcp-cloudflare-docs-mcp-security.html#claim) | `clear` | 2 | ready | 2026-10-27 |
+| [Cloudflare Docs](mcp-cloudflare-docs-mcp-security.html) | [A](mcp-cloudflare-docs-mcp-security.html#claim) | `clear` | 2 | ready | 2026-10-28 |
 | [mcp.datadubai.ae](mcp-datadubai-ae-mcp-security.html) | [A](mcp-datadubai-ae-mcp-security.html#claim) | `clear` | 6 | ready | 2026-10-27 |
 | [Getlead](mcp-getle-ad-mcp-security.html) | [A](mcp-getle-ad-mcp-security.html#claim) | `clear` | 35 | ready | 2026-10-27 |
-| [Hugging Face](mcp-hugging-face-mcp-security.html) | [A](mcp-hugging-face-mcp-security.html#claim) | `clear` | 4 | ready | 2026-10-27 |
+| [Hugging Face](mcp-hugging-face-mcp-security.html) | [A](mcp-hugging-face-mcp-security.html#claim) | `clear` | 4 | ready | 2026-10-28 |
 | [tandem.ac](mcp-tandem-ac-mcp-security.html) | [A](mcp-tandem-ac-mcp-security.html#claim) | `clear` | 13 | ready | 2026-10-27 |
-| [Wolfram Alpha](mcp-wolfram-alpha-mcp-security.html) | [A](mcp-wolfram-alpha-mcp-security.html#claim) | `clear` | 3 | ready | 2026-10-27 |
+| [Wolfram Alpha](mcp-wolfram-alpha-mcp-security.html) | [A](mcp-wolfram-alpha-mcp-security.html#claim) | `clear` | 3 | ready | 2026-10-28 |
 | [AgentRoam](mcp-agentroam-ai-mcp-security.html) | [A](mcp-agentroam-ai-mcp-security.html#claim) | `clear` | 11 | ready | 2026-10-24 |
 | [agents.alphaquantlabs.ai](mcp-agents-alphaquantlabs-ai-mcp-security.html) | [A](mcp-agents-alphaquantlabs-ai-mcp-security.html#claim) | `clear` | 2 | ready | 2026-10-24 |
 | [AgentsIndex](mcp-agentsindex-ai-mcp-security.html) | [A](mcp-agentsindex-ai-mcp-security.html#claim) | `clear` | 12 | ready | 2026-10-24 |
@@ -74,15 +74,15 @@ Last generated 2026-10-27.
 | [advisorsai.ai](mcp-advisorsai-ai-mcp-security.html) | [A](mcp-advisorsai-ai-mcp-security.html#claim) | `clear` | 1 | 1 blocker | 2026-10-24 |
 | [actwise.ai](mcp-actwise-ai-mcp-security.html) | [A](mcp-actwise-ai-mcp-security.html#claim) | `clear` | 2 | 2 blockers | 2026-10-24 |
 | [AgentMart](mcp-agentmart-ciphyr-ai-mcp-security.html) | [A](mcp-agentmart-ciphyr-ai-mcp-security.html#claim) | `clear` | 112 | 2 blockers | 2026-10-24 |
-| [Astro Docs](mcp-astro-docs-mcp-security.html) | [A](mcp-astro-docs-mcp-security.html#claim) | `clear` | 1 | 2 blockers | 2026-10-27 |
+| [Astro Docs](mcp-astro-docs-mcp-security.html) | [A](mcp-astro-docs-mcp-security.html#claim) | `clear` | 1 | 2 blockers | 2026-10-28 |
 | [Agenlify AI Agent Directory](mcp-agenlify-ai-mcp-security.html) | [A](mcp-agenlify-ai-mcp-security.html#claim) | `clear` | 3 | 3 blockers | 2026-10-24 |
 | [AFMR Discovery](mcp-afmr-ai-mcp-security.html) | [A](mcp-afmr-ai-mcp-security.html#claim) | `clear` | 4 | 4 blockers | 2026-10-24 |
-| [Find A Domain](mcp-find-a-domain-mcp-security.html) | [A](mcp-find-a-domain-mcp-security.html#claim) | `clear` | 2 | 4 blockers | 2026-10-27 |
+| [Find A Domain](mcp-find-a-domain-mcp-security.html) | [A](mcp-find-a-domain-mcp-security.html#claim) | `clear` | 2 | 4 blockers | 2026-10-28 |
 | [api.agentrapay.ai](mcp-agentrapay-ai-mcp-security.html) | [A](mcp-agentrapay-ai-mcp-security.html#claim) | `clear` | 6 | 6 blockers | 2026-10-24 |
-| [DeepWiki](mcp-deepwiki-mcp-security.html) | [A](mcp-deepwiki-mcp-security.html#claim) | `clear` | 3 | 6 blockers | 2026-10-27 |
+| [DeepWiki](mcp-deepwiki-mcp-security.html) | [A](mcp-deepwiki-mcp-security.html#claim) | `clear` | 3 | 6 blockers | 2026-10-28 |
 | [Inside Ads](mcp-inside-ad-mcp-security.html) | [A](mcp-inside-ad-mcp-security.html#claim) | `clear` | 3 | 6 blockers | 2026-10-27 |
 | [Agentic Engineering Periodic System](mcp-ase-academy-mcp-security.html) | [A](mcp-ase-academy-mcp-security.html#claim) | `clear` | 4 | 8 blockers | 2026-10-27 |
-| [Hive Intelligence](mcp-hive-intelligence-mcp-security.html) | [A](mcp-hive-intelligence-mcp-security.html#claim) | `clear` | 8 | 10 blockers | 2026-10-27 |
+| [Hive Intelligence](mcp-hive-intelligence-mcp-security.html) | [A](mcp-hive-intelligence-mcp-security.html#claim) | `clear` | 8 | 10 blockers | 2026-10-28 |
 | [Agentic Terminal Directory](mcp-agenticterminal-ai-mcp-security.html) | [A](mcp-agenticterminal-ai-mcp-security.html#claim) | `clear` | 6 | 12 blockers | 2026-10-24 |
 | [AutoPoster AI](mcp-agent-autoposter-ai-mcp-security.html) | [A](mcp-agent-autoposter-ai-mcp-security.html#claim) | `clear` | 14 | 14 blockers | 2026-10-24 |
 | [AFG: agents hire agents (test money)](mcp-afg-ai-mcp-security.html) | [A](mcp-afg-ai-mcp-security.html#claim) | `clear` | 18 | 18 blockers | 2026-10-24 |
@@ -177,6 +177,19 @@ DNS-TXT check, no human review — and embed it in your README so your users can
 themselves. Keeping that badge green as your tools change — six-hourly re-scans, drift alerts and the
 full OWASP LLM01/LLM08 report — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A green
 badge means no injection patterns were found on the dates shown: a measured signal, not a warranty.
+
+## Embed this leaderboard
+
+Run an MCP blog, directory or aggregator — or rank near the top and want to show it?
+Drop this live, auto-updating leaderboard into your site or README (zero-dependency SVG,
+always loads):
+
+```markdown
+[![MCP Security Leaderboard by Grey Ridge Signals](https://x402-data-api.sigrunner.workers.dev/scan/leaderboard.svg)](https://rezearcher.github.io/greyridge-x402-tools/mcp-server-scorecards.html)
+```
+
+Grab the HTML / JavaScript variants and options (`?n=`, `?theme=light|dark`) from the
+[embed page](https://x402-data-api.sigrunner.workers.dev/scan/leaderboard/embed).
 
 Method and the rest of the catalogue: [vet an MCP server before your agent trusts it](index.html).
 Independent scans by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
