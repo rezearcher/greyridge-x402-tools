@@ -1,0 +1,175 @@
+Metadata-Version: 2.4
+Name: greyridge-x402-tools
+Version: 0.4.1
+Summary: MCP server security scanner — static tool-poisoning / prompt-injection audit (OWASP LLM01/LLM08) + maintenance & supply-chain drift grade + continuous monitoring; plus a pre-trade Base token safety gate. Keyless x402 pay-per-call.
+License: MIT
+Project-URL: Homepage, https://github.com/rezearcher/greyridge-x402-tools
+Project-URL: Documentation, https://rezearcher.github.io/greyridge-x402-tools/
+Project-URL: API, https://api.greyridgesignals.ai/.well-known/x402
+Project-URL: Scorecards, https://rezearcher.github.io/greyridge-x402-tools/mcp-server-scorecards.html
+Keywords: mcp,mcp-server,security,scanner,tool-poisoning,prompt-injection,llm-security,scorecard,supply-chain,agent-safety,x402,base
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Security
+Classifier: Topic :: Software Development :: Quality Assurance
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests>=2.28
+Provides-Extra: pay
+Requires-Dist: x402>=0.2; extra == "pay"
+Requires-Dist: eth-account; extra == "pay"
+Provides-Extra: langchain
+Requires-Dist: langchain-core; extra == "langchain"
+Dynamic: license-file
+
+# greyridge-x402-tools
+
+[![GitHub Marketplace](https://img.shields.io/badge/GitHub_Marketplace-MCP_tool--poisoning_scan-2ea44f?logo=github)](https://github.com/marketplace/actions/mcp-server-tool-poisoning-scan)
+
+Two safety gates for AI agents, backed by a keyless x402 API (USDC per call on Base, free previews, no account):
+
+1. **mcpscan** — vet an MCP server's advertised tools for prompt-injection / tool-poisoning before your agent trusts it.
+2. **rugcheck / swap-gate** — honeypot and pre-trade safety checks for Base tokens.
+
+## State of MCP server security — what we found scanning 144 live servers
+
+We ran the `mcpscan` static audit against **144 public MCP servers** (1,470 advertised tools) and graded each one A–F. The result is the opposite of the usual headline:
+
+- **100% passed the static prompt-injection / tool-poisoning test** — 143 graded **A**, 1 graded **B**, 0 flagged. None of these 144 servers shipped a hidden-instruction, conceal-from-user, data-exfiltration, cross-tool-shadowing or invisible-unicode pattern in its advertised tool metadata.
+- **But 59.7% (86 of 144) carry at least one readiness or maintenance blocker** — missing tool descriptions/titles, over-long tool names, mixed read-write capabilities declared unsafely, unsupported capabilities, and maintenance / supply-chain drift. Only **40.3% (58 of 144)** are fully connector-directory-ready.
+
+**The takeaway: for live MCP servers today, blatant tool-poisoning is rare; the real exposure is rot** — under-specified, drifting, or unmaintained tool surfaces that a one-shot "readiness score" misses and that get worse over time. That is why we grade *maintenance + supply-chain drift*, not just injection, and why we monitor continuously rather than scanning once.
+
+Every number above is counted directly from the published scorecard corpus (grade scale: A 0–9, B 10–29, C 30–49, D 50–69, F 70+ risk, or any critical finding — our grade, not a third-party certification). **"Clear" means we found no static injection pattern; it does not mean "safe".** Browse the full corpus and per-server scorecards:
+
+- **MCP security scorecards (all 144, ranked A–F):** https://rezearcher.github.io/greyridge-x402-tools/mcp-server-scorecards.html
+- Examples: [Cloudflare Docs](https://rezearcher.github.io/greyridge-x402-tools/mcp-cloudflare-docs-mcp-security.html) · [Hugging Face](https://rezearcher.github.io/greyridge-x402-tools/mcp-hugging-face-mcp-security.html) · [DeepWiki](https://rezearcher.github.io/greyridge-x402-tools/mcp-deepwiki-mcp-security.html)
+
+Want your server graded and a live **"MCP security: monitored"** badge your users can verify? Scan is free; continuous monitoring + drift alerts + the full itemized report is **$9.99/mo** → https://api.greyridgesignals.ai/pricing
+
+## mcpscan — vet an MCP server before your agent trusts it
+
+Every tool an MCP server advertises runs inside your agent's context — its name, description and JSON schema are read by the model, so a poisoned or injection-laden tool can steer the agent before it ever calls anything. Scan any server in one command, no key:
+
+```
+npx mcpscan https://mcp.deepwiki.com/mcp
+```
+
+or pin a reproducible build straight from the release tag, no install:
+
+```
+npx -y github:rezearcher/greyridge-x402-tools#v0.3.1 mcpscan https://mcp.deepwiki.com/mcp
+```
+
+Prints tools scanned, issue counts by severity, risk score, and a verdict (`clear` / `review` / `block`). **Exit code 2 on `block`**, so it drops straight into CI as a gate before you wire a new server to an agent. Static analysis of advertised tool metadata only — it never invokes your tools. Checks cover OWASP LLM01/LLM08 patterns: hidden instructions, conceal-from-user directives, data-exfiltration hints, cross-tool shadowing, and invisible-unicode payloads. Itemized findings with evidence and OWASP mapping: paid `/scan/mcp` ($0.05 USDC, x402 on Base).
+
+Scanning a private or local server (nothing leaves your machine except the tool list):
+
+```
+npx github:rezearcher/greyridge-x402-tools mcpscan --from-egress egress.json
+```
+
+### Offline — audit an `mcp-egress` run with no network
+
+If you already record a server with [mcp-egress](https://github.com/basitalisandhu/mcp-egress), score its `egress.json` **fully offline** — nothing leaves the machine:
+
+```bash
+mcp-egress run --calls calls.json --out egress.json -- uvx some-mcp-server
+npx -y github:rezearcher/greyridge-x402-tools#v0.3.1 mcpscan --from-egress egress.json   # reads .tools[], exits 2 on block
+```
+
+Reads the recorded `.tools[]` (name/title/description/annotations) and applies the same tool-poisoning rules locally — no second connection to the server, no payment. Exit 0 clear / 1 review / 2 block. The one-liner is pinned to the `v0.3.1` release tag so a CI admission gate gets a fixed, reproducible artifact.
+
+### Continuous monitoring — catch a server that turns hostile after you trust it
+
+A one-time scan tells you a server is clean today. The real supply-chain risk is a server you already trust quietly changing its tool definitions later — a rug-pull on an approved dependency. Grey Ridge monitors your servers on a schedule and alerts you when a tool's description, schema or risk verdict changes:
+
+- **$9.99/mo** — continuous monitoring with drift alerts, full itemized findings, and OWASP LLM01/LLM08 mapping for every server you track: **https://api.greyridgesignals.ai/pricing**
+
+The CLI and Action above stay free forever for point-in-time scans.
+
+### Badge for your MCP server's README
+
+Live shields.io badge showing the scan verdict for any public MCP server (free, cached 6h):
+
+```markdown
+![mcp-scan](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.greyridgesignals.ai%2Fscan%2Fmcp%2Fbadge%3Furl%3DYOUR_MCP_URL)
+```
+
+Replace `YOUR_MCP_URL` with your URL-encoded server endpoint (e.g. `https%3A%2F%2Fmcp.deepwiki.com%2Fmcp`).
+
+### As a GitHub Action — admission gate for MCP servers
+
+Copy this into `.github/workflows/mcp-security-gate.yml` to fail CI whenever a third-party MCP server you depend on starts advertising tool-poisoning / prompt-injection patterns (e.g. a supply-chain rug-pull on an already-trusted server):
+
+```yaml
+name: MCP security gate
+on: [push, pull_request]
+jobs:
+  mcp-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rezearcher/greyridge-x402-tools@v0.3.1
+        with:
+          url: https://your-mcp-host/mcp   # the MCP server your agent trusts
+```
+
+Exit code mirrors the `mcpscan` CLI: `2` on `block`, `1` on `review`, `0` on `clear`, and `3` if the scan could not run (**fails closed**, so a broken scan never silently passes an admission gate). Any non-zero exit fails the job.
+
+**Free vs paid in CI:** the Action runs the free preview (verdict + severity counts) on every push — $0, no key. When a job fails and you need the *itemized findings with evidence + OWASP LLM01/LLM08 mapping* to fix it, the free preview line points you at the paid `GET /scan/mcp?url=` ($0.05 USDC, x402 on Base) — a zero-egress `POST /scan/mcp` with your `tools` array works too if the server isn't publicly reachable.
+
+## rugcheck / swap-gate — pre-trade safety for Base tokens
+
+Honeypot sell-simulation, proxy/tax/liquidity checks → `SAFE` / `CAUTION` / `AVOID`, plus a `GO` / `HOLD` / `BLOCK` swap gate.
+
+```bash
+pip install "git+https://github.com/rezearcher/greyridge-x402-tools"
+```
+
+Terminal in 10 seconds — the exit code is the gate (`0` GO, `1` HOLD, `2` BLOCK), so it drops straight into a script or CI step:
+
+```bash
+greyridge-gate aero                    # GO    SAFE  risk=15  ...
+greyridge-report 0xabc... --json       # full report as JSON
+greyridge-gate 0xabc... || echo "skip this trade"
+```
+
+```python
+from greyridge_x402 import token_report, swap_gate
+print(token_report("aero"))            # free preview, no wallet
+print(swap_gate("0x..."))              # free preview
+
+# paid (x402, $0.01 / $0.008 per call), your own key:
+#   pip install "greyridge-x402-tools[pay] @ git+https://github.com/rezearcher/greyridge-x402-tools"
+token_report("0x...", paid=True)       # reads X402_PRIVATE_KEY
+```
+
+Note: the preview path is tested; the paid path uses the x402 Python SDK `x402_requests` client and has not been exercised by us (we do not pay our own API).
+
+### CrewAI
+
+```python
+from greyridge_x402 import crewai_tools
+tools = crewai_tools()   # free preview; crewai_tools(paid=True) pays via x402 (set a Base USDC key)
+agent = Agent(role="trader", tools=tools, ...)
+```
+
+Tools: `base_token_report` (SAFE/CAUTION/AVOID) and `base_swap_gate` (GO/HOLD/BLOCK). Measured latency: `docs/STATUS.md` in the data-api repo.
+
+### Drop-in swap guard (JS)
+
+`swap-gate.mjs` — `gateToken(addr)` calls the free preview (no wallet); pass an x402 `fetchPaid` to use the paid `/gate/swap` ($0.008). `guardedSwap(addr, doSwap)` runs your swap only when the decision is `go`.
+
+## Framework integrations
+- LangChain / CrewAI: `greyridge_x402.langchain_tools()` / `crewai_tools()`
+- ElizaOS: `integrations/elizaos/index.mjs` (action `CHECK_BASE_TOKEN`)
+- Coinbase AgentKit / any x402 wallet: `integrations/agentkit/README.md`
+
+Guides (MCP scan, honeypot check, pre-trade gate, x402): https://rezearcher.github.io/greyridge-x402-tools/
+
+API discovery: https://api.greyridgesignals.ai/.well-known/x402 · contact@greyridgesignals.ai
+MIT.

@@ -38,6 +38,25 @@ function analyzeMcpTool(name, description, schemaText) {
   if (inj.test(text) || concealHit) add("critical", "tool-poisoning:hidden-instructions",
     "Description contains deceptive/override instructions aimed at the AI agent (conceal-from-user or ignore-prior-instructions) — classic MCP tool-poisoning.", (text.match(inj) || (concealHit ? concealMatch : null) || [""])[0]);
 
+  // 1b. Remote / dynamic instruction injection (fetch-and-obey). A tool whose description tells the
+  // agent to retrieve its operating instructions from a REMOTE source and follow them (or to obey
+  // directives the server returns at call time) is a remote-controlled instruction channel: the live
+  // payload lives off-definition, so an operator can swap in a malicious directive AFTER approval
+  // WITHOUT changing the tool definition — defeating the hash-pinning rug-pull detection the incumbent
+  // scanners rely on. Distinct from rule 1 (inline override) and rule 2 (OUTBOUND exfil): this is
+  // INBOUND fetch-then-obey of attacker-hosted instructions. Precision: a data object (docs/page/file)
+  // does not match — only an agent-directive object (instructions/directives/commands/prompt) with a
+  // remote source (retrieve shape) or a dynamic "returned by the server" anchor (obey shape).
+  const dirObj = String.raw`(?:instructions?|directives?|commands?|(?:system )?prompt)`;
+  const fetchVerb = String.raw`(?:fetch|retrieve|load|download|pull|obtain|request|read|get)`;
+  const remoteFrom = String.raw`(?:from|at)\s+(?:https?:\/\/|(?:the\s+)?(?:remote\s+)?(?:server|endpoint|api|url|host)\b)`;
+  const retrieveShape = new RegExp(fetchVerb + String.raw`\b[^.?!]{0,25}?\b(?:your|the|its|updated|current|latest)\s+` + dirObj + String.raw`\b[^.?!]{0,40}?\b` + remoteFrom, "i");
+  const dynamicAnchor = String.raw`(?:returned\s+(?:by|from)|in\s+the\s+(?:response|output|body)\s+(?:of|from)|(?:the\s+)?(?:server|endpoint|api)\s+(?:returns|provides|sends|gives|responds\s+with))`;
+  const obeyShape = new RegExp(String.raw`(?:follow|obey|comply\s+with|execute|apply|adhere\s+to)\b[^.?!]{0,30}?\b(?:the|any|all)?\s*` + dirObj + String.raw`\b[^.?!]{0,40}?\b` + dynamicAnchor, "i");
+  const remoteInstrHit = String(description).match(retrieveShape) || String(description).match(obeyShape);
+  if (remoteInstrHit) add("critical", "remote-instruction-injection",
+    "Description instructs the agent to fetch its instructions/prompt from a remote source and follow them (or to obey directives returned by the server at call time) — a remote-controlled instruction channel. The live payload lives off-definition, so an operator can swap in a malicious directive after approval WITHOUT changing the tool definition, defeating hash-pinning rug-pull detection.", remoteInstrHit[0]);
+
   // 2. Data-exfiltration hints. Split by payload class: SENSITIVE payloads (system prompt /
   // conversation / env / file contents / private keys) flag on ANY destination incl a bare URL;
   // AUTH-ambiguous credentials (cookie/key/token/password) flag only on a FOREIGN destination,
@@ -92,6 +111,12 @@ function analyzeMcpTool(name, description, schemaText) {
     const h = pl.match(exfilSensitive) || pl.match(exfilCredential);
     if (h) { add("high", "exfiltration-hint",
       "A tool parameter's schema description instructs sending sensitive data / credentials to a destination — schema-injection exfiltration (payload hidden in inputSchema rather than the top-level description).", h[0]); break; }
+  }
+  // Remote-instruction injection (rule 1b) smuggled into a parameter's schema description.
+  for (const prose of schemaProse) {
+    const h = String(prose).match(retrieveShape) || String(prose).match(obeyShape);
+    if (h) { add("critical", "remote-instruction-injection",
+      "A tool parameter's schema description instructs fetching/obeying instructions from a remote source — remote-controlled instruction channel hidden in the inputSchema (defeats hash-pinning; payload lives off-definition).", h[0]); break; }
   }
 
   // 2c. Wallet-secret parameter harvesting (OWASP LLM08). A declared input parameter
