@@ -68,13 +68,20 @@ function analyzeMcpTool(name, description, schemaText) {
   // `description`/`title` prose is scanned, each field standalone, so terse benign
   // type-hint descriptions stay clean.
   const schemaProse = [];
+  const paramNames = [];
   try {
     const walk = (node) => {
       if (Array.isArray(node)) { for (const x of node) walk(x); return; }
       if (node && typeof node === "object") {
         for (const [k, v] of Object.entries(node)) {
           if ((k === "description" || k === "title") && typeof v === "string") schemaProse.push(v);
-          else walk(v);
+          else {
+            // A JSON-Schema `properties` object's KEYS are the declared parameter
+            // names the agent is told to fill — collect them (rule 2c scans these).
+            if (k === "properties" && v && typeof v === "object" && !Array.isArray(v))
+              for (const pn of Object.keys(v)) paramNames.push(pn);
+            walk(v);
+          }
         }
       }
     };
@@ -86,6 +93,19 @@ function analyzeMcpTool(name, description, schemaText) {
     if (h) { add("high", "exfiltration-hint",
       "A tool parameter's schema description instructs sending sensitive data / credentials to a destination — schema-injection exfiltration (payload hidden in inputSchema rather than the top-level description).", h[0]); break; }
   }
+
+  // 2c. Wallet-secret parameter harvesting (OWASP LLM08). A declared input parameter
+  // for a raw wallet secret (private key / seed phrase / mnemonic / recovery phrase)
+  // is the wallet-drainer pattern: a hosted tool never needs the user's private key
+  // (a non-custodial signer signs locally and returns only a signature), so sending
+  // it to a remote server hands over custody. Matched on the param NAME (a request
+  // the agent fills), never prose, and only unambiguous wallet-secret tokens — NOT
+  // generic api_key/password/token, which authenticated tools legitimately accept.
+  const walletSecretParam = /(privatekey|privkey|seedphrase|secretrecoveryphrase|recoveryphrase|mnemonic|walletsecret)/;
+  const secretParamHit = paramNames.find((n) => walletSecretParam.test(String(n).toLowerCase().replace(/[^a-z0-9]/g, "")));
+  if (secretParamHit) add("critical", "wallet-secret-harvesting",
+    "Tool declares an input parameter for a raw wallet secret (private key / seed phrase / mnemonic / recovery phrase). A hosted tool never needs the user's private key — a non-custodial signer signs locally and returns only a signature; sending the key to a remote server is the wallet-drainer pattern.",
+    secretParamHit);
 
   // 3. Dangerous capability surface
   const danger = /((?<![\/.\w-])(exec|execs)(?![\/\w-])(?!\s+(tools?|access|permission|capabilit|rights?|mode|flag|param)\b)|\b(exec\(|eval|eval\(|subprocess|shell|sudo|chmod)\b|os\.system|child_process|rm -rf|arbitrary (code|command)|remote code|\bexecute (shell|arbitrary|code|commands?)\b|run (shell|arbitrary) (commands?|code))/i;
