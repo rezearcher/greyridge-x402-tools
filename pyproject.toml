@@ -1,14 +1,32 @@
 [project]
 name = "greyridge-x402-tools"
-version = "0.2.2"
-description = "Pre-trade safety gate tools (Base token report, swap GO/HOLD/BLOCK) over x402 pay-per-call, for LangChain/CrewAI agents"
+version = "0.4.0"
+description = "MCP server security scanner — static tool-poisoning / prompt-injection audit (OWASP LLM01/LLM08) + maintenance & supply-chain drift grade + continuous monitoring; plus a pre-trade Base token safety gate. Keyless x402 pay-per-call."
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.9"
+keywords = ["mcp", "mcp-server", "security", "scanner", "tool-poisoning", "prompt-injection", "llm-security", "scorecard", "supply-chain", "agent-safety", "x402", "base"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Security",
+  "Topic :: Software Development :: Quality Assurance",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = ["requests>=2.28"]
 [project.optional-dependencies]
 pay = ["x402>=0.2", "eth-account"]
 langchain = ["langchain-core"]
+[project.scripts]
+greyridge-gate = "greyridge_x402.cli:gate_main"
+greyridge-report = "greyridge_x402.cli:report_main"
+[project.urls]
+Homepage = "https://github.com/rezearcher/greyridge-x402-tools"
+Documentation = "https://rezearcher.github.io/greyridge-x402-tools/"
+API = "https://api.greyridgesignals.ai/.well-known/x402"
+Scorecards = "https://rezearcher.github.io/greyridge-x402-tools/mcp-server-scorecards.html"
 [build-system]
 requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
