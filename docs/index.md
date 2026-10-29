@@ -33,6 +33,13 @@ Paid route is the same depth: `GET /chain/token-report?token=0x...` at $0.01 USD
 - [Honeypot check API for Base tokens](honeypot-check-api-base.html)
 - [Pre-trade safety gate for AI trading agents](pre-trade-safety-gate-ai-agents.html)
 
+
+## Jobs & hiring data for agents
+
+Pull open roles and hiring-intent signals across 10 applicant-tracking systems through one keyless x402 call — no account, no per-ATS scraping to maintain.
+
+- [Pay-per-call ATS jobs API for AI agents](ats-jobs-api-x402.html) — Greenhouse, Lever, Ashby, Workday and more in one normalized feed; job search $0.004, per-company hiring-intent signal $0.003, free preview
+
 <!-- line-a-framework-pages:start -->
 
 **Framework install guides** — drop the gate into your trading agent in one line:
