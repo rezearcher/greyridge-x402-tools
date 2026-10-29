@@ -39,6 +39,7 @@ Paid route is the same depth: `GET /chain/token-report?token=0x...` at $0.01 USD
 Pull open roles and hiring-intent signals across 10 applicant-tracking systems through one keyless x402 call — no account, no per-ATS scraping to maintain.
 
 - [Pay-per-call ATS jobs API for AI agents](ats-jobs-api-x402.html) — Greenhouse, Lever, Ashby, Workday and more in one normalized feed; job search $0.004, per-company hiring-intent signal $0.003, free preview
+- [Live Greenhouse jobs API: is this role still open?](live-greenhouse-jobs-api.html) — reads the board live on every call (not a cached database), with ghost-job / closed-role detection; $0.004 per call, free preview
 
 <!-- line-a-framework-pages:start -->
 
