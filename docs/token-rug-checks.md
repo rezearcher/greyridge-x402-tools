@@ -9,7 +9,7 @@ measures the contract's sell simulation, transfer fee, mint / pause / blacklist 
 ownership and Uniswap liquidity, then returns a GO / HOLD / BLOCK verdict you can re-run yourself
 with no account.
 
-Updated 2026-10-28.
+Updated 2026-10-29.
 
 - [AERO (Aerodrome)](token-aero-940181-honeypot-check.html) — GO
 - [cbBTC (Coinbase Wrapped BTC)](token-cbbtc-cbb7c0-honeypot-check.html) — GO
