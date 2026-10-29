@@ -40,6 +40,7 @@ Pull open roles and hiring-intent signals across 10 applicant-tracking systems t
 
 - [Pay-per-call ATS jobs API for AI agents](ats-jobs-api-x402.html) — Greenhouse, Lever, Ashby, Workday and more in one normalized feed; job search $0.004, per-company hiring-intent signal $0.003, free preview
 - [Live Greenhouse jobs API: is this role still open?](live-greenhouse-jobs-api.html) — reads the board live on every call (not a cached database), with ghost-job / closed-role detection; $0.004 per call, free preview
+- [Hiring-intent signal API: which companies are hiring, and how hard](hiring-intent-signal-api.html) — one record per company (open-req count, intensity grade, department/location breakdown, recency) for account scoring and trigger-based outreach; $0.003 per call, free preview
 
 <!-- line-a-framework-pages:start -->
 
