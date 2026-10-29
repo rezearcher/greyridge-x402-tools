@@ -1,11 +1,11 @@
 ---
 title: "Is USDC a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for USDC (USD Coin) on Base (0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913), measured 2026-10-28: engine verdict GO, risk 25/100, $176.60M pool liquidity. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for USDC (USD Coin) on Base (0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913), measured 2026-10-29: engine verdict GO, risk 25/100, $208.75M pool liquidity. Re-run it yourself in one keyless call."
 ---
 # Is USDC a honeypot? — on-chain rug check (Base)
 
 **Token:** `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
-**Chain:** Base · **Measured:** 2026-10-28 · verdict `GO` · risk `25/100`
+**Chain:** Base · **Measured:** 2026-10-29 · verdict `GO` · risk `25/100`
 
 On the measured on-chain checks below, **USDC passed** — our engine returned a GO.
 
@@ -24,7 +24,7 @@ token passes safety checks; trade is 0.00% of pool liquidity.
 - sell simulation succeeded (not a honeypot)
 - 0% measured transfer fee
 
-Deepest Uniswap v3 WETH pool held about **$176.60M** of liquidity when measured.
+Deepest Uniswap v3 WETH pool held about **$208.75M** of liquidity when measured.
 
 ## See the live verdict and size your exit
 
@@ -63,4 +63,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-10-28; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-10-29; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
