@@ -1,5 +1,6 @@
 # greyridge-x402-tools
 
+[![PyPI](https://img.shields.io/pypi/v/greyridge-x402-tools?logo=pypi&logoColor=white)](https://pypi.org/project/greyridge-x402-tools/)
 [![GitHub Marketplace](https://img.shields.io/badge/GitHub_Marketplace-MCP_tool--poisoning_scan-2ea44f?logo=github)](https://github.com/marketplace/actions/mcp-server-tool-poisoning-scan)
 
 Keyless **x402** APIs for AI agents — USDC per call on Base, free preview on every route, no account and no key. Two product lines:
@@ -135,7 +136,7 @@ Exit code mirrors the `mcpscan` CLI: `2` on `block`, `1` on `review`, `0` on `cl
 Honeypot sell-simulation, proxy/tax/liquidity checks → `SAFE` / `CAUTION` / `AVOID`, plus a `GO` / `HOLD` / `BLOCK` swap gate.
 
 ```bash
-pip install "git+https://github.com/rezearcher/greyridge-x402-tools"
+pip install greyridge-x402-tools
 ```
 
 Terminal in 10 seconds — the exit code is the gate (`0` GO, `1` HOLD, `2` BLOCK), so it drops straight into a script or CI step:
@@ -152,7 +153,7 @@ print(token_report("aero"))            # free preview, no wallet
 print(swap_gate("0x..."))              # free preview
 
 # paid (x402, $0.01 / $0.008 per call), your own key:
-#   pip install "greyridge-x402-tools[pay] @ git+https://github.com/rezearcher/greyridge-x402-tools"
+#   pip install "greyridge-x402-tools[pay]"
 token_report("0x...", paid=True)       # reads X402_PRIVATE_KEY
 ```
 
