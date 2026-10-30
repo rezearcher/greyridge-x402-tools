@@ -38,6 +38,14 @@ Paid route is the same depth: `GET /chain/token-report?token=0x...` at $0.01 USD
 
 Pull open roles and hiring-intent signals across 10 applicant-tracking systems through one keyless x402 call — no account, no per-ATS scraping to maintain.
 
+Try it free first — one call returns real sample rows for a company plus the exact paid-upgrade pointer, no account and no key:
+
+```bash
+curl "https://assetfactory-jobs-x402.sigrunner.workers.dev/jobs/preview?companies=stripe.com"
+```
+
+Paid routes are the same depth over [x402](https://x402.org) on Base: job search `GET /jobs/search` ($0.004), per-company hiring-intent signal `GET /hiring/signal` ($0.003), and normalized compensation `GET /jobs/comp` ($0.005) — pay per call in USDC, no account.
+
 - [Pay-per-call ATS jobs API for AI agents](ats-jobs-api-x402.html) — Greenhouse, Lever, Ashby, Workday and more in one normalized feed; job search $0.004, per-company hiring-intent signal $0.003, free preview
 - [Live Greenhouse jobs API: is this role still open?](live-greenhouse-jobs-api.html) — reads the board live on every call (not a cached database), with ghost-job / closed-role detection; $0.004 per call, free preview
 - [Hiring-intent signal API: which companies are hiring, and how hard](hiring-intent-signal-api.html) — one record per company (open-req count, intensity grade, department/location breakdown, recency) for account scoring and trigger-based outreach; $0.003 per call, free preview
