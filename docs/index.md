@@ -71,6 +71,13 @@ Enrich a company domain with one live-from-source record: the SaaS stack hiding 
 - [Flag risky leads and sign-ups by domain age](flag-risky-domains-lead-quality-api.html) — score a lead or sign-up domain by its real registration age, registrar and mail setup, read live from RDAP/DNS; one record that screens for throwaway domains and enriches at the same time
 - [Company Enrichment on the Apify Store](https://apify.com/greyridge-signals/company-enrichment-scraper) — managed, no-code, per-result billing
 
+## Email deliverability & verification for agents
+
+Grade an email address on one keyless call — MX routing, disposable / role / free-provider flags, SPF/DMARC sender-posture (spoofability), a typo "did-you-mean", and an A–F deliverability grade. Pay $0.002 per email in USDC over [x402](https://x402.org) on Base; no account, no API key, no prepaid credits. The 402 response ships the full schema and a worked example, so an agent sees the output before it pays.
+
+- [Email verification API for AI agents](email-verification-deliverability-api.html) — an honest head-to-head with the SMTP list-cleaners (the top Apify verifier, ZeroBounce, NeverBounce, Kickbox): where a mailbox-level SMTP probe is the right tool, and where you instead need a deliverability + domain-risk + sender-posture grade an agent can call with nothing but a wallet
+- [Company Enrichment on the Apify Store](https://apify.com/greyridge-signals/company-enrichment-scraper) — the same MX-graded deliverability on every contact, managed and per-result billed
+
 <!-- line-a-framework-pages:start -->
 
 **Framework install guides** — drop the gate into your trading agent in one line:
