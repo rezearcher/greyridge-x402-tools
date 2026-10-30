@@ -2,10 +2,46 @@
 
 [![GitHub Marketplace](https://img.shields.io/badge/GitHub_Marketplace-MCP_tool--poisoning_scan-2ea44f?logo=github)](https://github.com/marketplace/actions/mcp-server-tool-poisoning-scan)
 
-Two safety gates for AI agents, backed by a keyless x402 API (USDC per call on Base, free previews, no account):
+Keyless **x402** APIs for AI agents — USDC per call on Base, free preview on every route, no account and no key. Two product lines:
 
-1. **mcpscan** — vet an MCP server's advertised tools for prompt-injection / tool-poisoning before your agent trusts it.
-2. **rugcheck / swap-gate** — honeypot and pre-trade safety checks for Base tokens.
+1. **Jobs & hiring data** — a live, maintained Greenhouse feed with a stateful change-feed, a per-run freshness SLA, and keyless company enrichment. For sourcing, recruiting-ops and hiring-intel agents.
+2. **Agent safety gates** — `mcpscan` (vet an MCP server for prompt-injection / tool-poisoning before your agent trusts it) and `rugcheck / swap-gate` (honeypot + pre-trade checks for Base tokens).
+
+Jump to: [Jobs & hiring data](#jobs--hiring-data--live-maintained-pay-per-call) · [MCP server security](#state-of-mcp-server-security--what-we-found-scanning-144-live-servers) · [mcpscan](#mcpscan--vet-an-mcp-server-before-your-agent-trusts-it) · [rugcheck / swap-gate](#rugcheck--swap-gate--pre-trade-safety-for-base-tokens)
+
+## Jobs & hiring data — live, maintained, pay-per-call
+
+A normalized hiring feed built on **Greenhouse** — read from the live board at run time, not resold from a stale database. Priced per call in USDC on Base; every route has a free preview, no account or key.
+
+The incumbent (`fantastic-jobs/greenhouse-jobs-api`, ~1,000 users) resells a roughly six-month database refreshed twice-hourly, so it cannot authoritatively answer "is *this* role open right now." This feed reads the board when you call it, and adds three things the resold DB does not ship:
+
+- **Stateful change-feed** — every run diffs against the previous one: `new | changed | open | closed`, plus ghost-job detection (a role still open far past a configurable age threshold, default 60 days — a likely evergreen "ghost" post). No separate "new-only" scraper.
+- **Per-run freshness SLA** — each response is stamped `OK | EMPTY | SCHEMA_DRIFT | DOWN`, so an agent knows whether it got live truth or hit a broken adapter, instead of silently consuming stale rows.
+- **Keyless company enrichment** (`includeCompany`) — resolved domain, email provider, SaaS/tech stack, and domain age + registrar per board, derived live from DNS/MX/TXT and RDAP. The incumbent's equivalent fields come from a rented third-party key; ours use no paid API, and the domain is authoritative-or-verified (never guessed — `null` when it can't be confirmed).
+
+Depth on every job: parsed location (city / state / country / remote), canonical employment type and seniority, salary when the posting states one, and a structured `requirements` block (a maintained skills taxonomy + minimum years + education level) — all parsed from the posting, no enrichment key.
+
+### Endpoints (USDC on Base `eip155:8453`, free preview on each)
+
+| Route | Returns | Price |
+|---|---|---|
+| `GET /jobs/search` | Normalized live jobs; `includeCompany`, change-feed, ghost flags, roster mode | **$0.004** |
+| `GET /jobs/comp` | Normalized cross-posting compensation layer | **$0.005** |
+| `GET /hiring/signal` | Whether a company is hiring and its open-role breakdown | **$0.003** |
+| `GET /company/enrich` | Standalone firmographics: domain, email provider, SaaS stack, registration | **$0.01** |
+| `GET /email/verify` | Deliverability: MX / SPF / DMARC, disposable + typo detection | **$0.002** |
+
+Try it free — one company, first rows, no key:
+
+```bash
+curl "https://assetfactory-jobs-x402.sigrunner.workers.dev/jobs/preview?companies=stripe&includeCompany=true"
+```
+
+The paid route returns the full result set and otherwise `402`s with an x402 payment-required body any x402 wallet can satisfy (`/jobs/search` = 4000 micro-USDC = $0.004). No company list required: `useRoster=true` runs against a **self-pruning roster of 53 maintained Greenhouse boards** — more than half of a naive hand-built board list is already dead, which is exactly why the upkeep is the product.
+
+**Honest gap vs the incumbent:** it has tenure, store-search ranking, and a large multi-company backfill in a single call; and we do not emit headcount / industry / HQ from a paid people-database (that needs a rented key, and we keep COGS keyless). We win on live truth, the change-feed, the freshness SLA, keyless enrichment, and price.
+
+Also on Apify Store: [greenhouse-jobs-live](https://apify.com/greyridge-signals/greenhouse-jobs-live) · [company-enrichment-scraper](https://apify.com/greyridge-signals/company-enrichment-scraper) · [multi-ats-jobs-scraper](https://apify.com/greyridge-signals/multi-ats-jobs-scraper). Guides: https://rezearcher.github.io/greyridge-x402-tools/
 
 ## State of MCP server security — what we found scanning 144 live servers
 
