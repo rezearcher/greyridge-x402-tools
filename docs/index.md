@@ -43,6 +43,7 @@ Pull open roles and hiring-intent signals across 10 applicant-tracking systems t
 - [Hiring-intent signal API: which companies are hiring, and how hard](hiring-intent-signal-api.html) — one record per company (open-req count, intensity grade, department/location breakdown, recency) for account scoring and trigger-based outreach; $0.003 per call, free preview
 - [Salary data API from live job postings](salary-data-api-x402.html) — the disclosed comp a company actually posts on its own open roles (min/max, currency, period, annualized, source), plus a per-company disclosure rate and median band, read live across 10 ATS; $0.005 per call, free preview
 - [Which ATS jobs scraper covers Workday, BambooHR and Breezy?](ats-jobs-scraper-comparison.html) — an honest coverage comparison (10 vs 6 vs 1 ATS) against the established Greenhouse/Lever/Ashby scrapers, with guidance on when to pick each
+- [Alternative to fantastic-jobs' Greenhouse Jobs API](fantastic-jobs-alternative.html) — an honest head-to-head: where a resold enriched Greenhouse database fits, and where you need a live board read with new/changed/closed change tracking, ghost-job detection and a tracked salary range instead
 
 **Prefer a managed, no-code run?** The same maintained scrapers are published as Apify Store actors, so scheduled runs, dataset storage and per-result billing are handled by the marketplace and the Store's own run-counts and ratings carry the trust:
 
