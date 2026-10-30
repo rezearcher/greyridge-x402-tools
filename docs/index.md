@@ -55,6 +55,7 @@ Paid routes are the same depth over [x402](https://x402.org) on Base: job search
 - [Which ATS jobs scraper covers Workday, BambooHR and Breezy?](ats-jobs-scraper-comparison.html) — an honest coverage comparison (10 vs 6 vs 1 ATS) against the established Greenhouse/Lever/Ashby scrapers, with guidance on when to pick each
 - [Connect live jobs and company enrichment to your agent via MCP](connect-jobs-mcp-server.html) — a hosted MCP server (Claude Code, Cursor, Claude Desktop) with free `search_jobs` / `resolve_company` / `enrich_preview` tools across 10 ATS, and metered compensation, hiring-intent and ghost-job depth over x402
 - [Which companies are hiring on Greenhouse right now?](companies-hiring-on-greenhouse.html) — a live, self-pruned roster of the highest-volume Greenhouse boards with per-company open-role counts (free discovery call), not a stale tech-detection list; feed it straight into the paid search with no company list
+- [Extract required skills, experience and education from job postings](extract-skills-from-job-postings-api.html) — a structured requirements block on every role (named skills with category, minimum years of experience, degree asked for), parsed from the job description across 10 ATS against a maintained 77-skill taxonomy; $0.004 per call, free preview
 
 
 **Prefer a managed, no-code run?** The same maintained scrapers are published as Apify Store actors, so scheduled runs, dataset storage and per-result billing are handled by the marketplace and the Store's own run-counts and ratings carry the trust:
