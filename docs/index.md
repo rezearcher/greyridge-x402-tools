@@ -62,6 +62,13 @@ Paid routes are the same depth over [x402](https://x402.org) on Base: job search
 - [LinkedIn Jobs Scraper](https://apify.com/greyridge-signals/linkedin-jobs-scraper) — public job postings with full descriptions and normalized pay, no login
 - [Company Enrichment](https://apify.com/greyridge-signals/company-enrichment-scraper) — firmographics, contacts, tech stack and a live hiring signal in one record
 
+## Company & domain enrichment for agents
+
+Enrich a company domain with one live-from-source record: the SaaS stack hiding in its DNS, who runs its mail, domain age from the registry, graded contact emails — and a live hiring signal read from the company's own ATS. No resold database; you enrich the domains you supply.
+
+- [Company enrichment by domain: the live tech stack and hiring signal a database misses](company-enrichment-api.html) — an honest head-to-head with the firmographics-database and live-crawl enrichment actors, and where DNS technographics plus a live 8-ATS hiring signal fit instead
+- [Company Enrichment on the Apify Store](https://apify.com/greyridge-signals/company-enrichment-scraper) — managed, no-code, per-result billing
+
 <!-- line-a-framework-pages:start -->
 
 **Framework install guides** — drop the gate into your trading agent in one line:
