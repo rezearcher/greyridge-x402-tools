@@ -12,7 +12,7 @@ import argparse
 import json
 import sys
 
-from . import token_report, swap_gate
+from . import token_report, swap_gate, token_prices, defi_yields, funding_rates
 
 _GATE_EXIT = {"go": 0, "hold": 1, "block": 2}
 _REPORT_EXIT = {"SAFE": 0, "CAUTION": 1, "AVOID": 2}
@@ -64,6 +64,37 @@ def report_main():
         for reason in r.get("reasons", []) or []:
             print(f"  - {reason}")
     return _REPORT_EXIT.get(str(r.get("verdict", "")).upper(), 3)
+
+
+def data_main():
+    """Keyless DeFi/crypto DATA over x402: prices, yields, funding.
+
+        greyridge-data prices bitcoin,ethereum
+        greyridge-data yields lido
+        greyridge-data funding BTC
+    """
+    p = argparse.ArgumentParser(
+        prog="greyridge-data",
+        description="Keyless x402 DeFi/crypto data: prices | yields | funding.")
+    p.add_argument("kind", choices=["prices", "yields", "funding"],
+                   help="which dataset")
+    p.add_argument("query", nargs="?", default="",
+                   help="prices: coin ids (bitcoin,ethereum) · yields: protocol family (lido) · funding: coin (BTC)")
+    p.add_argument("--paid", action="store_true",
+                   help="settle over x402 (reads X402_PRIVATE_KEY); default is the free preview")
+    a = p.parse_args()
+    try:
+        if a.kind == "prices":
+            r = token_prices(a.query or "bitcoin", paid=a.paid)
+        elif a.kind == "yields":
+            r = defi_yields(a.query or None, paid=a.paid)
+        else:
+            r = funding_rates(a.query or None, paid=a.paid)
+    except Exception as e:  # network / HTTP / signing — surface, don't trace-dump
+        print(f"greyridge-data: {e}", file=sys.stderr)
+        return 3
+    print(json.dumps(r, indent=2))
+    return 0
 
 
 if __name__ == "__main__":  # python -m greyridge_x402.cli

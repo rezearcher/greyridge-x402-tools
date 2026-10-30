@@ -1,3 +1,4 @@
 [console_scripts]
+greyridge-data = greyridge_x402.cli:data_main
 greyridge-gate = greyridge_x402.cli:gate_main
 greyridge-report = greyridge_x402.cli:report_main

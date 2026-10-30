@@ -131,6 +131,39 @@ Exit code mirrors the `mcpscan` CLI: `2` on `block`, `1` on `review`, `0` on `cl
 
 **Free vs paid in CI:** the Action runs the free preview (verdict + severity counts) on every push — $0, no key. When a job fails and you need the *itemized findings with evidence + OWASP LLM01/LLM08 mapping* to fix it, the free preview line points you at the paid `GET /scan/mcp?url=` ($0.05 USDC, x402 on Base) — a zero-egress `POST /scan/mcp` with your `tools` array works too if the server isn't publicly reachable.
 
+## DeFi & crypto data — keyless, named functions
+
+Spot prices, DeFi pool yields, and 5-venue perp funding as first-class Python functions — **no API key**, a free preview on every call, and x402 USDC settlement only when you ask for the full set. Every competitor SDK (pycoingecko-pro, the official `coingecko-sdk`, the GoPlus SDK) gates its named functions behind an account key; these do not.
+
+```bash
+pip install greyridge-x402-tools
+```
+
+```python
+from greyridge_x402 import token_prices, defi_yields, funding_rates
+
+token_prices("bitcoin,ethereum")   # spot USD price + 24h change + confidence (free preview)
+token_prices(["sol", "aero"])      # a list works too
+defi_yields("lido")                # ranked APY + TVL + risk-adjusted APY for a protocol family
+funding_rates("BTC")               # 5-venue funding + CEX/DEX arb spread + LONGS_PAY/SHORTS_PAY signal
+
+# Full result set over x402 (your own Base USDC key):
+#   pip install "greyridge-x402-tools[pay]"
+defi_yields("aave", paid=True)     # ranked set, reads X402_PRIVATE_KEY
+```
+
+Migrating from pycoingecko? `get_price(ids="bitcoin,ethereum")` is a drop-in alias of `token_prices`.
+
+Terminal:
+
+```bash
+greyridge-data prices bitcoin,ethereum
+greyridge-data yields lido
+greyridge-data funding BTC
+```
+
+The free preview returns a representative sample (top-1 pool / funding row, or a 1-of-N price); the paid routes return the ranked set — `/crypto/prices` ($0.001, up to 25 coins), `/defi/yields` ($0.001), `/crypto/funding` ($0.004, Binance+Bybit+OKX+Hyperliquid+dYdX). Keyless, Base-native, pay-per-call.
+
 ## rugcheck / swap-gate — pre-trade safety for Base tokens
 
 Honeypot sell-simulation, proxy/tax/liquidity checks → `SAFE` / `CAUTION` / `AVOID`, plus a `GO` / `HOLD` / `BLOCK` swap gate.
@@ -167,7 +200,7 @@ tools = crewai_tools()   # free preview; crewai_tools(paid=True) pays via x402 (
 agent = Agent(role="trader", tools=tools, ...)
 ```
 
-Tools: `base_token_report` (SAFE/CAUTION/AVOID) and `base_swap_gate` (GO/HOLD/BLOCK). Measured latency: `docs/STATUS.md` in the data-api repo.
+Tools: `base_token_report` (SAFE/CAUTION/AVOID), `base_swap_gate` (GO/HOLD/BLOCK), plus the data tools `crypto_prices`, `defi_pool_yields` and `perp_funding_rates`. `langchain_tools()` / `crewai_tools()` return all five. Measured latency: `docs/STATUS.md` in the data-api repo.
 
 ### Drop-in swap guard (JS)
 
