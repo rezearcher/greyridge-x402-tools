@@ -53,6 +53,7 @@ Paid routes are the same depth over [x402](https://x402.org) on Base: job search
 - [Hiring-intent signal API: which companies are hiring, and how hard](hiring-intent-signal-api.html) — one record per company (open-req count, intensity grade, department/location breakdown, recency) for account scoring and trigger-based outreach; $0.003 per call, free preview
 - [Pay-per-call ATS jobs API for AI agents](ats-jobs-api-x402.html) — Greenhouse, Lever, Ashby, Workday and more in one normalized feed; job search $0.004, per-company hiring-intent signal $0.003, free preview
 - [Which ATS jobs scraper covers Workday, BambooHR and Breezy?](ats-jobs-scraper-comparison.html) — an honest coverage comparison (10 vs 6 vs 1 ATS) against the established Greenhouse/Lever/Ashby scrapers, with guidance on when to pick each
+- [Connect live jobs and company enrichment to your agent via MCP](connect-jobs-mcp-server.html) — a hosted MCP server (Claude Code, Cursor, Claude Desktop) with free `search_jobs` / `resolve_company` / `enrich_preview` tools across 10 ATS, and metered compensation, hiring-intent and ghost-job depth over x402
 
 **Prefer a managed, no-code run?** The same maintained scrapers are published as Apify Store actors, so scheduled runs, dataset storage and per-result billing are handled by the marketplace and the Store's own run-counts and ratings carry the trust:
 
