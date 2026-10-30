@@ -1,0 +1,78 @@
+# Grey Ridge x402 Tools
+
+> Keyless, pay-per-call APIs built for AI agents, billed in USDC on Base via x402 (HTTP 402) — no account, no API key, no prepaid credits. A maintained multi-ATS jobs & hiring feed, live company/domain enrichment, email deliverability grading, Base-token pre-trade safety checks, and an MCP-server prompt-injection scanner. Most paid routes have a free preview that returns real output so an agent verifies quality before it pays.
+
+How payment works: call a paid route; it answers HTTP 402 with x402 v2 PaymentRequirements in both the `payment-required` header and the JSON body (scheme `exact`, USDC on Base, network `eip155:8453`). Pay with any x402 client (x402-fetch / x402-axios) and retry. Prices below are per call in USDC and were set from the live 402 responses.
+
+## Jobs & hiring data (live, 10 ATS)
+
+One normalized feed read live from each company's own applicant-tracking system (Greenhouse, Lever, Ashby, SmartRecruiters, Workday, Recruitee, Workable, BambooHR, Breezy, Personio) with company-domain auto-detection. Not a cached database — every call reads the board, so new / changed / closed roles are current. Adapters are drift-monitored and maintained so the feed does not rot.
+
+- [Job search — GET /jobs/search](https://assetfactory-jobs-x402.sigrunner.workers.dev/jobs/search): $0.004/call. Normalized postings across all 10 ATS, each with structured geography (location_parsed), canonical employment_type + seniority, and a ghost_candidate flag for likely-unfilled listings.
+- [Hiring-intent signal — GET /hiring/signal](https://assetfactory-jobs-x402.sigrunner.workers.dev/hiring/signal): $0.003/call. One buying-intent record per company — open-req count, intensity grade, department/location histograms, newest-post recency — for account scoring and trigger-based outreach.
+- [Compensation layer — GET /jobs/comp](https://assetfactory-jobs-x402.sigrunner.workers.dev/jobs/comp): $0.005/call. Normalized {min,max,currency,period,annualized} salary per posting plus per-company disclosure rate and median band.
+- [Free preview — GET /jobs/preview](https://assetfactory-jobs-x402.sigrunner.workers.dev/jobs/preview?companies=stripe.com): real sample rows teasing all three paid products for one company, no payment.
+- [Live Greenhouse jobs: is this role still open?](https://rezearcher.github.io/greyridge-x402-tools/live-greenhouse-jobs-api.html): reads the board live on every call with ghost-job / closed-role detection.
+- [Ghost-job detection: closed roles and stale evergreen postings](https://rezearcher.github.io/greyridge-x402-tools/ghost-job-detection-api.html): diffs successive live reads to catch vanished roles, plus a tunable age signal (ghost_candidate) for roles left posted for months.
+- [Salary data from live job postings](https://rezearcher.github.io/greyridge-x402-tools/salary-data-api-x402.html): the disclosed comp a company posts on its own open roles, with per-company disclosure rate and median band.
+- [Hiring-intent signal API: which companies are hiring, and how hard](https://rezearcher.github.io/greyridge-x402-tools/hiring-intent-signal-api.html).
+- [Pay-per-call ATS jobs API for AI agents](https://rezearcher.github.io/greyridge-x402-tools/ats-jobs-api-x402.html).
+- [Alternative to fantastic-jobs' Greenhouse Jobs API](https://rezearcher.github.io/greyridge-x402-tools/fantastic-jobs-alternative.html): honest head-to-head — resold enriched database vs. a live board read with change tracking.
+- [Which ATS jobs scraper covers Workday, BambooHR and Breezy?](https://rezearcher.github.io/greyridge-x402-tools/ats-jobs-scraper-comparison.html): honest coverage comparison (10 vs 6 vs 1 ATS).
+- [Connect live jobs & enrichment to your agent via MCP](https://rezearcher.github.io/greyridge-x402-tools/connect-jobs-mcp-server.html): a hosted MCP server with free tools + metered depth over x402.
+
+## Company & domain enrichment
+
+Enrich a company domain with one live-from-source record — no resold database; you enrich the domains you supply.
+
+- [Company enrichment — GET /company/enrich](https://assetfactory-jobs-x402.sigrunner.workers.dev/company/enrich): $0.01/company. One firmographic record per domain: site-crawl (name/industry/description/social/contacts), tech-stack fingerprint, keyless DNS/RDAP depth (email provider, SaaS-from-DNS, domain age + registrar) and the live multi-ATS hiring block.
+- [Free preview — GET /company/enrich/preview](https://assetfactory-jobs-x402.sigrunner.workers.dev/company/enrich/preview?companies=stripe.com): the keyless DNS/RDAP layer on one domain, no payment.
+- [Company enrichment by domain: the live tech stack and hiring signal a database misses](https://rezearcher.github.io/greyridge-x402-tools/company-enrichment-api.html).
+- [Detect a company's SaaS stack from its domain](https://rezearcher.github.io/greyridge-x402-tools/detect-saas-tech-stack-from-domain.html): reads live DNS (domain-verification tokens + SPF chain), surfacing back-office SaaS a crawl-based detector (BuiltWith, Wappalyzer) can't see.
+- [Flag risky leads and sign-ups by domain age](https://rezearcher.github.io/greyridge-x402-tools/flag-risky-domains-lead-quality-api.html): score a lead/sign-up domain by real registration age, registrar and mail setup from RDAP/DNS.
+
+## Email deliverability & verification
+
+- [Email verification — GET /email/verify](https://assetfactory-jobs-x402.sigrunner.workers.dev/email/verify): $0.002/email. One deliverability record per address: MX / implicit-MX routing, SPF + DMARC posture, disposable / role / free-provider flags against a loop-maintained throwaway-domain corpus, a derived typo "did-you-mean", and an A–F grade. Keyless (DoH), no SMTP mailbox probe.
+- [Free preview — GET /email/verify/preview](https://assetfactory-jobs-x402.sigrunner.workers.dev/email/verify/preview?emails=test@stripe.com): the first email graded in full, no payment.
+- [Email verification API for AI agents](https://rezearcher.github.io/greyridge-x402-tools/email-verification-deliverability-api.html): honest head-to-head with the SMTP list-cleaners (ZeroBounce, NeverBounce, Kickbox) — where a mailbox SMTP probe is the right tool, and where a deliverability + domain-risk + sender-posture grade an agent can call with nothing but a wallet fits instead.
+
+## Base token safety (pre-trade checks for trading agents)
+
+- [Token report — GET /chain/token-report](https://x402-data-api.sigrunner.workers.dev/chain/token-report): $0.01/token. Honeypot sell-simulation, proxy/mint/pause/blacklist flags, measured transfer tax, liquidity depth; returns SAFE / CAUTION / AVOID.
+- [Swap guard — GET /gate/swap](https://x402-data-api.sigrunner.workers.dev/gate/swap): $0.008/call. Returns GO / HOLD / BLOCK for a proposed swap.
+- [Live Base token rug & honeypot checks](https://rezearcher.github.io/greyridge-x402-tools/token-rug-checks.html).
+- [Honeypot check API for Base tokens](https://rezearcher.github.io/greyridge-x402-tools/honeypot-check-api-base.html).
+- [Pre-trade safety gate for AI trading agents](https://rezearcher.github.io/greyridge-x402-tools/pre-trade-safety-gate-ai-agents.html).
+
+## MCP server security scanner
+
+- [Scan an MCP server — GET /scan/mcp](https://x402-data-api.sigrunner.workers.dev/scan/mcp): $0.05/scan. Static tool-poisoning / prompt-injection scan of advertised MCP metadata (OWASP LLM01/LLM08), itemized findings; never invokes a tool. Also a free CLI: `npx -y github:rezearcher/greyridge-x402-tools mcpscan <server-url>` (exit code 2 on `block` for CI).
+- [Scan an MCP server for prompt injection / tool poisoning](https://rezearcher.github.io/greyridge-x402-tools/scan-mcp-server-prompt-injection.html).
+- [Why was my Claude connector rejected?](https://rezearcher.github.io/greyridge-x402-tools/claude-connector-directory-readiness.html).
+- [MCP server security scorecards](https://rezearcher.github.io/greyridge-x402-tools/mcp-server-scorecards.html).
+
+## Managed / no-code (Apify Store actors)
+
+The same maintained scrapers published as Apify Store actors — scheduled runs, dataset storage and per-result billing handled by the marketplace.
+
+- [Live Greenhouse Jobs](https://apify.com/greyridge-signals/greenhouse-jobs-live)
+- [Multi-ATS Jobs Scraper](https://apify.com/greyridge-signals/multi-ats-jobs-scraper)
+- [Unified Jobs Aggregator](https://apify.com/greyridge-signals/unified-jobs-aggregator)
+- [LinkedIn Jobs Scraper](https://apify.com/greyridge-signals/linkedin-jobs-scraper)
+- [Company Enrichment](https://apify.com/greyridge-signals/company-enrichment-scraper)
+
+## Machine-readable discovery
+
+- [Jobs rail llms.txt](https://assetfactory-jobs-x402.sigrunner.workers.dev/llms.txt): the jobs/enrichment/email rail described for agents.
+- [OpenAPI 3.1](https://assetfactory-jobs-x402.sigrunner.workers.dev/openapi.json): paid paths with per-op x-x402 payment blocks.
+- [x402 manifest](https://assetfactory-jobs-x402.sigrunner.workers.dev/.well-known/x402): machine-readable payment requirements + input/output schema.
+- [A2A Agent Card](https://assetfactory-jobs-x402.sigrunner.workers.dev/.well-known/agent.json).
+- [MCP endpoint (Streamable HTTP)](https://assetfactory-jobs-x402.sigrunner.workers.dev/mcp): free tools + get_premium_access funnel to the paid x402 routes. Also on the official MCP registry.
+
+## Optional
+
+- [x402 token risk API (pay-per-call, no key)](https://rezearcher.github.io/greyridge-x402-tools/x402-token-risk-api.html).
+- [Base token-safety x402 price comparison](https://rezearcher.github.io/greyridge-x402-tools/base-token-safety-price-comparison.html).
+- [Source code & framework integrations (CLI, GitHub Action, LangChain, CrewAI, ElizaOS)](https://github.com/rezearcher/greyridge-x402-tools).
+- Contact: contact@greyridgesignals.ai
