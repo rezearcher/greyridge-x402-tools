@@ -36,7 +36,7 @@ Paid route is the same depth: `GET /chain/token-report?token=0x...` at $0.01 USD
 
 ## Jobs & hiring data for agents
 
-Pull open roles and hiring-intent signals across 10 applicant-tracking systems through one keyless x402 call — no account, no per-ATS scraping to maintain.
+Read a company's hiring board live on every call — current open roles, what's new vs. closed since your last read, ghost-job detection, salary and hiring-intent — through one keyless x402 call. Deepest on Greenhouse; the same call spans 10 ATS when you need breadth. No account, no per-ATS scraping to maintain.
 
 Try it free first — one call returns real sample rows for a company plus the exact paid-upgrade pointer, no account and no key:
 
@@ -46,17 +46,17 @@ curl "https://assetfactory-jobs-x402.sigrunner.workers.dev/jobs/preview?companie
 
 Paid routes are the same depth over [x402](https://x402.org) on Base: job search `GET /jobs/search` ($0.004), per-company hiring-intent signal `GET /hiring/signal` ($0.003), and normalized compensation `GET /jobs/comp` ($0.005) — pay per call in USDC, no account.
 
-- [Pay-per-call ATS jobs API for AI agents](ats-jobs-api-x402.html) — Greenhouse, Lever, Ashby, Workday and more in one normalized feed; job search $0.004, per-company hiring-intent signal $0.003, free preview
 - [Live Greenhouse jobs API: is this role still open?](live-greenhouse-jobs-api.html) — reads the board live on every call (not a cached database), with ghost-job / closed-role detection; $0.004 per call, free preview
-- [Hiring-intent signal API: which companies are hiring, and how hard](hiring-intent-signal-api.html) — one record per company (open-req count, intensity grade, department/location breakdown, recency) for account scoring and trigger-based outreach; $0.003 per call, free preview
-- [Salary data API from live job postings](salary-data-api-x402.html) — the disclosed comp a company actually posts on its own open roles (min/max, currency, period, annualized, source), plus a per-company disclosure rate and median band, read live across 10 ATS; $0.005 per call, free preview
-- [Which ATS jobs scraper covers Workday, BambooHR and Breezy?](ats-jobs-scraper-comparison.html) — an honest coverage comparison (10 vs 6 vs 1 ATS) against the established Greenhouse/Lever/Ashby scrapers, with guidance on when to pick each
 - [Alternative to fantastic-jobs' Greenhouse Jobs API](fantastic-jobs-alternative.html) — an honest head-to-head: where a resold enriched Greenhouse database fits, and where you need a live board read with new/changed/closed change tracking, ghost-job detection and a tracked salary range instead
+- [Salary data API from live job postings](salary-data-api-x402.html) — the disclosed comp a company actually posts on its own open roles (min/max, currency, period, annualized, source), plus a per-company disclosure rate and median band, read live across 10 ATS; $0.005 per call, free preview
+- [Hiring-intent signal API: which companies are hiring, and how hard](hiring-intent-signal-api.html) — one record per company (open-req count, intensity grade, department/location breakdown, recency) for account scoring and trigger-based outreach; $0.003 per call, free preview
+- [Pay-per-call ATS jobs API for AI agents](ats-jobs-api-x402.html) — Greenhouse, Lever, Ashby, Workday and more in one normalized feed; job search $0.004, per-company hiring-intent signal $0.003, free preview
+- [Which ATS jobs scraper covers Workday, BambooHR and Breezy?](ats-jobs-scraper-comparison.html) — an honest coverage comparison (10 vs 6 vs 1 ATS) against the established Greenhouse/Lever/Ashby scrapers, with guidance on when to pick each
 
 **Prefer a managed, no-code run?** The same maintained scrapers are published as Apify Store actors, so scheduled runs, dataset storage and per-result billing are handled by the marketplace and the Store's own run-counts and ratings carry the trust:
 
-- [Multi-ATS Jobs Scraper](https://apify.com/greyridge-signals/multi-ats-jobs-scraper) — one normalized feed across 10 ATS platforms (Greenhouse, Lever, Ashby, Workday and more)
 - [Live Greenhouse Jobs](https://apify.com/greyridge-signals/greenhouse-jobs-live) — reads each board live with change tracking and ghost-job / closed-role detection
+- [Multi-ATS Jobs Scraper](https://apify.com/greyridge-signals/multi-ats-jobs-scraper) — one normalized feed across 10 ATS platforms (Greenhouse, Lever, Ashby, Workday and more)
 - [Unified Jobs Aggregator](https://apify.com/greyridge-signals/unified-jobs-aggregator) — one deduplicated feed merged across ATS and LinkedIn sources
 - [LinkedIn Jobs Scraper](https://apify.com/greyridge-signals/linkedin-jobs-scraper) — public job postings with full descriptions and normalized pay, no login
 - [Company Enrichment](https://apify.com/greyridge-signals/company-enrichment-scraper) — firmographics, contacts, tech stack and a live hiring signal in one record
