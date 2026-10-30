@@ -1,5 +1,6 @@
 # Grey Ridge x402 Tools - pay-per-call APIs for AI agents (x402 / USDC on Base)
 # Machine-readable catalog for LLMs and agents: https://rezearcher.github.io/greyridge-x402-tools/llms.txt
+# Full machine-readable catalog for LLMs and agents: https://rezearcher.github.io/greyridge-x402-tools/llms-full.txt
 User-agent: *
 Allow: /
 Sitemap: https://rezearcher.github.io/greyridge-x402-tools/sitemap.xml
