@@ -1,11 +1,11 @@
 ---
 title: "Is cbBTC a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for cbBTC (Coinbase Wrapped BTC) on Base (0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf), measured 2026-10-29: engine verdict GO, risk 15/100, $26.67M pool liquidity. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for cbBTC (Coinbase Wrapped BTC) on Base (0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf), measured 2026-10-30: engine verdict GO, risk 25/100, $24.10M pool liquidity. Re-run it yourself in one keyless call."
 ---
 # Is cbBTC a honeypot? — on-chain rug check (Base)
 
 **Token:** `0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf`
-**Chain:** Base · **Measured:** 2026-10-29 · verdict `GO` · risk `15/100`
+**Chain:** Base · **Measured:** 2026-10-30 · verdict `GO` · risk `25/100`
 
 On the measured on-chain checks below, **cbBTC passed** — our engine returned a GO.
 
@@ -13,18 +13,17 @@ token passes safety checks; trade is 0.00% of pool liquidity.
 
 ### Red / caution flags measured
 
+- owner CAN mint new supply (dilution risk)
+- owner CAN pause transfers (freeze risk)
+- contract HAS a blacklist function (your wallet can be blocked)
 - ownership NOT renounced — the deployer still controls the contract
 - upgradeable proxy — the contract logic can be swapped after you buy
 
 ### Checks it passed
 
-- owner cannot mint new supply
-- transfers cannot be paused
-- no blacklist function found
+- sell simulation succeeded (not a honeypot)
 
-Deepest Uniswap v3 WETH pool held about **$26.67M** of liquidity when measured.
-> The on-chain sell simulation came back `unavailable` for this token, so the honeypot/sellable result is not conclusive — treat the liquidity and ownership signals above as the stronger evidence here.
-
+Deepest Uniswap v3 WETH pool held about **$24.10M** of liquidity when measured.
 
 ## See the live verdict and size your exit
 
@@ -63,4 +62,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-10-29; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-10-30; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
