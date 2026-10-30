@@ -24,6 +24,16 @@ curl "https://assetfactory-jobs-x402.sigrunner.workers.dev/jobs/search?companies
 
 One call takes up to 25 companies, so you can read a whole watchlist of Greenhouse boards at once.
 
+## No company list? Start from the maintained roster
+
+Both calls above take a company, which assumes you already know whose board to read. If you don't, start here. **`GET /jobs/roster`** is free, takes no account, and returns the Greenhouse boards we keep under watch — 53 live boards carrying 8,057 open roles at the last refresh — ranked by how many roles each is posting right now.
+
+```bash
+curl "https://assetfactory-jobs-x402.sigrunner.workers.dev/jobs/roster"
+```
+
+The roster prunes itself. A board that goes dark or stops returning roles drops off on the next refresh, so you are never handed a list of dead companies to clean up by hand. The busiest boards at the moment are Databricks (901 roles), Stripe (737), Anthropic (669), and Cloudflare (464). Feed any token straight into `/jobs/search` above, or let the managed [Greenhouse Jobs Live actor](https://github.com/rezearcher) read the whole roster in one pass with no company list at all.
+
 ## Catching ghost jobs
 
 A ghost job is a listing that still shows up on aggregators and cached job sites after the company has actually pulled it from its board. Because every call here reads the live board, two reads a day apart tell you exactly what changed: a role present yesterday and gone today has been closed, and if it is still floating around elsewhere, it is a ghost. A role that appears for the first time is a genuinely new opening — the earliest hiring signal a company gives off.
