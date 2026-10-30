@@ -1,12 +1,12 @@
 ---
-title: Ghost job detection API — catch closed and stale postings at the source (x402)
-description: Detect ghost jobs by reading a company's live Greenhouse board on every call and diffing successive reads, so a role that quietly vanished shows up as closed. Keyless x402 pay-per-call in USDC on Base, with a free preview. An honest comparison with URL-list freshness validators.
+title: Ghost job detection API — flag stale evergreen postings and closed roles at the source (x402)
+description: Detect ghost jobs two ways on a company's live board — roles quietly pulled from the board (closed), and roles left posted for months with no sign of being filled (a tunable age + stale-update signal). Keyless x402 pay-per-call in USDC on Base, with a free preview. An honest comparison with URL-list freshness validators.
 ---
 # Catch ghost jobs at the source, not from a stale URL list
 
 A ghost job is a posting that still shows up on aggregators and cached job boards after the company has already pulled it, or one that a company leaves up with no intention of filling it. For anyone building recruiting-intel, a sourcing tool, or an agent that acts on a company's current openings, ghost jobs are the noise that makes the data untrustworthy: you surface a role, someone acts on it, and it was never really open.
 
-There are two honest ways to catch them, and they answer different questions.
+There are two kinds of ghost job, and they need different tests. The first kind **disappears**: the company pulls the req but the posting lingers on aggregators and cached boards. The second **stays in plain sight**: a req left posted for months with no one hiring against it. The sections below catch the first kind two ways, then the second kind with an age signal a freshness check can't see.
 
 ## Way one: validate a list of postings you already hold
 
@@ -43,9 +43,45 @@ Two reads a day apart tell you exactly what moved: a role present in the first r
 
 The live read is stateless: it hands you the current board and you diff successive reads yourself. If you would rather not hold that state, the managed [Live Greenhouse Jobs actor](https://apify.com/greyridge-signals/greenhouse-jobs-live) keeps a per-board snapshot between runs and tags each row `new`, `changed`, `open` or `closed` automatically, with closed roles flagged as ghost candidates — the change-feed computed for you instead of in your own code.
 
+## Way three: flag the roles that never close
+
+Not every ghost job disappears. The other kind sits in plain sight — a req a company leaves posted for months while it builds a pipeline, an evergreen "always hiring" listing, or a role nobody remembered to take down. A freshness check never catches these: the posting is live, the apply link resolves, the board still carries the row. What gives it away is age — how long the role has sat open with nothing moving.
+
+Every row this API returns carries three fields for exactly that read, on the free preview and the paid call alike:
+
+- `age_days` — how long the role has been posted, from the board's own post date.
+- `ghost_candidate` — `true` once that age crosses a threshold you set (60 days by default).
+- `ghost_signals` — which rules fired: `posted_60d` (posted longer than the threshold) and `stale_update_60d` (the board itself hasn't touched the row since).
+
+You can see it live, for free, right now — and the oldest still-open roles are not close calls. Reading real Greenhouse boards on 2026-10-30:
+
+| Company | Oldest still-open role | Signals that fired |
+|---|---|---|
+| Databricks | 1,053 days | `posted_60d` |
+| Anthropic | 679 days | `posted_60d`, `stale_update_60d` |
+| Cloudflare | 235 days | `posted_60d` |
+| GitLab | 100 days | `posted_60d` |
+
+A role open for nearly three years is not one anyone is racing to fill. Re-run the curl and you will get each board's current ages:
+
+```bash
+curl "https://assetfactory-jobs-x402.sigrunner.workers.dev/jobs/preview?companies=databricks.com"
+```
+
+The ghost-risk scorers in Way one lean on whether the application link still resolves — which is exactly the test a still-open evergreen passes. Age is the orthogonal signal they miss.
+
+On the paid `GET /jobs/search` you tune and filter it: `ghostDays=90` moves the line, `ghostOnly=true` returns only the stale roles (ghost-job intel), and `excludeGhost=true` drops them for a clean feed of roles that are actually moving.
+
+```bash
+curl "https://assetfactory-jobs-x402.sigrunner.workers.dev/jobs/search?companies=databricks.com&ghostOnly=true&ghostDays=90"
+```
+
+The stateless call grades staleness from the board's post and update dates. For the stronger read — a role observed continuously open across every snapshot, not just an old post date — the managed [Live Greenhouse Jobs actor](https://apify.com/greyridge-signals/greenhouse-jobs-live) keeps that per-board history between runs and reports days-open from real continuity, which a resold snapshot database structurally can't.
+
+
 ## Which one should you use
 
-Pick by what you already have. If you hold a list of posting URLs across many sources and want each one graded, a freshness validator is the right shape. If you want the authoritative current-open set for a company — and the closures that a URL check silently misses — read the board. This endpoint is Greenhouse-specific by design, because depth on the single most-requested ATS is where the signal is cleanest; the same live-board diff extends across Lever, Ashby, Workday and more through our [10-ATS jobs feed](ats-jobs-api-x402.html) when you need the breadth.
+Pick by what you already have. If you hold a list of posting URLs across many sources and want each one graded, a freshness validator is the right shape. If you want the authoritative current-open set for a company — and the closures that a URL check silently misses — read the board. And if the ghost you care about is the evergreen that never comes down, filter on age: `ghostOnly=true` returns only the roles sitting open past your threshold. This endpoint is Greenhouse-specific by design, because depth on the single most-requested ATS is where the signal is cleanest; the same live-board diff extends across Lever, Ashby, Workday and more through our [10-ATS jobs feed](ats-jobs-api-x402.html) when you need the breadth.
 
 ## Discover it programmatically
 
