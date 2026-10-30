@@ -43,6 +43,14 @@ Pull open roles and hiring-intent signals across 10 applicant-tracking systems t
 - [Hiring-intent signal API: which companies are hiring, and how hard](hiring-intent-signal-api.html) — one record per company (open-req count, intensity grade, department/location breakdown, recency) for account scoring and trigger-based outreach; $0.003 per call, free preview
 - [Salary data API from live job postings](salary-data-api-x402.html) — the disclosed comp a company actually posts on its own open roles (min/max, currency, period, annualized, source), plus a per-company disclosure rate and median band, read live across 10 ATS; $0.005 per call, free preview
 
+**Prefer a managed, no-code run?** The same maintained scrapers are published as Apify Store actors, so scheduled runs, dataset storage and per-result billing are handled by the marketplace and the Store's own run-counts and ratings carry the trust:
+
+- [Multi-ATS Jobs Scraper](https://apify.com/greyridge-signals/multi-ats-jobs-scraper) — one normalized feed across 10 ATS platforms (Greenhouse, Lever, Ashby, Workday and more)
+- [Live Greenhouse Jobs](https://apify.com/greyridge-signals/greenhouse-jobs-live) — reads each board live with change tracking and ghost-job / closed-role detection
+- [Unified Jobs Aggregator](https://apify.com/greyridge-signals/unified-jobs-aggregator) — one deduplicated feed merged across ATS and LinkedIn sources
+- [LinkedIn Jobs Scraper](https://apify.com/greyridge-signals/linkedin-jobs-scraper) — public job postings with full descriptions and normalized pay, no login
+- [Company Enrichment](https://apify.com/greyridge-signals/company-enrichment-scraper) — firmographics, contacts, tech stack and a live hiring signal in one record
+
 <!-- line-a-framework-pages:start -->
 
 **Framework install guides** — drop the gate into your trading agent in one line:
