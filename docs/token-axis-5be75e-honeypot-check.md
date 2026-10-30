@@ -1,15 +1,15 @@
 ---
 title: "Is AXIS a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for AXIS (Axis Token) on Base (0x5be75e3b0aff5d1a042a5363ae36acb1d6d755ea), measured 2026-10-26: engine verdict HOLD, risk 50/100. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for AXIS (Axis Token) on Base (0x5be75e3b0aff5d1a042a5363ae36acb1d6d755ea), measured 2026-10-30: engine verdict HOLD, risk 25/100. Re-run it yourself in one keyless call."
 ---
 # Is AXIS a honeypot? — on-chain rug check (Base)
 
 **Token:** `0x5be75e3b0aff5d1a042a5363ae36acb1d6d755ea`
-**Chain:** Base · **Measured:** 2026-10-26 · verdict `HOLD` · risk `50/100`
+**Chain:** Base · **Measured:** 2026-10-30 · verdict `HOLD` · risk `25/100`
 
 Our engine returned **HOLD** for AXIS — at least one measured signal warrants caution before you buy.
 
-no verifiable Uniswap v3 WETH-pool liquidity — cannot confirm the position is exitable or size the trade; not safe to auto-buy.
+sellability unverified — the transfer simulation could not run, so the token's exit is unproven; not safe to auto-buy.
 
 WETH-pool liquidity could not be measured for this token.
 
@@ -50,4 +50,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-10-26; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-10-30; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
