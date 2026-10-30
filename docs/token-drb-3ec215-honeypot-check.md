@@ -1,17 +1,17 @@
 ---
 title: "Is DRB a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for DRB (DebtReliefBot) on Base (0x3ec2156d4c0a9cbdab4a016633b7bcf6a8d68ea2), measured 2026-10-25: engine verdict GO, risk 0/100, $1.08M pool liquidity. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for DRB (DebtReliefBot) on Base (0x3ec2156d4c0a9cbdab4a016633b7bcf6a8d68ea2), measured 2026-10-30: engine verdict GO, risk 0/100, $950k pool liquidity. Re-run it yourself in one keyless call."
 ---
 # Is DRB a honeypot? — on-chain rug check (Base)
 
 **Token:** `0x3ec2156d4c0a9cbdab4a016633b7bcf6a8d68ea2`
-**Chain:** Base · **Measured:** 2026-10-25 · verdict `GO` · risk `0/100`
+**Chain:** Base · **Measured:** 2026-10-30 · verdict `GO` · risk `0/100`
 
 On the measured on-chain checks below, **DRB passed** — our engine returned a GO.
 
 token passes safety checks; trade is 0.01% of pool liquidity.
 
-Deepest Uniswap v3 WETH pool held about **$1.08M** of liquidity when measured.
+Deepest Uniswap v3 WETH pool held about **$950k** of liquidity when measured.
 
 ## See the live verdict and size your exit
 
@@ -50,4 +50,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-10-25; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-10-30; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
