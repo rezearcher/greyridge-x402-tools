@@ -67,6 +67,7 @@ Paid routes are the same depth over [x402](https://x402.org) on Base: job search
 Enrich a company domain with one live-from-source record: the SaaS stack hiding in its DNS, who runs its mail, domain age from the registry, graded contact emails — and a live hiring signal read from the company's own ATS. No resold database; you enrich the domains you supply.
 
 - [Company enrichment by domain: the live tech stack and hiring signal a database misses](company-enrichment-api.html) — an honest head-to-head with the firmographics-database and live-crawl enrichment actors, and where DNS technographics plus a live 8-ATS hiring signal fit instead
+- [Detect a company's SaaS stack from its domain](detect-saas-tech-stack-from-domain.html) — a technographics tool that reads live DNS (domain-verification tokens + the SPF chain), not just the homepage, so it surfaces the back-office SaaS a crawl-based detector (BuiltWith, Wappalyzer) can't see; pay-per-record, no subscription
 - [Company Enrichment on the Apify Store](https://apify.com/greyridge-signals/company-enrichment-scraper) — managed, no-code, per-result billing
 
 <!-- line-a-framework-pages:start -->
