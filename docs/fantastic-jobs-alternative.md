@@ -32,6 +32,20 @@ A `closed` row is a **ghost job**: a listing that quietly vanished from the boar
 
 It also returns a **normalized salary range** per role — `{min, max, currency, period, annualized}` — read from the employer's own live posting and annualized to a comparable yearly figure. Salary is a first-class tracked field: when an employer moves a posted range, that row comes back tagged `changed` with `salary` in `changed_fields`. Greenhouse publishes no structured salary field, so this is parsed at run time; `salary_disclosed` tells you which roles carried a range.
 
+## No company list to assemble? Use the maintained roster
+
+Pointing a live read at specific companies is right for a watchlist. It is the wrong shape if what drew you to fantastic-jobs was pulling broad coverage without first deciding who to ask for.
+
+So the feed ships a **maintained roster** — a curated set of live-verified Greenhouse boards you can read with no company list at all. At the last refresh that was **53 boards and about 8,000 open roles** across names like Databricks, Stripe, Anthropic, Cloudflare, Datadog, Coinbase and GitLab. The roster is **self-pruning**: every refresh re-probes each board and drops the ones that have gone dark, so you are not carrying slugs that quietly return nothing. A hand-built board list rots exactly the way a resold database goes stale, and keeping it alive is the whole point.
+
+Pull the current roster for free, no key:
+
+```bash
+curl "https://assetfactory-jobs-x402.sigrunner.workers.dev/jobs/roster"
+```
+
+In the managed actor, set `useRoster` instead of a company list to read the whole maintained set in one run. Either way you get the broad feed without assembling — and then maintaining — your own list of who to scrape.
+
 ## When to pick each
 
 | You need… | Best fit |
@@ -40,12 +54,13 @@ It also returns a **normalized salary range** per role — `{min, max, currency,
 | "Is this specific role open right now?" answered authoritatively | **Greenhouse Jobs — Live Feed** (live board read) |
 | New / changed / closed deltas and ghost-job detection scoped to your runs | **Greenhouse Jobs — Live Feed** (per-run change-feed) |
 | A live salary range that flags when an employer moves the pay band | **Greenhouse Jobs — Live Feed** (tracked `salary` field) |
+| A broad live feed without assembling your own company list | **Greenhouse Jobs — Live Feed** (maintained, self-pruning roster) |
 
 This is an honest split, not a takedown: breadth-of-backfill versus live-truth-plus-change-tracking are different jobs.
 
 ## Two ways to run it
 
-- **Managed Apify actor** — [Greenhouse Jobs — Live Feed](https://apify.com/greyridge-signals/greenhouse-jobs-live). Point it at a list of companies (domain, board slug, or `greenhouse:token`), get back one tagged row per role with the change-feed and salary field. No key to hold; the adapter is kept against a live canary board so a Greenhouse shape change is caught before it reaches your run.
+- **Managed Apify actor** — [Greenhouse Jobs — Live Feed](https://apify.com/greyridge-signals/greenhouse-jobs-live). Point it at a list of companies (domain, board slug, or `greenhouse:token`) — or set `useRoster` for the whole maintained roster — and get back one tagged row per role with the change-feed and salary field. No key to hold; the adapter is kept against a live canary board so a Greenhouse shape change is caught before it reaches your run.
 - **Keyless pay-per-call API** — if you'd rather not run an actor, the same live read is a single HTTP call over [x402](https://x402.org) on Base, no account or API key. Try it first for free:
 
 ```bash
