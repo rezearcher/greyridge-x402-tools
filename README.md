@@ -265,6 +265,20 @@ try {
 }
 ```
 
+Spend guards (v0.5.0):
+
+```js
+await safeFetch(url, {
+  payFetch,
+  maxPerCallUsd: 0.01,          // throws PriceCapExceeded before paying; fails closed if price unreadable
+  intentId: "order-4812",       // retry or restart never pays twice
+  journalDir: "./.x402-intents" // optional crash-safe journal; replays return the prior tx + receipt
+});
+```
+
+Validators that read the response body cannot tell you the seller was paid the
+advertised amount. `r.receipt` is that check, read from the chain.
+
 Install: `npm install github:rezearcher/greyridge-x402-tools` (ESM only). Checks use the
 free preview tier (3 per IP per day). The receipt step is skipped, and noted in
 `r.notes`, when the server returns no settlement tx header.
