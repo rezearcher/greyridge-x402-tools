@@ -9,16 +9,16 @@ measures the contract's sell simulation, transfer fee, mint / pause / blacklist 
 ownership and Uniswap liquidity, then returns a GO / HOLD / BLOCK verdict you can re-run yourself
 with no account.
 
-Updated 2026-10-30.
+Updated 2026-10-31.
 
 - [AERO (Aerodrome)](token-aero-940181-honeypot-check.html) — GO
-- [AXIS (Axis Token)](token-axis-5be75e-honeypot-check.html) — HOLD
 - [cbBTC (Coinbase Wrapped BTC)](token-cbbtc-cbb7c0-honeypot-check.html) — GO
 - [DEGEN (Degen)](token-degen-4ed4e8-honeypot-check.html) — GO
 - [DRB (DebtReliefBot)](token-drb-3ec215-honeypot-check.html) — GO
 - [RSGP (Cambria)](token-rsgp-44b63a-honeypot-check.html) — HOLD
 - [USDC (USD Coin)](token-usdc-833589-honeypot-check.html) — GO
 - [WETH (Wrapped Ether)](token-weth-420000-honeypot-check.html) — GO
+- [XDP (Doppler)](token-xdp-07b3d9-honeypot-check.html) — HOLD
 
 Check any other Base token free: `curl "https://x402-data-api.sigrunner.workers.dev/chain/token-report/preview?token=0xYourToken"` —
 or open the [live safety card](https://x402-data-api.sigrunner.workers.dev/check). Not financial advice.
