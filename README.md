@@ -215,3 +215,17 @@ Guides (MCP scan, honeypot check, pre-trade gate, x402): https://rezearcher.gith
 
 API discovery: https://api.greyridgesignals.ai/.well-known/x402 · contact@greyridgesignals.ai
 MIT.
+
+## Verify x402 payments from your MCP client (free)
+
+```bash
+uvx --from greyridge-x402-tools greyridge-x402-verify
+```
+
+Claude Desktop / Cursor config:
+
+```json
+{ "mcpServers": { "x402-verify": { "command": "uvx", "args": ["--from", "greyridge-x402-tools", "greyridge-x402-verify"] } } }
+```
+
+Two tools, no wallet or API key: `x402_preflight(url)` checks an endpoint before you pay (will it settle, charged vs advertised price, unpaid leak, sanctioned or scam payee), and `x402_receipt_verify(tx, payto)` confirms a Base USDC settlement landed at the right recipient, reading the receipt from two RPCs. The hosted preview allows 3 real checks per IP per day; unmetered paid versions are $0.001 and $0.004 per call.

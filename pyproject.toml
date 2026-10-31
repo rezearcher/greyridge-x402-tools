@@ -1,6 +1,6 @@
 [project]
 name = "greyridge-x402-tools"
-version = "0.5.0"
+version = "0.6.0"
 description = "MCP server security scanner — static tool-poisoning / prompt-injection audit (OWASP LLM01/LLM08) + maintenance & supply-chain drift grade + continuous monitoring; plus a pre-trade Base token safety gate. Keyless x402 pay-per-call."
 readme = "README.md"
 license = {text = "MIT"}
@@ -23,6 +23,7 @@ langchain = ["langchain-core"]
 greyridge-gate = "greyridge_x402.cli:gate_main"
 greyridge-report = "greyridge_x402.cli:report_main"
 greyridge-data = "greyridge_x402.cli:data_main"
+greyridge-x402-verify = "greyridge_x402.mcp_verify:main"
 [project.urls]
 Homepage = "https://github.com/rezearcher/greyridge-x402-tools"
 Documentation = "https://rezearcher.github.io/greyridge-x402-tools/"
