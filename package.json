@@ -1,6 +1,6 @@
 {
   "name": "greyridge-x402-tools",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Scan an MCP server's advertised tools for prompt-injection / tool-poisoning before your agent trusts it (OWASP LLM01/LLM08). Zero-install CLI + CI gate, no account.",
   "keywords": [
     "mcp",
@@ -15,7 +15,11 @@
     "agent-security",
     "security-scanner",
     "supply-chain-security",
-    "cli"
+    "cli",
+    "x402",
+    "x402-preflight",
+    "safe-fetch",
+    "payment-verification"
   ],
   "homepage": "https://x402-data-api.sigrunner.workers.dev/pricing",
   "repository": {
@@ -33,11 +37,17 @@
   },
   "files": [
     "bin/",
+    "safe-fetch.mjs",
     "README.md",
     "LICENSE"
   ],
   "license": "MIT",
   "engines": {
     "node": ">=18"
+  },
+  "exports": {
+    ".": "./safe-fetch.mjs",
+    "./safe-fetch.mjs": "./safe-fetch.mjs",
+    "./package.json": "./package.json"
   }
 }

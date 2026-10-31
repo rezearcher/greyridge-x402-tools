@@ -246,3 +246,25 @@ else:
 ```
 
 Needs `pip install "greyridge-x402-tools[pay]"`. Checks use the free preview tier (3 per IP per day). If the server returns no settlement header, receipt proof is skipped and noted in `res.notes`.
+
+## safeFetch (Node / TypeScript)
+
+Same flow as the Python `safe_fetch`, dependency-free. Free preflight before any
+money moves, then an on-chain receipt check against the endpoint's live 402.
+
+```js
+import { safeFetch, PreflightBlocked } from "greyridge-x402-tools";
+import { wrapFetchWithPayment } from "x402-fetch";
+
+const payFetch = wrapFetchWithPayment(fetch, account); // your own key
+try {
+  const r = await safeFetch("https://api.example.com/paid", { payFetch, blockOnCaution: true });
+  console.log(r.preflight.verdict, r.receipt?.verdict, r.settled);
+} catch (e) {
+  if (e instanceof PreflightBlocked) console.log("refused:", e.preflight.verdict);
+}
+```
+
+Install: `npm install github:rezearcher/greyridge-x402-tools` (ESM only). Checks use the
+free preview tier (3 per IP per day). The receipt step is skipped, and noted in
+`r.notes`, when the server returns no settlement tx header.
