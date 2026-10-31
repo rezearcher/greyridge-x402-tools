@@ -1,11 +1,11 @@
 ---
 title: "Is RSGP a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for RSGP (Cambria) on Base (0x44b63af715d5ef02cc3646a6ce96875e11d69e85), measured 2026-10-30: engine verdict HOLD, risk 25/100. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for RSGP (Cambria) on Base (0x44b63af715d5ef02cc3646a6ce96875e11d69e85), measured 2026-10-31: engine verdict HOLD, risk 25/100. Re-run it yourself in one keyless call."
 ---
 # Is RSGP a honeypot? — on-chain rug check (Base)
 
 **Token:** `0x44b63af715d5ef02cc3646a6ce96875e11d69e85`
-**Chain:** Base · **Measured:** 2026-10-30 · verdict `HOLD` · risk `25/100`
+**Chain:** Base · **Measured:** 2026-10-31 · verdict `HOLD` · risk `25/100`
 
 Our engine returned **HOLD** for RSGP — at least one measured signal warrants caution before you buy.
 
@@ -50,4 +50,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-10-30; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-10-31; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
