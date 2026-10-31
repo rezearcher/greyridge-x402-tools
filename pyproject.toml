@@ -1,6 +1,6 @@
 [project]
 name = "greyridge-x402-tools"
-version = "0.6.0"
+version = "0.7.0"
 description = "MCP server security scanner — static tool-poisoning / prompt-injection audit (OWASP LLM01/LLM08) + maintenance & supply-chain drift grade + continuous monitoring; plus a pre-trade Base token safety gate. Keyless x402 pay-per-call."
 readme = "README.md"
 license = {text = "MIT"}

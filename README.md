@@ -229,3 +229,20 @@ Claude Desktop / Cursor config:
 ```
 
 Two tools, no wallet or API key: `x402_preflight(url)` checks an endpoint before you pay (will it settle, charged vs advertised price, unpaid leak, sanctioned or scam payee), and `x402_receipt_verify(tx, payto)` confirms a Base USDC settlement landed at the right recipient, reading the receipt from two RPCs. The hosted preview allows 3 real checks per IP per day; unmetered paid versions are $0.001 and $0.004 per call.
+
+## safe_fetch: check before paying, prove after
+
+A drop-in for paid x402 GETs. It runs a free preflight (will it settle, is the price the advertised one, is the payee sanctioned), refuses on AVOID, pays with your own key, then reconciles the settlement tx on Base against the endpoint's advertised recipient and amount.
+
+```python
+from greyridge_x402.safe_fetch import safe_fetch, PreflightBlocked
+
+try:
+    res = safe_fetch("https://api.example.com/paid", private_key="0x...")
+except PreflightBlocked as e:
+    print("not paying:", e.preflight["verdict"])
+else:
+    print(res.response.json(), res.preflight["verdict"], res.receipt["verdict"])  # PAY, SETTLED
+```
+
+Needs `pip install "greyridge-x402-tools[pay]"`. Checks use the free preview tier (3 per IP per day). If the server returns no settlement header, receipt proof is skipped and noted in `res.notes`.
