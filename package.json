@@ -1,7 +1,7 @@
 {
   "name": "greyridge-x402-tools",
-  "version": "0.5.0",
-  "description": "Scan an MCP server's advertised tools for prompt-injection / tool-poisoning before your agent trusts it (OWASP LLM01/LLM08). Zero-install CLI + CI gate, no account.",
+  "version": "0.5.1",
+  "description": "x402 safe-fetch: free preflight before paying, then dual-RPC on-chain receipt proof (fails closed if two Base RPCs disagree). Also scans MCP servers's advertised tools for prompt-injection / tool-poisoning before your agent trusts it (OWASP LLM01/LLM08). No account.",
   "keywords": [
     "mcp",
     "mcp-security",

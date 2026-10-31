@@ -1,11 +1,11 @@
 [project]
 name = "greyridge-x402-tools"
-version = "0.7.0"
-description = "MCP server security scanner — static tool-poisoning / prompt-injection audit (OWASP LLM01/LLM08) + maintenance & supply-chain drift grade + continuous monitoring; plus a pre-trade Base token safety gate. Keyless x402 pay-per-call."
+version = "0.7.1"
+description = "x402 safe-fetch: free preflight before paying + dual-RPC on-chain receipt proof (fails closed if two Base RPCs disagree). Also an MCP server security scanner — static tool-poisoning / prompt-injection audit (OWASP LLM01/LLM08) + maintenance & supply-chain drift grade + continuous monitoring; plus a pre-trade Base token safety gate. Keyless x402 pay-per-call."
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.9"
-keywords = ["mcp", "mcp-server", "security", "scanner", "tool-poisoning", "prompt-injection", "llm-security", "scorecard", "supply-chain", "agent-safety", "x402", "base"]
+keywords = ["mcp", "mcp-server", "security", "scanner", "tool-poisoning", "prompt-injection", "llm-security", "scorecard", "supply-chain", "agent-safety", "x402", "base", "x402-preflight", "safe-fetch", "payment-verification"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",
