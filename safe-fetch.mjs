@@ -51,6 +51,19 @@ async function journalPath(dir, id) {
   return join(dir, `${String(id).replace(/[^\w.-]/g, "_")}.json`);
 }
 
+
+// Library-grade standalone verbs: usable without safeFetch (e.g. alongside any
+// payer or guard library). verifyReceipt reconciles ANY Base tx against the
+// endpoint's live 402 challenge: SETTLED|UNDERPAID|WRONG_RECIPIENT|NO_TRANSFER|
+// REVERTED|NOT_FOUND|UNVERIFIED (fails closed on dual-RPC disagreement).
+export async function verifyReceipt(tx, url, opts = {}) {
+  if (!/^0x[0-9a-fA-F]{64}$/.test(tx || "")) return { verdict: "UNVERIFIED", error: "invalid tx hash" };
+  return check("/x402/receipt-verify/preview", { tx, url, payto: opts.payTo, expect: opts.expectUsdc }, opts.checkFetch || fetch);
+}
+export async function preflightCheck(url, opts = {}) {
+  return check("/x402/preflight/preview", { url, advertised: opts.advertised }, opts.checkFetch || fetch);
+}
+
 export async function safeFetch(url, opts = {}) {
   const { payFetch = fetch, advertised, blockOnCaution = false, verifyReceipt = true, init, checkFetch = fetch,
           maxPerCallUsd, intentId, journalDir } = opts;

@@ -282,3 +282,13 @@ advertised amount. `r.receipt` is that check, read from the chain.
 Install: `npm install github:rezearcher/greyridge-x402-tools` (ESM only). Checks use the
 free preview tier (3 per IP per day). The receipt step is skipped, and noted in
 `r.notes`, when the server returns no settlement tx header.
+
+### Standalone verbs (no safeFetch needed)
+
+```js
+import { verifyReceipt, preflightCheck } from "greyridge-x402-tools";
+const p = await preflightCheck("https://api.example.com/paid");               // PAY | CAUTION | AVOID
+const r = await verifyReceipt("0x<base tx>", "https://api.example.com/paid"); // SETTLED | UNDERPAID | WRONG_RECIPIENT | ...
+```
+
+`verifyReceipt` works on any Base transaction, including ones your own guard or payer library never recorded. It reads the endpoint live 402 challenge, decodes USDC Transfer logs, and fails closed if two Base RPCs disagree.
