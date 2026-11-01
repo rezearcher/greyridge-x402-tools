@@ -22,6 +22,17 @@ import requests
 CHECK_BASE = os.environ.get("GREYRIDGE_CHECK_BASE", "https://api.greyridgesignals.ai")
 
 
+class PriceCapExceeded(Exception):
+    """Raised when the live 402 price is above max_per_call_usd (or unknown: fail closed)."""
+
+    def __init__(self, preflight, cap, charged):
+        self.preflight = preflight
+        super().__init__(f"price cap: {charged} USDC vs max_per_call_usd {cap}: {url_of(preflight)}")
+
+
+_intents: dict = {}
+
+
 class PreflightBlocked(Exception):
     """Raised when preflight says AVOID (or CAUTION with block_on_caution)."""
 
@@ -75,6 +86,7 @@ def settlement_tx(resp: requests.Response) -> Optional[str]:
 
 def safe_fetch(url: str, private_key: Optional[str] = None, *, advertised: Optional[str] = None,
                block_on_caution: bool = False, verify_receipt: bool = True,
+               max_per_call_usd: Optional[float] = None, intent_id: Optional[str] = None,
                session: Any = None, **kwargs) -> SafeFetchResult:
     """GET `url` with a free preflight first and an on-chain receipt check after.
 
@@ -82,10 +94,21 @@ def safe_fetch(url: str, private_key: Optional[str] = None, *, advertised: Optio
     Pass `session` to use your own x402-capable requests session instead of
     a private key.
     """
+    if intent_id and intent_id in _intents:
+        prior = _intents[intent_id]
+        prior.notes.append("replayed: intent_id already settled, no second payment")
+        return prior
     pre = _check("/x402/preflight/preview", {"url": url, "advertised": advertised})
     verdict = pre.get("verdict")
     if verdict == "AVOID" or (verdict == "CAUTION" and block_on_caution):
         raise PreflightBlocked(pre)
+    if max_per_call_usd is not None:
+        try:
+            charged = float((pre.get("price_accuracy") or {}).get("charged_usdc"))
+        except (TypeError, ValueError):
+            charged = None
+        if charged is None or charged > max_per_call_usd:
+            raise PriceCapExceeded(pre, max_per_call_usd, charged)
 
     if session is None:
         from eth_account import Account
@@ -95,6 +118,11 @@ def safe_fetch(url: str, private_key: Optional[str] = None, *, advertised: Optio
     resp = session.get(url, **kwargs)
     out = SafeFetchResult(response=resp, preflight=pre)
 
+    def remember():
+        if intent_id and out.settled:
+            _intents[intent_id] = out
+        return out
+
     if not verify_receipt:
         return out
     tx = settlement_tx(resp)
@@ -103,4 +131,4 @@ def safe_fetch(url: str, private_key: Optional[str] = None, *, advertised: Optio
         return out
     out.tx = tx
     out.receipt = _check("/x402/receipt-verify/preview", {"tx": tx, "url": url})
-    return out
+    return remember()
