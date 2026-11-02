@@ -1,11 +1,11 @@
 ---
 title: "Is USDC a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for USDC (USD Coin) on Base (0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913), measured 2026-11-01: engine verdict GO, risk 15/100, $193.54M pool liquidity. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for USDC (USD Coin) on Base (0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913), measured 2026-11-02: engine verdict GO, risk 25/100, $177.15M pool liquidity. Re-run it yourself in one keyless call."
 ---
 # Is USDC a honeypot? — on-chain rug check (Base)
 
 **Token:** `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
-**Chain:** Base · **Measured:** 2026-11-01 · verdict `GO` · risk `15/100`
+**Chain:** Base · **Measured:** 2026-11-02 · verdict `GO` · risk `25/100`
 
 On the measured on-chain checks below, **USDC passed** — our engine returned a GO.
 
@@ -18,12 +18,13 @@ token passes safety checks; trade is 0.00% of pool liquidity.
 
 ### Checks it passed
 
-- sell simulation succeeded (not a honeypot)
 - owner cannot mint new supply
 - transfers cannot be paused
 - no blacklist function found
 
-Deepest Uniswap v3 WETH pool held about **$193.54M** of liquidity when measured.
+Deepest Uniswap v3 WETH pool held about **$177.15M** of liquidity when measured.
+> The on-chain sell simulation came back `unavailable` for this token, so the honeypot/sellable result is not conclusive — treat the liquidity and ownership signals above as the stronger evidence here.
+
 
 ## See the live verdict and size your exit
 
@@ -62,4 +63,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-11-01; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-11-02; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
