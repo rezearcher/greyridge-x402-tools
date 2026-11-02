@@ -1,18 +1,18 @@
 ---
 title: "Is the Annsa MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Annsa MCP server (https://app.annsa.ai/mcp), run 2026-10-24: advertises annsa_priorities, annsa_spec, annsa_ask; 8 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Annsa MCP server (https://app.annsa.ai/mcp), run 2026-11-02: advertises annsa_priorities, annsa_spec, annsa_ask; 8 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Annsa MCP server — security & directory-readiness scorecard
 
 **Server:** `https://app.annsa.ai/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-02 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 AI agent management: choose what to build, direct every agent from one plan, and learn as you go.
 
 When an agent connects Annsa, the model reads all 8 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`app.annsa.ai`, scanned 2026-10-24; the verdict below is `clear`.
+`app.annsa.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on Annsa
 
@@ -22,23 +22,32 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 8 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Annsa server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Annsa server advertises
 
 These are the 8 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
-- **`annsa_priorities`** — Lists the ranked active priorities (open, ready, building) with trend, confidence and evidence counts. 'stage' reads shipped, shared or closed instead. 'weekly: true' returns the… _(parameters: stage, include_parked, weekly, view, window, lens)_
-- **`annsa_spec`** — Full engineering spec for a priority. The document has 5 sections: Problem, Signals and direction, What to build, Files to touch, Done When. Alongside it, as linked records rather… _(parameters: priority_number, priority_id, spec_id, investigate, include_memory, include_feedback)_
-- **`annsa_ask`** — Answers a question about your feedback data (the default): search and synthesis across feedback, priorities, specs and outcomes, such as rankings, 'what can I safely park?', 'what… _(parameters: question, about, topic, have_version, customer, account)_
-- **`annsa_work`** — Do the work on a priority, and settle routine asks with undo. Ship records completion; it deploys nothing. Skill: annsa-working (annsa.ask topic=working). [production · app.annsa.… _(parameters: action, label, into, verdict, trigger, security)_
-- **`annsa_file`** — Put new rows into the record: feedback or a finding, a priority from a title, a transcript, a direction doc's lines. Returns where each row went. Skill: annsa-working (annsa.ask t… _(parameters: action, severity, with_spec, insist, category, label)_
-- **`annsa_decide`** — Answer a Needs you question, sign a decision, approve or dismiss a proposed spec update, propose or retire a principle. Skill: annsa-working (annsa.ask topic=working). [production… _(parameters: action, op, label, update_id, topic, principle)_
-- **`annsa_board`** — Arrange the board: stage, severity, merge, regroup, park, correct, bets, assign, retract, pick, cut, direction. Returns the change and its undo. Skill: annsa-working (annsa.ask to… _(parameters: stage, expected_stage, action, severity, op, bet_id)_
-- **`annsa_share`** — Tell the customers who asked that their priority shipped, by email or the widget. An email cannot be unsent. Skill: annsa-working (annsa.ask topic=working). [production · app.anns… _(parameters: action, label, spec_id, channel, message)_
+- **`annsa_priorities`** — Lists the ranked active priorities (open, ready, building) with trend, confidence and evidence counts. 'stage' reads shipped, shared or closed instead. 'weekly: true' returns the… _(parameters: stage, include_parked, weekly, view, window, rank_by)_
+- **`annsa_spec`** — Full engineering spec for a priority. The document has 5 sections: Problem, Evidence and direction, What to build, Files to touch, Done When. Alongside it, as linked records rathe… _(parameters: priority_number, priority_id, spec_id, investigate, include_memory, include_feedback)_
+- **`annsa_ask`** — Answers a question about your feedback data (the default): search and synthesis across feedback, priorities, specs and outcomes, such as rankings, 'what can I safely park?', 'what… _(parameters: question, about, skill, have_version, customer, account)_
+- **`annsa_work`** — Do the work on a priority, and resolve routine asks with undo. Ship records completion; it deploys nothing. Skill: annsa-working (annsa.ask skill=working). [production · app.annsa… _(parameters: action, label, into, verdict, trigger, security)_
+- **`annsa_file`** — Put new rows into the record: feedback or a finding, a priority from a title, a transcript, a direction doc's lines. Returns where each row went. Skill: annsa-working (annsa.ask s… _(parameters: template, fields, when_to_use, action, severity, with_spec)_
+- **`annsa_decide`** — Answer a Needs you question, sign a decision, approve or dismiss a proposed spec update, propose or retire a principle. Skill: annsa-working (annsa.ask skill=working). [production… _(parameters: action, op, label, update_id, topic, principle)_
+- **`annsa_board`** — Arrange the board: stage, severity, merge, regroup, park, correct, bets, assign, retract, pick, cut, direction. Returns the change and its undo. Skill: annsa-working (annsa.ask sk… _(parameters: stage, expected_stage, action, severity, op, bet_id)_
+- **`annsa_share`** — Tell the customers who asked that their priority shipped, by email or the widget. An email cannot be unsent. Skill: annsa-working (annsa.ask skill=working). [production · app.anns… _(parameters: action, label, spec_id, channel, message)_
 
-## Scan Annsa yourself, or claim its badge
+## Maintenance & supply-chain — the risk Annsa's static scan can't see
+
+A prompt-injection scan reads Annsa's advertised tool metadata at one moment. It cannot tell you the project behind `app.annsa.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain grade `A`** — no known advisory (OSV) and no deprecated release across the package(s) this server publishes.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `app.annsa.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan Annsa yourself, or claim its badge {#claim}
 
 Re-run this exact Annsa check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `app.annsa.ai`:
@@ -69,4 +78,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `app.annsa.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
