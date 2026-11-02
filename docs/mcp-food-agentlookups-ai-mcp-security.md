@@ -1,18 +1,18 @@
 ---
 title: "Is the Spoon Scout - Food Contaminant Lookup MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Spoon Scout - Food Contaminant Lookup MCP server (https://food.agentlookups.ai/mcp), run 2026-10-26: advertises check_product, chemical_sources, compare_products; 6 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Spoon Scout - Food Contaminant Lookup MCP server (https://food.agentlookups.ai/mcp), run 2026-11-02: advertises check_product, chemical_sources, compare_products; 6 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Spoon Scout - Food Contaminant Lookup MCP server — security & directory-readiness scorecard
 
 **Server:** `https://food.agentlookups.ai/mcp`
-**Scanned:** 2026-10-26 · **Tools advertised:** 6 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-02 · **Tools advertised:** 6 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Lab results, FDA recalls and additive rules for US packaged foods, with sources; never a grade.
 
 When an agent connects Spoon Scout - Food Contaminant Lookup, the model reads all 6 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`food.agentlookups.ai`, scanned 2026-10-26; the verdict below is `clear`.
+`food.agentlookups.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on Spoon Scout - Food Contaminant Lookup
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 6 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Spoon Scout - Food Contaminant Lookup server
-on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Spoon Scout - Food Contaminant Lookup server advertises
@@ -38,7 +38,16 @@ These are the 6 tool definition(s) any agent reads before it acts — the exact 
 - **`additive_status`** — Returns where an additive is allowed, restricted, banned or requires a warning (US FDA, EU, and US states such as California, West Virginia, Texas and Louisiana), each with its la… _(parameters: additive)_
 - **`interpret_test_result`** — Places a person's urine or blood test result among CDC NHANES population percentiles (newest survey cycle loaded), for everyone or one age group, and says in words how high it is.… _(parameters: age, chemical, unit, value)_
 
-## Scan Spoon Scout - Food Contaminant Lookup yourself, or claim its badge
+## Maintenance & supply-chain — the risk Spoon Scout - Food Contaminant Lookup's static scan can't see
+
+A prompt-injection scan reads Spoon Scout - Food Contaminant Lookup's advertised tool metadata at one moment. It cannot tell you the project behind `food.agentlookups.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `food.agentlookups.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan Spoon Scout - Food Contaminant Lookup yourself, or claim its badge {#claim}
 
 Re-run this exact Spoon Scout - Food Contaminant Lookup check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `food.agentlookups.ai`:
@@ -69,4 +78,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `food.agentlookups.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
