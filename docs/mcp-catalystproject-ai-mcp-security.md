@@ -1,18 +1,18 @@
 ---
 title: "Is the Catalyst evidence graph MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Catalyst evidence graph MCP server (https://catalystproject.ai/mcp), run 2026-10-24: advertises find_evidence, search_nodes, get_findings; 7 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Catalyst evidence graph MCP server (https://catalystproject.ai/mcp), run 2026-11-02: advertises find_evidence, search_nodes, get_findings; 7 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Catalyst evidence graph MCP server — security & directory-readiness scorecard
 
 **Server:** `https://catalystproject.ai/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 7 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-02 · **Tools advertised:** 7 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Findings on what compounds and supplements do in the body, with evidence strength, quote and paper.
 
 When an agent connects Catalyst evidence graph, the model reads all 7 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`catalystproject.ai`, scanned 2026-10-24; the verdict below is `clear`.
+`catalystproject.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on Catalyst evidence graph
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 7 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Catalyst evidence graph server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Catalyst evidence graph server advertises
@@ -39,7 +39,16 @@ These are the 7 tool definition(s) any agent reads before it acts — the exact 
 - **`get_reactions`** — Biochemical reactions from Rhea and Human-GEM that a compound is a substrate or product of, or that a protein catalyses or transports. Every row is assertion_class 'inferred': a r… _(parameters: node_id, limit, offset)_
 - **`reach`** — Breadth-first reachability through the reactions two public databases (Rhea, Human-GEM) record: what a compound could become, and through which reactions and enzymes, within up to… _(parameters: from_id, to_id, depth, limit, offset)_
 
-## Scan Catalyst evidence graph yourself, or claim its badge
+## Maintenance & supply-chain — the risk Catalyst evidence graph's static scan can't see
+
+A prompt-injection scan reads Catalyst evidence graph's advertised tool metadata at one moment. It cannot tell you the project behind `catalystproject.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance grade `A`** — last commit pushed 28 day(s) ago, 0 open issue(s).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `catalystproject.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan Catalyst evidence graph yourself, or claim its badge {#claim}
 
 Re-run this exact Catalyst evidence graph check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `catalystproject.ai`:
@@ -70,4 +79,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `catalystproject.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
