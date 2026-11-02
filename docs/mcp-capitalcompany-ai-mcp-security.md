@@ -1,18 +1,18 @@
 ---
 title: "Is the Capital Company MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Capital Company MCP server (https://capitalcompany.ai/mcp), run 2026-10-24: advertises create_workspace, capital_company_create_fund, capital_company_invite_investors; 14 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Capital Company MCP server (https://capitalcompany.ai/mcp), run 2026-11-02: advertises create_workspace, capital_company_create_fund, capital_company_invite_investors; 14 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Capital Company MCP server — security & directory-readiness scorecard
 
 **Server:** `https://capitalcompany.ai/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 14 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-02 · **Tools advertised:** 14 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Launch SPVs and funds, invite investors and send capital calls through Capital Company.
 
 When an agent connects Capital Company, the model reads all 14 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`capitalcompany.ai`, scanned 2026-10-24; the verdict below is `clear`.
+`capitalcompany.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on Capital Company
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 14 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Capital Company server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Capital Company server advertises
@@ -46,7 +46,16 @@ These are the 14 tool definition(s) any agent reads before it acts — the exact
 - **`capital_company_claim`** — For someone without a Capital Company account who said yes to a proposal: emails a sign-in link to the address they give. Opening the link verifies the address and creates what th… _(parameters: confirmationId, email, timeZone)_
 - **`capital_company_conversation`** — Reads the user’s current conversation with Capital Company, including the outcome of anything they confirmed and whether it is waiting on them. Changes nothing. _(parameters: team)_
 
-## Scan Capital Company yourself, or claim its badge
+## Maintenance & supply-chain — the risk Capital Company's static scan can't see
+
+A prompt-injection scan reads Capital Company's advertised tool metadata at one moment. It cannot tell you the project behind `capitalcompany.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `capitalcompany.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan Capital Company yourself, or claim its badge {#claim}
 
 Re-run this exact Capital Company check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `capitalcompany.ai`:
@@ -77,4 +86,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `capitalcompany.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
