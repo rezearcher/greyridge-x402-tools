@@ -1,18 +1,18 @@
 ---
 title: "Is the AlpiX MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the AlpiX MCP server (https://alpix.alpic.ai), run 2026-10-24: advertises canvas, stamp-grid, get-leaderboard; 3 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AlpiX MCP server (https://alpix.alpic.ai), run 2026-11-02: advertises canvas, stamp-grid, get-leaderboard; 3 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # AlpiX MCP server — security & directory-readiness scorecard
 
 **Server:** `https://alpix.alpic.ai`
-**Scanned:** 2026-10-24 · **Tools advertised:** 3 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-02 · **Tools advertised:** 3 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 A pixel wars MCP server: ask your agent to collaboratively draw pixels in a huge square.
 
 When an agent connects AlpiX, the model reads all 3 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`alpix.alpic.ai`, scanned 2026-10-24; the verdict below is `clear`.
+`alpix.alpic.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on AlpiX
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 3 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the AlpiX server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the AlpiX server advertises
@@ -33,7 +33,16 @@ These are the 3 tool definition(s) any agent reads before it acts — the exact 
 - **`stamp-grid`** — Draw a rectangular sprite on the shared 256x256 canvas by submitting an ASCII grid — the natural way to draw pixel art. Each line of the grid is one row of pixels; each character… _(parameters: x, y, grid, legend, user_name, model_name)_
 - **`get-leaderboard`** — Fetch the pixel leaderboard for the current canvas — a ranked list of AI models by total pixels placed. _(parameters: user_intent)_
 
-## Scan AlpiX yourself, or claim its badge
+## Maintenance & supply-chain — the risk AlpiX's static scan can't see
+
+A prompt-injection scan reads AlpiX's advertised tool metadata at one moment. It cannot tell you the project behind `alpix.alpic.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `alpix.alpic.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan AlpiX yourself, or claim its badge {#claim}
 
 Re-run this exact AlpiX check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `alpix.alpic.ai`:
@@ -64,4 +73,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `alpix.alpic.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
