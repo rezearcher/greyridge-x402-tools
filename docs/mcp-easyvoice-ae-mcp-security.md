@@ -1,18 +1,18 @@
 ---
 title: "Is the EasyVoice text to speech MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the EasyVoice text to speech MCP server (https://easyvoice.ae/api/mcp), run 2026-10-26: advertises text_to_speech, list_voices, get_usage; 7 tools scanned, injection verdict 'clear', 7 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the EasyVoice text to speech MCP server (https://easyvoice.ae/api/mcp), run 2026-11-02: advertises text_to_speech, list_voices, get_usage; 7 tools scanned, injection verdict 'clear', 7 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # EasyVoice text to speech MCP server — security & directory-readiness scorecard
 
 **Server:** `https://easyvoice.ae/api/mcp`
-**Scanned:** 2026-10-26 · **Tools advertised:** 7 · **Injection verdict:** `clear` · **Directory:** 7 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-02 · **Tools advertised:** 7 · **Injection verdict:** `clear` · **Directory:** 7 Claude Directory quality item(s) to polish (no hard rejects)
 
 Hosted text-to-speech MCP server: 66 voices in 9 languages, long-form narration, podcasts.
 
 When an agent connects EasyVoice text to speech, the model reads all 7 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`easyvoice.ae`, scanned 2026-10-26; the verdict below is `clear`.
+`easyvoice.ae`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on EasyVoice text to speech
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 7 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the EasyVoice text to speech server
-on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the EasyVoice text to speech server advertises
@@ -31,7 +31,7 @@ The server describes itself to connecting agents as: *EasyVoice is a hosted text
 
 These are the 7 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
-- **`text_to_speech`** — Convert text to a downloadable MP3 or WAV audio file with one of EasyVoice's 66 neural voices. Returns a hosted audio URL (no inline audio). Per-call limit: 8,000 characters (4,00… _(parameters: text, voice, speed, format)_
+- **`text_to_speech`** — Convert text to a downloadable MP3 or WAV audio file with one of EasyVoice's 66 neural voices or your ready cloned voice_* ids (Pro or active 7-day pass; English). Returns a hoste… _(parameters: text, voice, speed, format)_
 - **`list_voices`** — List all 66 EasyVoice catalog voices (id, name, language, accent, gender, free/pro tier) plus this key's cloned voices. Call this before text_to_speech or create_podcast to pick v…
 - **`get_usage`** — Check this API key's plan and usage. Free keys see today's used/remaining characters (shared 5,000/day pool, resets at midnight UTC), the 20 requests/minute rate limit and 2-concu…
 - **`generate_long_form`** — Generate long-form narration (up to 500,000 characters ≈ 9 hours of audio) as an async job. Requires a Pro subscription key. Kokoro narration voices only — Arabic (ar_*) and clone… _(parameters: input, voice, speed, format, pitch, tone)_
@@ -39,7 +39,16 @@ These are the 7 tool definition(s) any agent reads before it acts — the exact 
 - **`clone_voice`** — Enroll a custom cloned voice from an audio sample (async). Requires a Pro or active 7-day pass key. Provide exactly one of audio_base64 or audio_url (https). Sample limits: 10 MB… _(parameters: name, consent, audio_base64, audio_url, mime_type)_
 - **`get_job_status`** — Check the status of a long-form, podcast or tts job owned by this key. Returns status plus audio URL(s) when completed. Audio links are not guaranteed to persist — download prompt… _(parameters: job_id)_
 
-## Scan EasyVoice text to speech yourself, or claim its badge
+## Maintenance & supply-chain — the risk EasyVoice text to speech's static scan can't see
+
+A prompt-injection scan reads EasyVoice text to speech's advertised tool metadata at one moment. It cannot tell you the project behind `easyvoice.ae` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `easyvoice.ae` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan EasyVoice text to speech yourself, or claim its badge {#claim}
 
 Re-run this exact EasyVoice text to speech check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `easyvoice.ae`:
@@ -70,4 +79,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `easyvoice.ae` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
