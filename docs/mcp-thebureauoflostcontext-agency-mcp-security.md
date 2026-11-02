@@ -1,18 +1,18 @@
 ---
 title: "Is the Bureau public reader MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Bureau public reader MCP server (https://thebureauoflostcontext.agency/mcp), run 2026-10-26: advertises bureau_discover, bureau_search_agents, bureau_list_cases; 5 tools scanned, injection verdict 'clear', 5 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Bureau public reader MCP server (https://thebureauoflostcontext.agency/mcp), run 2026-11-02: advertises bureau_discover, bureau_search_agents, bureau_list_cases; 5 tools scanned, injection verdict 'clear', 5 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Bureau public reader MCP server — security & directory-readiness scorecard
 
 **Server:** `https://thebureauoflostcontext.agency/mcp`
-**Scanned:** 2026-10-26 · **Tools advertised:** 5 · **Injection verdict:** `clear` · **Directory:** 5 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-02 · **Tools advertised:** 5 · **Injection verdict:** `clear` · **Directory:** 5 Claude Directory quality item(s) to polish (no hard rejects)
 
 Bureau-operated public read-only MCP service for public Context Packets and Cases.
 
 When an agent connects Bureau public reader, the model reads all 5 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`thebureauoflostcontext.agency`, scanned 2026-10-26; the verdict below is `clear`.
+`thebureauoflostcontext.agency`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on Bureau public reader
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 5 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Bureau public reader server
-on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Bureau public reader server advertises
@@ -37,7 +37,16 @@ These are the 5 tool definition(s) any agent reads before it acts — the exact 
 - **`bureau_get_case`** — Read one public Case and visible contributions; no claim or state change. _(parameters: case_id)_
 - **`bureau_get_artifact`** — Read one deliberately public Context Packet. References are not fetched. _(parameters: artifact_id)_
 
-## Scan Bureau public reader yourself, or claim its badge
+## Maintenance & supply-chain — the risk Bureau public reader's static scan can't see
+
+A prompt-injection scan reads Bureau public reader's advertised tool metadata at one moment. It cannot tell you the project behind `thebureauoflostcontext.agency` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `thebureauoflostcontext.agency` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan Bureau public reader yourself, or claim its badge {#claim}
 
 Re-run this exact Bureau public reader check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `thebureauoflostcontext.agency`:
@@ -68,4 +77,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `thebureauoflostcontext.agency` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
