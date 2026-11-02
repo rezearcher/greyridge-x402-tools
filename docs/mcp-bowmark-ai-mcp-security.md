@@ -1,42 +1,52 @@
 ---
 title: "Is the Bowmark MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Bowmark MCP server (https://api.bowmark.ai/mcp/registry), run 2026-10-24: advertises get_library, run, run_view; 16 tools scanned, injection verdict 'clear', 16 Claude Directory blocker(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Bowmark MCP server (https://api.bowmark.ai/mcp/registry), run 2026-11-02: advertises get_library, run, run_view; 26 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Bowmark MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.bowmark.ai/mcp/registry`
-**Scanned:** 2026-10-24 · **Tools advertised:** 16 · **Injection verdict:** `clear` · **Directory:** 16 Claude Directory blocker(s)
+**Scanned:** 2026-11-02 · **Tools advertised:** 26 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
-Do things on live websites: prices, availability, quotes, bookings, anything behind a form or login.
+Web scraping and automation for AI agents: live prices, quotes, bookings, anything behind a login.
 
-When an agent connects Bowmark, the model reads all 16 of its advertised tool definition(s)
+When an agent connects Bowmark, the model reads all 26 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.bowmark.ai`, scanned 2026-10-24; the verdict below is `clear`.
+`api.bowmark.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on Bowmark
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 16 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 16 blocker(s).** This server advertises 16 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
-- **4 of 16 advertised tool(s) name a state-changing action** (`run`, `run_view`, `add_connection`, `delete_connection`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
+- **No tool-poisoning or prompt-injection patterns** were found across the 26 tool definition(s) this server advertises.
+- **Claude Connector Directory readiness: ready.** Every advertised tool satisfies the structural rules Anthropic's published review criteria check for (names, annotations, permission hints, no catch-all read+write tool, no unsupported capability).
+- **5 of 26 advertised tool(s) name a state-changing action** (`run`, `run_view`, `jig_update`, `add_connection`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 16 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 26 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Bowmark server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Bowmark server advertises
 
-The server describes itself to connecting agents as: *Bowmark runs real tasks on live websites and hands back the result. YOU DO NOT NEED A BROWSER, AND TURNING ONE ON IS THE WRONG FIRST MOVE. Bowmark reaches many sites for you, on our machines. A request naming Amazon, YouTube or any other site is not a reason…*
+The server describes itself to connecting agents as: *Bowmark runs real tasks on live websites and hands back the result. YOU DO NOT NEED A BROWSER TO START, AND TURNING ONE ON IS THE WRONG FIRST MOVE. Bowmark reaches many sites for you. A request naming Amazon, YouTube or any other site is not a reason to enabl…*
 
-These are the 16 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 26 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
-- **`get_library`** — **Use this whenever a task touches a live website.** It answers whether Bowmark can already DO the thing: current prices, real availability or stock, a site search, a quote or a f… _(parameters: query, queries)_
-- **`run`** — **Executes the task on the real websites** and returns the result. Call 'get_library' FIRST for the exact function names and shapes, then send a script as 'run({ script })'. THE S… _(parameters: script, runId)_
+- **`get_library`** — **Use this whenever a task touches a live website.** It answers whether Bowmark can already DO the thing: current prices, real availability or stock, a site search, a quote or a f… _(parameters: query, queries, minimal)_
+- **`run`** — **Executes the task on the real websites** and returns the result. Call 'get_library' FIRST, then start with 'run({ script })' — never add 'runId'. THE SCRIPT is a plain async Jav…
 - **`run_view`** — Used by the inline run view to draw a run's progress. You do not need to call this — 'run' returns the result. _(parameters: runId, script)_
+- **`jig_open`** — Make the user a "jig": their own copy of a website, running through Bowmark, that you curate as they talk to you. Asked for "a jig of YouTube", build a page that LOOKS like that s… _(parameters: title, template, html, state, jigId)_
+- **`jig_list`** — The jigs this user has made, newest change first: id, title, the built-in it started from, and when it last changed. Call it when the user mentions a page they made before ("my Yo…
+- **`jig_update`** — Change a page you opened with 'jig_open': merge 'state' into its state (a key set to null is removed), replace its 'html' or 'title', or change part of the html with 'edits' ([{ f… _(parameters: jigId, state, replaceState, html, edits, title)_
+- **`jig_view`** — Used by an open jig to pick up its latest state. You do not need to call this. _(parameters: jigId, since, cache)_
+- **`jig_cache`** — Used by an open jig to save a call's last good result. You do not need to call this. _(parameters: jigId, key, value)_
+- **`jig_seen`** — Used by an open jig to report what it shows. You do not need to call this. _(parameters: jigId, snapshot, event)_
+- **`jig_perf`** — Used by an open jig to report how fast it loaded. You do not need to call this. _(parameters: jigId, report)_
+- **`jig_look`** — See what an open jig is showing the user right now — the items on screen, which view they are on — plus what they just did on it (watched, hid, searched) and its current state. Ca… _(parameters: jigId)_
+- **`jig_call`** — Used by an open jig to call the library. You do not need to call this — use 'run'. _(parameters: jigId, calls, runId, timeoutMs, ref, cancel)_
 - **`session_call`** — Runs ONE library function in a Bowmark session, so a flow that needs several calls in the SAME browser can finish: a booking that texts the user a code, a cart filled over several… _(parameters: sessionId, path, args)_
 - **`session_close`** — Ends a session 'session_call' opened and frees its browser. Pass the 'sessionId'. Closing one that is already closed is harmless. _(parameters: sessionId)_
 - **`report`** — Record what was missing, wrong, or incomplete so Bowmark can build it. Call it yourself, in the same turn, without asking your user first: it changes nothing on any website or acc… _(parameters: report, runId)_
+- **`get_usage`** — See the real cost of calls on this account, itemized by resource (provider calls, browser sessions, IP leases) and aggregated in dollars. Pass no arguments to see this month; pass… _(parameters: month)_
 - **`support`** — Chat live with a Bowmark support agent about a problem you reported. Use it only after your user said yes to talking to support. Pass the 'reportId' that 'report' returned. Your f… _(parameters: reportId, message, after)_
 - **`list_secrets`** — List the stored secrets this account holds, by NAME. Returns name, type, which hosts each may be used against, when it expires and when it was last used — never a value, and no Bo…
 - **`request_secret`** — Create a named, empty slot for a secret and get back a link the user opens to fill it in. They type the value on a Bowmark page and choose how long it lives, from 5 minutes to nev… _(parameters: name, type, hosts)_
@@ -48,7 +58,16 @@ These are the 16 tool definition(s) any agent reads before it acts — the exact
 - **`delete_connection`** — Start deleting a saved login by the 'id' 'list_connections' returned. **This does not delete anything by itself:** a delete cannot be undone, so the USER confirms it, signed in on… _(parameters: id)_
 - **`logout_connection`** — Sign a saved login out by the 'id' 'list_connections' returned. Bowmark drops the cookies it held, and where the site supports it ('siteLogout: "supported"' in the reply) the sess… _(parameters: id)_
 
-## Scan Bowmark yourself, or claim its badge
+## Maintenance & supply-chain — the risk Bowmark's static scan can't see
+
+A prompt-injection scan reads Bowmark's advertised tool metadata at one moment. It cannot tell you the project behind `api.bowmark.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance grade `A`** — last commit pushed 1 day(s) ago, 0 open issue(s).
+- **Supply chain grade `A`** — no known advisory (OSV) and no deprecated release across the package(s) this server publishes.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `api.bowmark.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan Bowmark yourself, or claim its badge {#claim}
 
 Re-run this exact Bowmark check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `api.bowmark.ai`:
@@ -79,4 +98,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.bowmark.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
