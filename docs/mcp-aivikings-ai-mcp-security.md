@@ -1,40 +1,39 @@
 ---
 title: "Is the AiVikings.ai MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the AiVikings.ai MCP server (https://mcp.aivikings.ai/mcp), run 2026-10-26: advertises get_domain_audit_log, get_current_user, check_domain_availability; 34 tools scanned, injection verdict 'clear', 34 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AiVikings.ai MCP server (https://mcp.aivikings.ai/mcp), run 2026-11-02: advertises get_domain_audit_log, get_current_user, check_domain_availability; 37 tools scanned, injection verdict 'block', 1 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
 ---
 # AiVikings.ai MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.aivikings.ai/mcp`
-**Scanned:** 2026-10-26 · **Tools advertised:** 34 · **Injection verdict:** `clear` · **Directory:** 34 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-02 · **Tools advertised:** 37 · **Injection verdict:** `block` · **Directory:** 1 likely Claude Directory reject(s)
 
 Find, register, and manage domains from any AI chat or agent.
 
-When an agent connects AiVikings.ai, the model reads all 34 of its advertised tool definition(s)
+When an agent connects AiVikings.ai, the model reads all 37 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.aivikings.ai`, scanned 2026-10-26; the verdict below is `clear`.
+`mcp.aivikings.ai`, scanned 2026-11-02; the verdict below is `block`.
 
 ## What the scan found on AiVikings.ai
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 34 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 34 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
-- **9 of 34 advertised tool(s) name a state-changing action** (`create_contact`, `assign_domain_registration_contact_roles`, `remove_domain_registration_contact_roles`, `update_registrant_contact`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
+- **1 issue(s)** were flagged across 37 tool definition(s) — verdict `block`.
+- **Claude Connector Directory readiness: 1 likely reject(s).** This server advertises 1 tool definition(s) that would likely fail Anthropic's structural review criteria (plus 37 quality item(s) to polish). The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
+- **8 of 37 advertised tool(s) name a state-changing action** (`create_contact`, `assign_domain_registration_contact_roles`, `remove_domain_registration_contact_roles`, `update_registrant_contact`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 34 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `F` — 1 issue(s) across 37 tool(s), 1 CRITICAL (tool-poisoning) — do not admit this server until resolved. Risk 40/100. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the AiVikings.ai server
-on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the AiVikings.ai server advertises
 
 The server describes itself to connecting agents as: *Use get_current_user at the start of a conversation and before customer-specific actions to identify the authenticated AIvikings customer by the current bearer API key. Customer-linked API keys return the user's name and email; shared static MCP tokens do not…*
 
-These are the 34 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 37 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`get_domain_audit_log`** — Read append-only domain change history for the authenticated customer. Omit domain for portfolio history. Requires audit:read. Results are newest recorded first; pass next_cursor… _(parameters: domain, action, from_timestamp, to_timestamp, cursor, limit)_
 - **`get_current_user`** — Return the authenticated AIvikings customer for the current bearer API key, including name and email when the key belongs to a customer.
-- **`check_domain_availability`** — Check availability for up to 200 domain names through AIvikings. depth="fast" answers in about a second without contacting the registry, for brainstorming many names; depth="confi… _(parameters: domains, currency, depth)_
-- **`check_single_domain_availability`** — Check availability for one domain through AIvikings. depth="confirm" (default) asks the registry and returns the price; depth="fast" answers quickly without a price. Each result h… _(parameters: domain, currency, depth)_
+- **`check_domain_availability`** — Check whether domain names can be registered through AIvikings. Takes a list of one or more names (up to 200). Each result has a status: available (confirmed free by the registry)… _(parameters: domains, include_price, currency)_
 - **`get_domain_pricing`** — Get a fresh price quote for one domain. Returns customer-facing registration, renewal, and transfer prices, plus is_premium so the user can be told when premium pricing applies. O… _(parameters: domain, currency)_
 - **`get_prepaid_balance`** — Return the authenticated customer's prepaid balance for domain purchases. Returns both USD and EUR wallet balances. When automatic currency conversion is enabled, a zero balance i… _(parameters: currency)_
 - **`list_contact_countries`** — List exact ConnectReseller country names and IDs for creating or updating contacts.
@@ -61,12 +60,25 @@ These are the 34 tool definition(s) any agent reads before it acts — the exact
 - **`regenerate_transfer_auth_code`** — Regenerate and return a new EPP transfer auth code for a domain owned by the authenticated customer, invalidating the old code. _(parameters: domain)_
 - **`lock_domain`** — Enable the registrar transfer lock for a domain owned by the authenticated customer. _(parameters: domain)_
 - **`unlock_domain`** — Disable the registrar transfer lock for a domain owned by the authenticated customer before a transfer-out. _(parameters: domain)_
-- **`reconcile_domains`** — Compare locally recorded domains with AIvikings records.
-- **`create_customer`** — Create a new customer without generating or returning an API key. _(parameters: email, display_name, company_name, referral_code, referred_by, preferred_currency)_
 - **`get_customer`** — Get the customer record linked to the current bearer token. A supplied customer ID must match that token. _(parameters: customer_id)_
-- **`reconcile_provider_client`** — Link or create the authenticated customer's registrar client account, preventing duplicate creation. _(parameters: customer_id)_
+- **`middleware_get_capabilities`** — Middleware admin only: read enabled provider accounts, capabilities and transaction input schemas. Use this before middleware_submit_transaction. Requires the static MCP/REST admi… _(parameters: account_id)_
+- **`middleware_submit_transaction`** — Middleware admin only: submit a middleware transaction using action/input from middleware_get_capabilities. For account actions the selected enabled middleware account is used. Fo… _(parameters: action, input, idempotency_key, domain_id, account_id)_
+- **`middleware_get_transaction`** — Middleware admin only: read a middleware transaction's status and result by transaction_id. succeeded confirms completion; pending_provider, outcome_unknown and manual_review must… _(parameters: transaction_id)_
+- **`middleware_list_transactions`** — Middleware admin only: list persisted middleware transactions for the selected middleware account, optionally filtered by domain. Pass nextCursor as cursor for the next page. _(parameters: cursor, limit, domain, account_id)_
+- **`middleware_get_domain`** — Middleware admin only: read the middleware's domain projection by domain_id. For a live provider refresh submit action=refresh first and wait for completion. _(parameters: domain_id)_
+- **`middleware_get_contact`** — Middleware admin only: read a local middleware contact by contact_id. _(parameters: contact_id)_
+- **`middleware_get_transaction_secret`** — Middleware admin only: read a protected transaction secret through the middleware API. Requires the upstream secret-read scope and is audited. _(parameters: transaction_id)_
 
-## Scan AiVikings.ai yourself, or claim its badge
+## Maintenance & supply-chain — the risk AiVikings.ai's static scan can't see
+
+A prompt-injection scan reads AiVikings.ai's advertised tool metadata at one moment. It cannot tell you the project behind `mcp.aivikings.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance grade `A`** — last commit pushed 9 day(s) ago, 0 open issue(s).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `mcp.aivikings.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan AiVikings.ai yourself, or claim its badge {#claim}
 
 Re-run this exact AiVikings.ai check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `mcp.aivikings.ai`:
@@ -97,4 +109,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.aivikings.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
