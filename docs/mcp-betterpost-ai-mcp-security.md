@@ -1,28 +1,28 @@
 ---
 title: "Is the BetterPost MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the BetterPost MCP server (https://betterpost.ai/mcp), run 2026-10-24: advertises betterpost_create_project, betterpost_generate_content, betterpost_derive_content; 23 tools scanned, injection verdict 'clear', 23 Claude Directory blocker(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the BetterPost MCP server (https://betterpost.ai/mcp), run 2026-11-02: advertises betterpost_create_project, betterpost_generate_content, betterpost_derive_content; 23 tools scanned, injection verdict 'clear', 23 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # BetterPost MCP server — security & directory-readiness scorecard
 
 **Server:** `https://betterpost.ai/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 23 · **Injection verdict:** `clear` · **Directory:** 23 Claude Directory blocker(s)
+**Scanned:** 2026-11-02 · **Tools advertised:** 23 · **Injection verdict:** `clear` · **Directory:** 23 Claude Directory quality item(s) to polish (no hard rejects)
 
 Finds timely sources across news, social, and the web and writes posts worth publishing.
 
 When an agent connects BetterPost, the model reads all 23 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`betterpost.ai`, scanned 2026-10-24; the verdict below is `clear`.
+`betterpost.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on BetterPost
 
 - **No tool-poisoning or prompt-injection patterns** were found across the 23 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 23 blocker(s).** This server advertises 23 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
+- **Claude Connector Directory readiness: 23 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
 - **23 of 23 advertised tool(s) name a state-changing action** (`betterpost_create_project`, `betterpost_generate_content`, `betterpost_derive_content`, `betterpost_list_content`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
 Grade `A` — No tool-poisoning/injection patterns detected across 23 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the BetterPost server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the BetterPost server advertises
@@ -55,7 +55,16 @@ These are the 23 tool definition(s) any agent reads before it acts — the exact
 - **`betterpost_expand_coverage`** — Broadens a project's coverage: expands the relevance criteria (when needed), finds more sources across news, the web, and the relevant social platforms, and fetches them inline. A… _(parameters: projectId, focus, addAsCriteria, confirmedByUser)_
 - **`betterpost_humanize`** — Rewrite existing text into BetterPost's readable, human voice. Preserves the meaning, facts, links, and format; returns the rewritten text plus short notes on what changed. Pass '… _(parameters: text, projectId, type, tone)_
 
-## Scan BetterPost yourself, or claim its badge
+## Maintenance & supply-chain — the risk BetterPost's static scan can't see
+
+A prompt-injection scan reads BetterPost's advertised tool metadata at one moment. It cannot tell you the project behind `betterpost.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance grade `B`** — last commit pushed 82 day(s) ago, 1 open issue(s).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `betterpost.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan BetterPost yourself, or claim its badge {#claim}
 
 Re-run this exact BetterPost check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `betterpost.ai`:
@@ -86,4 +95,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `betterpost.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
