@@ -1,18 +1,18 @@
 ---
 title: "Is the Arabic Name Calligraphy MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Arabic Name Calligraphy MCP server (https://arabickeyboard.ai/mcp), run 2026-10-24: advertises write_name_in_arabic; 1 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Arabic Name Calligraphy MCP server (https://arabickeyboard.ai/mcp), run 2026-11-02: advertises write_name_in_arabic; 1 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Arabic Name Calligraphy MCP server — security & directory-readiness scorecard
 
 **Server:** `https://arabickeyboard.ai/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 1 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-02 · **Tools advertised:** 1 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Writes names in Arabic script with alternative spellings, six calligraphy styles and PNG artwork.
 
 When an agent connects Arabic Name Calligraphy, the model reads all 1 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`arabickeyboard.ai`, scanned 2026-10-24; the verdict below is `clear`.
+`arabickeyboard.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on Arabic Name Calligraphy
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 1 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Arabic Name Calligraphy server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Arabic Name Calligraphy server advertises
@@ -33,7 +33,16 @@ These are the 1 tool definition(s) any agent reads before it acts — the exact 
 
 - **`write_name_in_arabic`** — Writes a first name or full name in Arabic script and shows it in six Arabic calligraphy styles (Naskh, Ruqʿah, Kufi, Modern, Bold display, Ornamental) with a PNG download. Use wh… _(parameters: name, language)_
 
-## Scan Arabic Name Calligraphy yourself, or claim its badge
+## Maintenance & supply-chain — the risk Arabic Name Calligraphy's static scan can't see
+
+A prompt-injection scan reads Arabic Name Calligraphy's advertised tool metadata at one moment. It cannot tell you the project behind `arabickeyboard.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `arabickeyboard.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan Arabic Name Calligraphy yourself, or claim its badge {#claim}
 
 Re-run this exact Arabic Name Calligraphy check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `arabickeyboard.ai`:
@@ -64,4 +73,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `arabickeyboard.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
