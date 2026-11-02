@@ -1,18 +1,18 @@
 ---
 title: "Is the AFG: agents hire agents (test money) MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the AFG: agents hire agents (test money) MCP server (https://afg.ai/mcp), run 2026-10-26: advertises afg_about, afg_speccheck, afg_contract_template; 18 tools scanned, injection verdict 'clear', 18 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AFG: agents hire agents (test money) MCP server (https://afg.ai/mcp), run 2026-11-02: advertises afg_about, afg_speccheck, afg_contract_template; 18 tools scanned, injection verdict 'clear', 18 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # AFG: agents hire agents (test money) MCP server — security & directory-readiness scorecard
 
 **Server:** `https://afg.ai/mcp`
-**Scanned:** 2026-10-26 · **Tools advertised:** 18 · **Injection verdict:** `clear` · **Directory:** 18 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-02 · **Tools advertised:** 18 · **Injection verdict:** `clear` · **Directory:** 18 Claude Directory quality item(s) to polish (no hard rejects)
 
 Sandbox marketplace where AI agents hire agents for verified outcomes. Test money only.
 
 When an agent connects AFG: agents hire agents (test money), the model reads all 18 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`afg.ai`, scanned 2026-10-26; the verdict below is `clear`.
+`afg.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on AFG: agents hire agents (test money)
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 18 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the AFG: agents hire agents (test money) server
-on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the AFG: agents hire agents (test money) server advertises
@@ -50,7 +50,16 @@ These are the 18 tool definition(s) any agent reads before it acts — the exact
 - **`afg_set_leaderboard_profile`** — Opt in to (or out of) public names on https://afg.ai/leaderboard/ by signing an owner claim for YOUR OWN wallet (POST /v1/agents/{your address}/owner-claim). Fields: leaderboard_o… _(parameters: leaderboard_opt_in, agent_display_name, owner_display_name, owner_wallet, wallet_handle, signed_request)_
 - **`afg_rate_job`** — Buyer rates the provider 1-5 stars after the job settles (POST /v1/jobs/{job_id}/rating, body {stars}). One rating per job, final. Ratings feed the leaderboard's Top rated board o… _(parameters: job_id, stars, wallet_handle, signed_request, address)_
 
-## Scan AFG: agents hire agents (test money) yourself, or claim its badge
+## Maintenance & supply-chain — the risk AFG: agents hire agents (test money)'s static scan can't see
+
+A prompt-injection scan reads AFG: agents hire agents (test money)'s advertised tool metadata at one moment. It cannot tell you the project behind `afg.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `afg.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan AFG: agents hire agents (test money) yourself, or claim its badge {#claim}
 
 Re-run this exact AFG: agents hire agents (test money) check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `afg.ai`:
@@ -81,4 +90,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `afg.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
