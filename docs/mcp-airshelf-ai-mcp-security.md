@@ -1,18 +1,18 @@
 ---
 title: "Is the AirShelf Catalog MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the AirShelf Catalog MCP server (https://mcp.airshelf.ai/mcp), run 2026-10-26: advertises search_catalog, find_products, research_shopping; 8 tools scanned, injection verdict 'clear', 8 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AirShelf Catalog MCP server (https://mcp.airshelf.ai/mcp), run 2026-11-02: advertises search_catalog, find_products, research_shopping; 8 tools scanned, injection verdict 'clear', 8 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # AirShelf Catalog MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.airshelf.ai/mcp`
-**Scanned:** 2026-10-26 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-02 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory quality item(s) to polish (no hard rejects)
 
 Cross-vendor B2B catalog for AI agents: search, compare, find equivalents, request a quote.
 
 When an agent connects AirShelf Catalog, the model reads all 8 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.airshelf.ai`, scanned 2026-10-26; the verdict below is `clear`.
+`mcp.airshelf.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on AirShelf Catalog
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 8 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the AirShelf Catalog server
-on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the AirShelf Catalog server advertises
@@ -32,15 +32,24 @@ The server describes itself to connecting agents as: *You are using the AirShelf
 These are the 8 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`search_catalog`** — Search the AirShelf cross-vendor product catalog by natural-language query. The catalog covers industrial-automation, wiring-devices, digital-signage, business-display, memory-sto… _(parameters: q, category, limit, market, merchant, specs)_
-- **`find_products`** — Discover candidate products for a buyer need. Takes a need in natural language (e.g. "best value home espresso machine", market "TH"), checks the verified catalog first, then uses… _(parameters: need, market, max)_
+- **`find_products`** — Discover candidate products for a buyer need. Takes a need in natural language (e.g. "best value home espresso machine", market "TH"), Unless the need is out of scope or live disc… _(parameters: need, market, max)_
 - **`research_shopping`** — research_shopping is the full verified-research job; find_products is the quick candidate-list tool. It runs as a background job and returns status "running" with a research ID wh… _(parameters: need, market, persona, answers, research_id)_
 - **`get_product`** — Get the full golden record (AirShelf's verified product record) and latest price for one catalog product by slug ("manufacturer-model"). Returns the product's specs and provenance… _(parameters: slug)_
 - **`compare_products`** — Compare 2-10 catalog products side-by-side on their datasheet specs. Slugs come from search_catalog and are case-insensitive and dash-tolerant ("e-STUDIO 331AC", "toshiba-e-studio… _(parameters: slugs, provenance)_
 - **`explain_product`** — Explain the evidence behind a catalog row. Returns stored processing stages when available and always returns a golden-record field summary with source coverage. A field's evidenc… _(parameters: slug)_
-- **`list_merchants`** — List public AirShelf merchants that have an assigned slug and at least one active product. Internal/demo and empty catalogs are excluded. Returns each merchant's name, slug, and p…
+- **`list_merchants`** — List public AirShelf merchants that have an assigned slug and at least one active product. Every listed merchant has an account with AirShelf; catalog makers without one are not l…
 - **`request_quote`** — Send a quote request for catalog products to a merchant's sales team on behalf of a named buyer. This is a two-step, double opt-in flow. The first call emails a confirmation link… _(parameters: merchant, products, quantity, contact, notes, reference)_
 
-## Scan AirShelf Catalog yourself, or claim its badge
+## Maintenance & supply-chain — the risk AirShelf Catalog's static scan can't see
+
+A prompt-injection scan reads AirShelf Catalog's advertised tool metadata at one moment. It cannot tell you the project behind `mcp.airshelf.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `mcp.airshelf.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan AirShelf Catalog yourself, or claim its badge {#claim}
 
 Re-run this exact AirShelf Catalog check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `mcp.airshelf.ai`:
@@ -71,4 +80,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.airshelf.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
