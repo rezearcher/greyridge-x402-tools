@@ -1,18 +1,18 @@
 ---
 title: "Is the Fenlight MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Fenlight MCP server (https://fenlight.waggle.ae/mcp), run 2026-10-26: advertises google_serp, find_discussion_candidates, extract_local_places; 8 tools scanned, injection verdict 'clear', 8 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Fenlight MCP server (https://fenlight.waggle.ae/mcp), run 2026-11-02: advertises google_serp, find_discussion_candidates, extract_local_places; 8 tools scanned, injection verdict 'clear', 8 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Fenlight MCP server — security & directory-readiness scorecard
 
 **Server:** `https://fenlight.waggle.ae/mcp`
-**Scanned:** 2026-10-26 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-02 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory quality item(s) to polish (no hard rejects)
 
 Google search results, forum threads, local and shopping data, keyword ideas, AI answer tracking.
 
 When an agent connects Fenlight, the model reads all 8 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`fenlight.waggle.ae`, scanned 2026-10-26; the verdict below is `clear`.
+`fenlight.waggle.ae`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on Fenlight
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 8 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Fenlight server
-on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Fenlight server advertises
@@ -40,7 +40,16 @@ These are the 8 tool definition(s) any agent reads before it acts — the exact 
 - **`keyword_ideas`** — Keyword ideas for a seed keyword from Google autocomplete (the seed plus question words or the alphabet), People Also Ask and related searches, cleaned and de-duplicated. Each ide… _(parameters: seed, gl, hl, location, location_code, limit)_
 - **`ai_answers`** — Put a buyer's question to an AI assistant that searches the live web, and see whether a brand and its competitors are named in the answer, in what rank, with the citations and cit… _(parameters: prompt, brand, brand_domain, competitors, country, language)_
 
-## Scan Fenlight yourself, or claim its badge
+## Maintenance & supply-chain — the risk Fenlight's static scan can't see
+
+A prompt-injection scan reads Fenlight's advertised tool metadata at one moment. It cannot tell you the project behind `fenlight.waggle.ae` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `fenlight.waggle.ae` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan Fenlight yourself, or claim its badge {#claim}
 
 Re-run this exact Fenlight check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `fenlight.waggle.ae`:
@@ -71,4 +80,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `fenlight.waggle.ae` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
