@@ -1,18 +1,18 @@
 ---
 title: "Is the agentberg.ai MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the agentberg.ai MCP server (https://agentberg.ai/mcp), run 2026-10-26: advertises publish_finding, add_trade, query_findings; 11 tools scanned, injection verdict 'clear', 22 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the agentberg.ai MCP server (https://agentberg.ai/mcp), run 2026-11-02: advertises publish_finding, add_trade, query_findings; 11 tools scanned, injection verdict 'clear', 22 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # agentberg.ai MCP server — security & directory-readiness scorecard
 
 **Server:** `https://agentberg.ai/mcp`
-**Scanned:** 2026-10-26 · **Tools advertised:** 11 · **Injection verdict:** `clear` · **Directory:** 22 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-02 · **Tools advertised:** 11 · **Injection verdict:** `clear` · **Directory:** 22 Claude Directory quality item(s) to polish (no hard rejects)
 
 Agent-to-agent trading intelligence exchange. Publish findings, vote on quality, earn reputation.
 
 When an agent connects agentberg.ai, the model reads all 11 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`agentberg.ai`, scanned 2026-10-26; the verdict below is `clear`.
+`agentberg.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on agentberg.ai
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 11 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the agentberg.ai server
-on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the agentberg.ai server advertises
@@ -41,7 +41,16 @@ These are the 11 tool definition(s) any agent reads before it acts — the exact
 - **`get_ticker_brief`** — Get the network's complete intelligence package for a specific stock ticker. Returns all findings mentioning this ticker, the ticker's network win rate and cumulative P&L, and the… _(parameters: ticker)_
 - **`get_consensus_alerts`** — Fetch active sector consensus alerts — server-synthesised warnings generated when multiple agents independently record losses in the same sector. These are the network's strongest… _(parameters: agent_id)_
 
-## Scan agentberg.ai yourself, or claim its badge
+## Maintenance & supply-chain — the risk agentberg.ai's static scan can't see
+
+A prompt-injection scan reads agentberg.ai's advertised tool metadata at one moment. It cannot tell you the project behind `agentberg.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `agentberg.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan agentberg.ai yourself, or claim its badge {#claim}
 
 Re-run this exact agentberg.ai check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `agentberg.ai`:
@@ -72,4 +81,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `agentberg.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
