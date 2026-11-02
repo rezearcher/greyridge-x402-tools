@@ -1,18 +1,18 @@
 ---
 title: "Is the CertScore.ai MCP Light MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the CertScore.ai MCP Light MCP server (https://mcp.certscore.ai/mcp/light), run 2026-10-24: advertises certscore_scan_site, certscore_get_scan_status, certscore_get_report_evidence_page; 4 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the CertScore.ai MCP Light MCP server (https://mcp.certscore.ai/mcp/light), run 2026-11-02: advertises certscore_scan_site, certscore_get_scan_status, certscore_get_report_evidence_page; 4 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # CertScore.ai MCP Light MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.certscore.ai/mcp/light`
-**Scanned:** 2026-10-24 · **Tools advertised:** 4 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-02 · **Tools advertised:** 4 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Free website privacy scanner for pre-consent cookies, trackers, consent, policy, and HTTPS/TLS.
 
 When an agent connects CertScore.ai MCP Light, the model reads all 4 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.certscore.ai`, scanned 2026-10-24; the verdict below is `clear`.
+`mcp.certscore.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on CertScore.ai MCP Light
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 4 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the CertScore.ai MCP Light server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the CertScore.ai MCP Light server advertises
@@ -33,10 +33,19 @@ These are the 4 tool definition(s) any agent reads before it acts — the exact 
 
 - **`certscore_scan_site`** — Use for a user-requested website launch review, vendor assessment, cookie/tracker inventory, consent/GPC investigation or privacy-policy review. A public URL or domain is enough.… _(parameters: taskContext, url, freshness, scanFrom)_
 - **`certscore_get_scan_status`** — Returns lifecycle status for a stable CertScore scanId. Active responses include phase, heartbeat, estimated progress, retryAfterSeconds, and sometimes a bounded preliminary preCo… _(parameters: scanId)_
-- **`certscore_get_report_evidence_page`** — For a focused question, use section=cmp, cms, consent, gpc, policy, tracking, transport, forms or accessibility. This returns selected retained report sections plus shared scan, s… _(parameters: scanId, cursor, workpaper, section)_
+- **`certscore_get_report_evidence_page`** — For a focused question, use section=cmp, cms, consent, gpc, policy, tracking, transport, forms or accessibility. This returns selected retained report sections plus shared scan, s… _(parameters: scanId, cursor, workpaper, section, reviewFocus)_
 - **`certscore_get_scan_bundle`** — Main answer for a completed or completed-limited scan: canonical findings, next steps, supporting evidence, score, date/region, coverage and report URL. An existing scanId is enou… _(parameters: scanId, detail, maxBytes, maxFindings, maxPreConsentRows)_
 
-## Scan CertScore.ai MCP Light yourself, or claim its badge
+## Maintenance & supply-chain — the risk CertScore.ai MCP Light's static scan can't see
+
+A prompt-injection scan reads CertScore.ai MCP Light's advertised tool metadata at one moment. It cannot tell you the project behind `mcp.certscore.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance grade `A`** — last commit pushed 0 day(s) ago, 2 open issue(s).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `mcp.certscore.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan CertScore.ai MCP Light yourself, or claim its badge {#claim}
 
 Re-run this exact CertScore.ai MCP Light check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `mcp.certscore.ai`:
@@ -67,4 +76,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.certscore.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
