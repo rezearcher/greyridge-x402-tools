@@ -1,18 +1,18 @@
 ---
 title: "Is the Agent Ready Report MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Agent Ready Report MCP server (https://scan.agenticplug.ai/mcp), run 2026-10-26: advertises scan_website, explain_check; 2 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Agent Ready Report MCP server (https://scan.agenticplug.ai/mcp), run 2026-11-02: advertises scan_website, explain_check; 2 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Agent Ready Report MCP server — security & directory-readiness scorecard
 
 **Server:** `https://scan.agenticplug.ai/mcp`
-**Scanned:** 2026-10-26 · **Tools advertised:** 2 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-02 · **Tools advertised:** 2 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Scan any public website and see how ready it is for AI agents and AI search, explained plainly.
 
 When an agent connects Agent Ready Report, the model reads all 2 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`scan.agenticplug.ai`, scanned 2026-10-26; the verdict below is `clear`.
+`scan.agenticplug.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on Agent Ready Report
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 2 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Agent Ready Report server
-on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Agent Ready Report server advertises
@@ -34,7 +34,16 @@ These are the 2 tool definition(s) any agent reads before it acts — the exact 
 - **`scan_website`** — Scan a public website and report how ready it is for AI agents and AI search: which checks pass, which are missing, and what each check is, in plain English and technically. Cover… _(parameters: url, sells_online, detail)_
 - **`explain_check`** — Explain one agent-readiness check in depth: what it is, why it matters for AI agents and AI search, exactly how the scanner tests it, what counts as a pass, and the official sourc… _(parameters: check_id)_
 
-## Scan Agent Ready Report yourself, or claim its badge
+## Maintenance & supply-chain — the risk Agent Ready Report's static scan can't see
+
+A prompt-injection scan reads Agent Ready Report's advertised tool metadata at one moment. It cannot tell you the project behind `scan.agenticplug.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `scan.agenticplug.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan Agent Ready Report yourself, or claim its badge {#claim}
 
 Re-run this exact Agent Ready Report check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `scan.agenticplug.ai`:
@@ -65,4 +74,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `scan.agenticplug.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
