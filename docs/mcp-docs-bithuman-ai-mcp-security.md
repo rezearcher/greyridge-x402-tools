@@ -1,18 +1,18 @@
 ---
 title: "Is the bitHuman docs MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the bitHuman docs MCP server (https://docs.bithuman.ai/docs-mcp), run 2026-10-24: advertises search, fetch; 2 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the bitHuman docs MCP server (https://docs.bithuman.ai/docs-mcp), run 2026-11-02: advertises search, fetch; 2 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # bitHuman docs MCP server — security & directory-readiness scorecard
 
 **Server:** `https://docs.bithuman.ai/docs-mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 2 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-02 · **Tools advertised:** 2 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 The bitHuman docs over MCP: two read-only tools, search and fetch; it needs no account and no key.
 
 When an agent connects bitHuman docs, the model reads all 2 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`docs.bithuman.ai`, scanned 2026-10-24; the verdict below is `clear`.
+`docs.bithuman.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on bitHuman docs
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 2 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the bitHuman docs server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the bitHuman docs server advertises
@@ -34,7 +34,16 @@ These are the 2 tool definition(s) any agent reads before it acts — the exact 
 - **`search`** — Search docs.bithuman.ai (bitHuman real-time avatar SDKs, the REST API, deployment options, models, pricing). Returns JSON {results: [{id, title, url, section, text}]}, most releva… _(parameters: query, section, limit)_
 - **`fetch`** — Fetch one docs page as markdown by the id 'search' returned (a path such as /platforms/python), or by its full docs.bithuman.ai URL. Returns JSON {id, title, text (the whole page… _(parameters: id)_
 
-## Scan bitHuman docs yourself, or claim its badge
+## Maintenance & supply-chain — the risk bitHuman docs's static scan can't see
+
+A prompt-injection scan reads bitHuman docs's advertised tool metadata at one moment. It cannot tell you the project behind `docs.bithuman.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `docs.bithuman.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan bitHuman docs yourself, or claim its badge {#claim}
 
 Re-run this exact bitHuman docs check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `docs.bithuman.ai`:
@@ -65,4 +74,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `docs.bithuman.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
