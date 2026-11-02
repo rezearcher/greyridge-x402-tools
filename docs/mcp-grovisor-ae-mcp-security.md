@@ -1,18 +1,18 @@
 ---
 title: "Is the groTAX by Grovisor MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the groTAX by Grovisor MCP server (https://mcp.grovisor.ae/), run 2026-10-26: advertises grotax_compute_ct, grotax_health_check, grotax_list_health_questions; 8 tools scanned, injection verdict 'clear', 8 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the groTAX by Grovisor MCP server (https://mcp.grovisor.ae/), run 2026-11-02: advertises grotax_compute_ct, grotax_health_check, grotax_list_health_questions; 8 tools scanned, injection verdict 'clear', 8 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # groTAX by Grovisor MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.grovisor.ae/`
-**Scanned:** 2026-10-26 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-02 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory quality item(s) to polish (no hard rejects)
 
 UAE Corporate Tax: CT computation, SBR, penalties, free zone test, TP and health-check.
 
 When an agent connects groTAX by Grovisor, the model reads all 8 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.grovisor.ae`, scanned 2026-10-26; the verdict below is `clear`.
+`mcp.grovisor.ae`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on groTAX by Grovisor
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 8 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the groTAX by Grovisor server
-on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the groTAX by Grovisor server advertises
@@ -38,7 +38,16 @@ These are the 8 tool definition(s) any agent reads before it acts — the exact 
 - **`grotax_qfzp_de_minimis`** — Test whether a free zone company's non-qualifying revenue stays within the de minimis limit: the lower of 5% of total revenue or AED 5m (MD 229 of 2025). Failing it ends Qualifyin… _(parameters: totalRevenue, nonQualifyingRevenue)_
 - **`grotax_get_rules`** — List every rate and threshold groTAX uses, with its legal source and whether it still needs verification (verify: true).
 
-## Scan groTAX by Grovisor yourself, or claim its badge
+## Maintenance & supply-chain — the risk groTAX by Grovisor's static scan can't see
+
+A prompt-injection scan reads groTAX by Grovisor's advertised tool metadata at one moment. It cannot tell you the project behind `mcp.grovisor.ae` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `mcp.grovisor.ae` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan groTAX by Grovisor yourself, or claim its badge {#claim}
 
 Re-run this exact groTAX by Grovisor check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `mcp.grovisor.ae`:
@@ -69,4 +78,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.grovisor.ae` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
