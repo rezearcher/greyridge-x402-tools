@@ -1,18 +1,18 @@
 ---
 title: "Is the BumbleBox MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the BumbleBox MCP server (https://api.bumblebox.ai/api/mcp), run 2026-10-24: advertises search_emails, get_email, list_to_answer; 17 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the BumbleBox MCP server (https://api.bumblebox.ai/api/mcp), run 2026-11-02: advertises search_emails, get_email, list_to_answer; 17 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # BumbleBox MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.bumblebox.ai/api/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 17 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-02 · **Tools advertised:** 17 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Search and triage all your mailboxes; draft replies and campaigns; send only as you allow.
 
 When an agent connects BumbleBox, the model reads all 17 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.bumblebox.ai`, scanned 2026-10-24; the verdict below is `clear`.
+`api.bumblebox.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on BumbleBox
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 17 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the BumbleBox server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the BumbleBox server advertises
@@ -31,14 +31,14 @@ The server describes itself to connecting agents as: *BumbleBox is an email clie
 
 These are the 17 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
-- **`search_emails`** — Searches every connected mailbox (sender, subject, preview), newest first. Operators: from:, subject:, before:YYYY-MM-DD, after:YYYY-MM-DD; the rest is free text. Deleted emails a… _(parameters: query, limit)_
+- **`search_emails`** — Searches every connected mailbox (sender, subject, preview), newest first. Operators: from:, subject:, before:YYYY-MM-DD, after:YYYY-MM-DD, in:sent (only what the user sent, from… _(parameters: query, limit)_
 - **`get_email`** — One email in full: sender, recipients, date, subject, plain-text body, attachment names, folder and BumbleBox classification. _(parameters: id)_
 - **`list_to_answer`** — Received emails BumbleBox classified as needing a reply and still in the inbox, newest first. _(parameters: limit)_
 - **`search_contacts`** — Contacts BumbleBox knows from the mail history (name, address, organization domain, exchange counts, last exchanges, VIP mark, note), matched on name, address or domain. _(parameters: query, limit)_
 - **`list_folders`** — The folders of each connected mailbox, as last synced. Trash, spam, sent and drafts are left out.
 - **`list_calendar_events`** — Events of the connected Google calendars between two dates (default: the next 7 days, at most 62 days). _(parameters: from, to)_
-- **`draft_reply`** — Saves the text as the reply draft of a received email, from the mailbox that received it. Nothing is sent: the draft waits in BumbleBox (Pilotage › prepared replies) until the use… _(parameters: email_id, body, subject)_
-- **`send_reply`** — Replies to the sender of one received email, and only to them (no Cc, no Bcc, no attachment), from the mailbox that received it. What happens next is the level the user set in Bum… _(parameters: email_id, body)_
+- **`draft_reply`** — Saves the text as the reply draft of a received email, from the address the email was written to (a brand address or the mailbox). needsIdentity: that address cannot send until th… _(parameters: email_id, body, subject)_
+- **`send_reply`** — Replies to the sender of one received email, and only to them (no Cc, no Bcc, no attachment), from the address the email was written to. What happens next is the level the user se… _(parameters: email_id, body)_
 - **`archive_email`** — Moves one inbox email to its mailbox's archive folder, on the mail server too. Undone by restore_to_inbox. Nothing is deleted. _(parameters: email_id)_
 - **`move_email`** — Moves one inbox email to an existing folder of the same mailbox (see list_folders), on the mail server too. No folder is created. Undone by restore_to_inbox. _(parameters: email_id, folder)_
 - **`trash_email`** — Moves one inbox email to its mailbox's trash when BumbleBox certifies it as noise (spam, newsletter, promotion, with a unanimous safety vote and no known contact or action word).… _(parameters: email_id, reason)_
@@ -49,7 +49,16 @@ These are the 17 tool definition(s) any agent reads before it acts — the exact
 - **`create_campaign_draft`** — Writes one draft inside an existing campaign, to one recipient (added to the campaign list if new), from the campaign's sender. Nothing is sent: the draft waits for the user to va… _(parameters: mission_id, to, name, subject, body)_
 - **`update_campaign_draft`** — Changes the subject, body or recipient of a draft that is still a draft. Nothing is sent, and a draft the user already validated cannot be changed. _(parameters: mission_id, draft_id, subject, body, to)_
 
-## Scan BumbleBox yourself, or claim its badge
+## Maintenance & supply-chain — the risk BumbleBox's static scan can't see
+
+A prompt-injection scan reads BumbleBox's advertised tool metadata at one moment. It cannot tell you the project behind `api.bumblebox.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance grade `A`** — last commit pushed 6 day(s) ago, 1 open issue(s).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `api.bumblebox.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan BumbleBox yourself, or claim its badge {#claim}
 
 Re-run this exact BumbleBox check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `api.bumblebox.ai`:
@@ -80,4 +89,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.bumblebox.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
