@@ -1,28 +1,28 @@
 ---
 title: "Is the Bring Your AI MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Bring Your AI MCP server (https://bringyour.ai/mcp), run 2026-10-24: advertises preview_move, preview_build_setup, list_targets; 7 tools scanned, injection verdict 'clear', 14 Claude Directory blocker(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Bring Your AI MCP server (https://bringyour.ai/mcp), run 2026-11-02: advertises preview_move, preview_build_setup, list_targets; 7 tools scanned, injection verdict 'clear', 14 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Bring Your AI MCP server — security & directory-readiness scorecard
 
 **Server:** `https://bringyour.ai/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 7 · **Injection verdict:** `clear` · **Directory:** 14 Claude Directory blocker(s)
+**Scanned:** 2026-11-02 · **Tools advertised:** 7 · **Injection verdict:** `clear` · **Directory:** 14 Claude Directory quality item(s) to polish (no hard rejects)
 
 No-data MCP handoff for local Claude Code to Codex harness moves. $49 lifetime.
 
 When an agent connects Bring Your AI, the model reads all 7 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`bringyour.ai`, scanned 2026-10-24; the verdict below is `clear`.
+`bringyour.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on Bring Your AI
 
 - **No tool-poisoning or prompt-injection patterns** were found across the 7 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 14 blocker(s).** This server advertises 14 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
+- **Claude Connector Directory readiness: 14 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
 - **2 of 7 advertised tool(s) name a state-changing action** (`preview_build_setup`, `install_local_cli`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
 Grade `A` — No tool-poisoning/injection patterns detected across 7 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Bring Your AI server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Bring Your AI server advertises
@@ -37,7 +37,16 @@ These are the 7 tool definition(s) any agent reads before it acts — the exact 
 - **`quote_lifetime_license`** — Quote a Bring Your AI lifetime license or Team Migration Pack in USD. The team pack includes one guided migration and onboarding for up to 10 people plus lifetime licenses. _(parameters: buyer_country, currency, locale, product_id)_
 - **`start_checkout`** — Start checkout. With payment_mode=stripe_spt plus shared_payment_granted_token and buyer_email, settles a Stripe PaymentIntent and returns the signed license without opening a bro… _(parameters: buyer_email, email, payment_mode, product_id, shared_payment_granted_token)_
 
-## Scan Bring Your AI yourself, or claim its badge
+## Maintenance & supply-chain — the risk Bring Your AI's static scan can't see
+
+A prompt-injection scan reads Bring Your AI's advertised tool metadata at one moment. It cannot tell you the project behind `bringyour.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `bringyour.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan Bring Your AI yourself, or claim its badge {#claim}
 
 Re-run this exact Bring Your AI check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `bringyour.ai`:
@@ -68,4 +77,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `bringyour.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
