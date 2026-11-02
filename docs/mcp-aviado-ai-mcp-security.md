@@ -1,18 +1,18 @@
 ---
 title: "Is the Aviado AI MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Aviado AI MCP server (https://aviado.ai/api/mcp), run 2026-10-24: advertises get_supplements_for_biomarker, get_interventions_for_biomarker, get_biomarkers_for_supplement; 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Aviado AI MCP server (https://aviado.ai/api/mcp), run 2026-11-02: advertises get_supplements_for_biomarker, get_interventions_for_biomarker, get_biomarkers_for_supplement; 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Aviado AI MCP server — security & directory-readiness scorecard
 
 **Server:** `https://aviado.ai/api/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 11 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-02 · **Tools advertised:** 11 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Cited supplement evidence, biomarker effects, interaction checks and brand quality.
 
 When an agent connects Aviado AI, the model reads all 11 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`aviado.ai`, scanned 2026-10-24; the verdict below is `clear`.
+`aviado.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on Aviado AI
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 11 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Aviado AI server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Aviado AI server advertises
@@ -43,7 +43,16 @@ These are the 11 tool definition(s) any agent reads before it acts — the exact
 - **`get_supplements_for_condition`** — Supplements associated with a health condition or goal (e.g. 'insomnia', 'anxiety', 'joint pain'), strongest evidence first. evidence_basis direct rows come from studies of the co… _(parameters: condition, min_grade, limit, include_non_supplements)_
 - **`build_starter_stack`** — Starter stack (default 3, max 5) of recommendable supplements for a goal (e.g. 'insomnia', 'LDL cholesterol'), best-replicated app-visible evidence first; never Rx or research; bi… _(parameters: goal, max_items, exclude, include_claim_link)_
 
-## Scan Aviado AI yourself, or claim its badge
+## Maintenance & supply-chain — the risk Aviado AI's static scan can't see
+
+A prompt-injection scan reads Aviado AI's advertised tool metadata at one moment. It cannot tell you the project behind `aviado.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `aviado.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan Aviado AI yourself, or claim its badge {#claim}
 
 Re-run this exact Aviado AI check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `aviado.ai`:
@@ -74,4 +83,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `aviado.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
