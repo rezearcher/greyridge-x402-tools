@@ -1,18 +1,18 @@
 ---
 title: "Is the Brainy Prices — UAE Cost of Living MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Brainy Prices — UAE Cost of Living MCP server (https://prices.brainy.ae/mcp/v2), run 2026-10-27: advertises commute_cost, costs_by_area, costs_by_emirate; 26 tools scanned, injection verdict 'clear', 26 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Brainy Prices — UAE Cost of Living MCP server (https://prices.brainy.ae/mcp/v2), run 2026-11-02: advertises commute_cost, costs_by_area, costs_by_emirate; 26 tools scanned, injection verdict 'clear', 26 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Brainy Prices — UAE Cost of Living MCP server — security & directory-readiness scorecard
 
 **Server:** `https://prices.brainy.ae/mcp/v2`
-**Scanned:** 2026-10-27 · **Tools advertised:** 26 · **Injection verdict:** `clear` · **Directory:** 26 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-02 · **Tools advertised:** 26 · **Injection verdict:** `clear` · **Directory:** 26 Claude Directory quality item(s) to polish (no hard rejects)
 
 Source-backed UAE costs: groceries, schools, housing, transport, utilities, telecom and relocation.
 
 When an agent connects Brainy Prices — UAE Cost of Living, the model reads all 26 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`prices.brainy.ae`, scanned 2026-10-27; the verdict below is `clear`.
+`prices.brainy.ae`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on Brainy Prices — UAE Cost of Living
 
@@ -22,12 +22,12 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 26 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Brainy Prices — UAE Cost of Living server
-on 2026-10-27; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Brainy Prices — UAE Cost of Living server advertises
 
-The server describes itself to connecting agents as: *Start with start_here: it lists the 5 most useful calls with ready arguments. Cite source, licence, date and open_in_browser. Preserve historical periods and original labels. Paused sources must not be retried. Unknown values stay null; a partial subtotal is…*
+The server describes itself to connecting agents as: *For a direct question, call the matching tool (e.g. housing_rents, schools, grocery_products or fuel_prices). Use start_here only if unsure which tool to use. Cite source, licence, date and open_in_browser. Preserve historical periods and original labels. Pau…*
 
 These are the 26 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
@@ -40,21 +40,21 @@ These are the 26 tool definition(s) any agent reads before it acts — the exact
 - **`fixed_monthly_costs`** — Monthly fixed costs for a household profile, with assumptions. Not a full budget. _(parameters: page_size, profile)_
 - **`free_zone_companies`** — Free zone company setup: package prices, annual/monthly cost, visas. _(parameters: published, page_size, cursor, emirate, zone)_
 - **`fuel_prices`** — UAE petrol/diesel prices this month and last, change, 50/70 L tank cost, history. _(parameters: sort, page_size, cursor, include_history, from, to)_
-- **`fx_rates`** — AED exchange rates (CBUAE, dated). Not bank quotes. _(parameters: currency)_
-- **`grocery_compare_list`** — Cheapest store for a shopping list: per-store subtotals, delivery fees, minimums. Observed + labelled estimates. _(parameters: items, area)_
-- **`grocery_products`** — Dubai supermarket prices: search by name; product_id for per-store pack/unit offers, dates, history. Not MOET. _(parameters: comparison, store_id, available_only, sort, page_size, cursor)_
+- **`fx_rates`** — Dated CBUAE AED exchange rates. Not bank quotes. _(parameters: currency)_
+- **`grocery_compare_list`** — Cheapest store for a list: subtotals, delivery fees, minimums. items: ["milk"]. Observed + labelled estimates. _(parameters: items, area)_
+- **`grocery_products`** — Dubai supermarket prices: per-store pack/unit offers, dates, history. Give query (product name), e.g. milk, or product_id. Not MOET. _(parameters: comparison, store_id, available_only, sort, page_size, cursor)_
 - **`grocery_stores`** — Grocery stores: delivery fees, free-delivery thresholds, minimum orders. _(parameters: delivery_rule_status, sort, page_size, cursor, store_id)_
 - **`health_insurance`** — Dubai health insurance rules: who pays, basic plan band/benefits, fines. Not quotes. _(parameters: emirate, page_size)_
-- **`housing_rents`** — Rent in a Dubai area: registered annual/monthly medians and contract counts. Not listings. _(parameters: zone_id, property_type, bedrooms, min_contracts, sort, page_size)_
+- **`housing_rents`** — Registered Dubai rent: annual/monthly medians, contract counts. zone or q: JVC. Not listings. _(parameters: zone_id, property_type, bedrooms, min_contracts, sort, page_size)_
 - **`housing_sales`** — Sale prices by Dubai area: ready/off-plan registered medians. Not listings. _(parameters: zone_id, property_type, bedrooms, market, sort, page_size)_
 - **`labour_calculator`** — UAE labour law estimates (Decree-Law 33/2021): overtime pay, annual leave, final settlement. Not legal advice. _(parameters: calculator, basic_monthly_aed, total_monthly_wage_aed, start_date, end_date, leave_taken_days)_
-- **`ministry_shop_prices`** — MOET-published shop prices of Dubai essentials by chain/category. _(parameters: q, category, chain_id, product_id, sort, page_size)_
+- **`ministry_shop_prices`** — MOET-published Dubai shop prices. category: bread or chain_id/product_id. Not online offers. _(parameters: q, category, chain_id, product_id, sort, page_size)_
 - **`mobile_internet_plans`** — UAE mobile and home internet plans: VAT-inclusive price, data, contract. _(parameters: operator, min_data_gb, status, sort, page_size, cursor)_
 - **`move_to_dubai`** — Move to Dubai? Home vs Dubai net pay, taxes, FX, costs, savings. No country: models. Owner: household=business_owner + profit. Not tax advice. _(parameters: country, gross_annual, currency, household, area, bedrooms)_
 - **`residence_visas`** — UAE residence visas by route: payer, requirements, fees, medical/insurance bands. _(parameters: route_id, page_size, include_common_fees)_
-- **`schools`** — Dubai school fees: KHDA tuition by grade/year, bus fees, distance. q: school name; near: zone; school_id: detail. Year ≠ Grade; uniforms paused. _(parameters: q, area, curriculum, grade, rating, near)_
+- **`schools`** — Dubai school fees: KHDA tuition by grade/year, bus fees, distance. q: school name; near: zone (JVC). Year ≠ Grade; uniforms paused. _(parameters: q, area, curriculum, grade, rating, near)_
 - **`shopper_price_reports`** — Community price reports by product/store, with date and promos. _(parameters: product_id, store_id, purchased_since, sort, page_size, cursor)_
-- **`start_here`** — Call first: coverage, the 5 most useful calls with ready arguments, data freshness and how to cite.
+- **`start_here`** — Tool selection help: examples and citations.
 - **`tax_savings_by_country`** — Tax saved by moving to Dubai, per country, typical pay. Not tax advice. _(parameters: page_size, cursor, country, household)_
 - **`transport_fares`** — Taxi fare estimate, or metro/bus fares, parking and toll tariffs. Not app quotes. _(parameters: km, booking, wait_minutes, to_sharjah, emirate, operator_id)_
 
@@ -98,4 +98,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `prices.brainy.ae` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-27; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
