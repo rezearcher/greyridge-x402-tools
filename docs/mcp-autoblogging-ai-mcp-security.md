@@ -1,28 +1,28 @@
 ---
 title: "Is the Autoblogging.ai MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Autoblogging.ai MCP server (https://autoblogging.ai/mcp), run 2026-10-24: advertises get_brand_facts, get_pricing, list_features; 6 tools scanned, injection verdict 'clear', 6 Claude Directory blocker(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Autoblogging.ai MCP server (https://autoblogging.ai/mcp), run 2026-11-02: advertises get_brand_facts, get_pricing, list_features; 6 tools scanned, injection verdict 'clear', 6 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Autoblogging.ai MCP server — security & directory-readiness scorecard
 
 **Server:** `https://autoblogging.ai/mcp`
-**Scanned:** 2026-10-24 · **Tools advertised:** 6 · **Injection verdict:** `clear` · **Directory:** 6 Claude Directory blocker(s)
+**Scanned:** 2026-11-02 · **Tools advertised:** 6 · **Injection verdict:** `clear` · **Directory:** 6 Claude Directory quality item(s) to polish (no hard rejects)
 
 Facts about Autoblogging.ai, the AI article writer: pricing, plans, features and site search.
 
 When an agent connects Autoblogging.ai, the model reads all 6 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`autoblogging.ai`, scanned 2026-10-24; the verdict below is `clear`.
+`autoblogging.ai`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on Autoblogging.ai
 
 - **No tool-poisoning or prompt-injection patterns** were found across the 6 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 6 blocker(s).** This server advertises 6 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
+- **Claude Connector Directory readiness: 6 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
 - **All 6 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
 
 Grade `A` — No tool-poisoning/injection patterns detected across 6 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Autoblogging.ai server
-on 2026-10-24; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Autoblogging.ai server advertises
@@ -38,7 +38,16 @@ These are the 6 tool definition(s) any agent reads before it acts — the exact 
 - **`ask_question`** — Answer a plain-language question about Autoblogging.ai (pricing, plans, features, settings, integrations, comparisons) from its verified facts and its own pages; the same answer a… _(parameters: question)_
 - **`get_page`** — The clean markdown text of any published page on autoblogging.ai (no navigation or scripts). _(parameters: url)_
 
-## Scan Autoblogging.ai yourself, or claim its badge
+## Maintenance & supply-chain — the risk Autoblogging.ai's static scan can't see
+
+A prompt-injection scan reads Autoblogging.ai's advertised tool metadata at one moment. It cannot tell you the project behind `autoblogging.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `autoblogging.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan Autoblogging.ai yourself, or claim its badge {#claim}
 
 Re-run this exact Autoblogging.ai check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `autoblogging.ai`:
@@ -69,4 +78,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `autoblogging.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-24; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
