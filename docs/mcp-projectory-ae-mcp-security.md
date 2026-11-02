@@ -1,43 +1,53 @@
 ---
 title: "Is the Projectory MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Projectory MCP server (https://mcp.projectory.ae/mcp), run 2026-10-26: advertises search, search_transactions, fetch; 5 tools scanned, injection verdict 'clear', 5 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Projectory MCP server (https://mcp.projectory.ae/mcp), run 2026-11-02: advertises search, search_transactions, list_research_reports; 6 tools scanned, injection verdict 'clear', 6 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Projectory MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.projectory.ae/mcp`
-**Scanned:** 2026-10-26 · **Tools advertised:** 5 · **Injection verdict:** `clear` · **Directory:** 5 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-02 · **Tools advertised:** 6 · **Injection verdict:** `clear` · **Directory:** 6 Claude Directory quality item(s) to polish (no hard rejects)
 
-Find UAE off-plan developments and registered residential sales.
+Find UAE off-plan developments, registered residential sales and research reports.
 
-When an agent connects Projectory, the model reads all 5 of its advertised tool definition(s)
+When an agent connects Projectory, the model reads all 6 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.projectory.ae`, scanned 2026-10-26; the verdict below is `clear`.
+`mcp.projectory.ae`, scanned 2026-11-02; the verdict below is `clear`.
 
 ## What the scan found on Projectory
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 5 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 5 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
-- **All 5 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
+- **No tool-poisoning or prompt-injection patterns** were found across the 6 tool definition(s) this server advertises.
+- **Claude Connector Directory readiness: 6 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
+- **All 6 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 5 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 6 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Projectory server
-on 2026-10-26; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Projectory server advertises
 
 The server describes itself to connecting agents as: *Search Projectory's public UAE developments and registered residential sales. Use search for a project name or structured filters; fetch a known project ID, slug or URL directly. Use suggest_project_terms for an unknown partial facet name, or list_project_fac…*
 
-These are the 5 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 6 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`search`** — Find published off-plan UAE developments by project name or slug text, combined with exact structured filters. Returns shortlist facts and a pagination cursor. Follow more pages o… _(parameters: query, emirate, developer, area, propertyType, bedroomsMin)_
 - **`search_transactions`** — Search canonical residential sale registrations in one required market: Dubai or Abu Dhabi. Whole area, project and building names ignore ASCII letter case; provider IDs match exa… _(parameters: market, areaName, projectName, buildingName, sourceProjectId, from)_
+- **`list_research_reports`** — List citable Projectory Research reports, newest first. Reports analyse registered residential sales from Dubai Land Department (DLD) and Abu Dhabi Real Estate Centre (ADREC) tran… _(parameters: market, period, limit)_
 - **`fetch`** — Fetch one development's detail using a known ID, slug or Projectory URL; no prior search or facet lookup is needed. Returns development-wide pricing, location, availability, enqui… _(parameters: id)_
 - **`list_project_facets`** — Explore all exact values for 'emirate', 'area', 'developer', 'propertyType', 'availability' and 'sort', plus boolean flags 'newLaunch' and 'comingSoon'. Skip this call when the ne…
 - **`suggest_project_terms`** — Resolve partial emirate, area, developer or property-type text, such as "marina" or "sobha", into exact filter slugs for 'search'. Does not search project names. Skip when the exa… _(parameters: query, limit)_
 
-## Scan Projectory yourself, or claim its badge
+## Maintenance & supply-chain — the risk Projectory's static scan can't see
+
+A prompt-injection scan reads Projectory's advertised tool metadata at one moment. It cannot tell you the project behind `mcp.projectory.ae` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
+
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
+
+A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `mcp.projectory.ae` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
+
+## Scan Projectory yourself, or claim its badge {#claim}
 
 Re-run this exact Projectory check yourself, keyless — the free response carries the verdict and the
 directory-blocker count for `mcp.projectory.ae`:
@@ -68,4 +78,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.projectory.ae` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-10-26; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
