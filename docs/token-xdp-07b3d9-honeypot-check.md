@@ -1,15 +1,15 @@
 ---
 title: "Is XDP a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for XDP (Doppler) on Base (0x07b3d902783c3c12b077508c3b5c00113d1291d0), measured 2026-11-02: engine verdict HOLD, risk 20/100, $0 pool liquidity. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for XDP on Base (0x07b3d902783c3c12b077508c3b5c00113d1291d0), measured 2026-11-03: engine verdict HOLD, risk 20/100, $0 pool liquidity. Re-run it yourself in one keyless call."
 ---
 # Is XDP a honeypot? — on-chain rug check (Base)
 
 **Token:** `0x07b3d902783c3c12b077508c3b5c00113d1291d0`
-**Chain:** Base · **Measured:** 2026-11-02 · verdict `HOLD` · risk `20/100`
+**Chain:** Base · **Measured:** 2026-11-03 · verdict `HOLD` · risk `20/100`
 
 Our engine returned **HOLD** for XDP — at least one measured signal warrants caution before you buy.
 
-no verifiable Uniswap v3 WETH-pool liquidity — cannot confirm the position is exitable or size the trade; not safe to auto-buy.
+sellability unverified — the transfer simulation could not run, so the token's exit is unproven; not safe to auto-buy.
 
 Deepest Uniswap v3 WETH pool held about **$0** of liquidity when measured.
 
@@ -50,4 +50,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-11-02; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-11-03; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
