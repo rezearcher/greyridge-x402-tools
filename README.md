@@ -165,7 +165,7 @@ greyridge-data funding BTC
 greyridge-data yield-verdict <poolId>
 ```
 
-The free preview returns a representative sample (top-1 pool / funding row, a 1-of-N price, or the top-TVL pool's verdict); the paid routes return the full result — `/crypto/prices` ($0.001, up to 25 coins), `/defi/yields` ($0.001), `/crypto/funding` ($0.004, Binance+Bybit+OKX+Hyperliquid+dYdX+Gate), `/defi/yield-entry-verdict` ($0.01, scores the exact pool you pass). Keyless, Base-native, pay-per-call.
+**Try the real thing free, 3×/day.** Call a data function with your own arguments — `defi_yields(project="aave")`, `token_prices(["btc","eth"])`, `funding_rates()`, `yield_entry_verdict(pool=...)` — and the free path returns the **complete paid output** (not a 1-of-N teaser), metered 3 pulls per IP per day per function. After that it degrades to a representative sample with the paid URL, so you can evaluate the full result before you ever wire a wallet. The paid routes are unmetered — `/crypto/prices` ($0.001, up to 25 coins), `/defi/yields` ($0.001), `/crypto/funding` ($0.004, Binance+Bybit+OKX+Hyperliquid+dYdX+Gate), `/defi/yield-entry-verdict` ($0.01, scores the exact pool you pass). Keyless, Base-native, pay-per-call.
 
 ## rugcheck / swap-gate — pre-trade safety for Base tokens
 

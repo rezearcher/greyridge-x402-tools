@@ -1,6 +1,6 @@
 [project]
 name = "greyridge-x402-tools"
-version = "0.8.0"
+version = "0.8.1"
 description = "x402 safe-fetch: free preflight before paying + dual-RPC on-chain receipt proof (fails closed if two Base RPCs disagree). Also an MCP server security scanner — static tool-poisoning / prompt-injection audit (OWASP LLM01/LLM08) + maintenance & supply-chain drift grade + continuous monitoring; plus a pre-trade Base token safety gate. Keyless x402 pay-per-call."
 readme = "README.md"
 license = {text = "MIT"}

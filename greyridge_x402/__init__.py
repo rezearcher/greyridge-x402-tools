@@ -30,9 +30,10 @@ def token_prices(coins, paid: bool = False, private_key: str = None) -> dict:
     """Spot USD price + 24h change + a confidence score for up to 25 coins (keyless, Base x402).
 
     `coins` takes a CoinGecko-style id list — a comma string ('bitcoin,ethereum')
-    or a Python list (['bitcoin', 'ethereum']). Free preview returns a 1-of-N
-    sample; paid ($0.001) returns every requested coin. Shape matches the
-    ``get_price(ids=...)`` ergonomics of pycoingecko, but keyless.
+    or a Python list (['bitcoin', 'ethereum']). The free path returns EVERY coin
+    you request 3×/IP/day (then a 1-of-N sample + the paid URL); paid ($0.001) is
+    unmetered. Shape matches the ``get_price(ids=...)`` ergonomics of pycoingecko,
+    but keyless.
     """
     return _get("/crypto/prices", {"coins": _csv(coins)}, paid, private_key)
 
@@ -48,8 +49,9 @@ def defi_yields(project: str = None, limit: int = 20, paid: bool = False,
     """Ranked DeFi pool yields (APY + TVL + risk-adjusted APY + APY trend) across chains.
 
     Pass `project` to filter to a protocol family ('lido', 'aave', 'curve', ...),
-    or omit it for the top pools. Free preview returns the top-1 sample; paid
-    ($0.001) returns the ranked set up to `limit` (max 25).
+    or omit it for the top pools. The free path returns the COMPLETE ranked list
+    for your query 3×/IP/day (then a top-1 sample + the paid URL); paid ($0.001)
+    is unmetered, up to `limit` (max 25).
     """
     params = {"limit": limit}
     if project:
@@ -64,8 +66,9 @@ def funding_rates(symbol: str = None, limit: int = 20, paid: bool = False,
     Pass `symbol` ('BTC', 'ETH', ...) for one coin, or omit it for the top
     funding movers. Each row carries per-venue open_interest_usd,
     funding_spread_bps, best_long/short_venue (thin-book venues screened out so
-    the arb is executable) and a LONGS_PAY/SHORTS_PAY signal. Free preview =
-    top-1 sample; paid ($0.004) = ranked set up to `limit`.
+    the arb is executable) and a LONGS_PAY/SHORTS_PAY signal. The free path =
+    the COMPLETE ranked feed + arb verdict 3×/IP/day (then a top-1 sample + the
+    paid URL); paid ($0.004) is unmetered, ranked set up to `limit`.
     """
     params = {"limit": limit}
     if symbol:
@@ -84,8 +87,9 @@ def yield_entry_verdict(pool: str = None, project: str = None, paid: bool = Fals
 
     Pass `pool` (a poolId from ``defi_yields(...)``) to score YOUR specific
     position — the repeat-payment use case: re-check an open LP every few hours.
-    The free preview scores the current top-TVL pool only (no wallet needed);
-    paid ($0.01) scores the exact `pool` you pass.
+    With a `pool` the free path scores YOUR pool 3×/IP/day (then it falls back to
+    the top-TVL demo verdict + the paid URL); with no args it always scores the
+    current top-TVL pool. Paid ($0.01) is unmetered on the exact `pool` you pass.
     """
     params = {}
     if pool:
