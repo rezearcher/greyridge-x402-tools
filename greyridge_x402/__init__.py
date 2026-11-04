@@ -59,17 +59,40 @@ def defi_yields(project: str = None, limit: int = 20, paid: bool = False,
 
 def funding_rates(symbol: str = None, limit: int = 20, paid: bool = False,
                   private_key: str = None) -> dict:
-    """5-venue perp funding (Binance+Bybit+OKX+Hyperliquid+dYdX) + CEX/DEX arb spread.
+    """6-venue perp funding (Binance+Bybit+OKX+Hyperliquid+dYdX+Gate) + OI-weighted CEX/DEX arb verdict.
 
     Pass `symbol` ('BTC', 'ETH', ...) for one coin, or omit it for the top
-    funding movers. Each row carries funding_spread_bps, best_long/short_venue
-    and a LONGS_PAY/SHORTS_PAY signal. Free preview = top-1 sample; paid
-    ($0.004) = ranked set up to `limit`.
+    funding movers. Each row carries per-venue open_interest_usd,
+    funding_spread_bps, best_long/short_venue (thin-book venues screened out so
+    the arb is executable) and a LONGS_PAY/SHORTS_PAY signal. Free preview =
+    top-1 sample; paid ($0.004) = ranked set up to `limit`.
     """
     params = {"limit": limit}
     if symbol:
         params["symbol"] = symbol
     return _get("/crypto/funding", params, paid, private_key)
+
+
+def yield_entry_verdict(pool: str = None, project: str = None, paid: bool = False,
+                        private_key: str = None) -> dict:
+    """Should an agent enter a DeFi pool now? Packaged SUSTAINABLE | DECAYING | OUTLIER | AVOID verdict.
+
+    This is the proprietary DECISION on top of raw yields: an APY-decay forecast,
+    outlier/trap detection, impermanent-loss and liquidity flags, a risk score and
+    field-cited reasons — the judgement a yield-farming agent pays for before it
+    commits capital (GoPlus/CoinGecko do not do yield sustainability).
+
+    Pass `pool` (a poolId from ``defi_yields(...)``) to score YOUR specific
+    position — the repeat-payment use case: re-check an open LP every few hours.
+    The free preview scores the current top-TVL pool only (no wallet needed);
+    paid ($0.01) scores the exact `pool` you pass.
+    """
+    params = {}
+    if pool:
+        params["pool"] = pool
+    if project:
+        params["project"] = project
+    return _get("/defi/yield-entry-verdict", params, paid, private_key)
 
 
 # Per-route price (USDC) — surfaced in paid-mode setup errors so an agent (or a
@@ -80,6 +103,7 @@ _PRICE_USDC = {
     "/crypto/prices": "0.001",
     "/defi/yields": "0.001",
     "/crypto/funding": "0.004",
+    "/defi/yield-entry-verdict": "0.01",
 }
 
 
@@ -154,11 +178,16 @@ def langchain_tools(paid: bool = False):
 
     @tool
     def perp_funding_rates(symbol: str = "") -> dict:
-        """5-venue perp funding + CEX/DEX arb spread; pass a coin ('BTC') or '' for the top funding movers."""
+        """6-venue perp funding + per-venue open interest + OI-weighted CEX/DEX arb verdict; pass a coin ('BTC') or '' for the top funding movers."""
         return funding_rates(symbol or None, paid=paid)
 
+    @tool
+    def defi_yield_entry_verdict(pool: str = "") -> dict:
+        """Should I enter this DeFi pool now? SUSTAINABLE/DECAYING/OUTLIER/AVOID verdict + APY-decay forecast; pass a poolId from defi_pool_yields or '' for the top-TVL pool."""
+        return yield_entry_verdict(pool or None, paid=paid)
+
     return [base_token_report, base_swap_gate, crypto_prices,
-            defi_pool_yields, perp_funding_rates]
+            defi_pool_yields, perp_funding_rates, defi_yield_entry_verdict]
 
 
 def crewai_tools(paid: bool = False):
@@ -187,8 +216,13 @@ def crewai_tools(paid: bool = False):
 
     @tool("perp_funding_rates")
     def perp_funding_rates(symbol: str = "") -> str:
-        """5-venue perp funding + CEX/DEX arb spread; pass a coin ('BTC') or '' for the top funding movers."""
+        """6-venue perp funding + per-venue open interest + OI-weighted CEX/DEX arb verdict; pass a coin ('BTC') or '' for the top funding movers."""
         return str(funding_rates(symbol or None, paid=paid))
 
+    @tool("defi_yield_entry_verdict")
+    def defi_yield_entry_verdict(pool: str = "") -> str:
+        """Should I enter this DeFi pool now? SUSTAINABLE/DECAYING/OUTLIER/AVOID verdict + APY-decay forecast; pass a poolId from defi_pool_yields or '' for the top-TVL pool."""
+        return str(yield_entry_verdict(pool or None, paid=paid))
+
     return [base_token_report, base_swap_gate, crypto_prices,
-            defi_pool_yields, perp_funding_rates]
+            defi_pool_yields, perp_funding_rates, defi_yield_entry_verdict]

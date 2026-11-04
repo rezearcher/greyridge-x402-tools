@@ -133,23 +133,25 @@ Exit code mirrors the `mcpscan` CLI: `2` on `block`, `1` on `review`, `0` on `cl
 
 ## DeFi & crypto data — keyless, named functions
 
-Spot prices, DeFi pool yields, and 5-venue perp funding as first-class Python functions — **no API key**, a free preview on every call, and x402 USDC settlement only when you ask for the full set. Every competitor SDK (pycoingecko-pro, the official `coingecko-sdk`, the GoPlus SDK) gates its named functions behind an account key; these do not.
+Spot prices, DeFi pool yields, 6-venue perp funding, and a DeFi yield-entry verdict as first-class Python functions — **no API key**, a free preview on every call, and x402 USDC settlement only when you ask for the full result. Every competitor SDK (pycoingecko-pro, the official `coingecko-sdk`, the GoPlus SDK) gates its named functions behind an account key; these do not.
 
 ```bash
 pip install greyridge-x402-tools
 ```
 
 ```python
-from greyridge_x402 import token_prices, defi_yields, funding_rates
+from greyridge_x402 import token_prices, defi_yields, funding_rates, yield_entry_verdict
 
 token_prices("bitcoin,ethereum")   # spot USD price + 24h change + confidence (free preview)
 token_prices(["sol", "aero"])      # a list works too
 defi_yields("lido")                # ranked APY + TVL + risk-adjusted APY for a protocol family
-funding_rates("BTC")               # 5-venue funding + CEX/DEX arb spread + LONGS_PAY/SHORTS_PAY signal
+funding_rates("BTC")               # 6-venue funding + per-venue OI + OI-weighted CEX/DEX arb verdict
+yield_entry_verdict()              # SUSTAINABLE/DECAYING/OUTLIER/AVOID for the top-TVL pool (free sample)
 
-# Full result set over x402 (your own Base USDC key):
+# Full result over x402 (your own Base USDC key):
 #   pip install "greyridge-x402-tools[pay]"
-defi_yields("aave", paid=True)     # ranked set, reads X402_PRIVATE_KEY
+defi_yields("aave", paid=True)                 # ranked set, reads X402_PRIVATE_KEY
+yield_entry_verdict(pool="<poolId>", paid=True) # score YOUR open LP — re-check as it decays
 ```
 
 Migrating from pycoingecko? `get_price(ids="bitcoin,ethereum")` is a drop-in alias of `token_prices`.
@@ -160,9 +162,10 @@ Terminal:
 greyridge-data prices bitcoin,ethereum
 greyridge-data yields lido
 greyridge-data funding BTC
+greyridge-data yield-verdict <poolId>
 ```
 
-The free preview returns a representative sample (top-1 pool / funding row, or a 1-of-N price); the paid routes return the ranked set — `/crypto/prices` ($0.001, up to 25 coins), `/defi/yields` ($0.001), `/crypto/funding` ($0.004, Binance+Bybit+OKX+Hyperliquid+dYdX). Keyless, Base-native, pay-per-call.
+The free preview returns a representative sample (top-1 pool / funding row, a 1-of-N price, or the top-TVL pool's verdict); the paid routes return the full result — `/crypto/prices` ($0.001, up to 25 coins), `/defi/yields` ($0.001), `/crypto/funding` ($0.004, Binance+Bybit+OKX+Hyperliquid+dYdX+Gate), `/defi/yield-entry-verdict` ($0.01, scores the exact pool you pass). Keyless, Base-native, pay-per-call.
 
 ## rugcheck / swap-gate — pre-trade safety for Base tokens
 
@@ -200,7 +203,7 @@ tools = crewai_tools()   # free preview; crewai_tools(paid=True) pays via x402 (
 agent = Agent(role="trader", tools=tools, ...)
 ```
 
-Tools: `base_token_report` (SAFE/CAUTION/AVOID), `base_swap_gate` (GO/HOLD/BLOCK), plus the data tools `crypto_prices`, `defi_pool_yields` and `perp_funding_rates`. `langchain_tools()` / `crewai_tools()` return all five. Measured latency: `docs/STATUS.md` in the data-api repo.
+Tools: `base_token_report` (SAFE/CAUTION/AVOID), `base_swap_gate` (GO/HOLD/BLOCK), plus the data tools `crypto_prices`, `defi_pool_yields`, `perp_funding_rates` and `defi_yield_entry_verdict` (SUSTAINABLE/DECAYING/OUTLIER/AVOID). `langchain_tools()` / `crewai_tools()` return all six. Measured latency: `docs/STATUS.md` in the data-api repo.
 
 ### Drop-in swap guard (JS)
 
