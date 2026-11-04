@@ -1,6 +1,7 @@
 # greyridge-x402-tools
 
 <!-- mcp-name: ai.greyridgesignals/tech-risk -->
+<!-- mcp-name: io.github.rezearcher/tech-risk -->
 
 [![PyPI](https://img.shields.io/pypi/v/greyridge-x402-tools?logo=pypi&logoColor=white)](https://pypi.org/project/greyridge-x402-tools/)
 [![GitHub Marketplace](https://img.shields.io/badge/GitHub_Marketplace-MCP_tool--poisoning_scan-2ea44f?logo=github)](https://github.com/marketplace/actions/mcp-server-tool-poisoning-scan)
