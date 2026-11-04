@@ -72,14 +72,56 @@ def funding_rates(symbol: str = None, limit: int = 20, paid: bool = False,
     return _get("/crypto/funding", params, paid, private_key)
 
 
+# Per-route price (USDC) — surfaced in paid-mode setup errors so an agent (or a
+# dev) sees the exact cost of the call it is about to settle, not a bare crash.
+_PRICE_USDC = {
+    "/chain/token-report": "0.01",
+    "/gate/swap": "0.008",
+    "/crypto/prices": "0.001",
+    "/defi/yields": "0.001",
+    "/crypto/funding": "0.004",
+}
+
+
+class GreyRidgePaymentSetupError(RuntimeError):
+    """Raised when paid mode is requested but the x402 payment prerequisites
+    (the [pay] extra, or a signing key) are not in place. Carries actionable,
+    copy-pasteable setup steps instead of a raw ImportError/KeyError."""
+
+
+def _paid_setup_hint(path, reason):
+    price = _PRICE_USDC.get(path, "a few tenths of a cent")
+    dollars = f"${price}" if price[0].isdigit() else price
+    return (
+        f"Paid mode for {path} needs {reason}\n"
+        f"This call settles {dollars} USDC on Base via x402 — keyless, no account, "
+        f"and gasless (you need a little USDC on Base, no ETH for gas).\n"
+        f"  1) pip install 'greyridge-x402-tools[pay]'\n"
+        f"  2) export X402_PRIVATE_KEY=0x...   # a Base wallet holding a little USDC\n"
+        f"     (or pass private_key='0x...' to this function)\n"
+        f"Not ready to pay? Call the same function with paid=False for a free "
+        f"preview sample (no wallet needed)."
+    )
+
+
 def _get(path, params, paid, private_key):
     if not paid:
         r = requests.get(BASE + path + "/preview", params=params, timeout=30)
         r.raise_for_status()
         return r.json()
-    from eth_account import Account
-    from x402.clients.requests import x402_requests
-    key = private_key or os.environ["X402_PRIVATE_KEY"]
+    try:
+        from eth_account import Account
+        from x402.clients.requests import x402_requests
+    except ImportError as e:
+        raise GreyRidgePaymentSetupError(
+            _paid_setup_hint(path, "the optional payment dependencies (missing: "
+                             f"{e.name}).")
+        ) from e
+    key = private_key or os.environ.get("X402_PRIVATE_KEY")
+    if not key:
+        raise GreyRidgePaymentSetupError(
+            _paid_setup_hint(path, "a signing key (X402_PRIVATE_KEY is not set).")
+        )
     s = x402_requests(Account.from_key(key))
     r = s.get(BASE + path, params=params, timeout=60)
     r.raise_for_status()
