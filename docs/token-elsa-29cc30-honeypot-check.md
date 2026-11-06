@@ -1,11 +1,11 @@
 ---
 title: "Is ELSA a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for ELSA (Elsa) on Base (0x29cc30f9d113b356ce408667aa6433589cecbdca), measured 2026-11-05: engine verdict HOLD, risk 20/100, $0 pool liquidity. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for ELSA (Elsa) on Base (0x29cc30f9d113b356ce408667aa6433589cecbdca), measured 2026-11-06: engine verdict HOLD, risk 20/100, $0 pool liquidity. Re-run it yourself in one keyless call."
 ---
 # Is ELSA a honeypot? — on-chain rug check (Base)
 
 **Token:** `0x29cc30f9d113b356ce408667aa6433589cecbdca`
-**Chain:** Base · **Measured:** 2026-11-05 · verdict `HOLD` · risk `20/100`
+**Chain:** Base · **Measured:** 2026-11-06 · verdict `HOLD` · risk `20/100`
 
 Our engine returned **HOLD** for ELSA — at least one measured signal warrants caution before you buy.
 
@@ -50,4 +50,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-11-05; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-11-06; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
