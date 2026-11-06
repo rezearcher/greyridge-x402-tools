@@ -82,6 +82,13 @@ Grade an email address on one keyless call — MX routing, disposable / role / f
 - [Email verification API for AI agents](email-verification-deliverability-api.html) — an honest head-to-head with the SMTP list-cleaners (the top Apify verifier, ZeroBounce, NeverBounce, Kickbox): where a mailbox-level SMTP probe is the right tool, and where you instead need a deliverability + domain-risk + sender-posture grade an agent can call with nothing but a wallet
 - [Company Enrichment on the Apify Store](https://apify.com/greyridge-signals/company-enrichment-scraper) — the same MX-graded deliverability on every contact, managed and per-result billed
 
+## KYB & business verification for agents
+
+Verify US businesses against official Secretary of State records: a scored match an onboarding reviewer or auditor can defend — which axis agreed, the model version that decided it, a free audit trail on every no-match, plus CO UCC liens and a live OFAC SDN screen. Billed only when a row is a verified match.
+
+- [US business verification: a KYB match score you can show your work on](us-business-verification-api.html) — an honest head-to-head with the 50-state incumbents (whetstone, pink_comic, clearpath, shelvick): where breadth wins, and where you instead need a NY/CO/CT match with a per-axis component breakdown, a documented no-match trail, and billing only on a real match
+- [US Business Verification on the Apify Store](https://apify.com/greyridge-signals/us-business-verification) — managed, keyless, $0.01 per verified match
+
 <!-- line-a-framework-pages:start -->
 
 **Framework install guides** — drop the gate into your trading agent in one line:
