@@ -39,4 +39,8 @@ Keyless. Official Secretary of State sources only — no resold database, no pai
 
 The breadth incumbents are the right call for coverage. This one is the right call when the match has to hold up to the person who reads the file after you.
 
+## Agent access (MCP)
+
+An AI agent can call this verification as a native tool, not only through the run interface, and it ships two ways. A keyless stdio build (`verify_business`, `screen_sanctions`, `list_states`, `get_hosted_access`, no Apify account and no API key) is published as a Model Context Protocol server at [github.com/rezearcher/business-verification-mcp](https://github.com/rezearcher/business-verification-mcp). The Apify actor itself also answers MCP over Streamable HTTP (JSON-RPC 2.0) at its Standby endpoint, authenticated with an Apify API token, so a `verify_business` call runs the full scored match, Colorado UCC-lien profile and OFAC screen and meters each verified match at the same $0.01 (no-matches free) on Apify's native pay-per-event rail. Same verification core either way.
+
 → **[Run it on the Apify Store](https://apify.com/greyridge-signals/us-business-verification)** — keyless, billed per verified match.
