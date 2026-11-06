@@ -6,12 +6,38 @@
 [![PyPI](https://img.shields.io/pypi/v/greyridge-x402-tools?logo=pypi&logoColor=white)](https://pypi.org/project/greyridge-x402-tools/)
 [![GitHub Marketplace](https://img.shields.io/badge/GitHub_Marketplace-MCP_tool--poisoning_scan-2ea44f?logo=github)](https://github.com/marketplace/actions/mcp-server-tool-poisoning-scan)
 
-Keyless **x402** APIs for AI agents — USDC per call on Base, free preview on every route, no account and no key. Two product lines:
+Keyless **x402** APIs for AI agents — USDC per call on Base, free preview on every route, no account and no key. Three product lines:
 
-1. **Jobs & hiring data** — a live, maintained Greenhouse feed with a stateful change-feed, a per-run freshness SLA, and keyless company enrichment. For sourcing, recruiting-ops and hiring-intel agents.
-2. **Agent safety gates** — `mcpscan` (vet an MCP server for prompt-injection / tool-poisoning before your agent trusts it) and `rugcheck / swap-gate` (honeypot + pre-trade checks for Base tokens).
+1. **DeFi & trading market data** — decision-tagged, not raw rows: per-pool yield **entry verdicts** (SUSTAINABLE / DECAYING / OUTLIER / AVOID + risk score), **6-venue OI-weighted perp funding-rate arbitrage** (best long/short venue, thin books screened out), and token spot prices with a confidence score. For DeFi, yield-farming and trading agents that need a go/no-go, not just a number.
+2. **Jobs & hiring data** — a live, maintained Greenhouse feed with a stateful change-feed, a per-run freshness SLA, and keyless company enrichment. For sourcing, recruiting-ops and hiring-intel agents.
+3. **Agent safety gates** — `mcpscan` (vet an MCP server for prompt-injection / tool-poisoning before your agent trusts it) and `rugcheck / swap-gate` (honeypot + pre-trade checks for Base tokens).
 
-Jump to: [Jobs & hiring data](#jobs--hiring-data--live-maintained-pay-per-call) · [MCP server security](#state-of-mcp-server-security--what-we-found-scanning-144-live-servers) · [mcpscan](#mcpscan--vet-an-mcp-server-before-your-agent-trusts-it) · [rugcheck / swap-gate](#rugcheck--swap-gate--pre-trade-safety-for-base-tokens)
+Jump to: [DeFi & trading data](#defi--trading-market-data--decision-tagged-pay-per-call) · [Jobs & hiring data](#jobs--hiring-data--live-maintained-pay-per-call) · [MCP server security](#state-of-mcp-server-security--what-we-found-scanning-144-live-servers) · [mcpscan](#mcpscan--vet-an-mcp-server-before-your-agent-trusts-it) · [rugcheck / swap-gate](#rugcheck--swap-gate--pre-trade-safety-for-base-tokens)
+
+## DeFi & trading market data — decision-tagged, pay-per-call
+
+Five keyless Python functions. Every call has a free preview, and the data routes return the **complete** result for your query 3×/IP/day with no wallet; the paid call ($0.001–$0.01 in USDC on Base) is unmetered.
+
+```python
+from greyridge_x402 import (
+    defi_yields, yield_entry_verdict, funding_rates, token_prices, get_price,
+)
+
+# Ranked DeFi pool yields across chains — APY + TVL + risk-adjusted APY + trend
+defi_yields(project="aave", limit=10)
+
+# Should an agent enter THIS pool now? SUSTAINABLE | DECAYING | OUTLIER | AVOID
+# (APY-decay forecast, outlier/trap + IL/liquidity flags, risk score, cited reasons)
+yield_entry_verdict(pool="747c1d2a-c668-4682-b9f9-296708a3dd90")
+
+# 6-venue perp funding (Binance/Bybit/OKX/Hyperliquid/dYdX/Gate) + OI-weighted arb verdict
+funding_rates(symbol="BTC")
+
+# Spot USD price + 24h change + confidence score (pycoingecko-compatible get_price alias)
+token_prices(["bitcoin", "ethereum"])
+```
+
+`yield_entry_verdict` is the repeat-payment case: pass a `poolId` from `defi_yields(...)` to re-check an open LP every few hours as its APY decays. `funding_rates` screens thin-book venues out so the CEX/DEX arb is actually executable. These are the proprietary **decision** on top of the data — the judgement GoPlus / CoinGecko don't ship. Also as a CLI: `greyridge-data yields aave` · `greyridge-data funding BTC` · `greyridge-data prices bitcoin,ethereum`. Want typed framework tool objects instead of plain functions? Use the dedicated packages: LangChain.js `npm i github:rezearcher/langchain-defi-data`, CrewAI / plain Python `pip install git+https://github.com/rezearcher/crewai-defi-data`, Vercel AI SDK `npm i github:rezearcher/vercel-ai-defi-data`.
 
 ## Jobs & hiring data — live, maintained, pay-per-call
 

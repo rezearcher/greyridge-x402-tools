@@ -1,16 +1,17 @@
 [project]
 name = "greyridge-x402-tools"
-version = "0.8.3"
-description = "x402 safe-fetch: free preflight before paying + dual-RPC on-chain receipt proof (fails closed if two Base RPCs disagree). Also an MCP server security scanner — static tool-poisoning / prompt-injection audit (OWASP LLM01/LLM08) + maintenance & supply-chain drift grade + continuous monitoring; plus a pre-trade Base token safety gate. Keyless x402 pay-per-call."
+version = "0.8.4"
+description = "Live decision-tagged DeFi & trading market data for AI agents, keyless x402 pay-per-call on Base: per-pool yield ENTRY VERDICTs (SUSTAINABLE/DECAYING/OUTLIER/AVOID + risk score), 6-venue OI-weighted perp funding-rate arbitrage, and token spot prices with a confidence score — free preview on every call. Also x402 safe-fetch (free preflight + dual-RPC on-chain receipt proof) and an MCP server security scanner (tool-poisoning / prompt-injection, OWASP LLM01/LLM08)."
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.9"
-keywords = ["mcp", "mcp-server", "security", "scanner", "tool-poisoning", "prompt-injection", "llm-security", "scorecard", "supply-chain", "agent-safety", "x402", "base", "x402-preflight", "safe-fetch", "payment-verification"]
+keywords = ["defi", "defi-data", "defi-yields", "apy", "yield-farming", "funding-rate", "funding-arbitrage", "perp-funding", "open-interest", "crypto-prices", "market-data", "trading-agent", "crypto", "ai-agents", "x402", "base", "pay-per-call", "mcp", "mcp-server", "security", "scanner", "tool-poisoning", "prompt-injection", "agent-safety", "safe-fetch", "payment-verification"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
+  "Topic :: Office/Business :: Financial",
   "Topic :: Security",
   "Topic :: Software Development :: Quality Assurance",
   "Topic :: Scientific/Engineering :: Artificial Intelligence",

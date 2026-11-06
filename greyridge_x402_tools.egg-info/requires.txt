@@ -1,8 +1,0 @@
-requests>=2.28
-
-[langchain]
-langchain-core
-
-[pay]
-x402>=0.2
-eth-account
