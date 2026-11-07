@@ -9,13 +9,14 @@ measures the contract's sell simulation, transfer fee, mint / pause / blacklist 
 ownership and Uniswap liquidity, then returns a GO / HOLD / BLOCK verdict you can re-run yourself
 with no account.
 
-Updated 2026-11-06.
+Updated 2026-11-07.
 
 - [AERO (Aerodrome)](token-aero-940181-honeypot-check.html) — GO
 - [cbBTC (Coinbase Wrapped BTC)](token-cbbtc-cbb7c0-honeypot-check.html) — GO
-- [CLANKER (tokenbot)](token-clanker-1bc0c4-honeypot-check.html) — GO
-- [DEGEN (Degen)](token-degen-4ed4e8-honeypot-check.html) — GO
-- [ELSA (Elsa)](token-elsa-29cc30-honeypot-check.html) — HOLD
+- [DEGEN](token-degen-4ed4e8-honeypot-check.html) — GO
+- [DENIM](token-denim-0bddfa-honeypot-check.html) — HOLD
+- [ICNT (Impossible Cloud Network Token)](token-icnt-e0cd4c-honeypot-check.html) — HOLD
+- [SNDKc (Sandisk Corporation)](token-sndkc-b20000-honeypot-check.html) — HOLD
 - [USDC (USD Coin)](token-usdc-833589-honeypot-check.html) — GO
 - [WETH (Wrapped Ether)](token-weth-420000-honeypot-check.html) — GO
 
