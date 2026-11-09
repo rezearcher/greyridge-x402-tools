@@ -1,39 +1,41 @@
 ---
 title: "Is the Excellent Reference (free) MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Excellent Reference (free) MCP server (https://beexcellent.ai/api/mcp/public), run 2026-11-02: advertises excellent_help, search_excellent_pages, start_excellent_workspace; 3 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Excellent Reference (free) MCP server (https://beexcellent.ai/api/mcp/public), run 2026-11-09: advertises excellent_help, search_excellent_pages, find_event_venues; 5 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Excellent Reference (free) MCP server — security & directory-readiness scorecard
 
 **Server:** `https://beexcellent.ai/api/mcp/public`
-**Scanned:** 2026-11-02 · **Tools advertised:** 3 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-09 · **Tools advertised:** 5 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Free, no-login: how Excellent works for restaurant events and private dining, and its public pages.
 
-When an agent connects Excellent Reference (free), the model reads all 3 of its advertised tool definition(s)
+When an agent connects Excellent Reference (free), the model reads all 5 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`beexcellent.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`beexcellent.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on Excellent Reference (free)
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 3 tool definition(s) this server advertises.
+- **No tool-poisoning or prompt-injection patterns** were found across the 5 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: ready.** Every advertised tool satisfies the structural rules Anthropic's published review criteria check for (names, annotations, permission hints, no catch-all read+write tool, no unsupported capability).
-- **All 3 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
+- **1 of 5 advertised tool(s) name a state-changing action** (`send_event_inquiry`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 3 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 5 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Excellent Reference (free) server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Excellent Reference (free) server advertises
 
 The server describes itself to connecting agents as: *Free, no-login reference server for Excellent, the operating platform for restaurant groups (private dining and events, staff training, marketing). excellent_help answers how to do something in Excellent from its own help text; search_excellent_pages finds Ex…*
 
-These are the 3 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 5 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`excellent_help`** — Excellent's own help text (the passages its in-app assistant answers from): how to do a task in Excellent — proposals, e-signed contracts, deposits and invoices, banquet event ord… _(parameters: query)_
 - **`search_excellent_pages`** — Search Excellent's published pages: feature pages (what each part of the product does), comparison pages (Excellent vs another events or private-dining platform, with where each o… _(parameters: query, kind)_
+- **`find_event_venues`** — Finds restaurants and venues on Excellent that accept private-event and group-dining inquiries from AI assistants, by the restaurant group's or the venue's name. Returns up to 10,… _(parameters: query)_
 - **`start_excellent_workspace`** — Creates a new Excellent workspace filled with sample data (a fictional restaurant group with two venues, bookings, proposals, invoices, staff training and marketing drafts) and re…
+- **`send_event_inquiry`** — Sends a private-event or group-dining inquiry, on behalf of the person you are helping, to a venue that accepts inquiries from AI assistants (its handle comes from find_event_venu… _(parameters: venue, guest_name, guest_email, guest_phone, event_type, event_date)_
 
 ## Maintenance & supply-chain — the risk Excellent Reference (free)'s static scan can't see
 
@@ -75,4 +77,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `beexcellent.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
