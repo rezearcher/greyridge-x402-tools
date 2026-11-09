@@ -1,18 +1,18 @@
 ---
 title: "Is the Cerebrium Docs MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Cerebrium Docs MCP server (https://cerebrium.ai/docs/mcp), run 2026-11-02: advertises search_cerebrium, query_docs_filesystem_cerebrium, submit_feedback; 3 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Cerebrium Docs MCP server (https://cerebrium.ai/docs/mcp), run 2026-11-09: advertises search_cerebrium, query_docs_filesystem_cerebrium, submit_feedback; 3 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Cerebrium Docs MCP server — security & directory-readiness scorecard
 
 **Server:** `https://cerebrium.ai/docs/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 3 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-09 · **Tools advertised:** 3 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
-Search the Cerebrium docs: deployment, cerebrium.toml, hardware, endpoints. Also sends feedback.
+
 
 When an agent connects Cerebrium Docs, the model reads all 3 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`cerebrium.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`cerebrium.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on Cerebrium Docs
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `B` — 1 issue(s) across 3 tool(s). Risk 20/100. Review flagged tools before trusting this server. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Cerebrium Docs server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Cerebrium Docs server advertises
@@ -39,7 +39,7 @@ These are the 3 tool definition(s) any agent reads before it acts — the exact 
 
 A prompt-injection scan reads Cerebrium Docs's advertised tool metadata at one moment. It cannot tell you the project behind `cerebrium.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
 
-- **Maintenance grade `B`** — last commit pushed 59 day(s) ago, 0 open issue(s).
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
 - **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
 
 A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `cerebrium.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
@@ -75,4 +75,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `cerebrium.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
