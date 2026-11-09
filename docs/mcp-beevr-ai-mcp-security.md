@@ -1,18 +1,18 @@
 ---
 title: "Is the BeevR MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the BeevR MCP server (https://beevr.ai/mcp), run 2026-11-02: advertises search_beevr, get_pricing, list_services; 8 tools scanned, injection verdict 'clear', 8 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the BeevR MCP server (https://beevr.ai/mcp), run 2026-11-09: advertises search_beevr, get_pricing, list_services; 8 tools scanned, injection verdict 'clear', 8 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # BeevR MCP server — security & directory-readiness scorecard
 
 **Server:** `https://beevr.ai/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-09 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory quality item(s) to polish (no hard rejects)
 
 Read-only access to BeevR's services, fixed-price MVP packages, case studies and articles (EN/VI).
 
 When an agent connects BeevR, the model reads all 8 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`beevr.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`beevr.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on BeevR
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 8 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the BeevR server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the BeevR server advertises
@@ -80,4 +80,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `beevr.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
