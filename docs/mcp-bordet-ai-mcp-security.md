@@ -1,18 +1,18 @@
 ---
 title: "Is the Bordet AI MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Bordet AI MCP server (https://www.bordet.ai/api/mcp/mcp), run 2026-11-02: advertises list_members, get_project_state, get_decisions; 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Bordet AI MCP server (https://www.bordet.ai/api/mcp/mcp), run 2026-11-09: advertises list_members, get_project_state, get_decisions; 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Bordet AI MCP server — security & directory-readiness scorecard
 
 **Server:** `https://www.bordet.ai/api/mcp/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 11 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-09 · **Tools advertised:** 11 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Ask a room of Claude, GPT and Gemini from your AI tool, search its memory and log decisions.
 
 When an agent connects Bordet AI, the model reads all 11 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`www.bordet.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`www.bordet.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on Bordet AI
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 11 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Bordet AI server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Bordet AI server advertises
@@ -34,8 +34,8 @@ These are the 11 tool definition(s) any agent reads before it acts — the exact
 - **`get_decisions`** — The room's append-only decisions log (newest first). Check this before re-debating anything. _(parameters: limit, confirmed_only)_
 - **`search_memory`** — Semantic search over the room's long-term memory facts. _(parameters: query, top_n)_
 - **`get_recent_messages`** — The last messages in the room's main thread (who said what, when; images noted). Use it on connect to catch up on what the curated state doesn't carry yet, and 'before' to page ba… _(parameters: limit, before)_
-- **`ask_member`** — Ask one board member by name (e.g. 'Critic'). The reply is persisted in the room and remembered. _(parameters: member, ask)_
-- **`ask_room`** — Ask the boardroom: members reply in parallel with independent takes (capped at 3 members per call; pass 'members' to pick which). _(parameters: ask, members)_
+- **`ask_member`** — Ask one board member by name (e.g. 'Critic'). The reply is persisted in the room and remembered. 'billing' says, in plain words, what the ask cost the room owner in Bordet credits… _(parameters: member, ask)_
+- **`ask_room`** — Ask the boardroom: members reply in parallel with independent takes (capped at 3 members per call; pass 'members' to pick which). 'billing' says what the ask cost the room owner i… _(parameters: ask, members)_
 - **`log_decision`** — Append a decision to the room's log. It lands UNCONFIRMED; the human confirms it in the room. _(parameters: body, rationale, supersedes_id)_
 - **`declare_seat`** — Declare yourself as a seat in this boardroom: a name the room addresses you by, kind (assistant | coding_agent), the repo/folder you work in, and a few capabilities. Idempotent; c… _(parameters: name, kind, context, capabilities)_
 - **`await_mention`** — Long-poll (up to 50s) for messages addressed to your seat (@your name, @everyone, or a member handing you work). Returns immediately when something is queued, with the project sta… _(parameters: cursor, wait_seconds)_
@@ -81,4 +81,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `www.bordet.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
