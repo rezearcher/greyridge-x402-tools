@@ -1,18 +1,18 @@
 ---
 title: "Is the AskWatch Google Search Console MCP MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the AskWatch Google Search Console MCP MCP server (https://mcp.askwatch.ai/gsc), run 2026-11-02: advertises site_overview, top, changes; 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AskWatch Google Search Console MCP MCP server (https://mcp.askwatch.ai/gsc), run 2026-11-09: advertises site_overview, top, changes; 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # AskWatch Google Search Console MCP MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.askwatch.ai/gsc`
-**Scanned:** 2026-11-02 · **Tools advertised:** 11 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-09 · **Tools advertised:** 11 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Ask Google Search Console in plain language. Hosted, free, no Google Cloud project.
 
 When an agent connects AskWatch Google Search Console MCP, the model reads all 11 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.askwatch.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`mcp.askwatch.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on AskWatch Google Search Console MCP
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 11 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the AskWatch Google Search Console MCP server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the AskWatch Google Search Console MCP server advertises
@@ -83,4 +83,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.askwatch.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
