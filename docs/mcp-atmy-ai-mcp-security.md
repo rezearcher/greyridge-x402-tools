@@ -1,18 +1,18 @@
 ---
 title: "Is the Atmy air quality MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Atmy air quality MCP server (https://api.atmy.ai/mcp), run 2026-11-02: advertises search_cities, get_air_quality, get_air_quality_history; 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Atmy air quality MCP server (https://api.atmy.ai/mcp), run 2026-11-09: advertises search_cities, get_air_quality, get_air_quality_history; 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Atmy air quality MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.atmy.ai/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 11 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-09 · **Tools advertised:** 11 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 PM2.5 of 300+ cities: now, history, forecast, rankings; 12 000 sensors with a quality rating.
 
 When an agent connects Atmy air quality, the model reads all 11 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.atmy.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`api.atmy.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on Atmy air quality
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 11 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Atmy air quality server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Atmy air quality server advertises
@@ -32,12 +32,12 @@ The server describes itself to connecting agents as: *Atmy aggregates citizen, e
 These are the 11 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`search_cities`** — Find the cities with an Atmy air-quality summary by name (any language) or country. Returns slugs to pass to the other tools. _(parameters: query, country, lang, limit)_
-- **`get_air_quality`** — PM2.5 now in a city (mean of the latest reading of each eligible sensor, at most 60 minutes old) with its US EPA category and the weather now (temperature, humidity, pressure, win… _(parameters: city, country, lat, lon, lang)_
+- **`get_air_quality`** — PM2.5 now in a city (mean of the latest reading of each eligible sensor, at most 60 minutes old; a government station hour up to 3 hours old, with the time it was measured) with i… _(parameters: city, country, lat, lon, lang)_
 - **`get_air_quality_history`** — Daily PM2.5 of a city from the Atmy Data Hub (UTC days, sensors after the quality check) with the day's weather from 2026-01-19 (mean, lowest and highest temperature, humidity, pr… _(parameters: city, country, lat, lon, lang, days)_
 - **`get_air_quality_monthly`** — The whole measurement history of a city from the Atmy Data Hub: PM2.5 per month with the month's weather from 2026-01, yearly means (complete years marked), the dirtiest and clean… _(parameters: city, country, lat, lon, lang)_
 - **`get_city_forecast`** — The next hours of a city: temperature, wind, humidity, precipitation and the pollution accumulation index 0–100 (how strongly the weather keeps particles near the ground). A weath… _(parameters: city, country, lat, lon, lang, hours)_
 - **`get_country_ranking`** — Cities of a country ranked by daily PM2.5 for the last completed day (Atmy Data Hub), most polluted or cleanest first. _(parameters: country, order, settlements, limit, lang)_
-- **`list_sensor_networks`** — The sensor networks in Atmy (Sensor.Community, AirGradient, Atmy) with their number of sensors, how many pass the quality check, and their license.
+- **`list_sensor_networks`** — The sensor networks in Atmy (Sensor.Community, AirGradient, Atmy, and government stations of official networks) with their number of sensors, how many pass the quality check, and…
 - **`find_sensors`** — Single sensors with their latest reading (PM1, PM2.5, PM10, temperature, humidity, pressure), network and quality check: status, rating 0–10 of the last checked day, the mean rati… _(parameters: city, country, lat, lon, radius_km, network)_
 - **`get_sensor`** — One sensor by its id: location, network, license, quality check with rating and reasons, and the latest reading. _(parameters: id)_
 - **`get_sensor_readings`** — Readings of one sensor: raw (the last 31 days, at most 7 days a call), 5-minute means (the same windows), hourly means (the last 366 days, at most 92 days a call) or daily means (… _(parameters: id, interval, from, to)_
@@ -83,4 +83,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.atmy.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
