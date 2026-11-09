@@ -1,52 +1,57 @@
 ---
 title: "Is the BeliefState MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the BeliefState MCP server (https://beliefstate.ai/v1/research/mcp), run 2026-11-02: advertises get_belief_risks, get_belief_catalysts, get_author_track_record; 18 tools scanned, injection verdict 'clear', 20 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the BeliefState MCP server (https://beliefstate.ai/v1/research/mcp), run 2026-11-09: advertises get_brief, get_case, get_cases; 23 tools scanned, injection verdict 'clear', 21 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # BeliefState MCP server — security & directory-readiness scorecard
 
 **Server:** `https://beliefstate.ai/v1/research/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 18 · **Injection verdict:** `clear` · **Directory:** 20 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-09 · **Tools advertised:** 23 · **Injection verdict:** `clear` · **Directory:** 21 Claude Directory quality item(s) to polish (no hard rejects)
 
-Stock research and investor research for trading agents. 16 x402 tools; data from 0.02 USDC on Base.
+25 account tools; 23 wallet tools (20 paid). Cited research, company facts, KPIs and guidance.
 
-When an agent connects BeliefState, the model reads all 18 of its advertised tool definition(s)
+When an agent connects BeliefState, the model reads all 23 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`beliefstate.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`beliefstate.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on BeliefState
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 18 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 20 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
-- **All 18 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
+- **No tool-poisoning or prompt-injection patterns** were found across the 23 tool definition(s) this server advertises.
+- **Claude Connector Directory readiness: 21 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
+- **All 23 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 18 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 23 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the BeliefState server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the BeliefState server advertises
 
-These are the 18 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 23 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
-- **`get_belief_risks`** — Read evidence-linked Risk objects for exactly one ticker, entity, Belief or explicit released corpus. Filter by person, source, publication dates, status or severity. Unknown asse… _(parameters: ticker, entity_id, belief_id, corpus, person_id, source_id)_
-- **`get_belief_catalysts`** — Read evidence-linked Catalyst objects with qualified current status or explicit unknowns. Filter one ticker, entity, Belief or released corpus by person, source, publication dates… _(parameters: ticker, entity_id, belief_id, corpus, person_id, source_id)_
-- **`get_author_track_record`** — Read an investor's stored publication-based outcome cohorts over one explicit ticker, entity, Belief or released corpus scope and optional source/publication window. Includes loss… _(parameters: ticker, entity_id, belief_id, corpus, person_id, source_id)_
-- **`search_beliefs`** — Find investment ideas by thesis, topic or trade setup, with cited matching passages. Per-call x402 price: 1.50 USDC on Base. _(parameters: q, ticker, entity_id, person_id, direction, status)_
-- **`get_belief`** — Read a requested complete investment case or evidence beyond a brief, with risks, conditions and coverage gaps. An ordinary library overview can use get_brief without opening each… _(parameters: belief_id, as_of, paragraph_index, support_index, support_text_offset)_
-- **`compare_beliefs`** — Compare two cited investment cases for support, contradiction or dependency, including explicit unknown and unrelated outcomes. Optional comparison_focus selects a public research… _(parameters: belief_id, compare_to_belief_id, comparison_focus, as_of)_
-- **`get_brief`** — Start with overview for an ordinary company or ETF research question, including outlook and changes. Present findings in plain language with named investors, dated source links an… _(parameters: ticker, as_of, max_results, detail, entity_id, cursor)_
-- **`get_beliefs`** — List dated investment ideas for a requested inventory or filtered research on one ticker or subject. Investor, direction and time filters are optional. An ordinary overview uses g… _(parameters: ticker, entity_id, person_id, direction, status, time_horizon)_
-- **`search_entities`** — Find released companies, industries, themes and other research subjects by name or kind. Per-call x402 price: 0.02 USDC on Base. _(parameters: q, kind, as_of, limit, cursor)_
-- **`get_belief_changes`** — Read a mixed, ordered change journal: author-view revisions, distribution changes and calculated publication outcomes are separate domains with distinct clocks. Use belief_id for… _(parameters: person_id, source_id, domain, event_kind, revision_only, ticker)_
-- **`get_context_assessment`** — Open a dated engine context assessment and its permitted evidence. Engine analysis is separate from an investor's stated view. Per-call x402 price: 0.02 USDC on Base. _(parameters: context_assessment_id, as_of)_
-- **`list_research_visuals`** — List cited charts and tables for one investment case or context assessment. Per-call x402 price: 0.02 USDC on Base. _(parameters: belief_id, context_assessment_id, as_of, visual_offset)_
-- **`get_research_visual`** — Read one cited chart or table, including its regions and paginated exact rows or data points. Per-call x402 price: 0.02 USDC on Base. _(parameters: belief_id, context_assessment_id, as_of, visual_id, region_id, region_offset)_
-- **`get_belief_relationships`** — Inspect cited relationship paths within one investment case. Preserves stated links, engine inferences and unknowns. Per-call x402 price: 0.02 USDC on Base. _(parameters: belief_id, as_of, from_entity_id, to_entity_id, max_depth, edge_budget)_
-- **`evaluate_belief_scenario`** — Apply up to eight hypothetical condition assumptions to a case's recorded scenario model. Does not alter evidence or predict the investor's response. Per-call x402 price: 0.02 USD… _(parameters: belief_id, as_of, scenario)_
-- **`refresh_market_data`** — Explicitly refresh missing or stale market data for one current company or subject, then return its research brief. Per-call x402 price: 0.02 USDC on Base. _(parameters: ticker, entity_id)_
-- **`get_tickers`** — Free research coverage and company discovery. _(parameters: as_of)_
-- **`search_companies`** — Free research coverage and company discovery. _(parameters: q)_
+- **`get_brief`** — Retrieves a cited research brief for a company, ETF or research subject, including investor theses, risks, catalysts, changes and available market context. Use overview for ordina… _(parameters: ticker, refresh_market_data, as_of, max_results, detail, entity_id)_
+- **`get_case`** — Retrieves one complete investment case by returned belief_id: investor, reasoning, evidence, risks, catalysts, conditions, revisions, outcomes, provenance and coverage gaps. Usefu… _(parameters: belief_id, as_of, paragraph_index, support_index, support_text_offset, scenario)_
+- **`get_cases`** — Retrieves dated investment cases for one company or research subject, with optional investor, direction and time filters. Returns attributed thesis records, case IDs, dates, citat… _(parameters: ticker, entity_id, person_id, direction, status, time_horizon)_
+- **`get_catalysts`** — Retrieves evidence-linked catalysts for one company, research subject, investment case or the explicitly selected released corpus. Returns recorded conditions, lifecycle status, d… _(parameters: ticker, entity_id, belief_id, corpus, person_id, source_id)_
+- **`get_changes`** — Retrieves the ordered research change journal for a company, subject, case or explicitly selected released corpus. Returns dated events, citations and available before/after value… _(parameters: person_id, source_id, domain, event_kind, revision_only, ticker)_
+- **`get_companies`** — Retrieves matching SEC-registered US companies by ticker or company name. Returns matching companies and their direct BeliefState research availability. Useful for resolving a com… _(parameters: q)_
+- **`get_company_facts`** — Retrieves retained financial facts, company references, segment metrics, operating KPIs and management guidance for one ticker. Select record_type; use fiscal_year/fiscal_quarter… _(parameters: cursor, ticker, as_of, snapshot_id, snapshot_hash, filters_sha256)_
+- **`get_comparison`** — Retrieves a cited engine comparison of two distinct investment cases using their returned belief_id and compare_to_belief_id. Returns a cited engine assessment of support, contrad… _(parameters: belief_id, compare_to_belief_id, comparison_focus, as_of)_
+- **`get_context_assessment`** — Retrieves a dated engine context assessment by its returned assessment identifier, including permitted supporting evidence and coverage limitations. Useful for examining the issue… _(parameters: context_assessment_id, as_of)_
+- **`get_economic_calendar`** — Retrieves retained US economic events in one ticker research scope. Filter by event text, region, scheduled/reported/unconfirmed state and scheduled-date bounds. Returns typed act… _(parameters: cursor, ticker, as_of, snapshot_id, snapshot_hash, filters_sha256)_
+- **`get_insider_trades`** — Retrieves source-reported insider transactions for one ticker. Filter by reporting owner name or CIK, transaction codes, derivative status and transaction or filing dates. Returns… _(parameters: cursor, ticker, as_of, snapshot_id, snapshot_hash, filters_sha256)_
+- **`get_institutional_holdings`** — Retrieves reported institutional holdings for one ticker across supported retained 13F history. Filter by manager name or CIK, report period, filing dates, amendments, share class… _(parameters: cursor, ticker, as_of, snapshot_id, snapshot_hash, filters_sha256)_
+- **`get_investor_outcomes`** — Retrieves an investor's stored publication-based outcomes for one company, research subject, investment case or the explicitly selected released corpus. Returns action, entry-pric… _(parameters: ticker, entity_id, belief_id, corpus, person_id, source_id)_
+- **`get_macro_context`** — Retrieves retained government macroeconomic observations in one ticker research scope. Filter by native series_ids, agency, measurement_names and period dates; returns typed value… _(parameters: cursor, ticker, as_of, snapshot_id, snapshot_hash, filters_sha256)_
+- **`get_market_returns`** — Retrieves supported split-adjusted close-price returns for one ticker versus SPY. Request session_intervals from 1 to 252; date bounds select return end sessions, while an omitted… _(parameters: cursor, ticker, as_of, snapshot_id, snapshot_hash, filters_sha256)_
+- **`get_news`** — Retrieves recent SEC filing metadata for one verified ticker: forms, filing and acceptance dates, official SEC links and the last observation time. Useful for checking company dis… _(parameters: ticker, limit)_
+- **`get_options_activity`** — Retrieves retained options bars, flow aggregates and open interest for one ticker. Select activity_type, call/put right, expiration, strike and observation-date filters; returns t… _(parameters: cursor, ticker, as_of, snapshot_id, snapshot_hash, filters_sha256)_
+- **`get_risks`** — Retrieves evidence-linked risks for one company, research subject, investment case or the explicitly selected released corpus. Returns recorded severity, lifecycle status, support… _(parameters: ticker, entity_id, belief_id, corpus, person_id, source_id)_
+- **`get_search_results`** — Retrieves ranked published investment cases matching thesis, investment theme or trade setup, with an optional company or subject filter. Returns ranked matching passages, attribu… _(parameters: q, ticker, entity_id, person_id, direction, status)_
+- **`get_short_activity`** — Retrieves retained short-interest and short-volume history for one ticker. Select family and date bounds; short_interest uses settlement periods, while short_volume uses observati… _(parameters: cursor, ticker, as_of, snapshot_id, snapshot_hash, filters_sha256)_
+- **`get_subjects`** — Retrieves matching released research subjects by name or kind, including companies, industries and investment themes. Returns matching subject identifiers and available research c… _(parameters: q, kind, as_of, limit, cursor)_
+- **`get_tickers`** — Retrieves public direct-company research coverage and counts. Account tracking requires the authenticated MCP server. _(parameters: as_of)_
+- **`get_visual`** — Retrieves saved research charts and tables for one investment case or context assessment. Without visual_id, returns available visual and region descriptors; with visual_id, retur… _(parameters: belief_id, context_assessment_id, as_of, visual_id, region_id, region_offset)_
 
 ## Maintenance & supply-chain — the risk BeliefState's static scan can't see
 
@@ -88,4 +93,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `beliefstate.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
