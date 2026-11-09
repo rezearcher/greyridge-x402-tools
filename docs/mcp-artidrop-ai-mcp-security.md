@@ -1,18 +1,18 @@
 ---
 title: "Is the artidrop.ai MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the artidrop.ai MCP server (https://artidrop.ai/mcp), run 2026-11-02: advertises publish, publish_site, get; 4 tools scanned, injection verdict 'clear', 8 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the artidrop.ai MCP server (https://artidrop.ai/mcp), run 2026-11-09: advertises publish, publish_site, get; 4 tools scanned, injection verdict 'clear', 8 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # artidrop.ai MCP server — security & directory-readiness scorecard
 
 **Server:** `https://artidrop.ai/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 4 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-09 · **Tools advertised:** 4 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory quality item(s) to polish (no hard rejects)
 
 Publish HTML, Markdown, and multi-file sites as shareable URLs instantly via MCP.
 
 When an agent connects artidrop.ai, the model reads all 4 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`artidrop.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`artidrop.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on artidrop.ai
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 4 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the artidrop.ai server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the artidrop.ai server advertises
@@ -74,4 +74,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `artidrop.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
