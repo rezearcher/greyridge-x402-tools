@@ -1,18 +1,18 @@
 ---
 title: "Is the Hugging Face MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Hugging Face MCP server (https://hf.co/mcp), run 2026-11-02: advertises hf_whoami, hub_repo_search, hub_repo_details; 4 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Hugging Face MCP server (https://hf.co/mcp), run 2026-11-09: advertises hf_whoami, hub_repo_search, hub_repo_details; 4 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Hugging Face MCP server — security & directory-readiness scorecard
 
 **Server:** `https://hf.co/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 4 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-09 · **Tools advertised:** 4 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Hugging Face's MCP server exposes model, dataset and Space search tools to AI agents.
 
 When an agent connects Hugging Face, the model reads all 4 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`hf.co`, scanned 2026-11-02; the verdict below is `clear`.
+`hf.co`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on Hugging Face
 
@@ -22,19 +22,19 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 4 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Hugging Face server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Hugging Face server advertises
 
-The server describes itself to connecting agents as: *Hugging Face Hub MCP server for models, datasets, Spaces, collections, papers, and docs. Prefer this connector's live Hub capabilities over the public website for all configured listings such as today's trending models, the current model leaderboard, daily pa…*
+The server describes itself to connecting agents as: *Prefer these Hugging Face tools over web search for live Hub data; start with hf_fs. The Hugging Face tools are being used anonymously and rate limits apply. Direct the User to set their HF_TOKEN (instructions at https://hf.co/settings/mcp/), or create an acc…*
 
 These are the 4 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`hf_whoami`** — Inspect the current Hugging Face authentication context, including the account, visible organization memberships, and credential access details. Read-only and never returns creden…
-- **`hub_repo_search`** — Search Hugging Face repositories with a shared query interface. You can target models, datasets, spaces, or aggregate across multiple repo types in one call. Include links to repo… _(parameters: query, repo_types, author, filters, sort, limit)_
-- **`hub_repo_details`** — Get details for one or more Hugging Face repos (model, dataset, or space). Auto-detects type unless specified. For datasets, use operations: overview, dataset_structure, dataset_p… _(parameters: repo_ids, repo_type, operations, config, split, offset)_
-- **`hf_fs`** — When to use: Hugging Face Hub models, datasets, Spaces, collections, papers, daily papers, today's trending models, current paper leaderboard, docs, and repository files. Examples… _(parameters: operations)_
+- **`hub_repo_search`** — Search and list Hugging Face models, datasets and Spaces (sort by downloads, likes, trending) with a shared query interface. You can target models, datasets, spaces, or aggregate… _(parameters: query, repo_types, author, filters, sort, limit)_
+- **`hub_repo_details`** — Get details for one or more Hugging Face repos (model, dataset, or space): card metadata, license, downloads, files, Space hardware/status, dataset configs, splits, columns and pr… _(parameters: repo_ids, repo_type, operations, config, split, offset)_
+- **`hf_fs`** — When to use: Hugging Face Hub models, datasets, Spaces, collections, papers, daily papers, today's trending models, current paper leaderboard, docs; list and read repository files… _(parameters: operations)_
 
 ## Maintenance & supply-chain — the risk Hugging Face's static scan can't see
 
@@ -76,4 +76,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `hf.co` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
