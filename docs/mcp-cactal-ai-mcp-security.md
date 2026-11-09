@@ -1,18 +1,18 @@
 ---
 title: "Is the Cactal MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Cactal MCP server (https://api.cactal.ai/v1/mcp), run 2026-11-02: advertises feedback_submit, websites_list, websites_get; 84 tools scanned, injection verdict 'clear', 1 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Cactal MCP server (https://api.cactal.ai/v1/mcp), run 2026-11-09: advertises feedback_submit, websites_list, websites_get; 84 tools scanned, injection verdict 'clear', 1 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
 ---
 # Cactal MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.cactal.ai/v1/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 84 · **Injection verdict:** `clear` · **Directory:** 1 likely Claude Directory reject(s)
+**Scanned:** 2026-11-09 · **Tools advertised:** 84 · **Injection verdict:** `clear` · **Directory:** 1 likely Claude Directory reject(s)
 
 The website platform for AI agents. One API to build, host, and operate real websites.
 
 When an agent connects Cactal, the model reads all 84 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.cactal.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`api.cactal.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on Cactal
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 84 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Cactal server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Cactal server advertises
@@ -156,4 +156,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.cactal.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
