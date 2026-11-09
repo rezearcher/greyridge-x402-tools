@@ -1,18 +1,18 @@
 ---
 title: "Is the Circleback MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Circleback MCP server (https://circleback.ai/api/mcp), run 2026-11-02: advertises SearchMeetings, SearchTranscripts, GetTranscriptsForMeetings; 28 tools scanned, injection verdict 'clear', 28 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Circleback MCP server (https://circleback.ai/api/mcp), run 2026-11-09: advertises SearchMeetings, SearchTranscripts, GetTranscriptsForMeetings; 28 tools scanned, injection verdict 'clear', 28 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Circleback MCP server — security & directory-readiness scorecard
 
 **Server:** `https://circleback.ai/api/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 28 · **Injection verdict:** `clear` · **Directory:** 28 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-09 · **Tools advertised:** 28 · **Injection verdict:** `clear` · **Directory:** 28 Claude Directory quality item(s) to polish (no hard rejects)
 
-Search and use your Circleback meeting notes, transcripts, and action items in AI tools.
+
 
 When an agent connects Circleback, the model reads all 28 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`circleback.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`circleback.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on Circleback
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 28 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Circleback server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Circleback server advertises
@@ -42,7 +42,7 @@ These are the 28 tool definition(s) any agent reads before it acts — the exact
 - **`ListTags`** — Returns every tag available to the authenticated user. Returns an array of tag objects with their IDs and names. Use this to discover available tags before filtering meetings, tra… _(parameters: intent)_
 - **`ListTeams`** — Returns the user's workspace and its teams with their IDs, or null if the user has no workspace.
 - **`ListFolders`** — Returns the folders the authenticated user can see, including closed folders they haven't joined and, for workspace admins, their workspace's hidden folders. Use the folder IDs to…
-- **`ReadFolders`** — Returns folders with their members, teams, and rules. Pending invitations are only listed to people who manage the folder. Use ListFolders to find folder IDs. _(parameters: folderIds, intent)_
+- **`ReadFolders`** — Returns folders with their members, teams, and rules. Pending invitations are only listed to people who manage the folder. People who open a folder by its link get no members, tea… _(parameters: folderIds, intent)_
 - **`CreateActionItem`** — Creates an action item owned by the authenticated user. Creates an action item owned by the user. Pass meetingId to link it to a meeting the user can edit; omit it for a standalon… _(parameters: title, description, assigneeProfileId, meetingId)_
 - **`UpdateActionItem`** — Updates the title, description, status, or assignee of an action item. Returns the updated action item. Provide at least one field. Omitted fields stay unchanged; use null to unas… _(parameters: title, description, status, assigneeProfileId, actionItemId, actionItemTitle)_
 - **`DeleteActionItem`** — Deletes an action item. Returns the deleted action item. Deletes the action item permanently. For an item created in this conversation, use the id CreateActionItem returned; other… _(parameters: actionItemId, actionItemTitle)_
@@ -52,7 +52,7 @@ These are the 28 tool definition(s) any agent reads before it acts — the exact
 - **`CreateFolder`** — Creates a shared folder in a workspace, with optional rules that file new meetings into it. Use ListFolders or ListTeams to find the workspace ID. Only create when the user asks. _(parameters: name, workspaceId, visibility, icon, color, ruleGroups)_
 - **`UpdateFolder`** — Updates a folder's name, icon, icon color, visibility, or rules. Fields you leave out stay the same, and ruleGroups replaces all of the folder's rules. Returns the folder. ruleGro… _(parameters: name, description, visibility, icon, color, ruleGroups)_
 - **`DeleteFolder`** — Deletes a shared folder. Its meetings stay with their owners. Meetings that were only in this folder go back to their creators' Private. Only delete when the user explicitly asks. _(parameters: folderId, folderName)_
-- **`ShareFolder`** — Shares a folder with people, teams, or workspaces, changes their access, or removes them. People outside the folder's workspace, even without an account, can be added by email. On… _(parameters: folderId, shares, folderName)_
+- **`ShareFolder`** — Shares a folder with people, teams, workspaces, or anyone with its link, changes their access, or removes them. People outside the folder's workspace, even without an account, can… _(parameters: folderId, shares, folderName)_
 - **`ShareMeeting`** — Shares a meeting with people, teams, workspaces, or the link, or removes their access. Returns the updated meeting. Each share sets exactly one target: email, profileId, workspace… _(parameters: meetingId, shares, meetingName)_
 - **`UpdateMeeting`** — Updates a meeting's name, notes, private notes, or tags. Each field you provide replaces its current value, and fields you leave out stay the same. To add to notes or tags, get th… _(parameters: name, tagIds, folderIds, notes, privateNotes, meetingId)_
 - **`UpdateCalendarEvent`** — Sets your private notes or tags on the Circleback meeting for a calendar event, creating the meeting if needed. Each field you provide replaces its current value, and fields you l… _(parameters: privateNotes, tagIds, calendarMeetingId, meetingName)_
@@ -98,4 +98,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `circleback.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
