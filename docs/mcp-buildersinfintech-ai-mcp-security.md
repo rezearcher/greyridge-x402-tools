@@ -1,36 +1,43 @@
 ---
 title: "Is the Builders in Fintech MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Builders in Fintech MCP server (https://buildersinfintech.ai/mcp), run 2026-11-02: advertises search_organizations, get_organization, search_people; 23 tools scanned, injection verdict 'clear', 23 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Builders in Fintech MCP server (https://buildersinfintech.ai/mcp), run 2026-11-09: advertises search_funds, list_fund_closes, list_deploying_funds; 31 tools scanned, injection verdict 'clear', 31 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Builders in Fintech MCP server — security & directory-readiness scorecard
 
 **Server:** `https://buildersinfintech.ai/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 23 · **Injection verdict:** `clear` · **Directory:** 23 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-09 · **Tools advertised:** 31 · **Injection verdict:** `clear` · **Directory:** 31 Claude Directory quality item(s) to polish (no hard rejects)
 
 Fintech companies, products, rounds, investors, news, Agent-Ready scores. Free, keyless, CC BY 4.0.
 
-When an agent connects Builders in Fintech, the model reads all 23 of its advertised tool definition(s)
+When an agent connects Builders in Fintech, the model reads all 31 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`buildersinfintech.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`buildersinfintech.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on Builders in Fintech
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 23 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 23 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
-- **All 23 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
+- **No tool-poisoning or prompt-injection patterns** were found across the 31 tool definition(s) this server advertises.
+- **Claude Connector Directory readiness: 31 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
+- **1 of 31 advertised tool(s) name a state-changing action** (`list_deploying_funds`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 23 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 31 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Builders in Fintech server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Builders in Fintech server advertises
 
 The server describes itself to connecting agents as: *Builders in Fintech — global fintech news and funding database by Michele Mattei. Read-only access to the Builders in Fintech database: fintech companies, investors, people, funding rounds, events and published articles, newsletter issues and podcast episodes…*
 
-These are the 23 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 31 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
+- **`search_funds`** — Venture funds (fintech, partly fintech or generalist) with their manager, status, stages, latest close and size or target. Amounts are as announced, in their own currency, never c… _(parameters: q, fintech_focus, stage, country, status, closed_after)_
+- **`list_fund_closes`** — Approved venture-fund closes, newest first: fund, manager, close_type (launch, target, first, interim, final, unspecified), date, amount and currency as announced, source. Amounts… _(parameters: since, until, close_type, fintech_focus, limit)_
+- **`list_deploying_funds`** — Funds that raised in the last 24 months and are backing fintech rounds in the last 12: approved funds (not other-sector) whose latest first/interim/final close is within 24 months… _(parameters: topic, country, stage, limit)_
+- **`coverage_check`** — How many investors backed public fintech equity rounds in the last 12 months that match a country / stage / sub-sector, the top 3 investors by matching rounds (with whether they h… _(parameters: country, stage, topic)_
+- **`search_reports`** — Fintech reports, white papers, surveys and data, newest first, with publisher, type, date and gated flag. Reports are published by the companies, investors, consultancies and anal… _(parameters: q, topic, publisher, report_type, year, gated)_
+- **`get_report`** — One report by slug: publisher and co-publishers, date, type, gated flag, summary, up to 5 key figures (value and unit exactly as written, each with page_ref), methodology note, so… _(parameters: slug)_
+- **`get_topic_digest`** — The weekly digest for one topic (currently the topics with a digest, e.g. 'stablecoins', 'agentic-payments'): published news tagged with the topic or its sub-topics in one ISO wee… _(parameters: topic, week)_
 - **`search_organizations`** — Search fintech companies and investors by name, kind or country. Returns public profiles with canonical URLs. Arguments: q (or query): text to search for, matched against the name… _(parameters: q, query, kind, country, limit)_
 - **`get_organization`** — Full public profile for one organization by slug: description, country, funding rounds (raised or led), people, any disclosure, editor_disclosure (current when the editor holds eq… _(parameters: slug)_
 - **`search_people`** — Search founders, operators and investors covered by the publication. Arguments: q (or query): text to search for, matched against the full name. With no q the tool returns a plain… _(parameters: q, query, limit)_
@@ -40,12 +47,13 @@ These are the 23 tool definition(s) any agent reads before it acts — the exact
 - **`most_active_investors`** — Investors ranked by the number of approved rounds they appear in. Category defaults to equity. With a country, only rounds of companies headquartered in that country are counted;… _(parameters: country, category, from, to, limit)_
 - **`funding_summary`** — Counts for a slice of the funding database: rounds, countries, totals per announced currency, undisclosed rounds and rounds per category. Note: rounds, per_currency and undisclose… _(parameters: from, to, country, topic)_
 - **`get_funding_index`** — The weekly Builders Fintech Funding Index of approved equity rounds (ISO weeks). Arguments: week (optional, 'YYYY-Www', e.g. '2026-W39') returns that week; otherwise the latest we… _(parameters: week, weeks)_
+- **`get_signals_report`** — The monthly Fintech Signals report: stored figures for approved equity rounds in one month (headline rounds and per-currency totals/medians, comparison with previous months, large… _(parameters: month)_
 - **`get_investor_scorecard`** — Follow-on scorecard for one investor by slug: of the portfolio companies it first backed at least the window ago, the share that raised a later approved round (equity or IPO) with… _(parameters: slug)_
 - **`search_products`** — Search fintech products by text, category, market, API availability, agent access (has_mcp, has_sandbox, has_api) or customer type. Each product carries an agent_access object (ap… _(parameters: q, query, category, country, api_available, customer_type)_
 - **`get_product`** — Full public listing for one product by slug: description, category, markets, customer type, API, pricing model, links, the company and an agent_access object (api_available, docs_… _(parameters: slug)_
 - **`find_providers`** — Find companies by product category, licence (licensed_in matches the home country or any passported country), licence type, authority, and agent access (has_sandbox, has_mcp, has_… _(parameters: category, licensed_in, licence_type, authority, has_sandbox, has_mcp)_
 - **`list_provider_filters`** — Valid values for find_providers: product category slugs, licence type slugs, authority slugs, and the ISO codes of countries that have at least one public licence (home or passpor…
-- **`search_content`** — Full-text search across published news, newsletter issues, podcast episodes, public entity pages, funding rounds and products. Result kinds: news, newsletter, podcast, company, in… _(parameters: q, query, kinds, limit)_
+- **`search_content`** — Full-text search across published news, newsletter issues, podcast episodes, public entity pages, funding rounds and products. Result kinds: news, newsletter, podcast, company, in… _(parameters: q, query, kinds, editorial_format, limit)_
 - **`get_content`** — One published item by type and slug, with its body text (truncated), topics, countries, organizations and people. News items also include a corrections array (date + note), newest… _(parameters: content_type, slug)_
 - **`search_podcast_knowledge`** — Search attributed facts and question-and-answer pairs from Builders in Fintech podcast episodes (as stated by the guest, not independently verified). Arguments: q (or query) match… _(parameters: q, query, organization, person, fact_type, episode)_
 - **`list_events`** — Approved fintech events, upcoming by default, with optional country, format, topic and month filters. _(parameters: upcoming, country, format, topic, month, limit)_
@@ -95,4 +103,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `buildersinfintech.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
