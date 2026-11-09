@@ -1,38 +1,40 @@
 ---
 title: "Is the BotInfo — Advanced Robot Market Data MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the BotInfo — Advanced Robot Market Data MCP server (https://mcp.botinfo.ai/mcp), run 2026-11-02: advertises lookup_robot, check_us_legality, get_buy_route; 4 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the BotInfo — Advanced Robot Market Data MCP server (https://mcp.botinfo.ai/mcp), run 2026-11-09: advertises lookup_robot, check_us_legality, get_buy_route; 6 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # BotInfo — Advanced Robot Market Data MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.botinfo.ai/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 4 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-09 · **Tools advertised:** 6 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Checkout-verified prices, stock, US FCC status and buy routes for humanoid and quadruped robots.
 
-When an agent connects BotInfo — Advanced Robot Market Data, the model reads all 4 of its advertised tool definition(s)
+When an agent connects BotInfo — Advanced Robot Market Data, the model reads all 6 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.botinfo.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`mcp.botinfo.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on BotInfo — Advanced Robot Market Data
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 4 tool definition(s) this server advertises.
+- **No tool-poisoning or prompt-injection patterns** were found across the 6 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: ready.** Every advertised tool satisfies the structural rules Anthropic's published review criteria check for (names, annotations, permission hints, no catch-all read+write tool, no unsupported capability).
-- **All 4 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
+- **All 6 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 4 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 6 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the BotInfo — Advanced Robot Market Data server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the BotInfo — Advanced Robot Market Data server advertises
 
-These are the 4 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 6 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`lookup_robot`** — Search BotInfo's verified catalog of advanced robots (humanoids, quadrupeds) that can be purchased in the United States and internationally. Understands model names ('unitree g1')… _(parameters: query, max_results)_
 - **`check_us_legality`** — Check whether a robot model may lawfully be sold in the United States under the FCC's 2026 rule on covered robotics equipment. Returns grandfathered-authorized, blocked-pending-co… _(parameters: model)_
 - **`get_buy_route`** — Get the purchase route for a robot model: a botinfo.ai URL that resolves to a dealer checkout, plus the live comparison-board page. PASS THE BUYER'S SHIPPING COUNTRY as an ISO-316… _(parameters: model, country)_
 - **`request_quote`** — Submit a purchase or quote inquiry for a robot model to the BotInfo team, who reply with a human-prepared quote, typically within one business day. Use for models with no live pur… _(parameters: model, name, email, organization, use_case, country)_
+- **`robot_evidence`** — Get the findings of BotInfo's public evidence page on a robot model: what the maker's own spec sheets, SDK code, CVE records, government rules and purchase records show, each find… _(parameters: robot)_
+- **`robot_price_today`** — Get today's listed price of every listing BotInfo's daily price watch read for a robot model, across the maker's own store and dealers: the listing name, price in USD, stock flag… _(parameters: robot)_
 
 ## Maintenance & supply-chain — the risk BotInfo — Advanced Robot Market Data's static scan can't see
 
@@ -74,4 +76,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.botinfo.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
