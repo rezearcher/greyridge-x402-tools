@@ -1,18 +1,18 @@
 ---
 title: "Is the Bankrolled.ai Agent Hub MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Bankrolled.ai Agent Hub MCP server (https://bankrolled.ai/mcp), run 2026-11-02: advertises health_check, pricing_list, money_fact; 5 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Bankrolled.ai Agent Hub MCP server (https://bankrolled.ai/mcp), run 2026-11-09: advertises health_check, pricing_list, money_fact; 5 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Bankrolled.ai Agent Hub MCP server — security & directory-readiness scorecard
 
 **Server:** `https://bankrolled.ai/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 5 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-09 · **Tools advertised:** 5 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
-Free, sourced money limits: money_fact, scheme_lookup, cross_border_check. US/UK/CA/AU/NZ. No key.
+Free, sourced deposit-insurance/savings/retirement limits. US, UK, CA, AU, NZ. No key, no payment.
 
 When an agent connects Bankrolled.ai Agent Hub, the model reads all 5 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`bankrolled.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`bankrolled.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on Bankrolled.ai Agent Hub
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 5 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Bankrolled.ai Agent Hub server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Bankrolled.ai Agent Hub server advertises
@@ -41,7 +41,7 @@ These are the 5 tool definition(s) any agent reads before it acts — the exact 
 
 A prompt-injection scan reads Bankrolled.ai Agent Hub's advertised tool metadata at one moment. It cannot tell you the project behind `bankrolled.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
 
-- **Maintenance grade `A`** — last commit pushed 2 day(s) ago, 0 open issue(s).
+- **Maintenance grade `A`** — last commit pushed 4 day(s) ago, 0 open issue(s).
 - **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
 
 A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `bankrolled.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
@@ -77,4 +77,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `bankrolled.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
