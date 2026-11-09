@@ -1,18 +1,18 @@
 ---
 title: "Is the api.askmiles.ai MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the api.askmiles.ai MCP server (https://api.askmiles.ai/mcp), run 2026-11-02: advertises search_card_catalog, get_card_facts, compare_card_facts; 5 tools scanned, injection verdict 'clear', 10 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the api.askmiles.ai MCP server (https://api.askmiles.ai/mcp), run 2026-11-09: advertises search_card_catalog, get_card_facts, compare_card_facts; 5 tools scanned, injection verdict 'clear', 10 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # api.askmiles.ai MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.askmiles.ai/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 5 · **Injection verdict:** `clear` · **Directory:** 10 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-09 · **Tools advertised:** 5 · **Injection verdict:** `clear` · **Directory:** 10 Claude Directory quality item(s) to polish (no hard rejects)
 
 Miles' public credit-card catalog: facts, transfer partners, valuations. Keyless, read-only.
 
 When an agent connects api.askmiles.ai, the model reads all 5 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.askmiles.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`api.askmiles.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on api.askmiles.ai
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 5 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the api.askmiles.ai server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the api.askmiles.ai server advertises
@@ -77,4 +77,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.askmiles.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
