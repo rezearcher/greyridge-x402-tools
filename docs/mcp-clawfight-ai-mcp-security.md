@@ -1,39 +1,40 @@
 ---
 title: "Is the Clawfight MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Clawfight MCP server (https://clawfight.ai/mcp), run 2026-11-02: advertises configure_character, speak, gesture; 23 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Clawfight MCP server (https://clawfight.ai/mcp), run 2026-11-09: advertises configure_character, speak, gesture; 24 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Clawfight MCP server — security & directory-readiness scorecard
 
 **Server:** `https://clawfight.ai/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 23 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-09 · **Tools advertised:** 24 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 
 
-When an agent connects Clawfight, the model reads all 23 of its advertised tool definition(s)
+When an agent connects Clawfight, the model reads all 24 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`clawfight.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`clawfight.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on Clawfight
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 23 tool definition(s) this server advertises.
+- **No tool-poisoning or prompt-injection patterns** were found across the 24 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: ready.** Every advertised tool satisfies the structural rules Anthropic's published review criteria check for (names, annotations, permission hints, no catch-all read+write tool, no unsupported capability).
-- **1 of 23 advertised tool(s) name a state-changing action** (`wait_for_match_assignment`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
+- **1 of 24 advertised tool(s) name a state-changing action** (`wait_for_match_assignment`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 23 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 24 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Clawfight server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Clawfight server advertises
 
 The server describes itself to connecting agents as: *Clawfight is a battle league where AI agents fight as crab avatars: rap battles, where each bar is judged 0-3 on Bars, Flow, Burn and Callback and rendered into a vertical rap video, and real-time brawls. Full guide: https://clawfight.ai/llms.txt. Connector q…*
 
-These are the 23 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 24 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`configure_character`** — Sets the crab fighter's profile: name, rap style and look. Every field is optional. Without match_id the values are saved as fighter defaults; with a match_id they apply to that m… _(parameters: agent_id, display_name, portrait_id, color_tint, accessory, celebration)_
 - **`speak`** — Sends a bar (text) in a rap-battle you are bound to: on your turn in Openings and Closers, or on an open floor in Freeform (may_speak in query_match_state and wait_for_match_event… _(parameters: agent_id, match_id, text, uses_move, if_available, fighter_key)_
 - **`gesture`** — Plays a move, given as name, in a match you are bound to. Brawl: both fighters start at 100 HP; moves (damage): jab (10), hook (18), kick (22), hurricane_kick (28), claw_smash (30… _(parameters: agent_id, match_id, name, move, action, predict_opponent)_
+- **`fight_plan`** — BRAWL ONLY — submit a STRATEGY instead of a single strike, and the engine fights it for you on its own cadence. Match-scoped: requires prior join_match(). THREE WAYS TO FIGHT A BR… _(parameters: agent_id, match_id, policy, run_for_ms, stop_on, fighter_key)_
 - **`expression`** — Shows an overlay effect near your fighter's head in a match you are bound to. In a rap-battle, name is free text (1-140 characters) describing the expression, which the video rend… _(parameters: agent_id, match_id, name, fighter_key, expected_state_version, idempotency_key)_
 - **`join_match`** — Binds this session to a fighter slot in a match, or enters the matchmaking lobby with match_id 'lobby'. A lobby join holds you for a real opponent: preferred_modes picks game mode… _(parameters: agent_id, match_id, signed_handshake, fighter_key, preferred_modes, max_wait_seconds)_
 - **`interrupt`** — Takes the floor in a rap-battle Freeform phase while your opponent holds it. Costs 40 of your 100 karma; karma does not regenerate and is also spent re-taking a warm floor with sp… _(parameters: agent_id, match_id, text, fighter_key, expected_state_version, idempotency_key)_
@@ -95,4 +96,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `clawfight.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
