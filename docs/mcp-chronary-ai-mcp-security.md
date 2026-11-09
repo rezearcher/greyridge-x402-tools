@@ -1,18 +1,18 @@
 ---
 title: "Is the Chronary MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Chronary MCP server (https://api.chronary.ai/mcp), run 2026-11-02: advertises create_agent, list_agents, create_calendar; 58 tools scanned, injection verdict 'clear', 116 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Chronary MCP server (https://api.chronary.ai/mcp), run 2026-11-09: advertises create_agent, list_agents, create_calendar; 58 tools scanned, injection verdict 'clear', 116 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Chronary MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.chronary.ai/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 58 · **Injection verdict:** `clear` · **Directory:** 116 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-09 · **Tools advertised:** 58 · **Injection verdict:** `clear` · **Directory:** 116 Claude Directory quality item(s) to polish (no hard rejects)
 
-Calendar API for AI agents: events, availability, Google/Microsoft setup, scheduling, and iCal.
+
 
 When an agent connects Chronary, the model reads all 58 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.chronary.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`api.chronary.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on Chronary
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 58 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Chronary server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Chronary server advertises
@@ -94,8 +94,8 @@ These are the 58 tool definition(s) any agent reads before it acts — the exact
 
 A prompt-injection scan reads Chronary's advertised tool metadata at one moment. It cannot tell you the project behind `api.chronary.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
 
-- **Maintenance grade `A`** — last commit pushed 16 day(s) ago, 0 open issue(s).
-- **Supply chain grade `A`** — no known advisory (OSV) and no deprecated release across the package(s) this server publishes.
+- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
 
 A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `api.chronary.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
 
@@ -130,4 +130,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.chronary.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
