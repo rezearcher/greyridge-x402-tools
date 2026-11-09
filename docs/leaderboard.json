@@ -1,7 +1,7 @@
 {
-"updated": "2026-11-02",
+"updated": "2026-11-09",
 "hub": "mcp-server-scorecards.html",
-"count": 164,
+"count": 179,
 "leaderboard": [
 {
 "name": "mcp.adoraads.ai",
@@ -12,7 +12,40 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
+},
+{
+"name": "Best AI Search Agency AEO Report",
+"slug": "aeoengine-ai",
+"url": "https://aeoengine.ai/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-11-09"
+},
+{
+"name": "Agentgates Compute",
+"slug": "agentgates-ai",
+"url": "https://mcp.agentgates.ai/compute",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-11-09"
+},
+{
+"name": "AgentMash",
+"slug": "agentmash-ai",
+"url": "https://agentmash.ai/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-11-09"
 },
 {
 "name": "AgentRoam",
@@ -23,7 +56,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
 },
 {
 "name": "agents.alphaquantlabs.ai",
@@ -34,7 +67,18 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
+},
+{
+"name": "Avasis Agent Platform",
+"slug": "agents-avasis-ai",
+"url": "https://agents.avasis.ai/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-11-09"
 },
 {
 "name": "AgentsIndex",
@@ -45,7 +89,29 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
+},
+{
+"name": "Ahel",
+"slug": "ahel-ai",
+"url": "https://mcp.ahel.ai",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-11-09"
+},
+{
+"name": "Aldro: small-business tax",
+"slug": "aldro-ai",
+"url": "https://aldro.ai/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-11-09"
 },
 {
 "name": "Alpha Bazaar Arena",
@@ -56,7 +122,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
 },
 {
 "name": "AlphaCreek SEC Filings MCP",
@@ -67,7 +133,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
 },
 {
 "name": "AlpiX",
@@ -78,7 +144,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
 },
 {
 "name": "analyticslegends.ai",
@@ -89,7 +155,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
 },
 {
 "name": "Annsa",
@@ -100,7 +166,18 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
+},
+{
+"name": "APIR Agent Verification",
+"slug": "apir-ai",
+"url": "https://apir.ai/api/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-11-09"
 },
 {
 "name": "AppGoat",
@@ -111,7 +188,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
 },
 {
 "name": "app.aqta.ai",
@@ -122,7 +199,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
 },
 {
 "name": "Arabic Name Calligraphy",
@@ -133,7 +210,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
 },
 {
 "name": "AskWatch Google Search Console MCP",
@@ -144,7 +221,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
 },
 {
 "name": "Atmy air quality",
@@ -155,7 +232,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
 },
 {
 "name": "Aviado AI",
@@ -166,7 +243,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
 },
 {
 "name": "Bankrolled.ai Agent Hub",
@@ -177,7 +254,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
 },
 {
 "name": "api.bareun.ai",
@@ -188,7 +265,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
 },
 {
 "name": "mcp.bcited.ai",
@@ -199,84 +276,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-02"
-},
-{
-"name": "BeachClubs.ae",
-"slug": "beachclubs-ae",
-"url": "https://www.beachclubs.ae/mcp",
-"grade": "A",
-"verdict": "clear",
-"risk_score": 0,
-"blocker_count": 0,
-"ready": true,
-"scanned": "2026-11-02"
-},
-{
-"name": "BenchGecko",
-"slug": "benchgecko-ai",
-"url": "https://benchgecko.ai/api/mcp",
-"grade": "A",
-"verdict": "clear",
-"risk_score": 0,
-"blocker_count": 0,
-"ready": true,
-"scanned": "2026-11-02"
-},
-{
-"name": "BetSlip Doctor",
-"slug": "betslipdoctor-ai",
-"url": "https://api.betslipdoctor.ai/api/mcp",
-"grade": "A",
-"verdict": "clear",
-"risk_score": 0,
-"blocker_count": 0,
-"ready": true,
-"scanned": "2026-11-02"
-},
-{
-"name": "agent-bev",
-"slug": "bev-buyer-ai",
-"url": "https://mcp.bev-buyer.ai/mcp",
-"grade": "A",
-"verdict": "clear",
-"risk_score": 0,
-"blocker_count": 0,
-"ready": true,
-"scanned": "2026-11-02"
-},
-{
-"name": "bitHuman",
-"slug": "bithuman-ai",
-"url": "https://mcp.bithuman.ai/mcp",
-"grade": "A",
-"verdict": "clear",
-"risk_score": 0,
-"blocker_count": 0,
-"ready": true,
-"scanned": "2026-11-02"
-},
-{
-"name": "Booqer",
-"slug": "booqer-ai",
-"url": "https://booqer.ai/mcp",
-"grade": "A",
-"verdict": "clear",
-"risk_score": 0,
-"blocker_count": 0,
-"ready": true,
-"scanned": "2026-11-02"
-},
-{
-"name": "Bordet AI",
-"slug": "bordet-ai",
-"url": "https://www.bordet.ai/api/mcp/mcp",
-"grade": "A",
-"verdict": "clear",
-"risk_score": 0,
-"blocker_count": 0,
-"ready": true,
-"scanned": "2026-11-02"
+"scanned": "2026-11-09"
 }
 ]
 }
