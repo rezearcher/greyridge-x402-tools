@@ -1,33 +1,33 @@
 ---
 title: "Is the BAMF.ai MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the BAMF.ai MCP server (https://mcp.bamf.ai), run 2026-11-02: advertises bamf.list_site_projects, bamf.create_site_project, bamf.get_site_artifact; 149 tools scanned, injection verdict 'clear', 1 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the BAMF.ai MCP server (https://mcp.bamf.ai), run 2026-11-09: advertises bamf.list_site_projects, bamf.create_site_project, bamf.get_site_artifact; 160 tools scanned, injection verdict 'clear', 1 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
 ---
 # BAMF.ai MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.bamf.ai`
-**Scanned:** 2026-11-02 · **Tools advertised:** 149 · **Injection verdict:** `clear` · **Directory:** 1 likely Claude Directory reject(s)
+**Scanned:** 2026-11-09 · **Tools advertised:** 160 · **Injection verdict:** `clear` · **Directory:** 1 likely Claude Directory reject(s)
 
 LinkedIn and X content, scheduling, analytics and outreach agent for founders, via your BAMF login.
 
-When an agent connects BAMF.ai, the model reads all 149 of its advertised tool definition(s)
+When an agent connects BAMF.ai, the model reads all 160 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.bamf.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`mcp.bamf.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on BAMF.ai
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 149 tool definition(s) this server advertises.
+- **No tool-poisoning or prompt-injection patterns** were found across the 160 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: 1 likely reject(s).** This server advertises 1 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
-- **53 of 149 advertised tool(s) name a state-changing action** (`bamf.create_site_project`, `bamf.manage_site`, `bamf.publish_site`, `bamf.list_scheduled_posts`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
+- **56 of 160 advertised tool(s) name a state-changing action** (`bamf.create_site_project`, `bamf.manage_site`, `bamf.publish_site`, `bamf.manage_funnel_emails`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 149 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 160 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the BAMF.ai server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the BAMF.ai server advertises
 
-These are the 149 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 160 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`bamf.list_site_projects`** — List client projects available as destinations for site HTML artifacts. Requires sites:read. _(parameters: workspace_id, params)_
 - **`bamf.create_site_project`** — Create a client project destination for site artifacts. Requires sites:write; supply title and agent_lanes in params. _(parameters: workspace_id, params, idempotency_key)_
@@ -38,6 +38,7 @@ These are the 149 tool definition(s) any agent reads before it acts — the exac
 - **`bamf.get_site`** — Read site sessions, previews, version source/diffs, access, Site tool capabilities, merch reviews, print templates, and connection history. For get_site_builds, params may include… _(parameters: workspace_id, action, params)_
 - **`bamf.manage_site`** — Create or revise site sessions, context, templates and preview versions; save a site-scoped merch review; rename or archive a site; retry or cancel a build; or attach its analytic… _(parameters: workspace_id, action, params, idempotency_key)_
 - **`bamf.publish_site`** — Request or resolve exact publish approval, change access, or execute an approved version operation. Requires sites:publish; preserve approval and version bindings. Existing author… _(parameters: workspace_id, action, params, idempotency_key)_
+- **`bamf.manage_funnel_emails`** — Client site funnel emails: list_sequences, preview_step, get_stats and form_wiring (sites:read); send_test to houston@bamf.ai or a qa+/qa- address only (sites:write); approve_step… _(parameters: workspace_id, action, params, idempotency_key)_
 - **`bamf.get_agent_capabilities`** — Return the current BAMF app/Stack/API/MCP workflow capability map, safety contract, skill routing, and preferred tools. Use this before planning a BAMF Bot workflow.
 - **`bamf.search_intelligence`** — Search the authenticated creator's indexed media, bookmarks, and documents. Returns source-linked evidence and citations; only reads existing intelligence projections. _(parameters: author_id, query, limit)_
 - **`bamf.get_intelligence_resource_context`** — Get source-linked evidence, facts, and relationships for one intelligence resource the authenticated creator can access. _(parameters: resource_id)_
@@ -57,6 +58,7 @@ These are the 149 tool definition(s) any agent reads before it acts — the exac
 - **`bamf.get_creator_context`** — Return the comprehensive creator context bundle for one creator space: knowledge docs, voice profile, AI analyses, integrations, interviews, LinkedIn profile/posts/analytics, webs… _(parameters: creator_id, sections, limit)_
 - **`bamf.list_scheduled_posts`** — List upcoming scheduled posts with preview-ready content, media, carousel slides, and first comments. _(parameters: creator_id, limit)_
 - **`bamf.list_posts`** — List a creator's posts by lifecycle status (draft, in_review, approved, scheduled, published, failed, archived, idea), newest first, with preview-ready content, media and first co… _(parameters: creator_id, status, limit)_
+- **`bamf.finish_draft`** — Finish a draft before it is shown for approval: review the whole draft end to end (every platform version, tweet, slide and image) for coherence, flow, completeness, brand and for… _(parameters: post_id)_
 - **`bamf.preview_post`** — Return a rich preview for one post, including media and first comment. _(parameters: post_id)_
 - **`bamf.create_post_draft`** — Create a draft post for a creator space after the user approves exact content. Defaults to LinkedIn; pass platform=x for X drafts. Supports first comments and media fields. _(parameters: creator_id, content, topic, platform, post_type, first_comment)_
 - **`bamf.message_client`** — Relay a message to a client through the agency communication gateway (their WhatsApp / iMessage and email). Agency staff keys only. TWO-STEP: confirm=false (default) returns the p… _(parameters: client, message, link, attribution, confirm)_
@@ -68,6 +70,8 @@ These are the 149 tool definition(s) any agent reads before it acts — the exac
 - **`bamf.open_cloud_computer`** — Open a page on the user's own BAMF Cloud computer (a persistent cloud desktop with a full-screen browser) so they can watch the agent use it, live, in their BAMF chat. Runs inside… _(parameters: url)_
 - **`bamf.request_login`** — Ask the user to sign in to a site on their BAMF Cloud computer. The user types their own password and two-step code in the live view; BAMF never types credentials. Returns the exa… _(parameters: site)_
 - **`bamf.run_design_session`** — Make an infographic PNG (1080x1350) or a 15s motion clip MP4 (1080x1920, Remotion) from a post, built by the user's OWN connected Claude Code (or Codex) on their BAMF Cloud comput… _(parameters: kind, brief, post_id, worker)_
+- **`bamf.link_session`** — Register this Claude Code / Claude / ChatGPT session with BAMF so it shows in the user's bamf.ai Recent chats (with the client's logo) and can be continued there or resumed locall… _(parameters: external_session_id, name, cwd, machine, channel, workspace_id)_
+- **`bamf.handoff_session`** — Hand a working session between this agent and bamf.ai. direction=to_bamf stores a context packet (goal, decisions, open_steps, recent_turns, notes) into the linked bamf.ai chat (p… _(parameters: direction, agent_session_id, external_session_id, name, cwd, machine)_
 - **`bamf.plugins.list`** — List the plugins the user connected in BAMF for a workspace (GitHub, Gmail, Google Calendar, and remote MCP providers such as Fireflies), each with its status (connected, needs_re… _(parameters: workspace_id)_
 - **`bamf.plugins.call`** — Run a tool on one of the user's connected plugins, as the user, server-side: GitHub (github.list_repos, github.read_repo), Gmail (gmail.search), Google Calendar (calendar.upcoming… _(parameters: workspace_id, plugin, tool, args)_
 - **`bamf.ensure_proxy`** — Ensure a client's cloud-browser profile has a residential proxy (attaches one when missing, no-op when healthy). BAMF platform admin only. TWO-STEP: confirm=false (default) return… _(parameters: client, country, region, city, confirm)_
@@ -91,6 +95,8 @@ These are the 149 tool definition(s) any agent reads before it acts — the exac
 - **`bamf.pause_scheduled_post`** — Pause auto-publishing while keeping the scheduled time visible in BAMF. _(parameters: post_id)_
 - **`bamf.resume_scheduled_post`** — Resume a paused scheduled post using its stored scheduled time. _(parameters: post_id)_
 - **`bamf.publish_post_now`** — Publish a post immediately. User-scoped keys only; creator-scoped keys receive a helpful 403. _(parameters: post_id)_
+- **`bamf.publish_x_reply`** — Publish one reply on X now from the creator's connected X account, replying to in_reply_to (an X post id or status URL). Show the user the exact text and get their approval first.… _(parameters: creator_id, in_reply_to, text, target_author_handle, original_text)_
+- **`bamf.get_x_safety_status`** — Replies posted from BAMF on X vs the safety caps (today, this hour, spacing, per-author, link share, near-duplicates) with any flags. Check before proposing more replies. _(parameters: creator_id)_
 - **`bamf.list_ideas`** — List content ideas for a creator space. _(parameters: creator_id, status, search, limit)_
 - **`bamf.generate_ideas`** — Generate evidence-backed creator post ideas with source labels, why-now context, creator fit, and confidence. External research is adaptive by default; private X bookmarks are opt… _(parameters: creator_id, query, platforms, formats, include_x_bookmarks, x_bookmark_folder_ids)_
 - **`bamf.create_idea`** — Create a content idea for a creator space. _(parameters: creator_id, title, content, tags)_
@@ -108,11 +114,14 @@ These are the 149 tool definition(s) any agent reads before it acts — the exac
 - **`bamf.create_interview_link`** — Create a secure hosted content-interview link for a creator. It returns ready-to-share copy for BAMF.ai, Slack, WhatsApp, or another connected conversation, but never starts an in… _(parameters: creator_id, label, expires_days, max_uses, contact_metadata)_
 - **`bamf.run_research`** — Run an async BAMF research brief job over a topic, source URLs, and/or notes. Use it when current/recent facts, benchmark data, trends, or source-backed visual claims would streng… _(parameters: creator_id, query, topic, source_urls, notes, desired_outputs)_
 - **`bamf.run_ai_roundup`** — Run the AI roundup series for a creator: ingest curated source pages (source_posts), extract news stories, verify each against a primary source (official blog, GitHub repo, announ… _(parameters: creator_id, workspace_id, cadence, series, eval_run, dry_run)_
+- **`bamf.remix_post_requests`** — Remix a creator's open post requests from top performers: each client post request (or idea, with include_ideas) becomes 1-3 drafts modeled on a top-performing reference post (str… _(parameters: creator_id, action, request_ids, piece_index, visual, include_ideas)_
 - **`bamf.search_knowledge`** — Search creator knowledge documents. _(parameters: creator_id, search, limit)_
 - **`bamf.process_knowledge`** — Process a knowledge document or raw content into summaries, durable facts, post ideas, and interview insights. This creates an async job and does not create ideas automatically. _(parameters: creator_id, document_id, title, content, tags, type)_
 - **`bamf.create_interview_transcript`** — Save an interview transcript as a BAMF knowledge document and optionally queue interview-specific knowledge processing. _(parameters: creator_id, title, transcript, interviewee, interviewer, tags)_
 - **`bamf.add_knowledge_doc`** — Add a knowledge or memory document to a creator space. API documentation: https://bamf.ai/docs/mcp/overview _(parameters: creator_id, path, title, content, tags)_
 - **`bamf.save_agent_artifact`** — Save an approved Markdown report, analysis, research result, or dashboard summary as durable BAMF creator knowledge with Claude, ChatGPT, Codex, or BAMF session provenance. Show t… _(parameters: creator_id, title, content, path, tags, source_provider)_
+- **`bamf.list_ui_components`** — List the BAMF UI component library so pages, artifacts, dashboards and in-chat cards you build look and behave like BAMF's own agent. Returns ui_cards components (in-chat and righ… _(parameters: surface, origin, query, include_schema, include_tokens)_
+- **`bamf.validate_ui_spec`** — Validate a ui_cards payload (version bamf.ui_cards.v1) or a GenUI spec (v 1) with the exact rules BAMF's renderer uses. Returns format, valid, normalized (what BAMF will render, w… _(parameters: spec, format)_
 - **`bamf.add_memory`** — Add a short durable memory to the creator's knowledge base. _(parameters: creator_id, memory, title)_
 - **`bamf.get_brain`** — Read your personal or company brain as Brain format v1 files. Returns the manifest plus BRAIN.md and the brain markdown files, with secrets redacted. Company brain requires an own… _(parameters: creator_id, kind)_
 - **`bamf.propose_brain_update`** — Propose a change to a brain; the owner approves it in BAMF. This only queues a proposal and never edits the brain. _(parameters: creator_id, kind, target, summary, body)_
@@ -127,16 +136,18 @@ These are the 149 tool definition(s) any agent reads before it acts — the exac
 - **`bamf.list_media`** — List media assets for a creator space. _(parameters: creator_id, limit)_
 - **`bamf.list_media_folders`** — List Media Library folders for a creator space. _(parameters: creator_id)_
 - **`bamf.list_integrations`** — List connected creator integrations and per-author integration settings without exposing tokens, cookies, or secrets. _(parameters: creator_id)_
-- **`bamf.list_brand_kits`** — List creator brand packs and generated brand kit projects/pages. _(parameters: creator_id, limit)_
+- **`bamf.list_brand_kits`** — List creator brand packs, generated brand kit projects/pages, and github_site_brand: the palette, fonts, theme, logos and DESIGN.md/BRAND.md guidelines read (read-only) from the c… _(parameters: creator_id, limit)_
 - **`bamf.list_design_references`** — List curated design references (non-rejected) with name, category, tags, fonts, palette, and source attribution. Never returns raw HTML. Use the id or slug with bamf.instantiate_d… _(parameters: category, query, platform, post_type, include_guide, limit)_
+- **`bamf.list_style_options`** — Return 4 style options (style_id, label, preview image_url, source library|yours|brand, source_label, description) for a visual format; the creator's swipe-liked looks (source_lab… _(parameters: format, platform, page, author_id)_
+- **`bamf.open_style_swipe`** — Return the authenticated Style Swipe deep link (bamf.ai/creators/author_id/style-swipe?format=...) where a creator likes or passes real top-performing posts to tune their visual t… _(parameters: format, author_id)_
 - **`bamf.instantiate_design_reference`** — Return a design reference's template markdown with BAMF slots (name, logo, palette, fonts) filled from the creator's brand kit. Read-only; provide reference_id or slug plus brand_… _(parameters: reference_id, slug, brand_kit_project_id, brand_pack_id, creator_id)_
 - **`bamf.update_brand_kit_references`** — Attach approved HTTPS style references to a creator-scoped BAMF brand kit. Use append to preserve current references or replace only when the user explicitly asks to replace that… _(parameters: creator_id, brand_pack_id, pack_type, mode, asset_role, reference_urls)_
 - **`bamf.add_media`** — Register an external media URL as a BAMF media asset. API documentation: https://bamf.ai/docs/mcp/overview _(parameters: creator_id, url, visual_type)_
 - **`bamf.create_media_folder`** — Create a Media Library folder for a creator space after user approval. _(parameters: creator_id, name, workspace_id)_
 - **`bamf.move_media_items`** — Move selected media assets into a Media Library folder, or clear the folder with folder_id null. _(parameters: item_ids, folder_id)_
-- **`bamf.generate_image`** — Create a BAMF image generation job. Supports quote cards, creator portraits, infographics, animated infographics (GIF + MP4 via format=motion_infographic), and package-bound Linke… _(parameters: creator_id, prompt, visual_type, engine, size_preset, format)_
-- **`bamf.generate_carousel`** — Generate carousel slide images, package them as a LinkedIn-ready PDF, and optionally attach it to a post. Pass reference_bindings to preserve official identity/product/brand truth… _(parameters: creator_id, title, slides, size, quality, referenceImageUrls)_
-- **`bamf.generate_video`** — Create a paid Higgsfield Seedance 2.5 video job. Pass image_url or an official likeness reference binding to use image-to-video and preserve the creator shown in the approved sour… _(parameters: creator_id, prompt, image_url, reference_bindings, duration, resolution)_
+- **`bamf.generate_image`** — STYLE CARDS FIRST: before the first visual of a request, call bamf.list_style_options and show the user the 4 options as a labelled 2x2 of images; ask them to pick (or say 'show 4… _(parameters: creator_id, style_id, prompt, visual_type, engine, size_preset)_
+- **`bamf.generate_carousel`** — STYLE CARDS FIRST: before the first visual of a request, call bamf.list_style_options and show the user the 4 options as a labelled 2x2 of images; ask them to pick (or say 'show 4… _(parameters: creator_id, style_id, title, slides, size, quality)_
+- **`bamf.generate_video`** — STYLE CARDS FIRST: before the first visual of a request, call bamf.list_style_options and show the user the 4 options as a labelled 2x2 of images; ask them to pick (or say 'show 4… _(parameters: creator_id, style_id, prompt, image_url, reference_bindings, duration)_
 - **`bamf.generate_carousel_pdf`** — Convert existing slide image URLs into a LinkedIn-ready carousel PDF and optionally attach it to a post. _(parameters: creator_id, title, slide_image_urls, post_id)_
 - **`bamf.list_saved_people_lists`** — List the current bounded catalog of saved master-contact lists, supported CRM system segments, and receipt-verified reviewed CRM lead lists in your signed-in workspace. Unmarked m… _(parameters: workspace_id)_
 - **`bamf.read_saved_people_list`** — Read one server-authorized native people list with explicit master_contacts or crm_leads domain. Master-contact IDs are verified by the scoped native reader; CRM system-segment an… _(parameters: workspace_id, list_id, member_kind, limit, offset)_
@@ -219,4 +230,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.bamf.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
