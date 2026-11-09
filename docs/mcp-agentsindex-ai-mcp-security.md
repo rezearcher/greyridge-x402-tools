@@ -1,18 +1,18 @@
 ---
 title: "Is the AgentsIndex MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the AgentsIndex MCP server (https://agentsindex.ai/mcp), run 2026-11-02: advertises search_listings, get_listing, list_categories; 12 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AgentsIndex MCP server (https://agentsindex.ai/mcp), run 2026-11-09: advertises search_listings, get_listing, list_categories; 12 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # AgentsIndex MCP server — security & directory-readiness scorecard
 
 **Server:** `https://agentsindex.ai/mcp`
-**Scanned:** 2026-11-02 · **Tools advertised:** 12 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-09 · **Tools advertised:** 12 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 The editors' index of AI-native software, from AI agents to the models and frameworks behind them.
 
 When an agent connects AgentsIndex, the model reads all 12 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`agentsindex.ai`, scanned 2026-11-02; the verdict below is `clear`.
+`agentsindex.ai`, scanned 2026-11-09; the verdict below is `clear`.
 
 ## What the scan found on AgentsIndex
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 12 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the AgentsIndex server
-on 2026-11-02; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the AgentsIndex server advertises
@@ -42,7 +42,7 @@ These are the 12 tool definition(s) any agent reads before it acts — the exact
 - **`get_quote`** — A signed price for one offer (from list_offers) on one listing, valid for a short time, and whether the listing can have it now. Only the account that owns the listing gets one: s… _(parameters: offer, listing)_
 - **`create_order`** — Turns a quote (from get_quote) into an order, payable for 24 hours. Same account as the quote: its session Cookie header, or its agent key as Authorization: Bearer (order scope).… _(parameters: quote_id, idempotency_key)_
 - **`my_listings`** — What the AgentsIndex owner dashboard shows about the listings an account owns: each one's status ('status.kind': review with the expected date, accepted with 'liveOn' and 'paid' (… _(parameters: slug)_
-- **`subscribe_newsletter`** — Subscribe an email to the AgentsIndex digest of new and freshly re-verified tools. Provide an email; returns { ok }. The address is on the list at once and gets one welcome mail.… _(parameters: email, source)_
+- **`subscribe_newsletter`** — Subscribe an email to the AgentsIndex digest of new and freshly re-verified tools. Provide an email; returns { ok }. The address gets one mail with a link to confirm, and is on th… _(parameters: email, source)_
 
 ## Maintenance & supply-chain — the risk AgentsIndex's static scan can't see
 
@@ -84,4 +84,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `agentsindex.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-02; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
