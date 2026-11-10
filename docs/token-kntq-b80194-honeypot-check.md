@@ -1,11 +1,11 @@
 ---
 title: "Is KNTQ a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for KNTQ (Kinetiq Governance Token) on Base (0xb80194e3868511b8f43e1d5d6e255cd9e7c3e7dd), measured 2026-11-09: engine verdict HOLD, risk 35/100. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for KNTQ (Kinetiq Governance Token) on Base (0xb80194e3868511b8f43e1d5d6e255cd9e7c3e7dd), measured 2026-11-10: engine verdict HOLD, risk 20/100. Re-run it yourself in one keyless call."
 ---
 # Is KNTQ a honeypot? — on-chain rug check (Base)
 
 **Token:** `0xb80194e3868511b8f43e1d5d6e255cd9e7c3e7dd`
-**Chain:** Base · **Measured:** 2026-11-09 · verdict `HOLD` · risk `35/100`
+**Chain:** Base · **Measured:** 2026-11-10 · verdict `HOLD` · risk `20/100`
 
 Our engine returned **HOLD** for KNTQ — at least one measured signal warrants caution before you buy.
 
@@ -50,4 +50,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-11-09; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-11-10; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
