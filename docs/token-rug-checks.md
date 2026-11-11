@@ -9,15 +9,16 @@ measures the contract's sell simulation, transfer fee, mint / pause / blacklist 
 ownership and Uniswap liquidity, then returns a GO / HOLD / BLOCK verdict you can re-run yourself
 with no account.
 
-Updated 2026-11-10.
+Updated 2026-11-11.
 
 - [AERO (Aerodrome)](token-aero-940181-honeypot-check.html) — GO
 - [cbBTC (Coinbase Wrapped BTC)](token-cbbtc-cbb7c0-honeypot-check.html) — GO
 - [DEGEN (Degen)](token-degen-4ed4e8-honeypot-check.html) — GO
-- [DRB (DebtReliefBot)](token-drb-3ec215-honeypot-check.html) — GO
-- [ELSA (Elsa)](token-elsa-29cc30-honeypot-check.html) — HOLD
-- [KNTQ (Kinetiq Governance Token)](token-kntq-b80194-honeypot-check.html) — HOLD
-- [WETH](token-weth-420000-honeypot-check.html) — GO
+- [OWB](token-owb-ef5997-honeypot-check.html) — HOLD
+- [RSC (ResearchCoin)](token-rsc-fbb75a-honeypot-check.html) — HOLD
+- [USDC (USD Coin)](token-usdc-833589-honeypot-check.html) — GO
+- [WETH (Wrapped Ether)](token-weth-420000-honeypot-check.html) — GO
+- [XDP (Doppler)](token-xdp-07b3d9-honeypot-check.html) — HOLD
 
 Check any other Base token free: `curl "https://x402-data-api.sigrunner.workers.dev/chain/token-report/preview?token=0xYourToken"` —
 or open the [live safety card](https://x402-data-api.sigrunner.workers.dev/check). Not financial advice.
