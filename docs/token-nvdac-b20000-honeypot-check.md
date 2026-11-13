@@ -1,17 +1,17 @@
 ---
 title: "Is NVDAc a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for NVDAc on Base (0xb20000000000000000000078ee7ce2fe4908108c), measured 2026-11-12: engine verdict HOLD, risk 20/100, $9k pool liquidity. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for NVDAc (NVIDIA Corporation) on Base (0xb20000000000000000000078ee7ce2fe4908108c), measured 2026-11-13: engine verdict HOLD, risk 10/100, $45k pool liquidity. Re-run it yourself in one keyless call."
 ---
 # Is NVDAc a honeypot? — on-chain rug check (Base)
 
 **Token:** `0xb20000000000000000000078ee7ce2fe4908108c`
-**Chain:** Base · **Measured:** 2026-11-12 · verdict `HOLD` · risk `20/100`
+**Chain:** Base · **Measured:** 2026-11-13 · verdict `HOLD` · risk `10/100`
 
 Our engine returned **HOLD** for NVDAc — at least one measured signal warrants caution before you buy.
 
 sellability unverified — the transfer simulation could not run, so the token's exit is unproven; not safe to auto-buy.
 
-Deepest Uniswap v3 WETH pool held about **$9k** of liquidity when measured.
+Deepest Uniswap v3 WETH pool held about **$45k** of liquidity when measured.
 
 ## See the live verdict and size your exit
 
@@ -50,4 +50,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-11-12; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-11-13; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
