@@ -1,11 +1,11 @@
 ---
 title: "Is WETH a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for WETH (Wrapped Ether) on Base (0x4200000000000000000000000000000000000006), measured 2026-11-13: engine verdict GO, risk 0/100, $75.98M pool liquidity. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for WETH (Wrapped Ether) on Base (0x4200000000000000000000000000000000000006), measured 2026-11-14: engine verdict GO, risk 0/100, $55.25M pool liquidity. Re-run it yourself in one keyless call."
 ---
 # Is WETH a honeypot? — on-chain rug check (Base)
 
 **Token:** `0x4200000000000000000000000000000000000006`
-**Chain:** Base · **Measured:** 2026-11-13 · verdict `GO` · risk `0/100`
+**Chain:** Base · **Measured:** 2026-11-14 · verdict `GO` · risk `0/100`
 
 On the measured on-chain checks below, **WETH passed** — our engine returned a GO.
 
@@ -21,9 +21,8 @@ token passes safety checks; trade is 0.00% of pool liquidity.
 - owner cannot mint new supply
 - transfers cannot be paused
 - no blacklist function found
-- 0% measured transfer fee
 
-Deepest Uniswap v3 WETH pool held about **$75.98M** of liquidity when measured.
+Deepest Uniswap v3 WETH pool held about **$55.25M** of liquidity when measured.
 
 ## See the live verdict and size your exit
 
@@ -62,4 +61,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-11-13; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-11-14; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
