@@ -1,17 +1,17 @@
 ---
 title: "Is BNKR a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for BNKR on Base (0x22af33fe49fd1fa80c7149773dde5890d3c76f3b), measured 2026-11-12: engine verdict GO, risk 0/100, $1.48M pool liquidity. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for BNKR (BankrCoin) on Base (0x22af33fe49fd1fa80c7149773dde5890d3c76f3b), measured 2026-11-14: engine verdict GO, risk 0/100, $1.43M pool liquidity. Re-run it yourself in one keyless call."
 ---
 # Is BNKR a honeypot? — on-chain rug check (Base)
 
 **Token:** `0x22af33fe49fd1fa80c7149773dde5890d3c76f3b`
-**Chain:** Base · **Measured:** 2026-11-12 · verdict `GO` · risk `0/100`
+**Chain:** Base · **Measured:** 2026-11-14 · verdict `GO` · risk `0/100`
 
 On the measured on-chain checks below, **BNKR passed** — our engine returned a GO.
 
 token passes safety checks; trade is 0.01% of pool liquidity.
 
-Deepest Uniswap v3 WETH pool held about **$1.48M** of liquidity when measured.
+Deepest Uniswap v3 WETH pool held about **$1.43M** of liquidity when measured.
 
 ## See the live verdict and size your exit
 
@@ -50,4 +50,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-11-12; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-11-14; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
