@@ -1,11 +1,11 @@
 ---
 title: "Is OWB a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for OWB on Base (0xef5997c2cf2f6c138196f8a6203afc335206b3c1), measured 2026-11-13: engine verdict HOLD, risk 25/100. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for OWB on Base (0xef5997c2cf2f6c138196f8a6203afc335206b3c1), measured 2026-11-14: engine verdict HOLD, risk 25/100. Re-run it yourself in one keyless call."
 ---
 # Is OWB a honeypot? — on-chain rug check (Base)
 
 **Token:** `0xef5997c2cf2f6c138196f8a6203afc335206b3c1`
-**Chain:** Base · **Measured:** 2026-11-13 · verdict `HOLD` · risk `25/100`
+**Chain:** Base · **Measured:** 2026-11-14 · verdict `HOLD` · risk `25/100`
 
 Our engine returned **HOLD** for OWB — at least one measured signal warrants caution before you buy.
 
@@ -50,4 +50,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-11-13; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-11-14; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
