@@ -1,18 +1,18 @@
 ---
 title: "Is the tide MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the tide MCP server (https://api.tide.ad/mcp), run 2026-11-09: advertises explain_transaction, wallet_profile, wallet_history; 38 tools scanned, injection verdict 'clear', 1 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the tide MCP server (https://api.tide.ad/mcp), run 2026-11-16: advertises explain_transaction, wallet_profile, wallet_history; 38 tools scanned, injection verdict 'clear', 1 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
 ---
 # tide MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.tide.ad/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 38 · **Injection verdict:** `clear` · **Directory:** 1 likely Claude Directory reject(s)
+**Scanned:** 2026-11-16 · **Tools advertised:** 38 · **Injection verdict:** `clear` · **Directory:** 1 likely Claude Directory reject(s)
 
 Sui blockchain data in plain English: transactions, wallets, coins, balances, fund flows and SQL.
 
 When an agent connects tide, the model reads all 38 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.tide.ad`, scanned 2026-11-09; the verdict below is `clear`.
+`api.tide.ad`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on tide
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — 1 issue(s) across 38 tool(s). Risk 8/100. Review flagged tools before trusting this server. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the tide server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the tide server advertises
@@ -110,4 +110,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.tide.ad` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
