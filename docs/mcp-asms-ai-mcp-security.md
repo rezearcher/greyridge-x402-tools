@@ -1,18 +1,18 @@
 ---
 title: "Is the asms MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the asms MCP server (https://asms.ai/mcp), run 2026-11-09: advertises get_balance, get_pricing, get_inventory; 14 tools scanned, injection verdict 'clear', 14 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the asms MCP server (https://asms.ai/mcp), run 2026-11-16: advertises get_balance, get_pricing, get_inventory; 14 tools scanned, injection verdict 'clear', 14 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # asms MCP server — security & directory-readiness scorecard
 
 **Server:** `https://asms.ai/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 14 · **Injection verdict:** `clear` · **Directory:** 14 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-16 · **Tools advertised:** 14 · **Injection verdict:** `clear` · **Directory:** 14 Claude Directory quality item(s) to polish (no hard rejects)
 
 Phone numbers for AI agents: SMS verification codes and rented numbers that receive SMS.
 
 When an agent connects asms, the model reads all 14 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`asms.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`asms.ai`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on asms
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 14 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the asms server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the asms server advertises
@@ -50,7 +50,7 @@ These are the 14 tool definition(s) any agent reads before it acts — the exact
 
 A prompt-injection scan reads asms's advertised tool metadata at one moment. It cannot tell you the project behind `asms.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
 
-- **Maintenance grade `A`** — last commit pushed 10 day(s) ago, 0 open issue(s).
+- **Maintenance grade `A`** — last commit pushed 17 day(s) ago, 0 open issue(s).
 - **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
 
 A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `asms.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
@@ -86,4 +86,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `asms.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
