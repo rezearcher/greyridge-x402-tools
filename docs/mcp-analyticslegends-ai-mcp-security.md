@@ -1,65 +1,67 @@
 ---
 title: "Is the analyticslegends.ai MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the analyticslegends.ai MCP server (https://analyticslegends.ai/mcp), run 2026-11-09: advertises search_firms, count_firms_by, get_firm; 23 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the analyticslegends.ai MCP server (https://analyticslegends.ai/mcp), run 2026-11-16: advertises find_answers, search_firms, count_firms_by; 25 tools scanned, injection verdict 'clear', 25 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # analyticslegends.ai MCP server — security & directory-readiness scorecard
 
 **Server:** `https://analyticslegends.ai/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 23 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-16 · **Tools advertised:** 25 · **Injection verdict:** `clear` · **Directory:** 25 Claude Directory quality item(s) to polish (no hard rejects)
 
 SAP AI & analytics market data for agents: SAP firms, day rates, jobs, Joule & BDC news.
 
-When an agent connects analyticslegends.ai, the model reads all 23 of its advertised tool definition(s)
+When an agent connects analyticslegends.ai, the model reads all 25 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`analyticslegends.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`analyticslegends.ai`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on analyticslegends.ai
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 23 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: ready.** Every advertised tool satisfies the structural rules Anthropic's published review criteria check for (names, annotations, permission hints, no catch-all read+write tool, no unsupported capability).
-- **All 23 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
+- **No tool-poisoning or prompt-injection patterns** were found across the 25 tool definition(s) this server advertises.
+- **Claude Connector Directory readiness: 25 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
+- **All 25 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 23 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 25 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the analyticslegends.ai server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the analyticslegends.ai server advertises
 
-The server describes itself to connecting agents as: *Analytics Legends is a curated SAP AI & Analytics market-intelligence platform (SAP Business AI and Joule, SAP Datasphere, Business Data Cloud, SAP Analytics Cloud, BW/4HANA, Databricks) run by a single named editor. This endpoint serves the PUBLIC tranche re…*
+The server describes itself to connecting agents as: *Analytics Legends serves read-only data on the SAP AI & analytics services market (Joule, Datasphere, Business Data Cloud, SAC, BW/4HANA, Databricks): firms, postings, day rates, news, concepts, studies, Academy. For a problem ("what happens to BW 7.5"), call…*
 
-These are the 23 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 25 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
-- **`search_firms`** — Search the published Analytics Legends directory of SAP AI & analytics service providers — placement agencies, Big-4 and ESN practices, SAP vendors, platforms and community groups… _(parameters: query, country, region, kind, module, limit)_
-- **`count_firms_by`** — Answer a COUNTING question about the published firm directory in one call: how many organisations per country, per REGION (the six-value geography), per kind, per declared SAP mod… _(parameters: by, query, country, region, kind, module)_
-- **`get_firm`** — Fetch one organisation from the published directory by its database slug ('rows[].slug' from search_firms, verbatim). Returns the same public fields plus 'partnerships_declared',… _(parameters: slug)_
-- **`list_firm_kinds`** — Breakdown of the published firm directory by organisation kind, with a live row count per kind. Use this before search_firms to know what the population actually is instead of gue…
-- **`list_freelance_platforms`** — The subset of the published directory where a consultant can CREATE A PROFILE — freelance marketplaces, job boards with candidate profiles, talent platforms and expert networks —… _(parameters: country, platform_type, limit, cursor)_
-- **`find_opportunities`** — Search every SAP contract and permanent-role posting Analytics Legends publishes to an ANONYMOUS visitor. Only the SITE RADAR leg below is the population a human browses on /oppor… _(parameters: query, location, country, employment_type, remote_mode, eligibility)_
-- **`search_news`** — Search the Analytics Legends market-news corpus. It is watched FOR SAP AI & analytics (Datasphere, Business Data Cloud, SAC, BW/4HANA, Databricks, the 2027/2030 maintenance window… _(parameters: query, category, scope, published_since, published_until, limit)_
-- **`search_concepts`** — Search the SAP AI & analytics concept encyclopaedia — the vocabulary of the stack, written for practitioners. Returns slug, title, category, level, tags and the editor's summary.… _(parameters: query, category, limit, cursor)_
-- **`get_concept`** — Fetch one concept entry by slug: title, category, level, tags and the editor's summary. Written by a named human editor, not generated. 'level' is GRADED on every active row since… _(parameters: slug)_
-- **`list_studies`** — List the Analytics Legends deep-research studies with their edition, as-of date, audience, word count and canonical URL. METADATA ONLY: study bodies are a paid deliverable, served… _(parameters: query, lang, limit, cursor)_
-- **`get_day_rate_benchmark`** — The PUBLIC day-rate aggregate for SAP AI & analytics freelance work: min/max daily rate by country, specialisation and seniority — 'daily_rate_min' / 'daily_rate_max' (plus 'daily… _(parameters: country, specialisation, seniority)_
-- **`list_sap_modules`** — The canonical SAP module/product taxonomy Analytics Legends classifies against (codes and EN/FR labels by category). Use it to normalise a user's loose product wording — 'SAC', 'A… _(parameters: query, limit, cursor)_
-- **`find_academy_modules`** — Search the Analytics Legends Academy — the written training modules on SAP Datasphere, Business Data Cloud, SAP Analytics Cloud, BW/4HANA and Databricks — by track, level and free… _(parameters: query, track, level, limit, cursor)_
-- **`query_knowledge_graph`** — The RELATIONS between the platform's teaching objects — which Academy module teaches which concept, which study covers which module, what a concept relates to. THIS IS THE ONLY TO… _(parameters: node_id, node_type, edge_type, direction, query, lang)_
-- **`find_answers`** — Start here when someone asks about an SAP AI & analytics PROBLEM rather than a term. Matches a natural question, in English, French or German, to the twelve ranked challenges Anal… _(parameters: question, audience, lang)_
-- **`get_concept_card`** — The FULL encyclopaedia card for one concept — body, cheat sheet, glossary, pro tip, and the four analysis tables (decision table, peer comparison, named pitfalls, performance fact… _(parameters: slug)_
-- **`get_study`** — Read one Analytics Legends study BODY — the paid text behind list_studies' metadata. Requires the API key of an MCP Pass or Firm account (the Consultant and Legend web plans do no… _(parameters: slug, lang, section)_
-- **`get_academy_module`** — Read one Academy training module in full — body, learning objectives and summary, EN, FR and DE — the written course corpus the Consultant web plan sells. Modules marked free on t… _(parameters: id, lang)_
-- **`find_sap_clients`** — Search the SAP END-CUSTOMER corpus — the companies that RUN SAP, not the firms that sell services (those are search_firms). This is the paid Legend+ dataset locked away from the p… _(parameters: query, country, industry, product, limit, cursor)_
-- **`get_sap_client_profile`** — The full profile of one SAP end-customer — SAP footprint (products in use, modules known), analytics solutions, identity and evidence fields. Requires the API key of an MCP Pass o… _(parameters: id)_
-- **`get_expansion_brief`** — The one-call brief a services practice reads before opening a subsidiary in another region: providers already there (by kind and by country, and how many are LOCAL entities versus… _(parameters: target_region, home_region)_
-- **`find_partner_candidates`** — Rank the LOCAL service providers of a target country or region — the firms a practice partners with, subcontracts to, or acquires to enter a market. 'local_only' (default true) ke… _(parameters: country, region, kind, module, local_only, limit)_
-- **`get_firm_intel`** — The paid intelligence profile of a services firm — SAP practice size and partner level, delivery flags per product, typical day rate and seniority, notable clients, analytics prac… _(parameters: name, country, delivers, mode, limit, cursor)_
+- **`find_answers`** — Start here for an SAP AI & analytics PROBLEM, asked in EN, FR or DE (agents in production, Joule value, BW 7.5 cliff, BDC vs Datasphere vs Databricks…). Returns up to 3 tracked ch… _(parameters: question, audience, lang)_
+- **`search_firms`** — Search SAP AI & analytics service providers (consultancies, Big-4, agencies, SAP partners, platforms). Returns slug, name, HQ, website, claim, sap_signal_band; SAP end-customers a… _(parameters: query, country, region, kind, module, limit)_
+- **`count_firms_by`** — Count the firm directory by country, region, kind, module or sap_signal_band, with search_firms' filters, instead of paging search_firms to tally. Rows: value, n; the tail folds i… _(parameters: by, query, country, region, kind, module)_
+- **`get_firm`** — One firm's public profile by its slug from search_firms (verbatim; some slugs are numeric). A brand name such as 'accenture' returns the list of its entities to choose from. Publi… _(parameters: slug)_
+- **`list_firm_kinds`** — The organisation kinds of the firm directory with a live count each — the vocabulary of search_firms' 'kind'. Public, complete without a key.
+- **`list_freelance_platforms`** — Platforms where an SAP consultant can create a profile (freelance marketplaces, job boards, expert networks), with signup URL, confidence grade and assessment date. Public, comple… _(parameters: country, platform_type, limit, cursor)_
+- **`find_opportunities`** — Search public SAP AI & analytics postings. Mostly PERMANENT roles: set employment_type for freelance questions. A posting listed in several cities is one row with 'locations'. Pub… _(parameters: query, location, country, employment_type, remote_mode, eligibility)_
+- **`search_news`** — Search the curated SAP AI & analytics news corpus; defaults to SAP-specific items (scope 'sap'). Each item carries source_url (the publisher) and citation_url: cite both. Public. _(parameters: query, category, scope, published_since, published_until, limit)_
+- **`search_concepts`** — Search the SAP AI & analytics concept encyclopaedia (the stack's vocabulary): slug, title, category, level, editor's summary. Full card: get_concept_card (paid). Public. _(parameters: query, category, limit, cursor)_
+- **`get_concept`** — One concept's metadata and editor's summary by slug from search_concepts (e.g. 'sap-business-data-cloud-bdc'). The card body, cheat sheet and tables are paid (get_concept_card). P… _(parameters: slug)_
+- **`list_studies`** — List the deep-research studies: title, edition, as-of date, audience, word count, citation_url, one row per study in the language asked. Metadata only; the text is get_study (paid… _(parameters: query, lang, limit, cursor)_
+- **`get_day_rate_benchmark`** — Published SAP freelance day-rate aggregate by country, specialisation and seniority: min/max (median, p10, p90 when sourced) in the row's currency, with source, date and confidenc… _(parameters: country, specialisation, seniority)_
+- **`list_sap_modules`** — The SAP module/product taxonomy (codes such as DATASPHERE, BDC, SAC, BW4HANA with labels) that other tools filter on; use it to map loose wording to a code. Public, complete witho… _(parameters: query, limit, cursor)_
+- **`find_academy_modules`** — Search the Academy training catalogue (Datasphere, BDC, SAC, BW/4HANA, Databricks) by text, track or level. Rows are in the language asked. Full text: get_academy_module (paid). P… _(parameters: query, track, level, library, lang, limit)_
+- **`query_knowledge_graph`** — Relations between concepts, Academy modules, studies and vendors: list nodes (node_type, query) or one node's edges (node_id). The only tool that serves edges. Public. _(parameters: node_id, node_type, edge_type, direction, query, lang)_
+- **`get_concept_card`** — The full concept card: body, cheat sheet, glossary, pro tip and the four analysis tables, EN/FR/DE. Paid: MCP Pass or Firm Pass key. _(parameters: slug)_
+- **`get_study`** — Read a study's text: without 'section' returns the section list and introduction, then pass a heading as 'section'. Slugs from list_studies. Paid: MCP Pass or Firm Pass key. _(parameters: slug, lang, section)_
+- **`get_academy_module`** — Read one Academy module in full (body, objectives, summary) by id or slug from find_academy_modules; 'lang' picks one language. Paid: MCP Pass or Firm Pass key. _(parameters: id, lang)_
+- **`find_sap_clients`** — Search the SAP END-CUSTOMER corpus (companies that run SAP); each row says its verification status. Paid: MCP Pass or Firm Pass key. _(parameters: query, country, industry, product, limit, cursor)_
+- **`get_sap_client_profile`** — One SAP end-customer's full profile (products in use, modules, analytics solutions, evidence) by id from find_sap_clients. Paid: MCP Pass or Firm Pass key. _(parameters: id)_
+- **`get_expansion_brief`** — Brief for entering a region: providers there (local vs group), SAP end-customer counts by country and industry, live opportunities, brand families present in both regions. Paid: M… _(parameters: target_region, home_region)_
+- **`find_partner_candidates`** — Rank local service providers of a country or region as partner or acquisition candidates; local_only (default) excludes foreign groups' subsidiaries. Paid: MCP Pass or Firm Pass k… _(parameters: country, region, kind, module, local_only, limit)_
+- **`get_firm_intel`** — Intelligence profile of a services firm: SAP practice size, partner level, products delivered, typical day rate, notable clients. Search by name, country, product or engagement mo… _(parameters: name, country, delivers, mode, limit, cursor)_
+- **`submit_brief`** — ACTION: deposit an SAP need as a private brief, matched every 6 h against consenting consultants; nothing is e-mailed. Paid: MCP Pass or Firm Pass key. _(parameters: title, sap_products, country, languages, context, remote_policy)_
+- **`request_introduction`** — ACTION: a brief's anonymised selection, or with candidate_ref an introduction request the consultant answers in the app. Paid: MCP Pass or Firm Pass key. _(parameters: need_id, candidate_ref)_
 
 ## Maintenance & supply-chain — the risk analyticslegends.ai's static scan can't see
 
 A prompt-injection scan reads analyticslegends.ai's advertised tool metadata at one moment. It cannot tell you the project behind `analyticslegends.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
 
-- **Maintenance grade `A`** — last commit pushed 22 day(s) ago, 1 open issue(s).
+- **Maintenance grade `A`** — last commit pushed 29 day(s) ago, 1 open issue(s).
 - **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
 
 A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `analyticslegends.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
@@ -95,4 +97,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `analyticslegends.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
