@@ -1,18 +1,18 @@
 ---
 title: "Is the AiVikings.ai MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the AiVikings.ai MCP server (https://mcp.aivikings.ai/mcp), run 2026-11-09: advertises get_domain_audit_log, get_current_user, check_domain_availability; 37 tools scanned, injection verdict 'block', 1 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AiVikings.ai MCP server (https://mcp.aivikings.ai/mcp), run 2026-11-16: advertises get_domain_audit_log, get_current_user, check_domain_availability; 37 tools scanned, injection verdict 'block', 1 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
 ---
 # AiVikings.ai MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.aivikings.ai/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 37 · **Injection verdict:** `block` · **Directory:** 1 likely Claude Directory reject(s)
+**Scanned:** 2026-11-16 · **Tools advertised:** 37 · **Injection verdict:** `block` · **Directory:** 1 likely Claude Directory reject(s)
 
 Find, register, and manage domains from any AI chat or agent.
 
 When an agent connects AiVikings.ai, the model reads all 37 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.aivikings.ai`, scanned 2026-11-09; the verdict below is `block`.
+`mcp.aivikings.ai`, scanned 2026-11-16; the verdict below is `block`.
 
 ## What the scan found on AiVikings.ai
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `F` — 1 issue(s) across 37 tool(s), 1 CRITICAL (tool-poisoning) — do not admit this server until resolved. Risk 40/100. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the AiVikings.ai server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the AiVikings.ai server advertises
@@ -61,19 +61,19 @@ These are the 37 tool definition(s) any agent reads before it acts — the exact
 - **`lock_domain`** — Enable the registrar transfer lock for a domain owned by the authenticated customer. _(parameters: domain)_
 - **`unlock_domain`** — Disable the registrar transfer lock for a domain owned by the authenticated customer before a transfer-out. _(parameters: domain)_
 - **`get_customer`** — Get the customer record linked to the current bearer token. A supplied customer ID must match that token. _(parameters: customer_id)_
-- **`middleware_get_capabilities`** — Middleware admin only: read enabled provider accounts, capabilities and transaction input schemas. Use this before middleware_submit_transaction. Requires the static MCP/REST admi… _(parameters: account_id)_
-- **`middleware_submit_transaction`** — Middleware admin only: submit a middleware transaction using action/input from middleware_get_capabilities. For account actions the selected enabled middleware account is used. Fo… _(parameters: action, input, idempotency_key, domain_id, account_id)_
-- **`middleware_get_transaction`** — Middleware admin only: read a middleware transaction's status and result by transaction_id. succeeded confirms completion; pending_provider, outcome_unknown and manual_review must… _(parameters: transaction_id)_
-- **`middleware_list_transactions`** — Middleware admin only: list persisted middleware transactions for the selected middleware account, optionally filtered by domain. Pass nextCursor as cursor for the next page. _(parameters: cursor, limit, domain, account_id)_
-- **`middleware_get_domain`** — Middleware admin only: read the middleware's domain projection by domain_id. For a live provider refresh submit action=refresh first and wait for completion. _(parameters: domain_id)_
-- **`middleware_get_contact`** — Middleware admin only: read a local middleware contact by contact_id. _(parameters: contact_id)_
-- **`middleware_get_transaction_secret`** — Middleware admin only: read a protected transaction secret through the middleware API. Requires the upstream secret-read scope and is audited. _(parameters: transaction_id)_
+- **`middleware_get_capabilities`** — Middleware admin only: read enabled provider accounts, capabilities and transaction input schemas. Use this before middleware_submit_transaction. Requires the static MCP/REST admi… _(parameters: account_id, customer_id)_
+- **`middleware_submit_transaction`** — Middleware admin only: submit a middleware transaction using action/input from middleware_get_capabilities. For account actions the selected enabled middleware account is used. Fo… _(parameters: action, input, idempotency_key, domain_id, account_id, customer_id)_
+- **`middleware_get_transaction`** — Middleware admin only: read a middleware transaction's status and result by transaction_id. succeeded confirms completion; pending_provider, outcome_unknown and manual_review must… _(parameters: transaction_id, customer_id)_
+- **`middleware_list_transactions`** — Middleware admin only: list persisted middleware transactions for the selected middleware account, optionally filtered by domain. Pass nextCursor as cursor for the next page. _(parameters: cursor, limit, domain, account_id, customer_id)_
+- **`middleware_get_domain`** — Middleware admin only: read the middleware's domain projection by domain_id. For a live provider refresh submit action=refresh first and wait for completion. _(parameters: domain_id, customer_id)_
+- **`middleware_get_contact`** — Middleware admin only: read a local middleware contact by contact_id. _(parameters: contact_id, customer_id)_
+- **`middleware_get_transaction_secret`** — Middleware admin only: read a protected transaction secret through the middleware API. Requires the upstream secret-read scope and is audited. _(parameters: transaction_id, customer_id)_
 
 ## Maintenance & supply-chain — the risk AiVikings.ai's static scan can't see
 
 A prompt-injection scan reads AiVikings.ai's advertised tool metadata at one moment. It cannot tell you the project behind `mcp.aivikings.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
 
-- **Maintenance grade `A`** — last commit pushed 0 day(s) ago, 0 open issue(s).
+- **Maintenance grade `A`** — last commit pushed 7 day(s) ago, 0 open issue(s).
 - **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
 
 A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `mcp.aivikings.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
@@ -109,4 +109,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.aivikings.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
