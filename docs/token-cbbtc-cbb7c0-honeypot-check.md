@@ -1,11 +1,11 @@
 ---
 title: "Is cbBTC a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for cbBTC (Coinbase Wrapped BTC) on Base (0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf), measured 2026-11-15: engine verdict GO, risk 25/100, $25.49M pool liquidity. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for cbBTC (Coinbase Wrapped BTC) on Base (0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf), measured 2026-11-16: engine verdict GO, risk 25/100, $24.77M pool liquidity. Re-run it yourself in one keyless call."
 ---
 # Is cbBTC a honeypot? — on-chain rug check (Base)
 
 **Token:** `0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf`
-**Chain:** Base · **Measured:** 2026-11-15 · verdict `GO` · risk `25/100`
+**Chain:** Base · **Measured:** 2026-11-16 · verdict `GO` · risk `25/100`
 
 On the measured on-chain checks below, **cbBTC passed** — our engine returned a GO.
 
@@ -24,7 +24,7 @@ token passes safety checks; trade is 0.00% of pool liquidity.
 - sell simulation succeeded (not a honeypot)
 - 0% measured transfer fee
 
-Deepest Uniswap v3 WETH pool held about **$25.49M** of liquidity when measured.
+Deepest Uniswap v3 WETH pool held about **$24.77M** of liquidity when measured.
 
 ## See the live verdict and size your exit
 
@@ -63,4 +63,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-11-15; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-11-16; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
