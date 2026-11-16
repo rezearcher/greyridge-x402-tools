@@ -1,38 +1,40 @@
 ---
 title: "Is the Arclan MCP Registry MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Arclan MCP Registry MCP server (https://arclan.ai/mcp), run 2026-11-09: advertises query_registry, get_server, recommend_server; 4 tools scanned, injection verdict 'clear', 8 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Arclan MCP Registry MCP server (https://arclan.ai/mcp), run 2026-11-16: advertises query_registry, get_server, recommend_server; 6 tools scanned, injection verdict 'clear', 12 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Arclan MCP Registry MCP server — security & directory-readiness scorecard
 
 **Server:** `https://arclan.ai/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 4 · **Injection verdict:** `clear` · **Directory:** 8 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-16 · **Tools advertised:** 6 · **Injection verdict:** `clear` · **Directory:** 12 Claude Directory quality item(s) to polish (no hard rejects)
 
 MCP registry: 138k servers crawled, handshake-validated, reliability-scored. 744 production-safe.
 
-When an agent connects Arclan MCP Registry, the model reads all 4 of its advertised tool definition(s)
+When an agent connects Arclan MCP Registry, the model reads all 6 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`arclan.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`arclan.ai`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on Arclan MCP Registry
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 4 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 8 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
-- **All 4 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
+- **No tool-poisoning or prompt-injection patterns** were found across the 6 tool definition(s) this server advertises.
+- **Claude Connector Directory readiness: 12 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
+- **All 6 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 4 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 6 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Arclan MCP Registry server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Arclan MCP Registry server advertises
 
-These are the 4 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 6 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`query_registry`** — Search the Arclan registry for MCP servers. By default returns only connectable servers (active, mcp_partial, auth_gated). Use status=stdio to browse local-only servers available… _(parameters: capability, min_score, transport, status, production_safe, read_only)_
 - **`get_server`** — Get full details for a specific MCP server. Pass the server name (e.g. "GitHub", "Brave Search"), registry ID slug, or endpoint URL. Returns score, state, tools list, latency, and… _(parameters: url, id)_
 - **`recommend_server`** — Get ranked MCP server recommendations for a task. Returns servers scored by production safety, keyword relevance, registry score, latency, and freshness. Each result includes a re… _(parameters: q, auth, production_safe, read_only, limit)_
 - **`report_server`** — Submit an agent usage report for an MCP server. Reports are aggregated and influence registry trust scores. Call this after using an MCP server so the registry can track real-worl… _(parameters: serverUrl, outcome, agentId, toolsUsed, turnsRequired, latencyMs)_
+- **`sign_in`** — Start GitHub sign-in to get an Arclan API key, without leaving MCP (OAuth device flow). Returns a verification URL and a short user_code — show both to the user and ask them to au…
+- **`complete_sign_in`** — Finish the GitHub sign-in started by sign_in and return a new Arclan API key. Pass the device_code from sign_in. If the user has not authorized in the browser yet, this returns st… _(parameters: device_code)_
 
 ## Maintenance & supply-chain — the risk Arclan MCP Registry's static scan can't see
 
@@ -74,4 +76,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `arclan.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
