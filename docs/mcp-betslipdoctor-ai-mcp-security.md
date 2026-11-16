@@ -1,36 +1,37 @@
 ---
 title: "Is the BetSlip Doctor MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the BetSlip Doctor MCP server (https://api.betslipdoctor.ai/api/mcp), run 2026-11-09: advertises get_tracked_slips, track_slip, get_todays_board; 96 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the BetSlip Doctor MCP server (https://api.betslipdoctor.ai/api/mcp), run 2026-11-16: advertises get_game_file, get_tracked_slips, track_slip; 100 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # BetSlip Doctor MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.betslipdoctor.ai/api/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 96 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-16 · **Tools advertised:** 100 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Your agent grades every slip A+ to F-, links your books and tracks your record. No wager placement.
 
-When an agent connects BetSlip Doctor, the model reads all 96 of its advertised tool definition(s)
+When an agent connects BetSlip Doctor, the model reads all 100 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.betslipdoctor.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`api.betslipdoctor.ai`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on BetSlip Doctor
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 96 tool definition(s) this server advertises.
+- **No tool-poisoning or prompt-injection patterns** were found across the 100 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: ready.** Every advertised tool satisfies the structural rules Anthropic's published review criteria check for (names, annotations, permission hints, no catch-all read+write tool, no unsupported capability).
-- **21 of 96 advertised tool(s) name a state-changing action** (`tail_post`, `cancel_grade`, `cancel_doctor_reply`, `add_doctor_parlay_to_slip`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
+- **23 of 100 advertised tool(s) name a state-changing action** (`tail_post`, `cancel_grade`, `send_doctor_with_slip`, `cancel_doctor_send`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 96 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 100 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the BetSlip Doctor server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the BetSlip Doctor server advertises
 
 The server describes itself to connecting agents as: *You're bringing the Doctor into this conversation. Here's who he is. The Doctor is a real gambler who runs the room: receipts, losses and humor. He's against liars and hidden records, and on the bettor's side. Talk like a text: short, plain, direct. Lead with…*
 
-These are the 96 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 100 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
+- **`get_game_file`** — Read the shared game file by event key, or by league and team for the next game on the slate.
 - **`get_tracked_slips`** — Read the authenticated account's saved-ticket library: the same list the app shows (GET tickets), newest first, with optional search, limit 1-20 and cursor. Provider placement ids… _(parameters: limit, view, search, cursor, ticketId)_
 - **`track_slip`** — After the customer asks to save it, save one ticket to the authenticated account's saved slips through the app's own save (POST tickets), with the app ticket contract (the same ti… _(parameters: client_mutation_id, ticket)_
 - **`get_todays_board`** — The app Live board (GET live/board): upcoming and in-play games, each with mainLines: its DraftKings game lines (slot, line, odds), optional league or sport, limit 1-20 and cursor… _(parameters: limit, view, category, request, league, sport)_
@@ -60,23 +61,26 @@ These are the 96 tool definition(s) any agent reads before it acts — the exact
 - **`get_doctor_memory`** — Read this authenticated account’s confirmed notes, active status, current revisions and memory generation. Longer-term Honcho personalization is recalled inside consults. These no…
 - **`remember_doctor_note`** — Save only a preference, goal, constraint or context note the customer explicitly asked Doctor to remember. Corrections require the exact owned note id and expectedRevision from ge… _(parameters: commandKey, note)_
 - **`forget_doctor_note`** — Remove the exact owned note only after the customer explicitly asks to forget it. Requires current id/expectedRevision and confirmation forget_for_future_consults. Rotates inferre… _(parameters: commandKey, id, expectedRevision, confirmation)_
-- **`quote_doctor_reply`** — Send commandKey (a new 16–120 character letters/digits/underscore/hyphen key), owned threadId UUID, current integer sequence from get_doctor_conversation, and text. Optional respo… _(parameters: commandKey, threadId, sequence, text, responseStyle)_
+- **`quote_doctor_reply`** — Send commandKey (a new 16–120 character letters/digits/underscore/hyphen key), owned threadId UUID, current integer sequence from get_doctor_conversation, and text. Optional respo… _(parameters: commandKey, threadId, sequence, text, responseStyle, doctorType)_
+- **`send_doctor_with_slip`** — For an explicit customer Send, pass exact pendingSlip selections and confirmation SEND. Reserves the existing allowance and returns the durable thread, quote and job promptly. The… _(parameters: commandKey, text, responseStyle, doctorType, pendingSlip, confirmation)_
+- **`cancel_doctor_send`** — Stop an explicit pending send using its original sendKey commandKey, including before its job ID was received. Tombstones late starts and cancels any accepted job through the ordi… _(parameters: commandKey, sendKey)_
 - **`start_doctor_reply`** — Start the owned consult quoteId after the customer has seen and accepted the quote. Reserves app allowance and queues the existing Doctor job; app AI consent, tier, plan usage, co… _(parameters: commandKey, quoteId)_
-- **`get_doctor_job`** — Read the owned Doctor jobId, including its real saved answer when available. Never generates or restarts a reply. _(parameters: jobId)_
-- **`get_doctor_events`** — Read saved events for the owned Doctor jobId, optionally after a sequence. Never starts a consult. _(parameters: jobId, after)_
+- **`get_doctor_job`** — Read the owned Doctor jobId, including its real saved answer when available: paragraphs, the linked pages it cites (sources) and what it checked (checked: odds, scores, stats, new… _(parameters: jobId)_
+- **`get_doctor_events`** — Read saved events for the owned Doctor jobId, optionally after a sequence. While a reply is written, doctor_research_progress events say how many sources the Doctor is checking an… _(parameters: jobId, after)_
 - **`cancel_doctor_reply`** — Cancel an owned Doctor jobId under the app cancellation and reservation rules. Cannot undo a reply or provider work already completed. Reuse its commandKey on every retry. _(parameters: commandKey, jobId)_
 - **`get_doctor_parlays`** — Read the Doctor’s posted parlays for one league (e.g. LGUE_nfl): 2-3 legs on different games, each B+ or better when posted. Upcoming first with the newest regrade (currentGrade),… _(parameters: league)_
+- **`get_crowd_parlay`** — Read the crowd parlay (the app’s Heat Check card): the one parlay bettors are on most right now, built in code, 2 to 4 legs on different games at one book, every game still to sta…
 - **`get_league_order`** — Read BetSlip Doctor’s league order right now: the same leagues in the same order as the app’s league strip (its Home and Odds chips: games in play first, then the soonest tip with…
 - **`get_doctor_picks`** — Read today’s saved Doctor picks and recent settled WON/LOST/PUSH results. Each item carries league (first leg’s league id), sport (first leg’s sport id) and leagues (every leg’s l… _(parameters: league, sport)_
 - **`get_tail_feed`** — Doctor ticket posts include result WON/LOST/PUSH when settled, null otherwise. Read the app Tail feed with its account-filtered community, following, own, profile, bookmark or pri… _(parameters: gradeFamily, feed, profileId, listId, search, limit)_
 - **`add_doctor_parlay_to_slip`** — Put one of the Doctor’s posted parlays (key from get_doctor_parlays) or the Home hero pick (get_league_order slate.doctorHero.key: a single, parlay or same-game parlay) on this ac… _(parameters: commandKey, key)_
 - **`tail_react`** — Add (active true) or remove (active false) this account’s fire reaction on a Tail postId, with a unique commandKey. One fire per account per post; fire feeds Hot picks. Reuse its… _(parameters: commandKey, postId, reaction, active)_
 - **`save_tail_post`** — Save (active true) or unsave (active false) a Tail postId for this account, with a unique commandKey: the app’s Save on a post and on another bettor’s Tail Grade report. Private t… _(parameters: commandKey, postId, active)_
-- **`share_graded_ticket_to_tail`** — Share an owned saved Grade report to Tail with nothing to type. Call with reportId and omit confirmation to get the exact preview and previewBinding: show it to the customer. Afte… _(parameters: reportId, showStake, confirmation, commandKey, previewBinding, fWarning)_
+- **`share_graded_ticket_to_tail`** — Share an owned saved Grade report to Tail with nothing to type. Call with reportId and omit confirmation to get the exact preview and previewBinding: show it to the customer. Afte… _(parameters: reportId, showStake, shareBreakdown, confirmation, commandKey, previewBinding)_
 - **`tail_my_posts`** — Read this account’s own Tail posts (newest first, cursor paging) with its record setting and post count (recordSettings: showRecord, postCount). Does not post. _(parameters: limit, cursor)_
 - **`set_synced_record_consent`** — Turn on (consent true) or off (default) the use of this account’s connected-sportsbook bets on its public record, with a unique commandKey. On: posted picks settle from the connec… _(parameters: commandKey, consent)_
 - **`set_show_my_record`** — Turn “Show my record” on (default) or off with show true/false and a unique commandKey. Off hides the W-L, units and ROI from everyone but the account owner (zero record on posts,… _(parameters: commandKey, show)_
-- **`tail_hot`** — Read Hot picks: graded Tail posts of the last 24 hours ranked by fire reactions and tails (recency-weighted), the Doctor’s current pick pinned first. Optional gradeFamily A-F filt… _(parameters: window, gradeFamily, limit)_
+- **`tail_hot`** — Read Hot picks: open Tail tickets (not settled, at least one game not started) from the last 24 hours, ranked by heat: fire reactions, tails, fades and how many graded slips and s… _(parameters: window, gradeFamily, limit)_
 - **`get_tail_post`** — Doctor ticket posts include result WON/LOST/PUSH when settled, null otherwise. Read one app Tail postId visible to this account under the same moderation and privacy rules. Supply… _(parameters: postId, fadedByLimit, fadedByCursor)_
 - **`preview_tail_post`** — Compute the exact app sharing preview and binding from an owned saved Grade report or Doctor exchange draft. Does not publish. Show the returned preview to the customer before req… _(parameters: draft)_
 - **`publish_tail_post`** — Submit the exact customer-approved draft and previewBinding to the app moderation queue. Requires confirmation PUBLISH_POST, placementConfirmation and fWarning. Shares approved co… _(parameters: commandKey, confirmation, draft, previewBinding, placementConfirmation, fWarning)_
@@ -132,7 +136,7 @@ These are the 96 tool definition(s) any agent reads before it acts — the exact
 
 A prompt-injection scan reads BetSlip Doctor's advertised tool metadata at one moment. It cannot tell you the project behind `api.betslipdoctor.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
 
-- **Maintenance grade `B`** — last commit pushed 30 day(s) ago, 1 open issue(s).
+- **Maintenance grade `B`** — last commit pushed 37 day(s) ago, 1 open issue(s).
 - **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
 
 A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `api.betslipdoctor.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
@@ -168,4 +172,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.betslipdoctor.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
