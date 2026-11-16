@@ -1,42 +1,43 @@
 ---
 title: "Is the Booqer MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Booqer MCP server (https://booqer.ai/mcp), run 2026-11-09: advertises search_businesses, get_business, resolve_business; 8 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Booqer MCP server (https://booqer.ai/mcp), run 2026-11-16: advertises search_businesses, get_business, resolve_business; 9 tools scanned, injection verdict 'block', 1 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
 ---
 # Booqer MCP server — security & directory-readiness scorecard
 
 **Server:** `https://booqer.ai/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-16 · **Tools advertised:** 9 · **Injection verdict:** `block` · **Directory:** 1 likely Claude Directory reject(s)
 
 Verified Booqer shops. A keyless consult is confirmed when the slot is open.
 
-When an agent connects Booqer, the model reads all 8 of its advertised tool definition(s)
+When an agent connects Booqer, the model reads all 9 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`booqer.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`booqer.ai`, scanned 2026-11-16; the verdict below is `block`.
 
 ## What the scan found on Booqer
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 8 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: ready.** Every advertised tool satisfies the structural rules Anthropic's published review criteria check for (names, annotations, permission hints, no catch-all read+write tool, no unsupported capability).
-- **All 8 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
+- **1 issue(s)** were flagged across 9 tool definition(s) — verdict `block`.
+- **Claude Connector Directory readiness: 1 likely reject(s).** This server advertises 1 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
+- **1 of 9 advertised tool(s) name a state-changing action** (`cancel_booking`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 8 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `F` — 1 issue(s) across 9 tool(s), 1 CRITICAL (tool-poisoning) — do not admit this server until resolved. Risk 40/100. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Booqer server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Booqer server advertises
 
 The server describes itself to connecting agents as: *Booqer lists enrolled home-service businesses. Use these tools when the user wants to find, book, check availability for, or check the status of a local home-service appointment: search_businesses, get_business, resolve_business, check_availability, request_b…*
 
-These are the 8 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 9 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
-- **`search_businesses`** — Use this when the user wants to find a local home-service business or appointment: plumber, HVAC, electrician, gate, fence, or security install, pole barn, or builder. Searches th… _(parameters: query)_
+- **`search_businesses`** — Use this when the user wants to find a local home-service company in a city, for example "find me a gate company in Clermont, Florida", or to find and book local home-service comp… _(parameters: query)_
 - **`get_business`** — Use this when the user wants to read one enrolled local home-service business and search_businesses or resolve_business already returned its id. Returns one enrolled shop as JSON:… _(parameters: shop_id)_
 - **`resolve_business`** — Use this when the user wants to resolve one enrolled local home-service business from a domain, a place, or a phone number. An ambiguous match is refused. Returns that one identit… _(parameters: domain, place, phone)_
 - **`check_availability`** — Use this when the user wants to check availability for a local home-service appointment before booking. Lists the open 30-minute slots for one shop and one date. Booked and blocke… _(parameters: shop_id, date, start, offering)_
-- **`request_booking`** — Use this when the user wants to book a local home-service appointment and has already chosen an open time. Confirms a free consult when the slot is open. Calling this again with t… _(parameters: shop_id, offering, name, phone, email, start)_
+- **`request_booking`** — Use this when the user wants to book a local home-service appointment and has already chosen an open time. Confirms the appointment when the slot is open. An on-site offering retu… _(parameters: shop_id, offering, name, phone, email, start)_
 - **`get_booking_status`** — Use this when the user wants to check the status of a local home-service appointment. status is confirmed, pending, canceled, or failed. No customer name, phone, or email. _(parameters: request_id)_
+- **`cancel_booking`** — Use this when the user wants to cancel a booked local home-service appointment. Pass the cancel_url from request_booking. This cancels the booking, sets status to canceled, and se… _(parameters: cancel_url, request_id, shop_id, token)_
 - **`request_service`** — Use this when the user wants to open a quote form for a local home-service business rather than book a confirmed appointment time. Opens the quote widget for one enrolled business… _(parameters: business_id, shop_id)_
 - **`submit_service_request`** — Sends the user's quote request (name, email, optional phone, service location, preferred time) to the chosen business. Called by the quote form only. _(parameters: business_id, offering, name, phone, email, service_address)_
 
@@ -80,4 +81,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `booqer.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
