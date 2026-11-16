@@ -1,37 +1,39 @@
 ---
 title: "Is the 1Court Directory MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the 1Court Directory MCP server (https://state.1court.ai/api/mcp), run 2026-11-09: advertises list_rule_sets, search_rules, get_rule; 9 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the 1Court Directory MCP server (https://state.1court.ai/api/mcp), run 2026-11-16: advertises list_rule_sets, search_rules, get_rule; 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # 1Court Directory MCP server — security & directory-readiness scorecard
 
 **Server:** `https://state.1court.ai/api/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 9 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-16 · **Tools advertised:** 11 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 US county court directory: clerk, courthouse address, e-filing, filing fees, and case lookup.
 
-When an agent connects 1Court Directory, the model reads all 9 of its advertised tool definition(s)
+When an agent connects 1Court Directory, the model reads all 11 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`state.1court.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`state.1court.ai`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on 1Court Directory
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 9 tool definition(s) this server advertises.
+- **No tool-poisoning or prompt-injection patterns** were found across the 11 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: ready.** Every advertised tool satisfies the structural rules Anthropic's published review criteria check for (names, annotations, permission hints, no catch-all read+write tool, no unsupported capability).
-- **1 of 9 advertised tool(s) name a state-changing action** (`list_rule_sets`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
+- **3 of 11 advertised tool(s) name a state-changing action** (`list_rule_sets`, `list_triggers`, `deadlines_from_trigger`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 9 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 11 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the 1Court Directory server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the 1Court Directory server advertises
 
-These are the 9 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 11 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`list_rule_sets`** — List every deadline rule set 1Court covers, with rule counts and scope. Coverage: Deadlines: California in depth (civil, family, probate, eviction, small claims, government claims…
 - **`search_rules`** — Find deadline rules by plain words (for example "opposition to motion", "answer complaint", "notice of appeal"). Searches rule names, ids, citations and triggers. Optionally limit… _(parameters: query, rule_set)_
 - **`get_rule`** — Get one deadline rule: its period, trigger, citation, the verbatim rule text, the official source URL, the 1Court rule page, any disclosed alternate reading (safe-date policy) and… _(parameters: rule_set, rule_id, county, court)_
+- **`list_triggers`** — List the trigger events ("what happened": summons served, motion hearing date, trial date, notice of entry of judgment served...) that a court's deadline rules run from, for one r… _(parameters: rule_set, county, court, query)_
+- **`deadlines_from_trigger`** — Every deadline that follows one trigger event, like a docketing system: court, trigger, date in; all resulting deadlines out, each with its date, the rule citation, the official s… _(parameters: rule_set, trigger, date, county, court, service_method)_
 - **`list_deadline_rules`** — List the deadline types 1Court can calculate for one rule set (TX, CA, CA-FAM, CA-APP, US, US-BK, US-CRIM, CA-PROB, CA-UD, CA-SC, CA-GOV, CA-CRIM, CA-JUV, CA-AGENCY, CA-PRESUIT, C… _(parameters: state, county, court)_
 - **`calculate_deadline`** — Calculate a court deadline from cited rules (weekends, court holidays, service extensions and local rules applied). Returns the date, each counting step, the verbatim rule text an… _(parameters: state, county, court, deadline_type, trigger_date, service_method)_
 - **`list_states`** — List the U.S. states in the 1Court Directory, with how many counties each has. Use this to discover coverage before looking up a county.
@@ -79,4 +81,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `state.1court.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
