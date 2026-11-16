@@ -1,18 +1,18 @@
 ---
 title: "Is the api.askmiles.ai MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the api.askmiles.ai MCP server (https://api.askmiles.ai/mcp), run 2026-11-09: advertises search_card_catalog, get_card_facts, compare_card_facts; 5 tools scanned, injection verdict 'clear', 10 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the api.askmiles.ai MCP server (https://api.askmiles.ai/mcp), run 2026-11-16: advertises search_card_catalog, get_card_facts, compare_card_facts; 5 tools scanned, injection verdict 'clear', 10 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # api.askmiles.ai MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.askmiles.ai/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 5 · **Injection verdict:** `clear` · **Directory:** 10 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-16 · **Tools advertised:** 5 · **Injection verdict:** `clear` · **Directory:** 10 Claude Directory quality item(s) to polish (no hard rejects)
 
-Miles' public credit-card catalog: facts, transfer partners, valuations. Keyless, read-only.
+
 
 When an agent connects api.askmiles.ai, the model reads all 5 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.askmiles.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`api.askmiles.ai`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on api.askmiles.ai
 
@@ -22,20 +22,20 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 5 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the api.askmiles.ai server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the api.askmiles.ai server advertises
 
-The server describes itself to connecting agents as: *Miles' public credit-card catalog: every card open to new applicants, the transfer-partner graph, and Miles' own point valuations. This is catalog data, not advice. It carries card facts — issuer, annual fee, network, foreign transaction fee, rewards currency…*
+The server describes itself to connecting agents as: *Miles' public credit-card catalog: every card open to new applicants, the transfer-partner graph, and Miles' own point valuations. This is catalog data, not advice. It carries card facts (issuer, annual fee, network, foreign transaction fee, rewards currency,…*
 
 These are the 5 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`search_card_catalog`** — Find credit cards open to new applicants by issuer, annual fee, network, rewards currency, or a benefit they carry. Returns a short row per card; call get_card_facts for one card'… _(parameters: issuer, card_type, network, max_annual_fee, no_foreign_transaction_fee, rewards_currency)_
 - **`get_card_facts`** — Everything the public catalog holds on one card: issuer, annual fee, network, foreign transaction fee, rewards currency, and the names of its statement credits, lounge networks an… _(parameters: card_name)_
-- **`compare_card_facts`** — The same catalog record for 2-5 cards at once, for comparing fees, networks and which benefits each carries. Card facts only — no earning rates, welcome-offer amounts, transfer ra… _(parameters: card_names)_
-- **`find_transfer_routes`** — Which loyalty programs a currency transfers to, or which currencies reach a destination, and whether a transfer bonus is running. This is the route graph only — it does not carry… _(parameters: from_program, to_program, only_with_bonus, include_inactive, limit)_
-- **`estimate_point_value`** — Miles' own estimate of a loyalty point's value in cents, optionally multiplied by a balance. Call with no arguments to list every program Miles values, with the exact spelling to… _(parameters: program, points)_
+- **`compare_card_facts`** — The same catalog record for 2-5 cards at once, for comparing fees, networks and which benefits each carries. Card facts only: no earning rates, welcome-offer amounts, transfer rat… _(parameters: card_names)_
+- **`find_transfer_routes`** — Which loyalty programs a currency transfers to, or which currencies reach a destination, and whether a transfer bonus is running. This is the route graph only. It does not carry t… _(parameters: from_program, to_program, only_with_bonus, include_inactive, limit)_
+- **`estimate_point_value`** — Miles' own estimate of a loyalty point's value in cents, optionally multiplied by a balance. A cash balance such as Uber Cash is valued as a share of face value (0.9 is 90%). Call… _(parameters: program, points)_
 
 ## Maintenance & supply-chain — the risk api.askmiles.ai's static scan can't see
 
@@ -77,4 +77,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.askmiles.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
