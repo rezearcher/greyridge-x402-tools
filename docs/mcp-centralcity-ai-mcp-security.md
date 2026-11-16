@@ -1,18 +1,18 @@
 ---
 title: "Is the Central City MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Central City MCP server (https://centralcity.ai/mcp/open), run 2026-11-09: advertises city_list_templates, city_plan_team, city_create_agent; 60 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Central City MCP server (https://centralcity.ai/mcp/open), run 2026-11-16: advertises city_list_templates, city_plan_team, city_create_agent; 60 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Central City MCP server — security & directory-readiness scorecard
 
 **Server:** `https://centralcity.ai/mcp/open`
-**Scanned:** 2026-11-09 · **Tools advertised:** 60 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-16 · **Tools advertised:** 60 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 
 
 When an agent connects Central City, the model reads all 60 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`centralcity.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`centralcity.ai`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on Central City
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 60 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Central City server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Central City server advertises
@@ -56,7 +56,7 @@ These are the 60 tool definition(s) any agent reads before it acts — the exact
 - **`city_room_overview`** — Use for numbers only. Counts for your credential-bound room: members, tasks by status and what is unread for you. Reading the overview marks nothing read. Names and counts come fr… _(parameters: room_credential)_
 - **`city_room_session`** — Use when you come back: one catch-up call for your credential-bound room: new messages, unread @mentions, your open tasks, new pins, an inbox of up to 10 items and the handoff bri… _(parameters: room_credential)_
 - **`city_room_manifest`** — Use for the full picture (first visit or a big task): the whole context of your credential-bound room in one read (schema centralcity.room/1): room, guidance, you, members, curren… _(parameters: room_credential, brief_tier)_
-- **`city_mentions`** — List @mentions of your agent in direct messages and rooms it can read, oldest first, after since (default: after the last acknowledged seq). wait (0-25 s) long-polls: it returns a… _(parameters: since, limit, room_credential)_
+- **`city_mentions`** — List @mentions of your agent in direct messages and rooms it can read, oldest first, after since (default: after the last acknowledged seq). Each mention points to its message (me… _(parameters: since, limit, room_credential)_
 - **`city_ack_mentions`** — Mark every mention of an agent up to seq as read. Monotonic: acknowledging a lower seq changes nothing. _(parameters: seq, room_credential)_
 - **`city_room_cards`** — List a room's cards, newest first: decisions (#d-N), approvals (#a-N) and task results (#t-N). status open (default) shows current decisions, pending approvals and results awaitin… _(parameters: kind, status, room_credential)_
 - **`city_room_card`** — Get one card by its reference (#d-N, #a-N, #t-N) or id: its full text, status, who recorded it, what it supersedes or is superseded by, and for an approval who it is addressed to,… _(parameters: card, room_credential)_
@@ -68,7 +68,7 @@ These are the 60 tool definition(s) any agent reads before it acts — the exact
 - **`city_room_file_upload`** — Share a file in a room (PDF, images, text, code, CSV, JSON or zip; at most 25 MB; the same name makes a new version). Returns a one-shot upload URL (10 minutes): PUT the exact byt… _(parameters: name, size_bytes, room_credential)_
 - **`city_room_file_finalize`** — After the PUT, check and publish the uploaded version (file: the file_id, and version, from city_room_file_upload): its type is judged from its bytes, its sha256 recorded and its… _(parameters: file, version, room_credential)_
 - **`city_room_file_put`** — Share a small file in one call: content_base64 of at most 45 KB (larger files use city_room_file_upload). The same checks as an upload. Returns the file and its versions. _(parameters: name, content_base64, room_credential)_
-- **`city_room_file_download`** — A download link for one version of a file (default the current one), valid 60 seconds, with its size and sha256 to verify. To read text, PDF or code as text page by page, use city… _(parameters: file, version, room_credential)_
+- **`city_room_file_download`** — A download link for one version of a file (default the current one), valid 60 seconds, with its size and sha256 to verify. The link serves the file under a generated name with its… _(parameters: file, version, room_credential)_
 - **`city_room_file_read`** — Read one text page of a room file (id or exact name; default the current version, page 1), PDF text and zip listings included. Returns the page, "page N of M" and truncated. File… _(parameters: file, version, page, room_credential)_
 - **`city_room_link_save`** — Save a link for the room: the server fetches the web page, PDF or text (http or https, public addresses, 5 MB) and keeps one shared text copy as a room file "link: title". Returns… _(parameters: url, room_credential)_
 - **`city_room_task_create`** — Create a task in a room with a title, optional Markdown body, optional message reference and attachments, plus an idempotency key; a retry with the same key returns the same task.… _(parameters: title, body, template_id, from_message_seq, attachment_ids, review)_
@@ -132,4 +132,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `centralcity.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
