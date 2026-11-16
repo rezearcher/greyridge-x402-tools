@@ -1,18 +1,18 @@
 ---
 title: "Is the ARC: agent checkout reachability MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the ARC: agent checkout reachability MCP server (https://www.arcreport.ai/api/mcp), run 2026-11-09: advertises check_store, find_stores, report_checkout; 19 tools scanned, injection verdict 'clear', 32 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the ARC: agent checkout reachability MCP server (https://www.arcreport.ai/api/mcp), run 2026-11-16: advertises check_store, find_stores, report_checkout; 19 tools scanned, injection verdict 'clear', 32 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # ARC: agent checkout reachability MCP server — security & directory-readiness scorecard
 
 **Server:** `https://www.arcreport.ai/api/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 19 · **Injection verdict:** `clear` · **Directory:** 32 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-16 · **Tools advertised:** 19 · **Injection verdict:** `clear` · **Directory:** 32 Claude Directory quality item(s) to polish (no hard rejects)
 
 Free, no sign-in MCP: can AI agents reach checkout at a store? Try: Use ARC to check allbirds.com.
 
 When an agent connects ARC: agent checkout reachability, the model reads all 19 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`www.arcreport.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`www.arcreport.ai`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on ARC: agent checkout reachability
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 19 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the ARC: agent checkout reachability server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the ARC: agent checkout reachability server advertises
@@ -49,13 +49,13 @@ These are the 19 tool definition(s) any agent reads before it acts — the exact
 - **`update_monitor`** — [Requires sign-in] Change a monitor's cadence (daily/weekly/monthly) or label. Use the monitor id from list_monitors. _(parameters: id, frequency, label)_
 - **`pause_monitor`** — [Requires sign-in] Pause a monitor so it stops running on schedule (its history is kept). Use the monitor id from list_monitors. _(parameters: id)_
 - **`resume_monitor`** — [Requires sign-in] Resume a paused monitor. _(parameters: id)_
-- **`run_monitor_now`** — [Requires sign-in] Run a monitor's scan immediately (off-schedule) to establish or refresh its baseline. Consumes one scan credit — only call when the user explicitly asks to run… _(parameters: id)_
+- **`run_monitor_now`** — [Requires sign-in] Run a monitor's scan immediately (off-schedule) to establish or refresh its baseline. Runs one scan — only call when the user explicitly asks to run now. Use th… _(parameters: id)_
 
 ## Maintenance & supply-chain — the risk ARC: agent checkout reachability's static scan can't see
 
 A prompt-injection scan reads ARC: agent checkout reachability's advertised tool metadata at one moment. It cannot tell you the project behind `www.arcreport.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
 
-- **Maintenance grade `A`** — last commit pushed 25 day(s) ago, 1 open issue(s).
+- **Maintenance grade `B`** — last commit pushed 32 day(s) ago, 1 open issue(s).
 - **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
 
 A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `www.arcreport.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
@@ -91,4 +91,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `www.arcreport.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
