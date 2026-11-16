@@ -1,35 +1,35 @@
 ---
 title: "Is the Atmy air quality MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Atmy air quality MCP server (https://api.atmy.ai/mcp), run 2026-11-09: advertises search_cities, get_air_quality, get_air_quality_history; 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Atmy air quality MCP server (https://api.atmy.ai/mcp), run 2026-11-16: advertises search_cities, get_air_quality, get_air_quality_history; 12 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Atmy air quality MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.atmy.ai/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 11 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-16 · **Tools advertised:** 12 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 PM2.5 of 300+ cities: now, history, forecast, rankings; 12 000 sensors with a quality rating.
 
-When an agent connects Atmy air quality, the model reads all 11 of its advertised tool definition(s)
+When an agent connects Atmy air quality, the model reads all 12 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.atmy.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`api.atmy.ai`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on Atmy air quality
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 11 tool definition(s) this server advertises.
+- **No tool-poisoning or prompt-injection patterns** were found across the 12 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: ready.** Every advertised tool satisfies the structural rules Anthropic's published review criteria check for (names, annotations, permission hints, no catch-all read+write tool, no unsupported capability).
-- **All 11 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
+- **All 12 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 11 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 12 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Atmy air quality server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Atmy air quality server advertises
 
 The server describes itself to connecting agents as: *Atmy aggregates citizen, experimental and government air-quality sensors (PM2.5) after a daily quality check. Values are approximate, not official monitoring. Find a place with search_cities or pass a city name in any language, a slug like "russia/krasnoyarsk…*
 
-These are the 11 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 12 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`search_cities`** — Find the cities with an Atmy air-quality summary by name (any language) or country. Returns slugs to pass to the other tools. _(parameters: query, country, lang, limit)_
 - **`get_air_quality`** — PM2.5 now in a city (mean of the latest reading of each eligible sensor, at most 60 minutes old; a government station hour up to 3 hours old, with the time it was measured) with i… _(parameters: city, country, lat, lon, lang)_
@@ -42,6 +42,7 @@ These are the 11 tool definition(s) any agent reads before it acts — the exact
 - **`get_sensor`** — One sensor by its id: location, network, license, quality check with rating and reasons, and the latest reading. _(parameters: id)_
 - **`get_sensor_readings`** — Readings of one sensor: raw (the last 31 days, at most 7 days a call), 5-minute means (the same windows), hourly means (the last 366 days, at most 92 days a call) or daily means (… _(parameters: id, interval, from, to)_
 - **`get_sensors_average`** — The mean of up to 100 sensors per 5 minutes, hour or UTC day, each sensor counted once per bucket, with the number of sensors in each bucket. Windows as in get_sensor_readings; by… _(parameters: ids, interval, from, to)_
+- **`get_home_environment`** — Greenery and emission sources around a point (a home): tree canopy share within 300 m, green land share and summer NDVI within 500 m with a low/medium/high level against the rest… _(parameters: lat, lon)_
 
 ## Maintenance & supply-chain — the risk Atmy air quality's static scan can't see
 
@@ -83,4 +84,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.atmy.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
