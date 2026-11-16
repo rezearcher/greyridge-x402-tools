@@ -1,18 +1,18 @@
 ---
 title: "Is the Propick Integration MCP MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Propick Integration MCP MCP server (https://propick.ae/mcp), run 2026-11-09: advertises ping, sync_properties, get_run; 8 tools scanned, injection verdict 'clear', 16 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Propick Integration MCP MCP server (https://propick.ae/mcp), run 2026-11-16: advertises ping, sync_properties, get_run; 8 tools scanned, injection verdict 'clear', 16 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Propick Integration MCP MCP server — security & directory-readiness scorecard
 
 **Server:** `https://propick.ae/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 16 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-16 · **Tools advertised:** 8 · **Injection verdict:** `clear` · **Directory:** 16 Claude Directory quality item(s) to polish (no hard rejects)
 
 Manage your real-estate stock on Propick (Dubai): bulk listing sync, lookups and run reports.
 
 When an agent connects Propick Integration MCP, the model reads all 8 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`propick.ae`, scanned 2026-11-09; the verdict below is `clear`.
+`propick.ae`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on Propick Integration MCP
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 8 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Propick Integration MCP server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Propick Integration MCP server advertises
@@ -30,13 +30,13 @@ makes visible), so a clean result today is not a guarantee for tomorrow.
 These are the 8 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`ping`** — Health check for the integration key. Returns the channel clientId. Call once after connecting to verify the key works.
-- **`sync_properties`** — Submit a batch of property listings (up to 500) for import. The engine diffs the batch against the channel current stock and plans creations, updates, archivals and deletions; quo… _(parameters: mode, confirmRemovals, properties)_
-- **`get_run`** — Fetch one import run by importId: status, counters of planned and applied decisions, stop reason if the run did not finish. _(parameters: importId)_
+- **`sync_properties`** — Submit a batch of property listings (up to 500) for import. The engine diffs the batch against the channel current stock and plans creations, updates, archivals and deletions; quo… _(parameters: mode, isRemovalConfirmed, properties)_
+- **`get_run`** — Fetch one import run by runId: status, counters of planned and applied decisions, stop reason if the run did not finish. _(parameters: runId)_
 - **`list_runs`** — List this channel import runs, newest first. Paginated. _(parameters: page, limit)_
-- **`list_events`** — Per-property outcomes of import runs: what happened to each externalPropertyId, with error codes and details. Filter by importId and/or externalPropertyId. Paginated. _(parameters: importId, externalPropertyId, page, limit)_
-- **`search_projects`** — Resolve a development project to the numeric projectId required by every listing in sync_properties. Search by name fragment (min 2 characters) or by exact DLD project number (dig… _(parameters: query, page, limit)_
-- **`list_responsibles`** — List agency members that can be set as responsibleUsername on a listing. Agency channels only: a personal channel gets a refusal, not an empty list. _(parameters: page, limit)_
-- **`get_reference`** — Every closed vocabulary and limit of the import payload in one call: categories, listing types, building statuses, rental periods, occupancy statuses, currency codes, area units,…
+- **`list_events`** — Per-property outcomes of import runs: what happened to each externalPropertyId, with error codes and details. propertyId is our listing id (PP-...) when the outcome addressed a li… _(parameters: runId, externalPropertyId, page, limit)_
+- **`search_projects`** — Resolve a development project to the projectId string (PJ-a1b2c3d4) required by every listing in sync_properties. Search by name fragment (min 2 characters) or by exact DLD projec… _(parameters: query, page, limit)_
+- **`list_responsibles`** — List agency members that can be responsible for a listing or a lead: pass an element username as responsibleUsername; match your users to members by the lowercase email. _(parameters: page, limit)_
+- **`get_property_vocabulary`** — Every closed vocabulary and limit of the import payload in one call: categories, listing types, building statuses, rental periods, occupancy statuses, currency codes, area units,…
 
 ## Maintenance & supply-chain — the risk Propick Integration MCP's static scan can't see
 
@@ -78,4 +78,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `propick.ae` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
