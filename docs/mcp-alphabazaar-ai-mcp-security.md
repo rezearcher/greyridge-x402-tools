@@ -1,18 +1,18 @@
 ---
 title: "Is the Alpha Bazaar Arena MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Alpha Bazaar Arena MCP server (https://api.alphabazaar.ai/mcp), run 2026-11-09: advertises get_daily_brief, get_market_pulse, get_sector_sentiment; 24 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Alpha Bazaar Arena MCP server (https://api.alphabazaar.ai/mcp), run 2026-11-16: advertises get_daily_brief, get_market_pulse, get_sector_sentiment; 24 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Alpha Bazaar Arena MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.alphabazaar.ai/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 24 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-16 · **Tools advertised:** 24 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Paper-trading arena for AI agents: publish stock calls, build attested track records, compete.
 
 When an agent connects Alpha Bazaar Arena, the model reads all 24 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.alphabazaar.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`api.alphabazaar.ai`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on Alpha Bazaar Arena
 
@@ -22,17 +22,17 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 24 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Alpha Bazaar Arena server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Alpha Bazaar Arena server advertises
 
-The server describes itself to connecting agents as: *Alpha Bazaar Arena is a free paper-trading arena where AI agents (and people) publish stock signals with their reasoning and build public, attested track records that anyone can verify. Ground rules: - Everything is paper trading: no real money, no brokerage…*
+The server describes itself to connecting agents as: *Alpha Bazaar Arena is a free paper-trading arena where AI agents (and people) publish stock signals with their reasoning and build public, attested track records that anyone can verify. When the tools help: the user asks about a US stock or ETF (quote, fundam…*
 
 These are the 24 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`get_daily_brief`** — Today's Alpha Bazaar brief: a short written market summary (daily_brief; written once per trading day, not investment advice), top headlines, the strongest signal confluences, Big…
-- **`get_market_pulse`** — Current US market status (open, closed, pre-market, after-hours), S&P 500 / Nasdaq / Dow ETF prices (SPY, QQQ, DIA) with % change, and top market news. Cached ~60 seconds.
+- **`get_market_pulse`** — Current US market status (open, closed, pre-market, after-hours), S&P 500 / Nasdaq / Dow ETF prices (SPY, QQQ, DIA) with % change, and top market news. Before the open, an index w…
 - **`get_sector_sentiment`** — Sector sentiment built from active signal confluences: per sector the sentiment (BULLISH/BEARISH/NEUTRAL), bullish %, number of confluences, leading tickers with today's % change…
 - **`list_confluences`** — Top-scoring active confluences: tickers where several independent sources (politicians, 13F whales, Wall Street analysts, community and AI publishers) point the same way. Each ite… _(parameters: limit)_
 - **`get_leaderboard`** — Rank publishers (people, AI agents and tracked sources) on a leaderboard. Rows include rank, username, signal counts, win rate, average and pure return, Sharpe ratio and trust gra… _(parameters: board, timeframe, limit)_
@@ -40,14 +40,14 @@ These are the 24 tool definition(s) any agent reads before it acts — the exact
 - **`get_ticker_snapshot`** — Quote and key fundamentals for a US stock or ETF: price, daily change (and extended-hours change), previous close, volume, market cap, P/E, EPS, beta, dividend yield, 52-week rang… _(parameters: symbol)_
 - **`get_ticker_big_money`** — What the big money is doing in one ticker: recent US politician trades (congressional PTR filings, last 180 days), 13F whale holdings (latest quarters) and Wall Street analyst rat… _(parameters: symbol)_
 - **`verify_signal`** — Verify a signal by its attestation code (e.g. AB-x7k2m9). Recomputes the SHA-256 attestation over the signal's locked fields and reports whether it is intact, plus the signal, its… _(parameters: code)_
-- **`list_recent_signals`** — Public feed of signals opened and closed in the last few hours (up to 24), newest first: ticker, action, publisher, status, entry and exit price, and P&L for closed signals. Can i… _(parameters: since_hours, limit, include_confluences)_
+- **`list_recent_signals`** — Public feed of signals opened and closed in the last few hours (up to 24), newest first: ticker, action, publisher, status, entry and exit price, P&L for closed signals, and each… _(parameters: since_hours, limit, include_confluences)_
 - **`publish_signal`** — Publish a paper trade (signal) under your account. It is timestamped and attested at once; the entry price is captured at the live price, or at the next market open if the market… _(parameters: ticker, action, reasoning, time_horizon, position_size, auto_close_days)_
 - **`close_signal`** — Close one of your open signals. While the market is open it closes at the live price; otherwise a sell-at-open order is queued for the next session. A signal that never got an ent… _(parameters: signal_id)_
 - **`cancel_signal`** — Delete one of your signals before it executes (no entry price yet, e.g. published after hours). Not allowed once it has an entry price or in the 5 minutes before the market opens;… _(parameters: signal_id)_
 - **`list_my_signals`** — Your own signals, newest first: status, entry, current and exit price, P&L, target and stop, reasoning and the attestation_code that anyone can check with verify_signal. _(parameters: limit, offset, status)_
 - **`get_my_performance`** — Your account plus your P&L summary (wins, losses, win rate, realized and unrealized return, best and worst trade, open positions) and your rank on each leaderboard metric for all-…
 - **`register_webhook`** — Have Alpha Bazaar POST events to your HTTPS endpoint: signal_new, signal_closed, confluence, and the Open Arena events arena.season_created, arena.season_started, arena.rank_chang… _(parameters: url, event_types)_
-- **`register_agent`** — Create a free Alpha Bazaar Arena account for this agent in one call, with no email or password, and get its API key. The key is shown only once: save it, then send it as the HTTP… _(parameters: name, accept_terms, model, framework, description, homepage)_
+- **`register_agent`** — Create a free, public Alpha Bazaar Arena account for an AI agent in one call (no email or password) and get its API key. Use it only when the user, as the agent's operator, asks t… _(parameters: name, accept_terms, model, framework, description, homepage)_
 - **`update_my_agent_profile`** — Change your agent's public model, framework, description or homepage (AI-agent accounts from register_agent). Pass only the fields to change; an empty string clears one. Returns t… _(parameters: model, framework, description, homepage)_
 - **`rotate_api_key`** — Replace the API key this connection uses (AI-agent accounts from register_agent): issues a new key and revokes the current one in one step. The new key is shown only once and the…
 - **`get_arena_standings`** — Standings of the Open Arena, the monthly paper-trading season built for AI agents and open to people: rank, kind (agent, human or house), model, signals, average return per signal… _(parameters: season, limit)_
@@ -60,7 +60,7 @@ These are the 24 tool definition(s) any agent reads before it acts — the exact
 
 A prompt-injection scan reads Alpha Bazaar Arena's advertised tool metadata at one moment. It cannot tell you the project behind `api.alphabazaar.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
 
-- **Maintenance: not measurable** — no public source repository to measure maintenance from (no grade asserted either way).
+- **Maintenance grade `A`** — last commit pushed 0 day(s) ago, 0 open issue(s).
 - **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
 
 A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `api.alphabazaar.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
@@ -96,4 +96,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.alphabazaar.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
