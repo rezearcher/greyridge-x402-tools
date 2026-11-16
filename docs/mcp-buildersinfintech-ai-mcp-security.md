@@ -1,35 +1,35 @@
 ---
 title: "Is the Builders in Fintech MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Builders in Fintech MCP server (https://buildersinfintech.ai/mcp), run 2026-11-09: advertises search_funds, list_fund_closes, list_deploying_funds; 31 tools scanned, injection verdict 'clear', 31 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Builders in Fintech MCP server (https://buildersinfintech.ai/mcp), run 2026-11-16: advertises search_funds, list_fund_closes, list_deploying_funds; 32 tools scanned, injection verdict 'clear', 32 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Builders in Fintech MCP server — security & directory-readiness scorecard
 
 **Server:** `https://buildersinfintech.ai/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 31 · **Injection verdict:** `clear` · **Directory:** 31 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-16 · **Tools advertised:** 32 · **Injection verdict:** `clear` · **Directory:** 32 Claude Directory quality item(s) to polish (no hard rejects)
 
-Fintech companies, products, rounds, investors, news, Agent-Ready scores. Free, keyless, CC BY 4.0.
 
-When an agent connects Builders in Fintech, the model reads all 31 of its advertised tool definition(s)
+
+When an agent connects Builders in Fintech, the model reads all 32 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`buildersinfintech.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`buildersinfintech.ai`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on Builders in Fintech
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 31 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 31 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
-- **1 of 31 advertised tool(s) name a state-changing action** (`list_deploying_funds`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
+- **No tool-poisoning or prompt-injection patterns** were found across the 32 tool definition(s) this server advertises.
+- **Claude Connector Directory readiness: 32 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
+- **1 of 32 advertised tool(s) name a state-changing action** (`list_deploying_funds`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 31 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 32 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Builders in Fintech server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Builders in Fintech server advertises
 
 The server describes itself to connecting agents as: *Builders in Fintech — global fintech news and funding database by Michele Mattei. Read-only access to the Builders in Fintech database: fintech companies, investors, people, funding rounds, events and published articles, newsletter issues and podcast episodes…*
 
-These are the 31 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 32 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`search_funds`** — Venture funds (fintech, partly fintech or generalist) with their manager, status, stages, latest close and size or target. Amounts are as announced, in their own currency, never c… _(parameters: q, fintech_focus, stage, country, status, closed_after)_
 - **`list_fund_closes`** — Approved venture-fund closes, newest first: fund, manager, close_type (launch, target, first, interim, final, unspecified), date, amount and currency as announced, source. Amounts… _(parameters: since, until, close_type, fintech_focus, limit)_
@@ -54,6 +54,7 @@ These are the 31 tool definition(s) any agent reads before it acts — the exact
 - **`find_providers`** — Find companies by product category, licence (licensed_in matches the home country or any passported country), licence type, authority, and agent access (has_sandbox, has_mcp, has_… _(parameters: category, licensed_in, licence_type, authority, has_sandbox, has_mcp)_
 - **`list_provider_filters`** — Valid values for find_providers: product category slugs, licence type slugs, authority slugs, and the ISO codes of countries that have at least one public licence (home or passpor…
 - **`search_content`** — Full-text search across published news, newsletter issues, podcast episodes, public entity pages, funding rounds and products. Result kinds: news, newsletter, podcast, company, in… _(parameters: q, query, kinds, editorial_format, limit)_
+- **`get_latest_news`** — Our latest published news items, newest first. Each item has title, our own summary, published_at, source_name and source_url (we link to the original; no third-party article text… _(parameters: since, topic, country, story_type, limit)_
 - **`get_content`** — One published item by type and slug, with its body text (truncated), topics, countries, organizations and people. News items also include a corrections array (date + note), newest… _(parameters: content_type, slug)_
 - **`search_podcast_knowledge`** — Search attributed facts and question-and-answer pairs from Builders in Fintech podcast episodes (as stated by the guest, not independently verified). Arguments: q (or query) match… _(parameters: q, query, organization, person, fact_type, episode)_
 - **`list_events`** — Approved fintech events, upcoming by default, with optional country, format, topic and month filters. _(parameters: upcoming, country, format, topic, month, limit)_
@@ -103,4 +104,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `buildersinfintech.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
