@@ -1,57 +1,65 @@
 ---
 title: "Is the Pantheon MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Pantheon MCP server (https://mcp.pantheon.ad/mcp), run 2026-11-09: advertises list_projects, list_brand_voices, list_offer_briefs; 23 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Pantheon MCP server (https://mcp.pantheon.ad/mcp), run 2026-11-16: advertises list_projects, list_brand_voices, list_offer_briefs; 29 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Pantheon MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.pantheon.ad/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 23 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-16 · **Tools advertised:** 29 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Meta ads library, competitor ads, brand voice, avatars and offer briefs from your Pantheon account.
 
-When an agent connects Pantheon, the model reads all 23 of its advertised tool definition(s)
+When an agent connects Pantheon, the model reads all 29 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.pantheon.ad`, scanned 2026-11-09; the verdict below is `clear`.
+`mcp.pantheon.ad`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on Pantheon
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 23 tool definition(s) this server advertises.
+- **No tool-poisoning or prompt-injection patterns** were found across the 29 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: ready.** Every advertised tool satisfies the structural rules Anthropic's published review criteria check for (names, annotations, permission hints, no catch-all read+write tool, no unsupported capability).
-- **9 of 23 advertised tool(s) name a state-changing action** (`run_competitor_spy`, `run_inspiration_search`, `run_brand_campaign_analysis`, `run_ad_copilot`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
+- **10 of 29 advertised tool(s) name a state-changing action** (`run_competitor_spy`, `run_inspiration_search`, `run_brand_campaign_analysis`, `run_ad_copilot`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 23 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 29 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Pantheon server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Pantheon server advertises
 
-These are the 23 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+The server describes itself to connecting agents as: *Pantheon holds the user's Facebook and Instagram ad research. Start with list_projects, list_brand_voices and list_offer_briefs to get ids. To find ads use search_ads_library, get_competitor_active_ads or get_top_performing_ads; ad ids from them work with get…*
 
-- **`list_projects`** — List the user's strategic projects (Avatar analyses) with their ids.
-- **`list_brand_voices`** — List the user's Brand Voices (id, name).
-- **`list_offer_briefs`** — List the user's Offer Briefs (id, name).
-- **`list_analyzed_pages`** — List Facebook pages the user analyzed (competitor, inspiration or brand_campaigns), with status and ad counts. _(parameters: source)_
-- **`search_ads_library`** — Search the user's own Ads Library (ads collected by their searches) and this week's Top Ads by brand, niche, sector or copy. Returns ad ids usable with analyze_ad and run_ad_copil… _(parameters: query, limit)_
-- **`get_market_creators_data`** — Aggregated stats of the creators/competitors the user monitors. _(parameters: page_ids)_
-- **`get_top_performing_ads`** — Top performing (longest running) ads of the monitored creators. _(parameters: limit)_
-- **`get_active_ads_copy`** — Copy (body, caption, CTA) of currently active ads of the monitored creators. _(parameters: limit)_
-- **`get_saved_ads`** — The user's swipe file, optionally filtered by competitor name. _(parameters: category, competitor)_
-- **`get_strategic_avatar`** — Avatar research of a project (from list_projects): pain matrix, core wound, desire chain, objections, triggers, language and strategic synthesis. _(parameters: project_id)_
-- **`get_competitor_active_ads`** — Active ads of a competitor the user has analyzed with Competitor Spy. _(parameters: competitor_name)_
-- **`get_creative_analysis`** — Saved AI analysis of an ad (awareness, hooks, mechanism, triggers, landing page coherence), if analyze_ad was run on it. _(parameters: ad_id)_
-- **`get_job_status`** — Status and results of a background job started by an action tool. _(parameters: job_type, job_id)_
-- **`run_competitor_spy`** — Scrape and analyze all ads of a competitor's Facebook page (uses 1 Competitor Spy credit). Runs in background: poll get_job_status with the returned id. _(parameters: page_name, page_id, country, monitoring, report_language)_
-- **`run_inspiration_search`** — Scrape and analyze a page outside the user's niche for inspiration (uses 1 Inspiration Search credit). Runs in background: poll get_job_status with the returned id. _(parameters: page_name, page_id, country, report_language)_
-- **`run_brand_campaign_analysis`** — Scrape and analyze the user's own brand Meta campaigns page (uses 1 Brand Campaigns credit). Runs in background: poll get_job_status with the returned id. _(parameters: page_name, page_id, country, report_language)_
-- **`run_ad_copilot`** — Adapt a library ad into 3 copy variants for the user's Avatar, Offer Brief and Brand Voice (uses 1 Ad Copilot credit). Runs in background: poll get_job_status with the returned id. _(parameters: original_ad_id, avatar_id, offer_brief_id, brand_voice_id, language)_
-- **`analyze_ad`** — Ads Intelligence: full AI analysis of one ad (emotional levers, biases, landing page coherence). Uses 1 Ads Intelligence credit. Runs in background: poll get_job_status with the r… _(parameters: ad_id, language)_
-- **`run_persuasion_analysis`** — Persuasion analysis of an ad before launch: present and missing cognitive biases (uses 1 Persuasion Analysis credit). Runs in background: poll get_job_status with the returned id. _(parameters: ad_type, ad_text, ad_visual_description, media_url, project_id, landing_page_url)_
-- **`run_sales_psychology`** — Sales Psychology report for a project's Avatar + an Offer Brief (uses 1 Sales Psychology credit). Runs in background: poll get_job_status with the returned id. _(parameters: project_id, offer_brief_id, language)_
-- **`create_brand_voice`** — Create and save a Brand Voice from a public URL or a text (uses 1 Brand Voice credit, ~1 minute). _(parameters: name, source_type, content, language)_
-- **`create_offer_brief`** — Create and save an Offer Brief from a public sales page URL or a text (uses 1 Offer Brief credit, ~1 minute). _(parameters: name, source_type, content, language)_
-- **`run_magic_tool`** — Summarize, translate or extract contacts/links from a text (Magic Tools). Summaries and extractions are in the language of the text; translations go to 'language' (default Italian… _(parameters: mode, text, language)_
+These are the 29 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+
+- **`list_projects`** — List the user's Pantheon projects (customer avatar analyses). Call it first to get the project_id needed by get_strategic_avatar, run_sales_psychology and run_ad_copilot.
+- **`list_brand_voices`** — List the Brand Voices saved in the user's account. Use the ids with run_ad_copilot.
+- **`list_offer_briefs`** — List the Offer Briefs saved in the user's account. Use the ids with run_ad_copilot and run_sales_psychology.
+- **`list_analyzed_pages`** — List the Facebook pages the user analyzed in one section of Pantheon (competitors, inspiration or own brand campaigns), with analysis status and ad counts. Use it to find pages be… _(parameters: source)_
+- **`search_ads_library`** — Search the ads in the user's own Ads Library (ads collected by their searches) and this week's Top Ads by brand, niche, sector or ad copy. Returns ad ids usable with analyze_ad, g… _(parameters: query, limit)_
+- **`get_market_creators_data`** — Get summary statistics for the Facebook pages the user follows in Pantheon: total and active ads, audience, format mix and niche. Use it to compare how much and how each page adve… _(parameters: page_ids)_
+- **`get_top_performing_ads`** — Get the longest-running ads of the Facebook pages the user follows. An ad that keeps running for months is usually profitable, so these are the best examples to study. _(parameters: limit)_
+- **`get_active_ads_copy`** — Get the copy (body text, caption and call to action) of the ads currently running on the Facebook pages the user follows. Use it to study wording, hooks and offers. _(parameters: limit)_
+- **`get_saved_ads`** — Get up to 20 ads from the pages in the user's swipe file, optionally only those of one competitor. Includes media links and whether each ad is still running. _(parameters: category, competitor)_
+- **`get_strategic_avatar`** — Read the customer avatar research of a project: pain matrix, core wound, desire chain, objections, triggers, customer language and strategic synthesis. Use it before writing ads f… _(parameters: project_id)_
+- **`get_competitor_active_ads`** — Get up to 20 ads currently running for a competitor the user analyzed with Competitor Spy, found by page name. _(parameters: competitor_name)_
+- **`get_creative_analysis`** — Read the saved AI analysis of one ad (awareness level, hooks, mechanism, emotional triggers, landing page coherence). Only available after analyze_ad was run on that ad. _(parameters: ad_id)_
+- **`get_job_status`** — Check a background job started by an action tool and get its result when it is done. Call it again later while the status is running or pending. _(parameters: job_type, job_id)_
+- **`run_competitor_spy`** — Collect and analyze every ad of a competitor's Facebook page from the Meta Ad Library. Uses 1 Competitor Spy credit. Runs in the background: call get_job_status with the returned… _(parameters: page_name, page_id, country, monitoring, report_language)_
+- **`run_inspiration_search`** — Collect and analyze the ads of a Facebook page outside the user's niche, to borrow ideas from other markets. Uses 1 Inspiration Search credit. Runs in the background: call get_job… _(parameters: page_name, page_id, country, report_language)_
+- **`run_brand_campaign_analysis`** — Collect and analyze the ads of the user's own brand Facebook page. Uses 1 Brand Campaigns credit. Runs in the background: call get_job_status with the returned id to get the resul… _(parameters: page_name, page_id, country, report_language)_
+- **`run_ad_copilot`** — Rewrite an ad from the library into 3 copy variants for the user's audience, offer and brand voice. Uses 1 Ad Copilot credit. Runs in the background: call get_job_status with the… _(parameters: original_ad_id, avatar_id, offer_brief_id, brand_voice_id, language)_
+- **`analyze_ad`** — Run a full AI analysis of one ad: emotional levers, cognitive biases and landing page coherence. Uses 1 Ads Intelligence credit. Runs in the background: call get_job_status with t… _(parameters: ad_id, language)_
+- **`run_persuasion_analysis`** — Check a draft ad before launch: which persuasion biases it uses and which are missing, with suggestions. Uses 1 Persuasion Analysis credit. Runs in the background: call get_job_st… _(parameters: ad_type, ad_text, ad_visual_description, media_url, project_id, landing_page_url)_
+- **`run_sales_psychology`** — Write a sales psychology report that matches a project's customer avatar with an Offer Brief. Uses 1 Sales Psychology credit. Runs in the background: call get_job_status with the… _(parameters: project_id, offer_brief_id, language)_
+- **`create_brand_voice`** — Create and save a Brand Voice from a public web page or a text written by the user (about 1 minute). Uses 1 Brand Voice credit. _(parameters: name, source_type, content, language)_
+- **`create_offer_brief`** — Create and save an Offer Brief from a public sales page or a text describing the offer (about 1 minute). Uses 1 Offer Brief credit. _(parameters: name, source_type, content, language)_
+- **`run_magic_tool`** — Summarize or translate a text, or extract its contacts and links (Magic Tools). Summaries and extractions keep the language of the text; translations go to 'language' (default Ita… _(parameters: mode, text, language)_
+- **`list_followed_creators`** — Viral Content: the creators the user follows (platform, author_key, name, number of collected posts, last post date) and their follow limit.
+- **`get_followed_creators_contents`** — Viral Content: posts of the creators the user follows, newest first (24 per page). times_author_median is how many times the post beat the author's usual result. Filter by platfor… _(parameters: platform, author, offset)_
+- **`get_viral_content`** — Viral Content: one post (caption, metrics) with the user's saved analysis in that language, if any, and the vocabulary of persuasion mechanism codes to use in save_viral_analysis. _(parameters: content_id, lang)_
+- **`save_viral_analysis`** — Viral Content: save your 'why it works' analysis of a post (from get_viral_content) for the user, in one language. It appears in the app on that post, only for this user, and uses… _(parameters: content_id, lang, hook, structure, mechanisms, why_it_works)_
+- **`send_to_pantheon`** — Send a link to the user's Pantheon. Without a destination Pantheon picks it from the link: a TikTok, Instagram, YouTube or LinkedIn profile - followed in Viral Content My creators… _(parameters: url, destination, note)_
+- **`list_pantheon_inbox`** — Links the user sent to the Pantheon Whiteboard inbox and has not used yet (newest first).
 
 ## Maintenance & supply-chain — the risk Pantheon's static scan can't see
 
@@ -93,4 +101,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.pantheon.ad` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
