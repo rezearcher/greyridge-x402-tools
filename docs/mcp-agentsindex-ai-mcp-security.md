@@ -1,35 +1,35 @@
 ---
 title: "Is the AgentsIndex MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the AgentsIndex MCP server (https://agentsindex.ai/mcp), run 2026-11-09: advertises search_listings, get_listing, list_categories; 12 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AgentsIndex MCP server (https://agentsindex.ai/mcp), run 2026-11-16: advertises search_listings, get_listing, list_categories; 11 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # AgentsIndex MCP server — security & directory-readiness scorecard
 
 **Server:** `https://agentsindex.ai/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 12 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-16 · **Tools advertised:** 11 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 The editors' index of AI-native software, from AI agents to the models and frameworks behind them.
 
-When an agent connects AgentsIndex, the model reads all 12 of its advertised tool definition(s)
+When an agent connects AgentsIndex, the model reads all 11 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`agentsindex.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`agentsindex.ai`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on AgentsIndex
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 12 tool definition(s) this server advertises.
+- **No tool-poisoning or prompt-injection patterns** were found across the 11 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: ready.** Every advertised tool satisfies the structural rules Anthropic's published review criteria check for (names, annotations, permission hints, no catch-all read+write tool, no unsupported capability).
-- **2 of 12 advertised tool(s) name a state-changing action** (`send_lead`, `create_order`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
+- **2 of 11 advertised tool(s) name a state-changing action** (`send_lead`, `create_order`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 12 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 11 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the AgentsIndex server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the AgentsIndex server advertises
 
 The server describes itself to connecting agents as: *Read AgentsIndex's researched tools: search_listings to find, get_listing for the full answer-first markdown, list_categories for the taxonomy, compare_listings / get_best_of for decisions. All read tools are free and keyless; use is licensed, not uncondition…*
 
-These are the 12 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 11 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`search_listings`** — Full-text search over AgentsIndex's Published tools. Returns compact records (name, slug, tagline, url). Fetch depth with get_listing. _(parameters: query, limit)_
 - **`get_listing`** — One tool in full, as answer-first markdown: the summary, then every question on the sheet with its answer, the vendor's own words for it and the URL that proves it. Identical to /… _(parameters: slug)_
@@ -42,7 +42,6 @@ These are the 12 tool definition(s) any agent reads before it acts — the exact
 - **`get_quote`** — A signed price for one offer (from list_offers) on one listing, valid for a short time, and whether the listing can have it now. Only the account that owns the listing gets one: s… _(parameters: offer, listing)_
 - **`create_order`** — Turns a quote (from get_quote) into an order, payable for 24 hours. Same account as the quote: its session Cookie header, or its agent key as Authorization: Bearer (order scope).… _(parameters: quote_id, idempotency_key)_
 - **`my_listings`** — What the AgentsIndex owner dashboard shows about the listings an account owns: each one's status ('status.kind': review with the expected date, accepted with 'liveOn' and 'paid' (… _(parameters: slug)_
-- **`subscribe_newsletter`** — Subscribe an email to the AgentsIndex digest of new and freshly re-verified tools. Provide an email; returns { ok }. The address gets one mail with a link to confirm, and is on th… _(parameters: email, source)_
 
 ## Maintenance & supply-chain — the risk AgentsIndex's static scan can't see
 
@@ -84,4 +83,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `agentsindex.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
