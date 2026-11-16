@@ -1,18 +1,18 @@
 ---
 title: "Is the Third Hemisphere AI Authority Index MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Third Hemisphere AI Authority Index MCP server (https://thirdhemisphere.agency/mcp), run 2026-11-09: advertises list_index_editions, get_edition_results, get_company_authority_score; 12 tools scanned, injection verdict 'clear', 12 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Third Hemisphere AI Authority Index MCP server (https://thirdhemisphere.agency/mcp), run 2026-11-16: advertises list_index_editions, get_edition_results, get_company_authority_score; 12 tools scanned, injection verdict 'clear', 12 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Third Hemisphere AI Authority Index MCP server — security & directory-readiness scorecard
 
 **Server:** `https://thirdhemisphere.agency/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 12 · **Injection verdict:** `clear` · **Directory:** 12 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-16 · **Tools advertised:** 12 · **Injection verdict:** `clear` · **Directory:** 12 Claude Directory quality item(s) to polish (no hard rejects)
 
 Read-only CRISP scores and AI visibility data from Third Hemisphere's AI Authority Index.
 
 When an agent connects Third Hemisphere AI Authority Index, the model reads all 12 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`thirdhemisphere.agency`, scanned 2026-11-09; the verdict below is `clear`.
+`thirdhemisphere.agency`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on Third Hemisphere AI Authority Index
 
@@ -22,21 +22,21 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 12 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Third Hemisphere AI Authority Index server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Third Hemisphere AI Authority Index server advertises
 
-The server describes itself to connecting agents as: *Third Hemisphere AI Authority Index: published CRISP scores and AI visibility readings for companies in the markets Third Hemisphere's AI Authority Index measures. The Index tools are read-only. When you quote a score, give it exactly as returned, with its ma…*
+The server describes itself to connecting agents as: *Third Hemisphere AI Authority Index™: published CRISP™ scores and AI visibility readings for companies in the markets Third Hemisphere's AI Authority Index™ measures. The Index tools are read-only. When you quote a score, give it exactly as returned, with its…*
 
 These are the 12 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
-- **`list_index_editions`** — Every published edition of Third Hemisphere's AI Authority Index, with its markets (sections), publication date, DOI where recorded, and links to its page, results, and open data.…
-- **`get_edition_results`** — The published results of one AI Authority Index edition section: each company's Star Chart cell, CRISP score where it has one, the five factor readings the edition prints, and how… _(parameters: edition_slug, section, company)_
-- **`get_company_authority_score`** — A company's published CRISP score and AI visibility reading in each market the AI Authority Index measures it in, with the month measured and its Standing Report link. Accepts a c… _(parameters: company, market)_
-- **`get_company_score_history`** — Every dated reading the AI Authority Index has published for a company, oldest first: its rows in each edition and each market's Standing Report. Read-only. Every result carries i… _(parameters: company)_
-- **`search_companies`** — Find companies with a Standing Report in Third Hemisphere's AI Authority Index by name. Read-only. Every result carries its citation and link. _(parameters: query, limit)_
-- **`list_markets`** — Every market the AI Authority Index measures, with how many Standing Reports it has and when it was last measured. Read-only. Every result carries its citation and link.
+- **`list_index_editions`** — Every published edition of Third Hemisphere's AI Authority Index™, with its markets (sections), publication date, DOI where recorded, and links to its page, results, and open data…
+- **`get_edition_results`** — The published results of one AI Authority Index™ edition section: each company's Star Chart cell, CRISP™ score where it has one, the five factor readings the edition prints, and h… _(parameters: edition_slug, section, company)_
+- **`get_company_authority_score`** — A company's published CRISP™ score and AI visibility reading in each market the AI Authority Index™ measures it in, with the month measured and its Standing Report link. Accepts a… _(parameters: company, market)_
+- **`get_company_score_history`** — Every dated reading the AI Authority Index™ has published for a company, oldest first: its rows in each edition and each market's Standing Report. Read-only. Every result carries… _(parameters: company)_
+- **`search_companies`** — Find companies with a Standing Report in Third Hemisphere's AI Authority Index™ by name. Read-only. Every result carries its citation and link. _(parameters: query, limit)_
+- **`list_markets`** — Every market the AI Authority Index™ measures, with how many Standing Reports it has and when it was last measured. Read-only. Every result carries its citation and link.
 - **`get_market_standing`** — The companies in one market with a Standing Report, most named in AI answers first. Read-only. Every result carries its citation and link. _(parameters: market, limit)_
 - **`list_my_blueprints`** — The AI Authority Blueprints sent to the address this key belongs to. Needs a key on a plan that includes DIY Blueprint tools. DIY Blueprint tool: needs a key whose plan includes t…
 - **`get_my_blueprint_plan`** — Your Blueprint's ranked strategy plays and 90-day moves, each with an item_id, what to do, when, and how the next Blueprint measures it, with the status recorded for each. DIY Blu… _(parameters: blueprint_id)_
@@ -84,4 +84,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `thirdhemisphere.agency` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
