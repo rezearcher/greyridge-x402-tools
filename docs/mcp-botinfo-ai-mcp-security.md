@@ -1,18 +1,18 @@
 ---
 title: "Is the BotInfo — Advanced Robot Market Data MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the BotInfo — Advanced Robot Market Data MCP server (https://mcp.botinfo.ai/mcp), run 2026-11-09: advertises lookup_robot, check_us_legality, get_buy_route; 6 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the BotInfo — Advanced Robot Market Data MCP server (https://mcp.botinfo.ai/mcp), run 2026-11-16: advertises lookup_robot, check_us_legality, get_buy_route; 6 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # BotInfo — Advanced Robot Market Data MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.botinfo.ai/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 6 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-16 · **Tools advertised:** 6 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Checkout-verified prices, stock, US FCC status and buy routes for humanoid and quadruped robots.
 
 When an agent connects BotInfo — Advanced Robot Market Data, the model reads all 6 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.botinfo.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`mcp.botinfo.ai`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on BotInfo — Advanced Robot Market Data
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 6 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the BotInfo — Advanced Robot Market Data server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the BotInfo — Advanced Robot Market Data server advertises
@@ -76,4 +76,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.botinfo.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
