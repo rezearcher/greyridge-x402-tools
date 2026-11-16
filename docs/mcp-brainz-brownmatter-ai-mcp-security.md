@@ -1,35 +1,35 @@
 ---
 title: "Is the Brainz MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Brainz MCP server (https://brainz.brownmatter.ai/mcp), run 2026-11-09: advertises search_concepts, get_concept, get_related; 17 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Brainz MCP server (https://brainz.brownmatter.ai/mcp), run 2026-11-16: advertises search_concepts, get_concept, get_related; 18 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Brainz MCP server — security & directory-readiness scorecard
 
 **Server:** `https://brainz.brownmatter.ai/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 17 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-16 · **Tools advertised:** 18 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
-Shared product-knowledge graph for AI agent fleets — vault tools + agent self-signup over MCP.
 
-When an agent connects Brainz, the model reads all 17 of its advertised tool definition(s)
+
+When an agent connects Brainz, the model reads all 18 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`brainz.brownmatter.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`brainz.brownmatter.ai`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on Brainz
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 17 tool definition(s) this server advertises.
+- **No tool-poisoning or prompt-injection patterns** were found across the 18 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: ready.** Every advertised tool satisfies the structural rules Anthropic's published review criteria check for (names, annotations, permission hints, no catch-all read+write tool, no unsupported capability).
-- **3 of 17 advertised tool(s) name a state-changing action** (`delete_concept`, `create_task`, `create_vault`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
+- **3 of 18 advertised tool(s) name a state-changing action** (`delete_concept`, `create_task`, `create_vault`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 17 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 18 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Brainz server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Brainz server advertises
 
 The server describes itself to connecting agents as: *# Brainz — shared product knowledge graph This server is one Brainz vault: a product's features, specs, decisions, constraints and tasks, stored as linked markdown concepts. - 'search_concepts', 'list_concepts', 'get_concept' and 'get_related' find and read c…*
 
-These are the 17 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 18 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`search_concepts`** — Search the product knowledge vault by free-text query. Useful when you need product knowledge but don't yet know which concept ids exist. Returns ranked hits (id, title, type, sco… _(parameters: query, mode, product, tags, type, limit)_
 - **`get_concept`** — Fetch one concept by exact id: full markdown body, metadata, and its direct graph neighbors (each with the relation that connects it). Use after search_concepts or when another no… _(parameters: id)_
@@ -44,9 +44,10 @@ These are the 17 tool definition(s) any agent reads before it acts — the exact
 - **`sync`** — Re-index an onboarded vault after the code changes (drift). {action: "start"} returns the sync playbook: the vault's last_synced_at, a coverage map over the concepts' code_areas,… _(parameters: action, productName, summary, areaList, changedPaths)_
 - **`dream`** — Dreaming: a scheduled consolidation sweep over this vault. Light stages what changed since the last dream (near-duplicate concepts, finished task outcomes, hygiene counts); REM as… _(parameters: action, id, proposals, limit, enabled, cadenceHours)_
 - **`list_tasks`** — List the vault's work pile: 'task'-type concepts with their lifecycle (open/taken/done), oldest first, including who has taken each one (takenBy). Filter by taskStatus or by the d… _(parameters: taskStatus, domain)_
+- **`burndown`** — Burndown and flow metrics for the vault's tasks, computed from their recorded history. 'scope' is a concept id (an iteration, milestone, feature, domain or any concept tasks are p… _(parameters: scope, from, to, bucket, unit, staleAfterHours)_
 - **`take_task`** — Claim a task and get its briefing in one call. Pass an 'id' to claim a specific task, or omit it to claim the next open task (oldest open by createdAt then id). Atomically flips t… _(parameters: id, takenBy)_
 - **`complete_task`** — Mark a task done. Sets taskStatus=done + doneAt and appends 'outcome' to the task body as an Outcome section. The result carries a one-line 'reminder' that the rest of the graph i… _(parameters: id, outcome)_
-- **`create_task`** — Turn a finding into first-class work: creates a 'task'-type concept with taskStatus=open and the given relations — part_of a domain, 'realizes' stories/features, 'governed_by' spe… _(parameters: title, body, domain, realizes, governedBy, codeAreas)_
+- **`create_task`** — Turn a finding into first-class work: creates a 'task'-type concept with taskStatus=open and the given relations — part_of a domain and/or an epic, 'realizes' stories/features, 'g… _(parameters: title, body, domain, epic, realizes, governedBy)_
 - **`create_vault`** — Create a new, empty vault owned by you and add it to this connection. Returns the new vault and the vaults this connection can now use. Once a connection covers more than one vaul… _(parameters: name, slug)_
 
 ## Maintenance & supply-chain — the risk Brainz's static scan can't see
@@ -89,4 +90,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `brainz.brownmatter.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
