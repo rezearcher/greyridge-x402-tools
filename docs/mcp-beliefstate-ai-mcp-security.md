@@ -1,18 +1,18 @@
 ---
 title: "Is the BeliefState MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the BeliefState MCP server (https://beliefstate.ai/v1/research/mcp), run 2026-11-09: advertises get_brief, get_case, get_cases; 23 tools scanned, injection verdict 'clear', 21 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the BeliefState MCP server (https://beliefstate.ai/v1/research/mcp), run 2026-11-16: advertises get_brief, get_case, get_cases; 23 tools scanned, injection verdict 'clear', 21 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # BeliefState MCP server — security & directory-readiness scorecard
 
 **Server:** `https://beliefstate.ai/v1/research/mcp`
-**Scanned:** 2026-11-09 · **Tools advertised:** 23 · **Injection verdict:** `clear` · **Directory:** 21 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-16 · **Tools advertised:** 23 · **Injection verdict:** `clear` · **Directory:** 21 Claude Directory quality item(s) to polish (no hard rejects)
 
-25 account tools; 23 wallet tools (20 paid). Cited research, company facts, KPIs and guidance.
+26 account tools; 23 wallet tools (20 paid). Free company snapshots and cited research.
 
 When an agent connects BeliefState, the model reads all 23 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`beliefstate.ai`, scanned 2026-11-09; the verdict below is `clear`.
+`beliefstate.ai`, scanned 2026-11-16; the verdict below is `clear`.
 
 ## What the scan found on BeliefState
 
@@ -22,20 +22,22 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 23 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the BeliefState server
-on 2026-11-09; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the BeliefState server advertises
 
+The server describes itself to connecting agents as: *The free catalog at https://beliefstate.ai/v1/research lists every current paid operation, exact price, input/output contract, compatibility route and free discovery option. An unsigned call returns a quote for the exact request.*
+
 These are the 23 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
-- **`get_brief`** — Retrieves a cited research brief for a company, ETF or research subject, including investor theses, risks, catalysts, changes and available market context. Use overview for ordina… _(parameters: ticker, refresh_market_data, as_of, max_results, detail, entity_id)_
+- **`get_brief`** — Read a cited research brief for a covered U.S. ticker, ETF or released subject. Overview, current and full views support dated research and historical cutoffs. An explicit refresh… _(parameters: ticker, refresh_market_data, as_of, max_results, detail, entity_id)_
 - **`get_case`** — Retrieves one complete investment case by returned belief_id: investor, reasoning, evidence, risks, catalysts, conditions, revisions, outcomes, provenance and coverage gaps. Usefu… _(parameters: belief_id, as_of, paragraph_index, support_index, support_text_offset, scenario)_
 - **`get_cases`** — Retrieves dated investment cases for one company or research subject, with optional investor, direction and time filters. Returns attributed thesis records, case IDs, dates, citat… _(parameters: ticker, entity_id, person_id, direction, status, time_horizon)_
 - **`get_catalysts`** — Retrieves evidence-linked catalysts for one company, research subject, investment case or the explicitly selected released corpus. Returns recorded conditions, lifecycle status, d… _(parameters: ticker, entity_id, belief_id, corpus, person_id, source_id)_
 - **`get_changes`** — Retrieves the ordered research change journal for a company, subject, case or explicitly selected released corpus. Returns dated events, citations and available before/after value… _(parameters: person_id, source_id, domain, event_kind, revision_only, ticker)_
-- **`get_companies`** — Retrieves matching SEC-registered US companies by ticker or company name. Returns matching companies and their direct BeliefState research availability. Useful for resolving a com… _(parameters: q)_
-- **`get_company_facts`** — Retrieves retained financial facts, company references, segment metrics, operating KPIs and management guidance for one ticker. Select record_type; use fiscal_year/fiscal_quarter… _(parameters: cursor, ticker, as_of, snapshot_id, snapshot_hash, filters_sha256)_
+- **`get_companies`** — Find SEC-registered U.S. companies and selected verified international listings by symbol or name. Search by market, sector or exchange-qualified symbol, such as Indian banks, Can… _(parameters: q)_
+- **`get_company_facts`** — Returns retained financial facts, company references, segment metrics, operating KPIs, management guidance and site milestones for one ticker. Use record_type=site_milestone for c… _(parameters: cursor, ticker, as_of, snapshot_id, snapshot_hash, filters_sha256)_
 - **`get_comparison`** — Retrieves a cited engine comparison of two distinct investment cases using their returned belief_id and compare_to_belief_id. Returns a cited engine assessment of support, contrad… _(parameters: belief_id, compare_to_belief_id, comparison_focus, as_of)_
 - **`get_context_assessment`** — Retrieves a dated engine context assessment by its returned assessment identifier, including permitted supporting evidence and coverage limitations. Useful for examining the issue… _(parameters: context_assessment_id, as_of)_
 - **`get_economic_calendar`** — Retrieves retained US economic events in one ticker research scope. Filter by event text, region, scheduled/reported/unconfirmed state and scheduled-date bounds. Returns typed act… _(parameters: cursor, ticker, as_of, snapshot_id, snapshot_hash, filters_sha256)_
@@ -44,7 +46,7 @@ These are the 23 tool definition(s) any agent reads before it acts — the exact
 - **`get_investor_outcomes`** — Retrieves an investor's stored publication-based outcomes for one company, research subject, investment case or the explicitly selected released corpus. Returns action, entry-pric… _(parameters: ticker, entity_id, belief_id, corpus, person_id, source_id)_
 - **`get_macro_context`** — Retrieves retained government macroeconomic observations in one ticker research scope. Filter by native series_ids, agency, measurement_names and period dates; returns typed value… _(parameters: cursor, ticker, as_of, snapshot_id, snapshot_hash, filters_sha256)_
 - **`get_market_returns`** — Retrieves supported split-adjusted close-price returns for one ticker versus SPY. Request session_intervals from 1 to 252; date bounds select return end sessions, while an omitted… _(parameters: cursor, ticker, as_of, snapshot_id, snapshot_hash, filters_sha256)_
-- **`get_news`** — Retrieves recent SEC filing metadata for one verified ticker: forms, filing and acceptance dates, official SEC links and the last observation time. Useful for checking company dis… _(parameters: ticker, limit)_
+- **`get_news`** — Check recent SEC filings for one verified ticker. Set include_earnings to also read issuer-announced earnings schedules when available. Free without an account or wallet. _(parameters: ticker, limit, include_earnings)_
 - **`get_options_activity`** — Retrieves retained options bars, flow aggregates and open interest for one ticker. Select activity_type, call/put right, expiration, strike and observation-date filters; returns t… _(parameters: cursor, ticker, as_of, snapshot_id, snapshot_hash, filters_sha256)_
 - **`get_risks`** — Retrieves evidence-linked risks for one company, research subject, investment case or the explicitly selected released corpus. Returns recorded severity, lifecycle status, support… _(parameters: ticker, entity_id, belief_id, corpus, person_id, source_id)_
 - **`get_search_results`** — Retrieves ranked published investment cases matching thesis, investment theme or trade setup, with an optional company or subject filter. Returns ranked matching passages, attribu… _(parameters: q, ticker, entity_id, person_id, direction, status)_
@@ -57,7 +59,7 @@ These are the 23 tool definition(s) any agent reads before it acts — the exact
 
 A prompt-injection scan reads BeliefState's advertised tool metadata at one moment. It cannot tell you the project behind `beliefstate.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
 
-- **Maintenance grade `A`** — last commit pushed 0 day(s) ago, 1 open issue(s).
+- **Maintenance grade `A`** — last commit pushed 1 day(s) ago, 1 open issue(s).
 - **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
 
 A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `beliefstate.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
@@ -93,4 +95,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `beliefstate.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-09; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
