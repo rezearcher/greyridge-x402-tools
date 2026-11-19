@@ -9,15 +9,15 @@ measures the contract's sell simulation, transfer fee, mint / pause / blacklist 
 ownership and Uniswap liquidity, then returns a GO / HOLD / BLOCK verdict you can re-run yourself
 with no account.
 
-Updated 2026-11-18.
+Updated 2026-11-19.
 
 - [AERO (Aerodrome)](token-aero-940181-honeypot-check.html) — GO
 - [cbBTC (Coinbase Wrapped BTC)](token-cbbtc-cbb7c0-honeypot-check.html) — GO
 - [DEGEN (Degen)](token-degen-4ed4e8-honeypot-check.html) — GO
-- [DRB (DebtReliefBot)](token-drb-3ec215-honeypot-check.html) — GO
 - [NVDAc (NVIDIA Corporation)](token-nvdac-b20000-honeypot-check.html) — HOLD
-- [PROS (Wrapped PROS)](token-pros-8b7dde-honeypot-check.html) — HOLD
 - [USDC (USD Coin)](token-usdc-833589-honeypot-check.html) — GO
+- [VELVET (Velvet)](token-velvet-bf927b-honeypot-check.html) — HOLD
+- [VVV (Venice Token)](token-vvv-acfe60-honeypot-check.html) — GO
 - [WETH (Wrapped Ether)](token-weth-420000-honeypot-check.html) — GO
 
 Check any other Base token free: `curl "https://x402-data-api.sigrunner.workers.dev/chain/token-report/preview?token=0xYourToken"` —
