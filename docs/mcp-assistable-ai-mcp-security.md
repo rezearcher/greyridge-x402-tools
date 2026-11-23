@@ -1,18 +1,18 @@
 ---
 title: "Is the Assistable MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Assistable MCP server (https://api.assistable.ai/mcp), run 2026-11-16: advertises search_tools, assistants_list, assistants_get; 16 tools scanned, injection verdict 'clear', 2 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Assistable MCP server (https://api.assistable.ai/mcp), run 2026-11-23: advertises search_tools, assistants_list, assistants_get; 16 tools scanned, injection verdict 'clear', 2 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
 ---
 # Assistable MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.assistable.ai/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 16 · **Injection verdict:** `clear` · **Directory:** 2 likely Claude Directory reject(s)
+**Scanned:** 2026-11-23 · **Tools advertised:** 16 · **Injection verdict:** `clear` · **Directory:** 2 likely Claude Directory reject(s)
 
 Give any AI agent a phone: make and answer calls, get through phone menus, and send texts.
 
 When an agent connects Assistable, the model reads all 16 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.assistable.ai`, scanned 2026-11-16; the verdict below is `clear`.
+`api.assistable.ai`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on Assistable
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 16 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Assistable server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Assistable server advertises
@@ -34,8 +34,8 @@ These are the 16 tool definition(s) any agent reads before it acts — the exact
 - **`search_tools`** — Search Assistable's registered MCP tools by the task the user wants to do. Returns up to 5 exact tool definitions with JSON input schemas and annotations. Use this first when you… _(parameters: query, limit)_
 - **`assistants_list`** — List assistants in a subaccount (excludes archived by default). Note: voice_settings and platform_tools are returned only by assistants_get, not in the list. _(parameters: subAccountId, limit, cursor, includeArchived)_
 - **`assistants_get`** — Fetch an assistant's full configuration by ID. The response includes voice_settings (greeting mode, opening messages, voicemail) and platform_tools (attached platform-catalog tool… _(parameters: assistantId)_
-- **`assistants_create`** — Create an assistant. Required: subAccountId, name. Optional config blocks (llmConfig, voiceConfig, chatConfig) mirror the dashboard create dialog. voice_settings configures call g… _(parameters: subAccountId, name, description, assistantType, voiceId, llmConfig)_
-- **`assistants_update`** — Patch an assistant. Only supplied fields change; nested config blocks are upserted. voice_settings updates call greeting mode, opening messages, and voicemail behavior; platform_t… _(parameters: assistantId, name, description, voiceId, llmConfig, voiceConfig)_
+- **`assistants_create`** — Create an assistant. Required: name and a subaccount selected by subAccountId, subaccount_id, location_id, or the request header/key scope (an explicit selector on the call takes… _(parameters: name, description, prompt, model, temperature, voice_id)_
+- **`assistants_update`** — Patch an assistant. Only supplied fields change, including individual llmConfig prompt/model/temperature keys; temperature must be 0–2. Flat v3 fields and the voiceId/assistantTyp… _(parameters: name, description, prompt, model, temperature, voice_id)_
 - **`assistants_archive`** — Archive (soft-delete) an assistant. _(parameters: assistantId)_
 - **`tools_list`** — List tools visible to a subaccount. Pass includePrebuilt=false for only custom tools. _(parameters: subAccountId, search, includePrebuilt, limit, cursor)_
 - **`tools_get`** — Fetch a tool's full configuration. _(parameters: toolId)_
@@ -88,4 +88,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.assistable.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
