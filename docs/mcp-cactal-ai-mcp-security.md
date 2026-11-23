@@ -1,35 +1,35 @@
 ---
 title: "Is the Cactal MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Cactal MCP server (https://api.cactal.ai/v1/mcp), run 2026-11-16: advertises feedback_submit, websites_list, websites_get; 84 tools scanned, injection verdict 'clear', 1 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Cactal MCP server (https://api.cactal.ai/v1/mcp), run 2026-11-23: advertises feedback_submit, websites_list, websites_get; 87 tools scanned, injection verdict 'clear', 1 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
 ---
 # Cactal MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.cactal.ai/v1/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 84 · **Injection verdict:** `clear` · **Directory:** 1 likely Claude Directory reject(s)
+**Scanned:** 2026-11-23 · **Tools advertised:** 87 · **Injection verdict:** `clear` · **Directory:** 1 likely Claude Directory reject(s)
 
 
 
-When an agent connects Cactal, the model reads all 84 of its advertised tool definition(s)
+When an agent connects Cactal, the model reads all 87 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.cactal.ai`, scanned 2026-11-16; the verdict below is `clear`.
+`api.cactal.ai`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on Cactal
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 84 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 1 likely reject(s).** This server advertises 1 tool definition(s) that would likely fail Anthropic's structural review criteria (plus 84 quality item(s) to polish). The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
-- **39 of 84 advertised tool(s) name a state-changing action** (`websites_create`, `websitedomains_createcustomdomain`, `websitedomains_setprimarydomain`, `websitedomains_removecustomdomain`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
+- **No tool-poisoning or prompt-injection patterns** were found across the 87 tool definition(s) this server advertises.
+- **Claude Connector Directory readiness: 1 likely reject(s).** This server advertises 1 tool definition(s) that would likely fail Anthropic's structural review criteria (plus 87 quality item(s) to polish). The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
+- **41 of 87 advertised tool(s) name a state-changing action** (`websites_create`, `websitedomains_createcustomdomain`, `websitedomains_setprimarydomain`, `websitedomains_removecustomdomain`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 84 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 87 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Cactal server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Cactal server advertises
 
 The server describes itself to connecting agents as: *Cactal builds and runs production websites: React + Tailwind source, CMS content, assets, forms, domains, analytics, and publishing. Before working on something, read the matching guide with skills_read. profile_get names the organizations and websites you ca…*
 
-These are the 84 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 87 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`feedback_submit`** — Adds user-requested free-form feedback to the Cactal product-feedback inbox. Describe what happened and what would have made the experience better. Agents must set 'authorKind' to… _(parameters: authorKind, feedback)_
 - **`websites_list`** — Lists accessible websites. By default returns active websites: use 'organizationId' to scope one organization, 'scope=shared' without it for direct grants outside your memberships… _(parameters: organizationId, cursor, limit, sort, search, scope)_
@@ -57,6 +57,9 @@ These are the 84 tool definition(s) any agent reads before it acts — the exact
 - **`websiteKnowledge_search`** — Find evidence across selected project context documents. Batch independent queries; use passages directly when sufficient. Results merge overlapping text and include source ranges… _(parameters: websiteId, resourceIds, queries, contextLines, maxCharacters)_
 - **`websiteKnowledge_view`** — Returns one private PNG, JPEG, or WebP context resource. _(parameters: resourceId)_
 - **`websiteFavicons_set`** — Sets the website’s current favicon to a ready PNG, SVG, or ICO image from the same website asset library. Send 'assetId: null' to clear it. The change applies immediately to every… _(parameters: websiteId, assetId)_
+- **`websiteShareLinks_list`** — Lists the website’s share links: paths such as '/menu.pdf' that open one of its images or files. Give people each 'url', not the file’s CDN delivery URL. _(parameters: websiteId)_
+- **`websiteShareLinks_set`** — Points a path on the website, such as '/menu.pdf', at a ready image or file in its asset library. A file has one link: a new path moves it, and setting a linked path to another fi… _(parameters: websiteId, path, assetId)_
+- **`websiteShareLinks_remove`** — Removes the file’s share link, if it has one. The path stops opening the file immediately on every site host. _(parameters: websiteId, assetId)_
 - **`websiteSourceCode_summary_get`** — Returns 'headVersion', 'publishedVersion', and whether the website has unpublished source changes. _(parameters: websiteId)_
 - **`websiteSourceCode_files_list`** — Lists file identities, sizes, and line counts without contents, sorted by type then name with cursor pagination (default 20, maximum 100). Filter by name with 'nameGlob'. Defaults… _(parameters: websiteId, target, version, nameGlob, cursor, limit)_
 - **`websiteSourceCode_files_read`** — Reads up to 50 files by name from head, published, or an explicit version. A single-file read supports line and character ranges; continue truncated reads with 'nextStartCharacter… _(parameters: websiteId, target, version, names, startLine, endLine)_
@@ -105,7 +108,7 @@ These are the 84 tool definition(s) any agent reads before it acts — the exact
 - **`websiteForms_recipients_resend`** — Issues a fresh confirmation link to a pending, failing, or stopped address. _(parameters: websiteId, recipientId)_
 - **`docs_search`** — Search the Cactal product documentation: concepts, guides, agent workflows, platform limits, and the API reference. Returns matching Markdown excerpts with page paths; read a full… _(parameters: query)_
 - **`docs_read`** — Read one Cactal documentation page as Markdown. Pass a page path from docs search results, for example "concepts/publishing" or "agents/agent-safe-publishing". Pass "llms.txt" for… _(parameters: path)_
-- **`skills_read`** — Read the matching Cactal skill before acting: source-editing-workflow before source edits, design-direction for design, copywriting for words. Required skills are included. - anal… _(parameters: skillId)_
+- **`skills_read`** — Read the matching Cactal skill before acting: source-editing-workflow before source edits, design-direction for design, copywriting for words. Required skills are included. - acce… _(parameters: skillId)_
 - **`profile_get`** — Returns who this credential acts for (a stable 'id', plus 'name' and 'email' for a person) and the organizations it can work in. An organization lists 'websites' only when access…
 - **`webResearch_screenshot`** — Renders an external public page in a real browser and returns the image, to study a reference site or the user's existing site: its layout, hierarchy, density, and feel. Consent b… _(parameters: websiteId, url, viewport, selector, padding, clip)_
 - **`webResearch_probe`** — Renders a public page in a browser and runs measurement presets or a custom script in it, for the exact colors, type, spacing, radii, shadows, font files, images, and head metadat… _(parameters: url, presets, script, websiteId)_
@@ -156,4 +159,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.cactal.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
