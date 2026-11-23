@@ -1,18 +1,18 @@
 ---
 title: "Is the app-emailwarmup.bobwork.ai MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the app-emailwarmup.bobwork.ai MCP server (https://app-emailwarmup.bobwork.ai/mcp), run 2026-11-16: advertises get_account, list_mailboxes, get_mailbox; 46 tools scanned, injection verdict 'clear', 46 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the app-emailwarmup.bobwork.ai MCP server (https://app-emailwarmup.bobwork.ai/mcp), run 2026-11-23: advertises get_account, list_mailboxes, get_mailbox; 46 tools scanned, injection verdict 'clear', 46 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # app-emailwarmup.bobwork.ai MCP server — security & directory-readiness scorecard
 
 **Server:** `https://app-emailwarmup.bobwork.ai/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 46 · **Injection verdict:** `clear` · **Directory:** 46 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-23 · **Tools advertised:** 46 · **Injection verdict:** `clear` · **Directory:** 46 Claude Directory quality item(s) to polish (no hard rejects)
 
 Warm up mailboxes, check the ready-for-outbound gate, run cold email and get checkout links.
 
 When an agent connects app-emailwarmup.bobwork.ai, the model reads all 46 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`app-emailwarmup.bobwork.ai`, scanned 2026-11-16; the verdict below is `clear`.
+`app-emailwarmup.bobwork.ai`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on app-emailwarmup.bobwork.ai
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 46 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the app-emailwarmup.bobwork.ai server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the app-emailwarmup.bobwork.ai server advertises
@@ -82,7 +82,7 @@ These are the 46 tool definition(s) any agent reads before it acts — the exact
 
 A prompt-injection scan reads app-emailwarmup.bobwork.ai's advertised tool metadata at one moment. It cannot tell you the project behind `app-emailwarmup.bobwork.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
 
-- **Maintenance grade `A`** — last commit pushed 14 day(s) ago, 0 open issue(s).
+- **Maintenance grade `A`** — last commit pushed 21 day(s) ago, 0 open issue(s).
 - **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
 
 A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `app-emailwarmup.bobwork.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
@@ -118,4 +118,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `app-emailwarmup.bobwork.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
