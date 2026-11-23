@@ -1,18 +1,18 @@
 ---
 title: "Is the Mizan MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Mizan MCP server (https://mizan.ac/mcp), run 2026-11-16: advertises lookup_player, check_players, list_sources; 5 tools scanned, injection verdict 'clear', 5 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Mizan MCP server (https://mizan.ac/mcp), run 2026-11-23: advertises lookup_player, check_players, list_sources; 5 tools scanned, injection verdict 'clear', 5 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Mizan MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mizan.ac/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 5 · **Injection verdict:** `clear` · **Directory:** 5 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-23 · **Tools advertised:** 5 · **Injection verdict:** `clear` · **Directory:** 5 Claude Directory quality item(s) to polish (no hard rejects)
 
 Player ban records from 560+ game community ban lists, with Steam's own bans. Reads need no key.
 
 When an agent connects Mizan, the model reads all 5 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mizan.ac`, scanned 2026-11-16; the verdict below is `clear`.
+`mizan.ac`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on Mizan
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 5 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Mizan server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Mizan server advertises
@@ -77,4 +77,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mizan.ac` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
