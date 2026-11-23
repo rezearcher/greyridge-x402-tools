@@ -1,35 +1,35 @@
 ---
 title: "Is the BetSlip Doctor MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the BetSlip Doctor MCP server (https://api.betslipdoctor.ai/api/mcp), run 2026-11-16: advertises get_game_file, get_tracked_slips, track_slip; 100 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the BetSlip Doctor MCP server (https://api.betslipdoctor.ai/api/mcp), run 2026-11-23: advertises get_game_file, get_tracked_slips, track_slip; 106 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # BetSlip Doctor MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.betslipdoctor.ai/api/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 100 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-23 · **Tools advertised:** 106 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Your agent grades every slip A+ to F-, links your books and tracks your record. No wager placement.
 
-When an agent connects BetSlip Doctor, the model reads all 100 of its advertised tool definition(s)
+When an agent connects BetSlip Doctor, the model reads all 106 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.betslipdoctor.ai`, scanned 2026-11-16; the verdict below is `clear`.
+`api.betslipdoctor.ai`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on BetSlip Doctor
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 100 tool definition(s) this server advertises.
+- **No tool-poisoning or prompt-injection patterns** were found across the 106 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: ready.** Every advertised tool satisfies the structural rules Anthropic's published review criteria check for (names, annotations, permission hints, no catch-all read+write tool, no unsupported capability).
-- **23 of 100 advertised tool(s) name a state-changing action** (`tail_post`, `cancel_grade`, `send_doctor_with_slip`, `cancel_doctor_send`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
+- **23 of 106 advertised tool(s) name a state-changing action** (`tail_post`, `cancel_grade`, `send_doctor_with_slip`, `cancel_doctor_send`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 100 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 106 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the BetSlip Doctor server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the BetSlip Doctor server advertises
 
 The server describes itself to connecting agents as: *You're bringing the Doctor into this conversation. Here's who he is. The Doctor is a real gambler who runs the room: receipts, losses and humor. He's against liars and hidden records, and on the bettor's side. Talk like a text: short, plain, direct. Lead with…*
 
-These are the 100 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 106 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`get_game_file`** — Read the shared game file by event key, or by league and team for the next game on the slate.
 - **`get_tracked_slips`** — Read the authenticated account's saved-ticket library: the same list the app shows (GET tickets), newest first, with optional search, limit 1-20 and cursor. Provider placement ids… _(parameters: limit, view, search, cursor, ticketId)_
@@ -109,6 +109,11 @@ These are the 100 tool definition(s) any agent reads before it acts — the exac
 - **`history_actions`** — Write this account's History as the app does. Record a bet only when the customer says they placed it. report_advice_response: POST history/advice/response {reportId, reportDigest… _(parameters: action, commandKey, body)_
 - **`ticket_actions`** — Ticket actions the app has, on its own routes. Saving stores the slip only; nothing is placed. save_live: POST tickets/live the app Live slip body (selections at the prices shown)… _(parameters: action, commandKey, body, statedPrices)_
 - **`read_pasted_slip`** — Text the customer pasted (a book's slip, a chat or note list, Rocky's "Game 1: ... / Player — 8+ Rebounds (-225)" format) read exactly as the app's Grade › Paste reads it: legs wi… _(parameters: text)_
+- **`get_desk`** — v1.5 Kalshi: a Kalshi pick’s link opens Kalshi’s board for the game (linkKind "game") and linkMarket names the one Kalshi market that is the bet and the side to buy: {ticker, side… _(parameters: placed, total)_
+- **`get_desk_report`** — The full Grade report behind one Desk pick’s letter (GET desk/report), the same report the app opens from the pick: {version, pickId, grade {letter, score, jobId}, report}. Use a… _(parameters: pickId)_
+- **`get_desk_arbitrage`** — The Desk’s open sure-win pairs (GET desk/arbitrage): two bets on the two sides of the same bet at the same line at two different books whose prices together pay more than was stak… _(parameters: total)_
+- **`get_desk_expired`** — Desk picks that left the Queue because their edge is gone (expiredWhy "edge") or because their Grade came back D or F (expiredWhy "grade"), shown until their game starts (GET desk…
+- **`get_desk_evidence`** — One Desk pick’s number and the evidence that moved its Grade (GET desk/evidence): {pickId, label, book, oddsAmerican, fairPct (the Desk’s one fair chance for the bet), edgePct, gr… _(parameters: pickId)_
 - **`get_betting_leaks`** — Read deterministic patterns from this account’s settled betting history, with coverage, sample sizes, thresholds and source ticket IDs. _(parameters: range, limit)_
 - **`list_api_keys`** — List your active personal BetSlip Doctor API keys (name, display prefix, scopes, created, last used). Secrets are never returned.
 - **`create_api_key`** — After the customer asks to create a personal API key, send its name and requested scopes. The scopes must be a subset of this connection’s scopes. A valid call creates the key imm… _(parameters: name, scopes)_
@@ -130,13 +135,14 @@ These are the 100 tool definition(s) any agent reads before it acts — the exac
 - **`scan_slip`** — After the customer asks to scan a betslip, read the screenshot as the app’s Scan does and save it ready to grade. Send ONE image (imageBase64 PNG/JPEG with optional mimeType, an h… _(parameters: commandKey, imageBase64, mimeType, imageUrl, image, jobId)_
 - **`look_up_fact`** — Use the jobId of a Doctor consult already started after the customer accepted its quote. Send a planned fact, public subject names, league, date, timezone and optional eventId. Wh… _(parameters: fact, subject, league, eventId, date, timezone)_
 - **`get_player_research`** — Research a player and his prop the way the Doctor does: his last 5 and last 10 games against his season average and tonight’s line (overs, unders and average margin, hot/cold/stea… _(parameters: league, player, team, opponent, playerId, teamId)_
+- **`get_oddstrader_reading`** — OddsTrader’s own published numbers for one NBA, NFL or NHL game or over/under player prop, labelled as OddsTrader’s (not BSD’s): for a game, its predicted final score (total and h… _(parameters: league, team, opponent, player, market, gameMarket)_
 - **`fix_grade_leg`** — The app’s Fix it on an owned saved Grade jobId whose get_grade_report says fixable.offered: the Doctor reprices, swaps or drops weak legs at the slip’s own sportsbook and returns… _(parameters: jobId, commandKey, ticketDigest, target, action, fixId)_
 
 ## Maintenance & supply-chain — the risk BetSlip Doctor's static scan can't see
 
 A prompt-injection scan reads BetSlip Doctor's advertised tool metadata at one moment. It cannot tell you the project behind `api.betslipdoctor.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
 
-- **Maintenance grade `B`** — last commit pushed 37 day(s) ago, 1 open issue(s).
+- **Maintenance grade `B`** — last commit pushed 44 day(s) ago, 1 open issue(s).
 - **Supply chain: not measurable** — this server declares no published package to trace upstream advisories against.
 
 A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `api.betslipdoctor.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
@@ -172,4 +178,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.betslipdoctor.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
