@@ -1,35 +1,35 @@
 ---
 title: "Is the APEX Runner Crypto Signals MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the APEX Runner Crypto Signals MCP server (https://apexrunner.ai/mcp), run 2026-11-16: advertises get_free_market_snapshot, apex_alpha_score, grid_health_score; 50 tools scanned, injection verdict 'clear', 100 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the APEX Runner Crypto Signals MCP server (https://apexrunner.ai/mcp), run 2026-11-23: advertises get_free_market_snapshot, apex_alpha_score, grid_health_score; 52 tools scanned, injection verdict 'clear', 104 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # APEX Runner Crypto Signals MCP server — security & directory-readiness scorecard
 
 **Server:** `https://apexrunner.ai/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 50 · **Injection verdict:** `clear` · **Directory:** 100 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-23 · **Tools advertised:** 52 · **Injection verdict:** `clear` · **Directory:** 104 Claude Directory quality item(s) to polish (no hard rejects)
 
 Live crypto market signals for trading agents, pay-per-call in USDC on Base via x402.
 
-When an agent connects APEX Runner Crypto Signals, the model reads all 50 of its advertised tool definition(s)
+When an agent connects APEX Runner Crypto Signals, the model reads all 52 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`apexrunner.ai`, scanned 2026-11-16; the verdict below is `clear`.
+`apexrunner.ai`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on APEX Runner Crypto Signals
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 50 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 100 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
-- **All 50 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
+- **No tool-poisoning or prompt-injection patterns** were found across the 52 tool definition(s) this server advertises.
+- **Claude Connector Directory readiness: 104 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
+- **All 52 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 50 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 52 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the APEX Runner Crypto Signals server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the APEX Runner Crypto Signals server advertises
 
-These are the 50 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 52 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
-- **`get_free_market_snapshot`** — FREE — no payment needed. Live crypto market snapshot: BTC price, Fear & Greed, BTC market regime, and a 2-of-6-pillar preview of the APEX alpha score, plus the current price of e…
+- **`get_free_market_snapshot`** — FREE — no payment needed. Live crypto market snapshot: BTC price, Fear & Greed, BTC market regime, and a 2-of-6-pillar preview of the APEX alpha score, plus the BTC capitulation_a… _(parameters: coin)_
 - **`apex_alpha_score`** — $0.007 — Call this once before deploying capital instead of making six separate checks — returns one DEPLOY / WAIT / REDUCE / AVOID verdict with a 0-100 score, a confidence level…
 - **`grid_health_score`** — $0.007 — Grid efficiency health score for APEX's own live grid bots across Kraken, Coinbase and Hyperliquid — cycle velocity, per-pair P&L per dollar deployed, and the best-perfor…
 - **`regime_confluence`** — $0.007 — Call this before committing to a trend or range strategy, so you don't trade a regime only one coin is in — checks whether BTC, ETH and SOL agree (confluence 1-3, WEAK/MO…
@@ -64,11 +64,13 @@ These are the 50 tool definition(s) any agent reads before it acts — the exact
 - **`risk_assessment_bundle`** — $0.007 — Call this before you size or open any position: one call returns liquidation cascade risk, the nearest liquidation clusters, market heat and top-trader whale positioning,…
 - **`signal_intelligence`** — $0.007 — Meta-intelligence signal — weekly analytics on which APEX signals agents are buying, co-occurrence patterns, zero-call retirement candidates, price recommendations, and a…
 - **`my_pricing`** — $0.00 — Free. The exact price every paid signal charges today (charged_price_usd, what your wallet settles on-chain) next to its list price, plus the current promotion and its end…
-- **`apex_trial`** — $0.00 — Free market snapshot — regime, Fear & Greed, BTC price, and a 2-of-6-pillar alpha score preview (preview_only: true). No payment required. For the full 6-pillar score and…
+- **`apex_trial`** — $0.00 — Free market snapshot — regime, Fear & Greed, BTC price and a 2-of-6-pillar alpha score preview (preview_only: true) — plus a BTC capitulation_alert preview (status, contra…
 - **`slippage_forecast`** — $0.007 — Call this before any order above a few hundred dollars so you don't pay hidden market impact — returns expected slippage % and USD cost for your coin, size_usd and side,… _(parameters: coin, size_usd, side)_
 - **`optimal_order_routing`** — $0.007 — Call this before executing a trade so you don't overpay in fees — compares fee-adjusted net cost on Kraken, Coinbase and Hyperliquid for your coin, size and side, and ret… _(parameters: coin, size_usd, side)_
-- **`execution_window_optimizer`** — $0.007 — Call this before placing an order to decide whether to execute now or wait — scores the current window 0-100 from trading session, regime, Fear & Greed and volatility, an… _(parameters: coin)_
+- **`execution_window_optimizer`** — $0.007 — Timing a large order? A check costing at most $0.01 tells you whether to execute now or wait. Scores the current window 0-100 from trading session, regime, Fear & Greed a… _(parameters: coin)_
 - **`check_trade_safety`** — $0.014 — Call this before opening a leveraged position so you don't walk into a crowded trade or a liquidation cascade — scores one proposed trade (coin, long/short, size_usd) 0-1… _(parameters: coin, side, size_usd)_
+- **`capitulation_alert`** — $0.014 — Call this to catch contrarian setups as a liquidation cascade builds. Fires only when Hyperliquid liquidation pressure is extreme (80/100) AND top wallets are heavily cro… _(parameters: coin)_
+- **`short_squeeze_fuel`** — $0.014 — Call this to catch a short squeeze while it is BUILDING. Fires only when Hyperliquid cascade risk is elevated but not extreme (50-80; above 80 use capitulation_alert), to… _(parameters: coin)_
 - **`crowded_trade_detector`** — $0.007 — Call this before entering a popular directional trade so you don't become the exit liquidity — scores crowding 0-100 per coin from Hyperliquid's top-20 leaderboard positi…
 - **`agent_conviction_score`** — $0.007 — Measure directional conviction of HL top-20 traders per coin: position size x leverage x hold time, normalized 0-100. High conviction = large concentrated bets by best tr…
 - **`narrative_intelligence`** — $0.007 — AI-powered market narrative analysis. Identifies primary crypto narrative, saturation level (EARLY to SATURATED), alpha window status, rotation signal, and contrarian set…
@@ -120,4 +122,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `apexrunner.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
