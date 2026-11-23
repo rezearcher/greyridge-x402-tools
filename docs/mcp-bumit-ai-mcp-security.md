@@ -1,18 +1,18 @@
 ---
 title: "Is the BUMIT MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the BUMIT MCP server (https://bumit.ai/mcp), run 2026-11-16: advertises verify_business, search_companies, get_company_profile; 3 tools scanned, injection verdict 'clear', 3 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the BUMIT MCP server (https://bumit.ai/mcp), run 2026-11-23: advertises verify_business, search_companies, get_company_profile; 3 tools scanned, injection verdict 'clear', 3 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # BUMIT MCP server — security & directory-readiness scorecard
 
 **Server:** `https://bumit.ai/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 3 · **Injection verdict:** `clear` · **Directory:** 3 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-23 · **Tools advertised:** 3 · **Injection verdict:** `clear` · **Directory:** 3 Claude Directory quality item(s) to polish (no hard rejects)
 
 
 
 When an agent connects BUMIT, the model reads all 3 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`bumit.ai`, scanned 2026-11-16; the verdict below is `clear`.
+`bumit.ai`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on BUMIT
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 3 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the BUMIT server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the BUMIT server advertises
@@ -73,4 +73,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `bumit.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
