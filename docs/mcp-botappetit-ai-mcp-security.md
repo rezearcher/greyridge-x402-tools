@@ -1,18 +1,18 @@
 ---
 title: "Is the Bot Appétit MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Bot Appétit MCP server (https://botappetit.ai/mcp), run 2026-11-16: advertises scan_page, get_report, page_history; 14 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Bot Appétit MCP server (https://botappetit.ai/mcp), run 2026-11-23: advertises scan_page, get_report, page_history; 14 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Bot Appétit MCP server — security & directory-readiness scorecard
 
 **Server:** `https://botappetit.ai/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 14 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-23 · **Tools advertised:** 14 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Can a machine consume this page? AEO, SEO and performance scans. Page scans need no account.
 
 When an agent connects Bot Appétit, the model reads all 14 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`botappetit.ai`, scanned 2026-11-16; the verdict below is `clear`.
+`botappetit.ai`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on Bot Appétit
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 14 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Bot Appétit server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Bot Appétit server advertises
@@ -31,7 +31,7 @@ The server describes itself to connecting agents as: *Bot Appétit by Milk Moon 
 
 These are the 14 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
-- **`scan_page`** — Check one web page for AEO, SEO and performance: can a machine consume it? Returns the findings by check and the report link. If the exact page was scanned in the last 24 hours th… _(parameters: url, fresh)_
+- **`scan_page`** — Check one web page for AEO, SEO and performance: can a machine consume it? Returns the findings by check, with every item each check found (marked as text from the scanned page, i… _(parameters: url, fresh)_
 - **`get_report`** — Get a stored Bot Appétit report by scan id, the same report a person sees at botappetit.ai/r/id. Costs nothing and does not scan. Use it to re-read a report you were given a link… _(parameters: id)_
 - **`page_history`** — List every stored Bot Appétit scan of one exact page, newest first, with the score at the time and how it moved since the scan before. Costs nothing and does not scan. Use it to s… _(parameters: url)_
 - **`list_checks`** — List every check Bot Appétit runs on a page, grouped by category, with the id of each. Use the id with explain_check for what a check means and what good looks like. Every check a… _(parameters: category)_
@@ -86,4 +86,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `botappetit.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
