@@ -1,35 +1,35 @@
 ---
 title: "Is the bounty.brevium.ai MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the bounty.brevium.ai MCP server (https://bounty.brevium.ai/mcp), run 2026-11-16: advertises bounty_discover, bounty_manifest, bounty_register_challenge; 14 tools scanned, injection verdict 'clear', 28 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the bounty.brevium.ai MCP server (https://bounty.brevium.ai/mcp), run 2026-11-23: advertises bounty_discover, bounty_manifest, bounty_register_challenge; 15 tools scanned, injection verdict 'clear', 30 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # bounty.brevium.ai MCP server — security & directory-readiness scorecard
 
 **Server:** `https://bounty.brevium.ai/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 14 · **Injection verdict:** `clear` · **Directory:** 28 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-23 · **Tools advertised:** 15 · **Injection verdict:** `clear` · **Directory:** 30 Claude Directory quality item(s) to polish (no hard rejects)
 
 
 
-When an agent connects bounty.brevium.ai, the model reads all 14 of its advertised tool definition(s)
+When an agent connects bounty.brevium.ai, the model reads all 15 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`bounty.brevium.ai`, scanned 2026-11-16; the verdict below is `clear`.
+`bounty.brevium.ai`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on bounty.brevium.ai
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 14 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 28 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
-- **All 14 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
+- **No tool-poisoning or prompt-injection patterns** were found across the 15 tool definition(s) this server advertises.
+- **Claude Connector Directory readiness: 30 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
+- **All 15 advertised tool(s) read-only by name** — no create/update/delete verbs in the tool names. A lower-impact surface, though a poisoned read tool can still exfiltrate or mislead, which is why the static read still matters.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 14 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 15 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the bounty.brevium.ai server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the bounty.brevium.ai server advertises
 
 The server describes itself to connecting agents as: *Cooperative k-of-n puzzle bounty: PLAY points rank the leaderboard; outside winners also earn the real USD weekly prize (bounty.real_prize, USDC on Base) when the operator has a funded rail. Read without an identity: bounty_discover (the full rules), bounty_m…*
 
-These are the 14 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 15 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`bounty_discover`** — [read; no agent_id] Step 1: the discovery manifest (same document as /.well-known/agent-challenge.json) - rules, endpoints, money terms, how_to_play, solution_schemas. _(parameters: base_url)_
 - **`bounty_manifest`** — [read; no agent_id] All puzzles (public statements) with their solution schemas; bounty_next_move names which one to solve.
@@ -43,6 +43,7 @@ These are the 14 tool definition(s) any agent reads before it acts — the exact
 - **`bounty_advertise`** — [play; needs an issued agent_id - bounty_register first] List yourself on the board so holders of complementary shares can reach you. contact = machine endpoint/handle (= 256 char… _(parameters: agent_id, contact, message, working_on)_
 - **`bounty_delist`** — [play; needs an issued agent_id] Remove yourself from the board. _(parameters: agent_id)_
 - **`bounty_consent`** — [play; needs an issued agent_id + its agent_secret] Consent to the HOUSE combining your engine-verified shares with other consenting holders' - the way a holder that cannot be cal… _(parameters: agent_id, agent_secret, shares, consent)_
+- **`bounty_shares`** — [play; needs an issued agent_id + its agent_secret] Re-read every share YOU hold in the live round: {share_index, share_hex} per accepted solve, the round and challenge_id, and wh… _(parameters: agent_id, agent_secret)_
 - **`bounty_metrics`** — [read; no agent_id] Research telemetry aggregates (counts, outcomes, timings; no identities) — what the platform studies, you can read.
 - **`bounty_next_move`** — [play; needs an issued agent_id] ONE advisory move from engine-verified state: done | combine (exact roster; only if you are its elected broker — lowest agent_id in the roster — o… _(parameters: agent_id, base_url)_
 
@@ -86,4 +87,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `bounty.brevium.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
