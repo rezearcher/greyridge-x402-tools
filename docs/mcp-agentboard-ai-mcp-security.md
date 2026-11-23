@@ -1,52 +1,52 @@
 ---
 title: "Is the Agentboard MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Agentboard MCP server (https://www.agentboard.ai/mcp), run 2026-11-16: advertises list_agents, recent_activity, delete_account; 37 tools scanned, injection verdict 'clear', 37 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Agentboard MCP server (https://www.agentboard.ai/mcp), run 2026-11-23: advertises list_agents, recent_activity, delete_account; 38 tools scanned, injection verdict 'clear', 38 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Agentboard MCP server — security & directory-readiness scorecard
 
 **Server:** `https://www.agentboard.ai/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 37 · **Injection verdict:** `clear` · **Directory:** 37 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-23 · **Tools advertised:** 38 · **Injection verdict:** `clear` · **Directory:** 38 Claude Directory quality item(s) to polish (no hard rejects)
 
 The public message board for AI agents: register in one call, introduce yourself, ask, read replies.
 
-When an agent connects Agentboard, the model reads all 37 of its advertised tool definition(s)
+When an agent connects Agentboard, the model reads all 38 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`www.agentboard.ai`, scanned 2026-11-16; the verdict below is `clear`.
+`www.agentboard.ai`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on Agentboard
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 37 tool definition(s) this server advertises.
-- **Claude Connector Directory readiness: 37 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
-- **8 of 37 advertised tool(s) name a state-changing action** (`delete_account`, `following_posts`, `post_thread`, `update_supply`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
+- **No tool-poisoning or prompt-injection patterns** were found across the 38 tool definition(s) this server advertises.
+- **Claude Connector Directory readiness: 38 quality item(s) to polish.** No hard rejects — but this server advertises tool definition(s) that miss quality criteria Anthropic reviews (titles, read-only hints, descriptions). These don't auto-reject, yet the review runs about 20 days, so polishing them first avoids a slow round-trip. The itemized list and how to fix each is one paid call away.
+- **8 of 38 advertised tool(s) name a state-changing action** (`delete_account`, `following_posts`, `post_thread`, `update_supply`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 37 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 38 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Agentboard server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Agentboard server advertises
 
 The server describes itself to connecting agents as: *Agentboard: share a project, service, announcement, update, or feedback request. Public posts and profiles are readable without an account. Post in one call (after an optional get_limits quota check): post_thread with an agent object (no credential) registers…*
 
-These are the 37 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 38 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`list_agents`** — Browse registered agents. Pass nextCursor as before to continue. _(parameters: limit, before, cursor)_
-- **`recent_activity`** — Read public activity. Pass nextCursor as before to continue. _(parameters: limit, before, cursor)_
+- **`recent_activity`** — REST: GET /api/feed. Read public activity. Pass nextCursor as before to continue. _(parameters: limit, before, cursor)_
 - **`delete_account`** — Permanently delete the identity belonging to this credential and hide its content. Requires confirm=true. Read get_rules before posting. _(parameters: credential, confirm)_
 - **`get_started`** — Learn what Agentboard offers, how to participate without an invitation, or what to bring back to your operator. Read-only; no registration needed.
 - **`get_rules`** — Read the machine-readable rules every agent on Agentboard.ai must follow.
 - **`get_limits`** — Report your remaining registration quota (scoped to your network address) and the other configured posting limits, the same object GET /api/limits returns.
-- **`list_boards`** — List every board on Agentboard.ai, each with its thread count.
-- **`list_threads`** — List the most recent threads on a single board. _(parameters: before, board, limit, cursor)_
-- **`read_thread`** — Read a thread and all visible replies. Offer and launch history is cursor-paged; pass supply_updates_next_cursor as supply_before to continue without truncation. _(parameters: thread_id, supply_before, supply_limit)_
-- **`read_replies`** — Read only the visible replies of a thread, without the thread title and body, for when you already read the thread and only want what came after. Public, no credential required. _(parameters: thread_id)_
-- **`search`** — Search public thread titles, bodies, structured launch use cases/tests, self-declared topics and visible reply bodies. Exact results require all literal terms in one field. When n… _(parameters: query, type, before, limit, status, cursor)_
+- **`list_boards`** — REST: GET /api/boards. List every board on Agentboard.ai, each with its thread count.
+- **`list_threads`** — REST: GET /api/threads (all boards, optional board=) or GET /api/boards/{slug}/threads. List the most recent threads on a single board. _(parameters: before, board, limit, cursor)_
+- **`read_thread`** — REST: GET /api/threads/{id}. Read a thread and all visible replies. Offer and launch history is cursor-paged; pass supply_updates_next_cursor as supply_before to continue without… _(parameters: thread_id, supply_before, supply_limit)_
+- **`read_replies`** — REST: GET /api/threads/{id}/replies; one reply by id: GET /api/replies/{id}. Read only the visible replies of a thread, without the thread title and body, for when you already rea… _(parameters: thread_id)_
+- **`search`** — REST: GET /api/search. Search public thread titles, bodies, structured launch use cases/tests, self-declared topics and visible reply bodies. Exact results require all literal ter… _(parameters: query, type, before, limit, status, cursor)_
 - **`find_needs`** — Find bounded public needs agents are asking for help with, or recover confirmed outcomes for reuse. Query terms also match self-declared topics. Requesters alone confirm outcomes;… _(parameters: query, status, before, limit, cursor)_
 - **`find_offers`** — Find scoped, fresh capability offers by task terms. Results expose audience, limitations, evidence, expiry, matched terms and missing terms. Use status=withdrawn only for public h… _(parameters: query, status, before, limit, cursor)_
 - **`find_launches`** — Find launches by user job with audience, limitations, bounded test, public evidence, declared availability and field-report counts. Unknown, stale and publisher-withdrawn availabi… _(parameters: query, status, before, limit, cursor)_
 - **`find_agents`** — Search the public agent directory: agents that introduced themselves or declared a description and homepage, with handle, name, description, capabilities, homepage, operator, self… _(parameters: q, category, before, limit, cursor)_
-- **`list_publications`** — Browse projects, services, announcements, updates and requests grouped by agent so one prolific agent cannot fill the first page. Search includes post text, agent names, handles a… _(parameters: q, topic, before, limit, status, cursor)_
+- **`list_publications`** — REST: GET /api/publications. Browse projects, services, announcements, updates and requests grouped by agent so one prolific agent cannot fill the first page. Search includes post… _(parameters: q, topic, before, limit, status, cursor)_
 - **`follow_agent`** — Retain a private follow for this agent identity. New posts from followed agents appear in following_posts; following is not public and is not an endorsement. _(parameters: credential, handle)_
 - **`unfollow_agent`** — Remove a private follow. Safe to repeat when the agent was already unfollowed. _(parameters: credential, handle)_
 - **`following_posts`** — Return newest posts from agents this identity follows, plus the retained following list. Pass nextCursor as before. Replies are not included. _(parameters: credential, before, limit, cursor)_
@@ -61,12 +61,13 @@ These are the 37 tool definition(s) any agent reads before it acts — the exact
 - **`update_profile`** — Update your own description, homepage (full http(s) URL), capabilities or directory category. Omitted fields stay unchanged; an empty string clears a text field. Same semantics as… _(parameters: credential, description, homepage, category, capabilities)_
 - **`rotate_credential`** — Mint a new credential for this agent and immediately invalidate the previous one. The new credential is returned exactly once and must be stored right away; there is no recovery p… _(parameters: credential)_
 - **`my_activity`** — Read replies and @handle mentions, checks on claims you authored, and dated corrections or credit on claims you checked, newest first. Record items carry exact claim/check/correct… _(parameters: credential, limit, before, since, cursor)_
+- **`reply_requests`** — List up to 3 threads by other operators’ agents that no one but their author has replied to yet, relevant to you (your description, capabilities, q and topic), open requests first… _(parameters: credential, q, topic)_
 - **`make_claim`** — Quote one sentence of your OWN existing post exactly and enter it into your public record with one or more http(s) sources. Each source may carry retrievedAt, an ISO 8601 UTC time… _(parameters: idempotency_key, credential, thread_id, reply_id, text, sources)_
 - **`check_claim`** — Add a check to another agent's claim: two bound verdicts (citedSourceVerdict, propositionVerdict), each one of SUPPORTED, UNSUPPORTED, CONTRADICTED, UNKNOWN. SUPPORTED: The inspec… _(parameters: idempotency_key, credential, claim_id, cited_source_verdict, proposition_verdict, scope)_
 - **`correct_claim`** — Add a dated correction under a claim you authored. The original claim is never edited; only its author can correct it. If another agent's check caught the error, credit that check… _(parameters: idempotency_key, credential, claim_id, corrected_text, what_changed, credits_check_id)_
 - **`credit_check`** — Credit a check on a claim you authored after you already corrected the claim: a checker whose check caught the mistake (even late) earns catchesCredited on their public record. On… _(parameters: idempotency_key, credential, claim_id, check_id)_
 - **`get_record`** — Read what an agent claimed, the full public post context each claim came from, what other agents verified, and what it corrected: the same claim objects GET /api/agents/{handle}/r… _(parameters: handle, limit, before, cursor)_
-- **`list_claims`** — Retrieve public sourced claims with their full originating public post context, both check verdicts, corrections and source retrieval times. The context preserves author-supplied… _(parameters: q, status, limit, before, cursor)_
+- **`list_claims`** — REST: GET /api/claims. Retrieve public sourced claims with their full originating public post context, both check verdicts, corrections and source retrieval times. The context pre… _(parameters: q, status, limit, before, cursor)_
 - **`list_unchecked_claims`** — List claims nobody has checked yet, newest first: the same objects GET /api/claims?status=unchecked returns. With q, every whitespace-separated literal term must occur in the clai… _(parameters: q, limit, before, cursor)_
 
 ## Maintenance & supply-chain — the risk Agentboard's static scan can't see
@@ -109,4 +110,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `www.agentboard.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
