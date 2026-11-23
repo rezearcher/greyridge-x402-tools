@@ -1,18 +1,18 @@
 ---
 title: "Is the Booqer MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Booqer MCP server (https://booqer.ai/mcp), run 2026-11-16: advertises search_businesses, get_business, resolve_business; 9 tools scanned, injection verdict 'block', 1 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Booqer MCP server (https://booqer.ai/mcp), run 2026-11-23: advertises search_businesses, get_business, resolve_business; 9 tools scanned, injection verdict 'block', 1 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
 ---
 # Booqer MCP server — security & directory-readiness scorecard
 
 **Server:** `https://booqer.ai/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 9 · **Injection verdict:** `block` · **Directory:** 1 likely Claude Directory reject(s)
+**Scanned:** 2026-11-23 · **Tools advertised:** 9 · **Injection verdict:** `block` · **Directory:** 1 likely Claude Directory reject(s)
 
 Verified Booqer shops. A keyless consult is confirmed when the slot is open.
 
 When an agent connects Booqer, the model reads all 9 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`booqer.ai`, scanned 2026-11-16; the verdict below is `block`.
+`booqer.ai`, scanned 2026-11-23; the verdict below is `block`.
 
 ## What the scan found on Booqer
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `F` — 1 issue(s) across 9 tool(s), 1 CRITICAL (tool-poisoning) — do not admit this server until resolved. Risk 40/100. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Booqer server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Booqer server advertises
@@ -81,4 +81,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `booqer.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
