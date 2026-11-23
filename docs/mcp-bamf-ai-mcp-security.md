@@ -1,33 +1,33 @@
 ---
 title: "Is the BAMF.ai MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the BAMF.ai MCP server (https://mcp.bamf.ai), run 2026-11-16: advertises bamf.list_site_projects, bamf.create_site_project, bamf.get_site_artifact; 177 tools scanned, injection verdict 'clear', 2 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the BAMF.ai MCP server (https://mcp.bamf.ai), run 2026-11-23: advertises bamf.list_site_projects, bamf.create_site_project, bamf.get_site_artifact; 180 tools scanned, injection verdict 'clear', 2 likely Claude Directory reject(s). Re-run it yourself in one keyless call."
 ---
 # BAMF.ai MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.bamf.ai`
-**Scanned:** 2026-11-16 · **Tools advertised:** 177 · **Injection verdict:** `clear` · **Directory:** 2 likely Claude Directory reject(s)
+**Scanned:** 2026-11-23 · **Tools advertised:** 180 · **Injection verdict:** `clear` · **Directory:** 2 likely Claude Directory reject(s)
 
 LinkedIn and X content, scheduling, analytics and outreach agent for founders, via your BAMF login.
 
-When an agent connects BAMF.ai, the model reads all 177 of its advertised tool definition(s)
+When an agent connects BAMF.ai, the model reads all 180 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.bamf.ai`, scanned 2026-11-16; the verdict below is `clear`.
+`mcp.bamf.ai`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on BAMF.ai
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 177 tool definition(s) this server advertises.
+- **No tool-poisoning or prompt-injection patterns** were found across the 180 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: 2 likely reject(s).** This server advertises 2 tool definition(s) that would likely fail Anthropic's structural review criteria. The Connector Directory review runs about 20 days, so a rejection is expensive — the itemized list of which criteria fail, and how to fix each, is one paid call away.
-- **65 of 177 advertised tool(s) name a state-changing action** (`bamf.create_site_project`, `bamf.manage_site`, `bamf.publish_site`, `bamf.manage_funnel_emails`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
+- **66 of 180 advertised tool(s) name a state-changing action** (`bamf.create_site_project`, `bamf.manage_site`, `bamf.publish_site`, `bamf.manage_funnel_emails`…). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 177 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 180 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the BAMF.ai server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the BAMF.ai server advertises
 
-These are the 177 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 180 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`bamf.list_site_projects`** — List client projects available as destinations for site HTML artifacts. Requires sites:read. _(parameters: workspace_id, params)_
 - **`bamf.create_site_project`** — Create a client project destination for site artifacts. Requires sites:write; supply title and agent_lanes in params. _(parameters: workspace_id, params, idempotency_key)_
@@ -67,6 +67,7 @@ These are the 177 tool definition(s) any agent reads before it acts — the exac
 - **`bamf.send_linkedin_reauth_link`** — Send a client a one-tap LinkedIn reconnect link over their preferred channels (BAMF delivers to EVERY resolved channel, not just the first). With no channels given, uses the user'… _(parameters: client, channels, confirm)_
 - **`bamf.check_linkedin_session`** — Check a client's LinkedIn login status in BAMF Connect and Multilogin. Agency staff keys only. Read-only. _(parameters: client)_
 - **`bamf.get_client_access`** — Read a client's LinkedIn access checklist: authenticator key in BAMF Vault, LinkedIn login on BAMF Cloud, Multilogin profile, BAMF Connect, LinkedIn posting OAuth, and the detecte… _(parameters: client)_
+- **`bamf.create_client_access_link`** — Create a one-time client access link (7 days) plus a short ready-to-paste message for SMS, WhatsApp, email or Slack. The client opens it to consent and save their LinkedIn login a… _(parameters: client)_
 - **`bamf.get_client_totp_code`** — Get the current 6-digit LinkedIn authenticator code for a client from their BAMF Vault key, so nobody relays PINs. Agency owner/admin only; API keys need the client_access:totp sc… _(parameters: client, reason)_
 - **`bamf.reconnect_linkedin`** — Start a cloud-browser LinkedIn reconnect for a client: opens the client's own scoped BAMF Cloud browser on the LinkedIn sign-in so THEY log in themselves. Credentials are never ty… _(parameters: client, confirm)_
 - **`bamf.open_cloud_computer`** — Open a page on the user's own BAMF Cloud computer (a persistent cloud desktop with a full-screen browser) so they can watch the agent use it, live, in their BAMF chat. Runs inside… _(parameters: url)_
@@ -84,7 +85,7 @@ These are the 177 tool definition(s) any agent reads before it acts — the exac
 - **`bamf.edit_post`** — Patch an existing draft or scheduled post after the user approves exact edits. Supports first comments and media fields. _(parameters: post_id, content, edit_instruction, topic, post_type, first_comment)_
 - **`bamf.generate_post_edit`** — Generate a reviewable edit proposal, quality audit, deterministic quality comparison, and PATCH payload for a draft, scheduled post, or rough pasted draft. Use edit_mode=full_rewr… _(parameters: creator_id, post_id, current_content, source_material, current_first_comment, instructions)_
 - **`bamf.edit_carousel_slide`** — Edit ONE slide of an existing carousel post in place, the same as asking the in-app BAMF Bot to change one slide. Pass title/body/cta/content to change the slide copy, image_instr… _(parameters: post_id, slide, title, body, cta, content)_
-- **`bamf.edit_post_image`** — Edit the post's CURRENT image in place (same path as the in-app chat image edit). Default keeps everything else the same; brand marks are left out unless the instruction asks for… _(parameters: post_id, instruction, keep_everything_else, reference_version)_
+- **`bamf.edit_post_image`** — Edit the post's CURRENT image in place (same path as the in-app chat image edit). Default keeps everything else the same; brand marks are left out unless the instruction asks for… _(parameters: post_id, instruction, keep_everything_else, reference_version, source_image_url)_
 - **`bamf.list_post_versions`** — List every saved version of a post: copy versions (post history), the post image_history, and each carousel slide's image and text versions. Use the ids/indexes with bamf.revert_p… _(parameters: post_id)_
 - **`bamf.revert_post_version`** — Restore a saved version on the same post: kind=text (version_id), image (index into image_history), slide_image (slide + image_url; prompt carousels step back one version), or sli… _(parameters: post_id, kind, version_id, index, slide, image_url)_
 - **`bamf.delete_post`** — Delete a normal BAMF content post. _(parameters: post_id)_
@@ -148,12 +149,14 @@ These are the 177 tool definition(s) any agent reads before it acts — the exac
 - **`bamf.add_likeness_photo`** — Save a photo of the creator to their likeness library from an HTTPS URL or a data URL, then label it. Always persist any creator photo you use so the next post can reuse it. Real… _(parameters: creator_id, url, data_url, filename, description, is_ai_generated)_
 - **`bamf.update_likeness_photo`** — Accept or reject a likeness photo and/or correct its labels (shot, setting, mood, clothing, quality, is_person). AI photos are used in designs only after acceptance; marking is_pe… _(parameters: creator_id, photo_id, set, decision, comment, labels)_
 - **`bamf.request_likeness_scenes`** — Generate 2-4 new photos of the creator in named scenes (at a desk, in a coffee shop, in a Waymo, after a run) from their accepted real photos. Results land as pending AI photos fo… _(parameters: creator_id, scenes, post_text, feedback)_
-- **`bamf.design_post`** — Designing in the background: picks an approved reference, writes slot copy from the post, places the creator's real photo and official app logos, proofreads, and leaves a draft fo… _(parameters: creator_id, post_id, source_post_id, template, reference_id, qa)_
+- **`bamf.design_post`** — Designing in the background: picks an approved reference, writes slot copy from the post, places the creator's real photo and official app logos, proofreads, and leaves a draft fo… _(parameters: creator_id, post_id, source_post_id, template, reference_id, instruction)_
+- **`bamf.animate_design`** — Animate the post's current Claude design (same path as Animate with Claude in the editor) with a motion prompt. Returns a job; the MP4 is saved as a new video version on the post.… _(parameters: post_id, instruction)_
 - **`bamf.get_design`** — Read a design's status, image, matched reference, template and layers (likeness, art, text). Poll after bamf.design_post. Read-only. _(parameters: post_id)_
 - **`bamf.replace_design_layer`** — Swap one layer of a layer-built design without changing the rest: likeness + photo_id (an accepted photo from bamf.list_likeness_photos; a pending AI photo is used but flagged), l… _(parameters: post_id, layer, photo_id, new_candid, prompt, slots)_
 - **`bamf.set_design_version`** — Make one version of a layer-built design current (revert to an earlier version or promote a candidate). The post's image follows it. New versions only become current when they bea… _(parameters: post_id, version_id, reason)_
+- **`bamf.save_design_source`** — Save a design you made in Claude (desktop, Claude Code, the BAMF plugin) onto a post together with its HTML source, so it can be edited and animated with Claude inside BAMF. Uploa… _(parameters: post_id, bundle_base64, note)_
 - **`bamf.list_brand_fonts`** — List a creator's brand fonts with family, role (heading, body, handwriting, accent, mono), usage and whether a font file is stored. Font files are private and never returned. Read… _(parameters: author_id)_
-- **`bamf.add_brand_font`** — Add a font file to a creator's brand fonts from an HTTPS url or file_base64. Before calling, ask the user to confirm exactly: "I have the right to use this font for my content"; o… _(parameters: author_id, url, file_base64, family, role, usage)_
+- **`bamf.add_brand_font`** — Add a font file to a creator's brand fonts. When a design uses a font the creator has, upload it here and use it by name; never substitute a look-alike and never ask about licence… _(parameters: author_id, url, file_base64, family, role, usage)_
 - **`bamf.set_brand_font_role`** — Change the role, usage or note of an existing brand font by family name. Does not touch the font file. _(parameters: author_id, family, role, usage, note)_
 - **`bamf.add_media`** — Register an external media URL as a BAMF media asset. API documentation: https://bamf.ai/docs/mcp/overview _(parameters: creator_id, url, visual_type)_
 - **`bamf.create_media_folder`** — Create a Media Library folder for a creator space after user approval. _(parameters: creator_id, name, workspace_id)_
@@ -186,7 +189,7 @@ These are the 177 tool definition(s) any agent reads before it acts — the exac
 - **`bamf.get_analytics_summary`** — Get LinkedIn Late-authoritative analytics totals for a creator space. Pass platform=x or use bamf.get_x_analytics_summary for X metrics. _(parameters: creator_id, platform)_
 - **`bamf.get_creator_analytics_report`** — Build a native, interactive LinkedIn analytics report across every creator space the signed-in BAMF account can access. Use for creator portfolios, leaderboards, 30/60/90-day comp… _(parameters: days)_
 - **`bamf.get_funnel_mix`** — Get a creator's TOF/MOF/BOF funnel mix from tagged LinkedIn posts: per-stage counts and performance, per-format stats, the resolved goal target (audience_growth 60/30/10, balanced… _(parameters: creator_id, days)_
-- **`bamf.find_funnel_examples`** — Find top AI-tagged example posts for a funnel stage (and optional format) to model a draft on: inspiration library (by likes), post templates, or the creator's own posts (by impre… _(parameters: stage, format, source, creator_id, limit)_
+- **`bamf.find_funnel_examples`** — Find top AI-tagged example posts for a funnel stage (and optional format) to model a draft on: inspiration library (by likes), or post templates; the creator's own posts are topic… _(parameters: stage, format, source, creator_id, limit)_
 - **`bamf.find_competitor_ads`** — List the longest-running competitor ads (Meta, LinkedIn, TikTok) already tracked in the creator's workspace: advertiser, headline, copy, format, days running. Longest-running is t… _(parameters: platform, q, creator_id, limit)_
 - **`bamf.suggest_ad_keywords`** — Related keywords with monthly search volume, CPC, and competition for a topic, to pick ad targeting. Cached 14 days; a fresh lookup costs about one cent and is capped per workspac… _(parameters: keyword, country, creator_id)_
 - **`bamf.list_linkedin_posts`** — List discovered LinkedIn-native posts for a creator with Late-authoritative official_* performance fields when available. _(parameters: creator_id, limit)_
@@ -247,4 +250,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.bamf.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
