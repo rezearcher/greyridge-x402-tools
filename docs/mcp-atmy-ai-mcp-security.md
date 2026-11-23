@@ -1,18 +1,18 @@
 ---
 title: "Is the Atmy air quality MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Atmy air quality MCP server (https://api.atmy.ai/mcp), run 2026-11-16: advertises search_cities, get_air_quality, get_air_quality_history; 12 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Atmy air quality MCP server (https://api.atmy.ai/mcp), run 2026-11-23: advertises search_cities, get_air_quality, get_air_quality_history; 12 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Atmy air quality MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.atmy.ai/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 12 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-23 · **Tools advertised:** 12 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 PM2.5 of 300+ cities: now, history, forecast, rankings; 12 000 sensors with a quality rating.
 
 When an agent connects Atmy air quality, the model reads all 12 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.atmy.ai`, scanned 2026-11-16; the verdict below is `clear`.
+`api.atmy.ai`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on Atmy air quality
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 12 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Atmy air quality server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Atmy air quality server advertises
@@ -84,4 +84,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.atmy.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
