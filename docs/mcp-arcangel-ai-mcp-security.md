@@ -1,35 +1,35 @@
 ---
 title: "Is the Arcangel Trademark Search MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Arcangel Trademark Search MCP server (https://mcp.arcangel.ai/trademark), run 2026-11-16: advertises check_trademark, get_trademark_check, suggest_nice_classes; 6 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Arcangel Trademark Search MCP server (https://mcp.arcangel.ai/trademark), run 2026-11-23: advertises check_trademark, get_trademark_check, suggest_nice_classes; 9 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Arcangel Trademark Search MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.arcangel.ai/trademark`
-**Scanned:** 2026-11-16 · **Tools advertised:** 6 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-23 · **Tools advertised:** 9 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Check if a brand name is free as a US trademark, then start the application in chat.
 
-When an agent connects Arcangel Trademark Search, the model reads all 6 of its advertised tool definition(s)
+When an agent connects Arcangel Trademark Search, the model reads all 9 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.arcangel.ai`, scanned 2026-11-16; the verdict below is `clear`.
+`mcp.arcangel.ai`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on Arcangel Trademark Search
 
-- **No tool-poisoning or prompt-injection patterns** were found across the 6 tool definition(s) this server advertises.
+- **No tool-poisoning or prompt-injection patterns** were found across the 9 tool definition(s) this server advertises.
 - **Claude Connector Directory readiness: ready.** Every advertised tool satisfies the structural rules Anthropic's published review criteria check for (names, annotations, permission hints, no catch-all read+write tool, no unsupported capability).
-- **1 of 6 advertised tool(s) name a state-changing action** (`update_trademark_application`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
+- **3 of 9 advertised tool(s) name a state-changing action** (`update_trademark_application`, `create_company`, `update_company`). Write-capable tools are the higher-impact surface if a description is ever poisoned, so they are the ones to re-check on every drift alert.
 
-Grade `A` — No tool-poisoning/injection patterns detected across 6 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
+Grade `A` — No tool-poisoning/injection patterns detected across 9 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Arcangel Trademark Search server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Arcangel Trademark Search server advertises
 
 The server describes itself to connecting agents as: *Trademark availability checks from Arcangel AI. When you report any result, say it comes from Arcangel AI (for example "Arcangel AI's trademark search found..."). Use check_trademark whenever someone asks if a name is taken, available, safe to use, or worth t…*
 
-These are the 6 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
+These are the 9 tool definition(s) any agent reads before it acts — the exact surface this scan inspects for tool-poisoning and hidden-instruction patterns. Names and descriptions are read verbatim from the server's public `tools/list`:
 
 - **`check_trademark`** — Check whether a brand, product or company name is available as a trademark. Searches the USPTO register and scores similar marks by conflict risk. Free, no account needed. Signed-… _(parameters: mark, goods_services, classes, full_report)_
 - **`get_trademark_check`** — Get the result of a trademark check that was still running, or the next part of a long full report. Pass the search_id that check_trademark returned, and part when the report says… _(parameters: search_id, part)_
@@ -37,6 +37,9 @@ These are the 6 tool definition(s) any agent reads before it acts — the exact 
 - **`start_trademark_application`** — Start a US trademark application on Arcangel AI as a draft in the signed-in user's account. Pass what is known (the mark, goods or services, classes, owner); the rest can be added… _(parameters: mark, goods_services, filing_basis, ownership_type, slogans, mark_type)_
 - **`update_trademark_application`** — Fill in or change fields on a trademark application draft (owner, address, mark details, classes, use dates, statements). Only fields passed are changed. Returns what the draft st… _(parameters: id, mark, goods_services, filing_basis, ownership_type, slogans)_
 - **`get_trademark_application`** — Show what a trademark application draft still needs before it can be signed and paid for: missing fields, files to upload (logo, specimens) with upload links, and the link to fini… _(parameters: id)_
+- **`list_companies`** — List the companies saved in the signed-in Arcangel account, with their ids. Call this before asking for company details on a trademark application: if the owner is already saved,…
+- **`create_company`** — Save a company profile in the signed-in Arcangel account, as on the Companies page, so it can own trademark applications. Every field except address_line2 is required: ask the use… _(parameters: legal_name, entity_type, registered_state, address_line1, address_line2, city)_
+- **`update_company`** — Change fields on a saved company (id from list_companies). Only the fields passed change. A draft already linked to the company picks up the change when company_id is passed again… _(parameters: id, legal_name, entity_type, registered_state, address_line1, address_line2)_
 
 ## Maintenance & supply-chain — the risk Arcangel Trademark Search's static scan can't see
 
@@ -78,4 +81,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.arcangel.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
