@@ -1,18 +1,18 @@
 ---
 title: "Is the Brainy Prices — UAE Cost of Living MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Brainy Prices — UAE Cost of Living MCP server (https://prices.brainy.ae/mcp/v2), run 2026-11-16: advertises commute_cost, costs_by_area, costs_by_emirate; 26 tools scanned, injection verdict 'clear', 26 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Brainy Prices — UAE Cost of Living MCP server (https://prices.brainy.ae/mcp/v2), run 2026-11-23: advertises commute_cost, costs_by_area, costs_by_emirate; 26 tools scanned, injection verdict 'clear', 26 Claude Directory quality item(s) to polish (no hard rejects). Re-run it yourself in one keyless call."
 ---
 # Brainy Prices — UAE Cost of Living MCP server — security & directory-readiness scorecard
 
 **Server:** `https://prices.brainy.ae/mcp/v2`
-**Scanned:** 2026-11-16 · **Tools advertised:** 26 · **Injection verdict:** `clear` · **Directory:** 26 Claude Directory quality item(s) to polish (no hard rejects)
+**Scanned:** 2026-11-23 · **Tools advertised:** 26 · **Injection verdict:** `clear` · **Directory:** 26 Claude Directory quality item(s) to polish (no hard rejects)
 
 Source-backed UAE costs: groceries, schools, housing, transport, utilities, telecom and relocation.
 
 When an agent connects Brainy Prices — UAE Cost of Living, the model reads all 26 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`prices.brainy.ae`, scanned 2026-11-16; the verdict below is `clear`.
+`prices.brainy.ae`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on Brainy Prices — UAE Cost of Living
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 26 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Brainy Prices — UAE Cost of Living server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Brainy Prices — UAE Cost of Living server advertises
@@ -40,7 +40,7 @@ These are the 26 tool definition(s) any agent reads before it acts — the exact
 - **`fixed_monthly_costs`** — Monthly fixed costs for a household profile, with assumptions. Not a full budget. _(parameters: page_size, profile)_
 - **`free_zone_companies`** — Free zone company setup: package prices, annual/monthly cost, visas. _(parameters: published, page_size, cursor, emirate, zone)_
 - **`fuel_prices`** — UAE petrol/diesel prices this month and last, change, 50/70 L tank cost, history. _(parameters: sort, page_size, cursor, include_history, from, to)_
-- **`fx_rates`** — Dated CBUAE AED exchange rates. Not bank quotes. _(parameters: currency)_
+- **`fx_rates`** — Dated ECB-based AED FX rates. Not bank quotes. _(parameters: currency)_
 - **`grocery_compare_list`** — Cheapest store for a list: subtotals, delivery fees, minimums. items: ["milk"]. Observed + labelled estimates. _(parameters: items, area)_
 - **`grocery_products`** — Dubai supermarket prices: per-store pack/unit offers, dates, history. Give query (product name), e.g. milk, or product_id. Not MOET. _(parameters: comparison, store_id, available_only, sort, page_size, cursor)_
 - **`grocery_stores`** — Grocery stores: delivery fees, free-delivery thresholds, minimum orders. _(parameters: delivery_rule_status, sort, page_size, cursor, store_id)_
@@ -98,4 +98,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `prices.brainy.ae` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
