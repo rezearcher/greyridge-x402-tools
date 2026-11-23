@@ -1,18 +1,18 @@
 ---
 title: "Is the agent-cronjob MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the agent-cronjob MCP server (https://cronjob.agentasy.ai/mcp), run 2026-11-16: advertises create_job, verify_challenge, claim_credentials; 15 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the agent-cronjob MCP server (https://cronjob.agentasy.ai/mcp), run 2026-11-23: advertises create_job, verify_challenge, claim_credentials; 15 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # agent-cronjob MCP server — security & directory-readiness scorecard
 
 **Server:** `https://cronjob.agentasy.ai/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 15 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-23 · **Tools advertised:** 15 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 Scheduled, HMAC-signed, retried webhook triggers for AI agents. No account: self-register via tools.
 
 When an agent connects agent-cronjob, the model reads all 15 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`cronjob.agentasy.ai`, scanned 2026-11-16; the verdict below is `clear`.
+`cronjob.agentasy.ai`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on agent-cronjob
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 15 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the agent-cronjob server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the agent-cronjob server advertises
@@ -87,4 +87,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `cronjob.agentasy.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
