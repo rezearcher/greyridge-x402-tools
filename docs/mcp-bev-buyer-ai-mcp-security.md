@@ -1,18 +1,18 @@
 ---
 title: "Is the agent-bev MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the agent-bev MCP server (https://mcp.bev-buyer.ai/mcp), run 2026-11-16: advertises search_drinks, get_record, find_producer; 9 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the agent-bev MCP server (https://mcp.bev-buyer.ai/mcp), run 2026-11-23: advertises search_drinks, get_record, find_producer; 9 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # agent-bev MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.bev-buyer.ai/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 9 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-23 · **Tools advertised:** 9 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 The world's largest agentic B2B hub for beer, wine and spirits. Powered by CUVEE. Trade only.
 
 When an agent connects agent-bev, the model reads all 9 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.bev-buyer.ai`, scanned 2026-11-16; the verdict below is `clear`.
+`mcp.bev-buyer.ai`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on agent-bev
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 9 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the agent-bev server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the agent-bev server advertises
@@ -39,13 +39,13 @@ These are the 9 tool definition(s) any agent reads before it acts — the exact 
 - **`get_order_route`** — Get the maker's or distributor's trade channel to order a product, as the record states it. Never a consumer channel. _(parameters: record_id)_
 - **`create_order_intent`** — Place an order intent for one to ten records (quantity, delivery market, optional date and note, the buyer's organisation and email). The Bourse routes it to each maker; verified… _(parameters: record_ids, quantity, market, needed_by, note, buyer)_
 - **`get_offers`** — Read the makers' offers on an order intent, and the order once placed. By the buyer's email given on create_order_intent. _(parameters: intent_id, email)_
-- **`accept_offer`** — Accept one offer and place the order through the Bourse. Accepting is one x402 paid call (HTTP 402 with the payment offer until paid): it settles and signs the order. The goods ar… _(parameters: intent_id, offer_id, email)_
+- **`accept_offer`** — Accept one offer and place the order through the Bourse. Accepting is one x402 paid call (HTTP 402 with the payment offer until paid; x402 inside the call: USDC first, Open USD se… _(parameters: intent_id, offer_id, email)_
 
 ## Maintenance & supply-chain — the risk agent-bev's static scan can't see
 
 A prompt-injection scan reads agent-bev's advertised tool metadata at one moment. It cannot tell you the project behind `mcp.bev-buyer.ai` went quiet, or that a package it ships picked up a CVE last week — the two ways a server that scanned clean becomes a liability without its tool definitions changing at all. These are measured, dated reads:
 
-- **Maintenance grade `A`** — last commit pushed 5 day(s) ago, 3 open issue(s).
+- **Maintenance grade `A`** — last commit pushed 12 day(s) ago, 5 open issue(s).
 - **Supply chain grade `A`** — no known advisory (OSV) and no deprecated release across the package(s) this server publishes.
 
 A one-shot scan (and the free one-shot competitors) can only ever show the snapshot above. The value in watching `mcp.bev-buyer.ai` is the **change**: the alert the week its upstream ships an advisory, or the month its repo crosses from active into stale. That continuous drift watch — six-hourly re-checks of all three signals with an alert on any worsening — is the [`$9.99/mo` monitoring subscription](https://x402-data-api.sigrunner.workers.dev/pricing). A grade here is a point-in-time measurement, not a warranty.
@@ -81,4 +81,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.bev-buyer.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
