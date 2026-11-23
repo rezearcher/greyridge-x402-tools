@@ -1,18 +1,18 @@
 ---
 title: "Is the AppGoat MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the AppGoat MCP server (https://api.appgoat.ai/mcp), run 2026-11-16: advertises get_app, get_reviews, get_app_history; 26 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the AppGoat MCP server (https://api.appgoat.ai/mcp), run 2026-11-23: advertises get_app, get_reviews, get_app_history; 26 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # AppGoat MCP server — security & directory-readiness scorecard
 
 **Server:** `https://api.appgoat.ai/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 26 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-23 · **Tools advertised:** 26 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 App Store and Google Play data: apps, reviews, keywords, charts, competitors, ASO playbooks.
 
 When an agent connects AppGoat, the model reads all 26 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`api.appgoat.ai`, scanned 2026-11-16; the verdict below is `clear`.
+`api.appgoat.ai`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on AppGoat
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 26 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the AppGoat server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the AppGoat server advertises
@@ -39,7 +39,7 @@ These are the 26 tool definition(s) any agent reads before it acts — the exact
 - **`get_competitors`** — An app's competitors, best first, scored from search terms both apps rank for (shared keywords) plus the store's similar-apps list. Feed the app ids into get_app or get_app_change… _(parameters: app, store, country, limit, format)_
 - **`search_apps`** — Find apps by name or id in AppGoat's catalog of both stores (~5M apps): exact title matches first, then prefix, then substring, most-rated first. Returns store, app_id, title, dev… _(parameters: q, store, category, limit, cursor, format)_
 - **`get_charts`** — A top free, paid or grossing chart for a store, country and category, today or on a past date: rank, app, developer, rating and the move since the previous capture (new entries ma… _(parameters: store, country, chart, category, date, limit)_
-- **`keyword_research`** — Keyword metrics and research for App Store / Google Play search terms: popularity (5–100), difficulty (0–100), result count and the #1 result's estimated daily downloads. include… _(parameters: terms, store, country, app, wait, include)_
+- **`keyword_research`** — Keyword metrics and research for App Store / Google Play search terms: popularity (5–100), difficulty (0–100), result count and the #1 result's estimated daily downloads. include… _(parameters: terms, store, country, app, limit, wait)_
 - **`get_keyword_ranks`** — Ranking history of a watched keyword: per capture the top 10 app ids, or with app, that app's rank over time (best, worst, latest). Default the last 90 days. The id is a keyword s… _(parameters: id, app, from, to, format)_
 - **`watch`** — Watch an app, a set of competitors or a set of keywords; significant changes become events (get_events, webhooks, daily email). kind app {app}: new versions, metadata and price ch… _(parameters: id, kind, app, competitors, terms, store)_
 - **`unwatch`** — Stop watches by id (from list_watches or watch): no new events, and their watched apps and keyword slots are freed. Past events are kept. To pause instead, call watch with id and… _(parameters: ids)_
@@ -98,4 +98,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `api.appgoat.ai` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
