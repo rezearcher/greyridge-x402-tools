@@ -1,8 +1,19 @@
 {
-"updated": "2026-11-16",
+"updated": "2026-11-23",
 "hub": "mcp-server-scorecards.html",
-"count": 192,
+"count": 206,
 "leaderboard": [
+{
+"name": "A2UI Atomic Catalog docs",
+"slug": "a2uicatalog-ai",
+"url": "https://a2uicatalog.ai/mcp-docs",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-11-23"
+},
 {
 "name": "Achromat Machine Operational Memory",
 "slug": "achromat-ai",
@@ -12,7 +23,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "mcp.adoraads.ai",
@@ -23,7 +34,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "Best AI Search Agency AEO Report",
@@ -34,7 +45,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "AgentCV",
@@ -45,7 +56,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "Agentgates Compute",
@@ -56,7 +67,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "AgentMash",
@@ -67,7 +78,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "AgentRoam",
@@ -78,7 +89,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "agents.alphaquantlabs.ai",
@@ -89,7 +100,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "Avasis Agent Platform",
@@ -111,7 +122,18 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
+},
+{
+"name": "AgentsRank",
+"slug": "agentsrank-ai",
+"url": "https://agentsrank.ai/api/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-11-23"
 },
 {
 "name": "Ahel",
@@ -122,7 +144,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-09"
+"scanned": "2026-11-23"
 },
 {
 "name": "Bot Office",
@@ -133,7 +155,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "Aldro: small-business tax",
@@ -144,7 +166,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "Alpha Bazaar Arena",
@@ -155,7 +177,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "AlphaCreek SEC Filings MCP",
@@ -166,7 +188,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "AlpiX",
@@ -177,7 +199,18 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
+},
+{
+"name": "amigurumi.ai",
+"slug": "amigurumi-ai",
+"url": "https://amigurumi.ai/mcp",
+"grade": "A",
+"verdict": "clear",
+"risk_score": 0,
+"blocker_count": 0,
+"ready": true,
+"scanned": "2026-11-23"
 },
 {
 "name": "Annsa",
@@ -188,7 +221,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "APIR Agent Verification",
@@ -199,7 +232,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "AppGoat",
@@ -210,7 +243,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "app.aqta.ai",
@@ -221,7 +254,7 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
 "name": "Arabic Name Calligraphy",
@@ -232,51 +265,18 @@
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 },
 {
-"name": "AskWatch Google Search Console MCP",
-"slug": "askwatch-ai",
-"url": "https://mcp.askwatch.ai/gsc",
+"name": "Arcangel Trademark Search",
+"slug": "arcangel-ai",
+"url": "https://mcp.arcangel.ai/trademark",
 "grade": "A",
 "verdict": "clear",
 "risk_score": 0,
 "blocker_count": 0,
 "ready": true,
-"scanned": "2026-11-16"
-},
-{
-"name": "Atmy air quality",
-"slug": "atmy-ai",
-"url": "https://api.atmy.ai/mcp",
-"grade": "A",
-"verdict": "clear",
-"risk_score": 0,
-"blocker_count": 0,
-"ready": true,
-"scanned": "2026-11-16"
-},
-{
-"name": "Aviado AI",
-"slug": "aviado-ai",
-"url": "https://aviado.ai/api/mcp",
-"grade": "A",
-"verdict": "clear",
-"risk_score": 0,
-"blocker_count": 0,
-"ready": true,
-"scanned": "2026-11-16"
-},
-{
-"name": "Bankrolled.ai Agent Hub",
-"slug": "bankrolled-ai",
-"url": "https://bankrolled.ai/mcp",
-"grade": "A",
-"verdict": "clear",
-"risk_score": 0,
-"blocker_count": 0,
-"ready": true,
-"scanned": "2026-11-16"
+"scanned": "2026-11-23"
 }
 ]
 }
