@@ -1,18 +1,18 @@
 ---
 title: "Is the Discond MCP server safe? Security & Claude Directory readiness scan"
-description: "Independent, measured security and Claude Connector Directory readiness scan of the Discond MCP server (https://mcp.discond.ae/mcp), run 2026-11-16: advertises discond_find_discounts, discond_find_venues, discond_autocomplete_businesses; 9 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
+description: "Independent, measured security and Claude Connector Directory readiness scan of the Discond MCP server (https://mcp.discond.ae/mcp), run 2026-11-23: advertises discond_find_discounts, discond_find_venues, discond_autocomplete_businesses; 9 tools scanned, injection verdict 'clear', ready for the Claude Connector Directory. Re-run it yourself in one keyless call."
 ---
 # Discond MCP server — security & directory-readiness scorecard
 
 **Server:** `https://mcp.discond.ae/mcp`
-**Scanned:** 2026-11-16 · **Tools advertised:** 9 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
+**Scanned:** 2026-11-23 · **Tools advertised:** 9 · **Injection verdict:** `clear` · **Directory:** ready for the Claude Connector Directory
 
 UAE restaurant picks and live discounts across Fazaa, The Entertainer, Talabat and more.
 
 When an agent connects Discond, the model reads all 9 of its advertised tool definition(s)
 before any tool runs — so a poisoned description or a hidden instruction in any one of them can steer
 the agent first. This scorecard is an independent, static read of exactly that advertised metadata for
-`mcp.discond.ae`, scanned 2026-11-16; the verdict below is `clear`.
+`mcp.discond.ae`, scanned 2026-11-23; the verdict below is `clear`.
 
 ## What the scan found on Discond
 
@@ -22,7 +22,7 @@ the agent first. This scorecard is an independent, static read of exactly that a
 
 Grade `A` — No tool-poisoning/injection patterns detected across 9 tool(s). Clean on static checks. The scan is **static analysis of the advertised `tools/list` metadata only**:
 it never invokes a tool and never sends data anywhere. It is a point-in-time read of the Discond server
-on 2026-11-16; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
+on 2026-11-23; an MCP server's tool definitions can change at any time (the "drift" risk this scorecard
 makes visible), so a clean result today is not a guarantee for tomorrow.
 
 ## Tools the Discond server advertises
@@ -34,7 +34,7 @@ These are the 9 tool definition(s) any agent reads before it acts — the exact 
 - **`discond_find_discounts`** — Search UAE merchants with live discounts on Discond by free text, place (emirate or area such as "Dubai Marina"), coordinates, discount provider, or category. Returns merchants wi… _(parameters: q, place, lat, lng, radius_m, provider)_
 - **`discond_find_venues`** — Find UAE restaurants, cafés and other venues near an area or landmark (e.g. "Burj Khalifa", "Dubai Marina", "Yas Island") that fit a cuisine, a budget per person and must-haves su… _(parameters: place, lat, lng, radius_m, cuisines, must_have)_
 - **`discond_autocomplete_businesses`** — Typo-tolerant autocomplete of UAE merchant names on Discond. Returns matching merchant ids and names for partial or misspelled input. _(parameters: q, limit, offset, response_format)_
-- **`discond_get_business`** — Get one Discond merchant by id: name, categories, providers and link. When the user is signed in to Discond, its top live offers are included. _(parameters: business_id, include_offers, offer_limit, response_format)_
+- **`discond_get_business`** — Get one Discond merchant by id: name, a short description when we have one, categories, providers, link and its branches. Pass the user's lat/lng when known so branches come neare… _(parameters: business_id, include_offers, offer_limit, lat, lng, response_format)_
 - **`discond_list_offers`** — List live Discond offers, filtered by merchant, branch, provider, category, validity or online-only, sorted by newest, expiring or biggest discount. Has no place filter: filter by… _(parameters: q, business_id, business_branch_id, include_all_branches, provider_ids, category_ids)_
 - **`discond_get_offer`** — Get one Discond offer by id: headline, terms, validity and redeem links. Requires the user to be signed in to Discond. _(parameters: offer_id, response_format)_
 - **`discond_list_categories`** — List Discond merchant categories with ids, optionally filtered by name. _(parameters: q, limit, offset, response_format)_
@@ -81,4 +81,4 @@ injection patterns were found on the dates shown — a measured signal, not a wa
 - [All scanned MCP servers](mcp-server-scorecards.html)
 
 Independent scan of `mcp.discond.ae` by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools),
-measured 2026-11-16; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
+measured 2026-11-23; re-run the command above for a current result. Questions: contact@greyridgesignals.ai
