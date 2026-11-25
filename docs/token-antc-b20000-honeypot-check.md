@@ -1,17 +1,17 @@
 ---
 title: "Is ANTc a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for ANTc (Anthropic, PBC) on Base (0xb20000000000000000000016e38fd364d271ba28), measured 2026-11-20: engine verdict HOLD, risk 10/100. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for ANTc (Anthropic, PBC) on Base (0xb20000000000000000000016e38fd364d271ba28), measured 2026-11-25: engine verdict BLOCK, risk 20/100, $12 pool liquidity. Re-run it yourself in one keyless call."
 ---
 # Is ANTc a honeypot? — on-chain rug check (Base)
 
 **Token:** `0xb20000000000000000000016e38fd364d271ba28`
-**Chain:** Base · **Measured:** 2026-11-20 · verdict `HOLD` · risk `10/100`
+**Chain:** Base · **Measured:** 2026-11-25 · verdict `BLOCK` · risk `20/100`
 
-Our engine returned **HOLD** for ANTc — at least one measured signal warrants caution before you buy.
+Our engine returned **BLOCK** for ANTc — a measured on-chain signal below is a hard red flag.
 
-sellability unverified — the transfer simulation could not run, so the token's exit is unproven; not safe to auto-buy.
+trade is 833.3% of pool liquidity; severe price impact.
 
-WETH-pool liquidity could not be measured for this token.
+Deepest Uniswap v3 WETH pool held about **$12** of liquidity when measured.
 
 ## See the live verdict and size your exit
 
@@ -50,4 +50,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-11-20; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-11-25; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
