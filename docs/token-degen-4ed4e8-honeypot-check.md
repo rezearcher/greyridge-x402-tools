@@ -1,11 +1,11 @@
 ---
 title: "Is DEGEN a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for DEGEN (Degen) on Base (0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed), measured 2026-11-25: engine verdict GO, risk 8/100, $337k pool liquidity. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for DEGEN (Degen) on Base (0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed), measured 2026-11-26: engine verdict GO, risk 8/100, $337k pool liquidity. Re-run it yourself in one keyless call."
 ---
 # Is DEGEN a honeypot? — on-chain rug check (Base)
 
 **Token:** `0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed`
-**Chain:** Base · **Measured:** 2026-11-25 · verdict `GO` · risk `8/100`
+**Chain:** Base · **Measured:** 2026-11-26 · verdict `GO` · risk `8/100`
 
 On the measured on-chain checks below, **DEGEN passed** — our engine returned a GO.
 
@@ -62,4 +62,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-11-25; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-11-26; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
