@@ -1,17 +1,17 @@
 ---
 title: "Is VVV a honeypot? On-chain rug check for the Base token"
-description: "Independent on-chain honeypot / rug check for VVV (Venice Token) on Base (0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf), measured 2026-11-22: engine verdict GO, risk 25/100, $1.70M pool liquidity. Re-run it yourself in one keyless call."
+description: "Independent on-chain honeypot / rug check for VVV (Venice Token) on Base (0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf), measured 2026-11-26: engine verdict GO, risk 25/100, $1.67M pool liquidity. Re-run it yourself in one keyless call."
 ---
 # Is VVV a honeypot? — on-chain rug check (Base)
 
 **Token:** `0xacfe6019ed1a7dc6f7b508c02d1b04ec88cc21bf`
-**Chain:** Base · **Measured:** 2026-11-22 · verdict `GO` · risk `25/100`
+**Chain:** Base · **Measured:** 2026-11-26 · verdict `GO` · risk `25/100`
 
 On the measured on-chain checks below, **VVV passed** — our engine returned a GO.
 
 token passes safety checks; trade is 0.01% of pool liquidity.
 
-Deepest Uniswap v3 WETH pool held about **$1.70M** of liquidity when measured.
+Deepest Uniswap v3 WETH pool held about **$1.67M** of liquidity when measured.
 
 ## See the live verdict and size your exit
 
@@ -50,4 +50,4 @@ traps, **not financial advice**.
 - [Pre-trade safety gate for AI agents](pre-trade-safety-gate-ai-agents.html)
 
 Independent on-chain scan by [Grey Ridge Signals](https://github.com/rezearcher/greyridge-x402-tools).
-Measured on 2026-11-22; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
+Measured on 2026-11-26; re-run the commands above for a current result. Questions: contact@greyridgesignals.ai
